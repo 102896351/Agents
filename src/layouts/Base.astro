@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+import { agents } from '../data/agents';
+
+const { title, description } = Astro.props as {
+  title?: string;
+  description?: string;
+};
+
+const siteName = 'AI Agents Hub';
+const finalTitle = title ? `${title} · ${siteName}` : `${siteName} — A curated directory of AI agents`;
+const finalDesc =
+  description ||
+  'Discover, compare, and choose AI agents for coding, research, browsing, automation, and more. Hand-picked and updated regularly.';
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/Agents/favicon.svg" />
+    <title>{finalTitle}</title>
+    <meta name="description" content={finalDesc} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={finalTitle} />
+    <meta property="og:description" content={finalDesc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+
+    <!-- JSON-LD：让搜索引擎把列表理解成目录结构 -->
+    {agents.length > 0 && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListElement: agents.map((a, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: a.name,
+            url: a.website,
+          })),
+        })}
+      />
+    )}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="/Agents/" class="brand">
+          <img src="/Agents/favicon.svg" alt="" />
+          AI Agents Hub
+        </a>
+        <nav class="nav">
+          <a href="/Agents/#categories">Categories</a>
+          <a href="/Agents/#featured">Featured</a>
+          <a href="/Agents/about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Built with Astro · Hosted on GitHub Pages ·
+          <a href="https://github.com" target="_blank" rel="noopener">View source</a>
+        </p>
+        <p style="margin-top: 8px;">
+          AI Agents Hub is an independent directory. All trademarks belong to their owners.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

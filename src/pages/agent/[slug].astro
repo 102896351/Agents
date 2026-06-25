@@ -1,0 +1,119 @@
+---
+import Base from '../../layouts/Base.astro';
+import AgentCard from '../../components/AgentCard.astro';
+import { agents, categories } from '../../data/agents';
+import { licenseLabel, difficultyLabel } from '../../utils/labels';
+
+// 静态构建：getStaticPaths 把每个 agent 生成一个独立 HTML 页
+export function getStaticPaths() {
+  return agents.map((agent) => ({
+    params: { slug: agent.slug },
+    props: { agent },
+  }));
+}
+
+const { agent } = Astro.props;
+const base = '/Agents';
+const cat = categories.find((c) => c.id === agent.category)!;
+
+// 相关推荐：同分类的其他 agent，最多 3 个
+const related = agents
+  .filter((a) => a.category === agent.category && a.slug !== agent.slug)
+  .slice(0, 3);
+---
+
+<Base title={agent.name} description={agent.tagline}>
+  <div class="container">
+    <div class="detail-head">
+      <a href={`${base}/#categories`} style="color: var(--text-muted); font-size: 14px;">
+        ← Back to all agents
+      </a>
+      <div style="margin: 18px 0 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+        <span class="pill active">{cat.label}</span>
+        <span class={`badge ${agent.license}`}>{licenseLabel(agent.license)}</span>
+      </div>
+      <h1>{agent.name}</h1>
+      <p class="tagline">{agent.tagline}</p>
+
+      <div class="detail-actions">
+        <a href={agent.website} target="_blank" rel="noopener" class="btn primary">
+          Visit website →
+        </a>
+        {agent.github && (
+          <a href={agent.github} target="_blank" rel="noopener" class="btn">
+            View on GitHub
+          </a>
+        )}
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <!-- 主内容 -->
+      <div class="prose">
+        <div class="verdict-box">
+          <div class="label">Our take</div>
+          <p style="margin: 0; color: var(--text);">{agent.verdict}</p>
+        </div>
+
+        <h2>What it is</h2>
+        <p>{agent.name} is a {cat.label.toLowerCase()} agent. {agent.tagline}</p>
+
+        <h2>Best for</h2>
+        <p>
+          {agent.tags.map((t) => `#${t}`).join(' · ')}
+        </p>
+
+        <h2>Pricing</h2>
+        <p>{agent.pricing}</p>
+
+        {agent.selfHost && (
+          <>
+            <h2>Self-hosting</h2>
+            <p>
+              Yes — {agent.name} can be self-hosted
+              {agent.licenseName ? ` under the ${agent.licenseName} license` : ''}.
+              This gives you full control over data and deployment.
+            </p>
+          </>
+        )}
+      </div>
+
+      <!-- 侧边栏：结构化规格 -->
+      <aside>
+        <div class="specs">
+          <h3>At a glance</h3>
+          <div class="spec-row"><span class="k">Category</span><span class="v">{cat.label}</span></div>
+          <div class="spec-row"><span class="k">License</span><span class="v">{licenseLabel(agent.license)}</span></div>
+          {agent.licenseName && (
+            <div class="spec-row"><span class="k">License type</span><span class="v">{agent.licenseName}</span></div>
+          )}
+          <div class="spec-row">
+            <span class="k">Self-host</span>
+            <span class="v">{agent.selfHost ? 'Yes' : 'No'}</span>
+          </div>
+          <div class="spec-row">
+            <span class="k">Difficulty</span>
+            <span class="v">{difficultyLabel(agent.difficulty)}</span>
+          </div>
+          {agent.stars && (
+            <div class="spec-row"><span class="k">GitHub stars</span><span class="v">★ {agent.stars.toLocaleString()}</span></div>
+          )}
+          {agent.updated && (
+            <div class="spec-row"><span class="k">Last updated</span><span class="v">{agent.updated}</span></div>
+          )}
+        </div>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="section">
+        <div class="section-head">
+          <h2>Similar agents</h2>
+        </div>
+        <div class="grid">
+          {related.map((a) => <AgentCard agent={a} base={base} />)}
+        </div>
+      </section>
+    )}
+  </div>
+</Base>

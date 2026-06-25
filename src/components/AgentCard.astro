@@ -1,0 +1,25 @@
+---
+import type { Agent } from '../data/agents';
+import { licenseLabel, difficultyLabel } from '../utils/labels';
+
+interface Props {
+  agent: Agent;
+  base?: string; // URL 前缀，用于 GitHub Pages 子路径
+}
+const { agent, base = '/Agents' } = Astro.props;
+---
+
+<a href={`${base}/agent/${agent.slug}`} class="card">
+  <div class="card-top">
+    <h3>{agent.name}</h3>
+    {agent.stars && (
+      <span class="badge host" title="GitHub stars">★ {(agent.stars / 1000).toFixed(1)}k</span>
+    )}
+  </div>
+  <p class="tagline">{agent.tagline}</p>
+  <div class="card-meta">
+    <span class={`badge ${agent.license}`}>{licenseLabel(agent.license)}</span>
+    {agent.selfHost && <span class="badge host">Self-host</span>}
+    <span class="badge host">{difficultyLabel(agent.difficulty)}</span>
+  </div>
+</a>

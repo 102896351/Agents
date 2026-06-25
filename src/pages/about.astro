@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import { agents } from '../data/agents';
+---
+
+<Base title="About">
+  <section class="hero" style="padding-top: 56px;">
+    <div class="container">
+      <h1>About <span class="grad">AI Agents Hub</span></h1>
+      <p>An independent, hand-curated directory of AI agents worth knowing about.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width: 720px;">
+      <div class="prose">
+        <h2>Why this exists</h2>
+        <p>
+          The AI agent landscape is moving fast — too fast for anyone to keep track of by hand.
+          Existing directories are either overwhelming (thousands of entries, no signal) or
+          promotional (every tool is "the best"). This site aims for the middle ground:
+          a tight, opinionated list of {agents.length} agents with honest notes on each.
+        </p>
+
+        <h2>How we pick</h2>
+        <p>Every agent here has to clear a bar:</p>
+        <ul>
+          <li><strong>Real traction</strong> — active development and a genuine user base.</li>
+          <li><strong>Clear use case</strong> — you should know what it's for in one sentence.</li>
+          <li><strong>Accessible</strong> — you can actually try it, not just watch a demo.</li>
+          <li><strong>Distinct</strong> — it does something the others in its category don't.</li>
+        </ul>
+
+        <h2>What the badges mean</h2>
+        <p>
+          <span class="badge oss">Open Source</span> — code is public and self-hostable. &nbsp;
+          <span class="badge commercial">Commercial</span> — paid product, often closed-source. &nbsp;
+          <span class="badge freemium">Freemium</span> — free tier with paid upgrades.
+        </p>
+
+        <h2>Independence</h2>
+        <p>
+          This is an independent project. Listings are not paid placements. If that ever changes,
+          it will be disclosed clearly on the listing itself.
+        </p>
+
+        <h2>Suggest an agent</h2>
+        <p>
+          Spotted an agent we're missing? Found something outdated? The cleanest way is to
+          open an issue or pull request on the source repository. Every listing is just a
+          data file — easy to add or fix.
+        </p>
+
+        <div class="verdict-box" style="margin-top: 32px;">
+          <div class="label">Note</div>
+          <p style="margin: 0; color: var(--text);">
+            AI Agents Hub is an independent directory. All product names, logos, and brands
+            are property of their respective owners.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

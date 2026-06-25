@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import AgentCard from '../components/AgentCard.astro';
+import { agents, categories, getFeatured, type Category } from '../data/agents';
+
+const featured = getFeatured();
+const base = '/Agents';
+---
+
+<Base>
+  <section class="hero">
+    <div class="container">
+      <h1>Find the right <span class="grad">AI agent</span><br />for the job.</h1>
+      <p>
+        A hand-picked directory of AI agents for coding, research, browsing, and automation.
+        No noise — just what's worth your time, with honest notes on each.
+      </p>
+      <div class="search-wrap">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search agents, e.g. “coding”, “open source”, “browser”…"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="section" id="featured">
+    <div class="container">
+      <div class="section-head">
+        <h2>Featured</h2>
+        <span class="count">{featured.length} picks</span>
+      </div>
+      <div class="grid" id="featured-grid">
+        {featured.map((agent) => <AgentCard agent={agent} base={base} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- All agents, filterable -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <h2>Browse all</h2>
+        <span class="count" id="result-count">{agents.length} agents</span>
+      </div>
+
+      <div class="pills" id="filter-pills">
+        <button class="pill active" data-cat="all">All</button>
+        {categories.map((c) => (
+          <button class="pill" data-cat={c.id}>{c.label}</button>
+        ))}
+      </div>
+
+      <div class="grid" id="agent-grid">
+        {agents.map((agent) => (
+          <div class="card-wrap" data-name={agent.name.toLowerCase()} data-cat={agent.category} data-tags={agent.tags.join(' ')}>
+            <AgentCard agent={agent} base={base} />
+          </div>
+        ))}
+      </div>
+
+      <p class="empty hidden" id="empty-state">No agents match your search.</p>
+    </div>
+  </section>
+</Base>
+
+<script is:inline>
+  const pills = document.querySelectorAll('#filter-pills .pill');
+  const cards = document.querySelectorAll('#agent-grid .card-wrap');
+  const search = document.getElementById('search');
+  const empty = document.getElementById('empty-state');
+  const count = document.getElementById('result-count');
+  const total = cards.length;
+
+  let currentCat = 'all';
+  let currentQuery = '';
+
+  function apply() {
+    let visible = 0;
+    cards.forEach((card) => {
+      const el = card;
+      const matchCat = currentCat === 'all' || el.dataset.cat === currentCat;
+      const matchQ =
+        currentQuery === '' ||
+        el.dataset.name.includes(currentQuery) ||
+        (el.dataset.tags || '').includes(currentQuery);
+      const show = matchCat && matchQ;
+      el.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    if (count) count.textContent = `${visible} ${visible === 1 ? 'agent' : 'agents'}`;
+    if (empty) empty.classList.toggle('hidden', visible !== 0);
+  }
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      pills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentCat = pill.dataset.cat || 'all';
+      apply();
+    });
+  });
+
+  if (search) {
+    search.addEventListener('input', (e) => {
+      currentQuery = e.target.value.toLowerCase().trim();
+      apply();
+    });
+  }
+</script>
