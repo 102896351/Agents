@@ -369,6 +369,132 @@ export const agents: Agent[] = [
     pricing: 'Free tier; Pro from $10/mo',
     verdict: 'Goes beyond one-off images — manages a whole design workflow from brief to assets.',
   },
+
+  // ============= 新增 2026-06 第二批 =============
+
+  // ---------------- Coding（补充）----------------
+  {
+    slug: 'copilot',
+    name: 'GitHub Copilot',
+    tagline: 'The AI pair programmer embedded across GitHub, IDEs, and the CLI.',
+    category: 'coding',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://github.com/features/copilot',
+    tags: ['autocomplete', 'chat', 'ide', 'microsoft'],
+    pricing: 'Free tier; Pro $10/mo',
+    verdict: 'The most ubiquitous coding assistant — wins on reach and integration, not raw power.',
+  },
+  {
+    slug: 'codex',
+    name: 'OpenAI Codex',
+    tagline: 'OpenAI’s cloud-based coding agent that runs tasks in parallel sandboxes.',
+    category: 'coding',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://openai.com/codex/',
+    tags: ['cloud', 'parallel-tasks', 'openai', 'autonomous'],
+    pricing: 'Included with ChatGPT Plus/Pro',
+    verdict: 'Shines on background multi-task coding — assign several issues and it works them in parallel.',
+  },
+  {
+    slug: 'gemini-cli',
+    name: 'Gemini CLI',
+    tagline: 'Google’s open-source terminal agent powered by Gemini.',
+    category: 'coding',
+    license: 'open-source',
+    licenseName: 'Apache-2.0',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://github.com/google-gemini/gemini-cli',
+    github: 'https://github.com/google-gemini/gemini-cli',
+    stars: 35000,
+    updated: '2026-06',
+    tags: ['terminal', 'cli', 'google', 'open-source'],
+    pricing: 'Free; generous free tier via Gemini API',
+    verdict: 'The open-source terminal agent that broke out in 2026 — a real Claude Code rival with a free quota.',
+  },
+
+  // ---------------- Research（补充）----------------
+  {
+    slug: 'firecrawl',
+    name: 'Firecrawl',
+    tagline: 'Open-source engine that turns the web into clean data for LLMs and agents.',
+    category: 'research',
+    license: 'open-source',
+    licenseName: 'AGPL-3.0',
+    selfHost: true,
+    difficulty: 3,
+    website: 'https://www.firecrawl.dev',
+    github: 'https://github.com/firecrawl/firecrawl',
+    stars: 130000,
+    updated: '2026-06',
+    tags: ['web-scraping', 'rag', 'self-host', 'mcp'],
+    pricing: 'Free self-host; cloud from free tier',
+    verdict: 'The backbone of most web-research agents — if your agent reads the web, it likely uses this underneath.',
+  },
+  {
+    slug: 'notebooklm',
+    name: 'NotebookLM',
+    tagline: 'Google’s research notebook that grounds answers strictly in your own sources.',
+    category: 'research',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://notebooklm.google.com',
+    tags: ['sources', 'audio-overview', 'google', 'grounded'],
+    pricing: 'Free; Plus features in Google One AI',
+    verdict: 'Best-in-class for source-grounded research — hallucinations drop sharply because it only reads what you give it.',
+  },
+
+  // ---------------- Automation（补充）----------------
+  {
+    slug: 'agentforce',
+    name: 'Salesforce Agentforce',
+    tagline: 'Build autonomous agents that act inside the Salesforce CRM stack.',
+    category: 'automation',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 3,
+    website: 'https://www.salesforce.com/agentforce/',
+    tags: ['crm', 'enterprise', 'low-code', 'salesforce'],
+    pricing: 'From $2/conversation',
+    verdict: 'The enterprise pick if your data and workflows already live in Salesforce.',
+  },
+  {
+    slug: 'lindy',
+    name: 'Lindy',
+    tagline: 'No-code agent builder for everyday tasks like inbox triage and scheduling.',
+    category: 'automation',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.lindy.ai',
+    tags: ['no-code', 'personal-assistant', 'email', 'scheduling'],
+    pricing: 'Free tier; Pro from $49/mo',
+    verdict: 'The friendliest "personal AI employee" — great for non-developers automating email and calendar busywork.',
+  },
+
+  // ---------------- Framework（补充）----------------
+  {
+    slug: 'autogpt',
+    name: 'AutoGPT',
+    tagline: 'The original autonomous agent platform — build, deploy, and run goal-driven agents.',
+    category: 'framework',
+    license: 'open-source',
+    licenseName: 'MIT',
+    selfHost: true,
+    difficulty: 4,
+    website: 'https://autogpt.net',
+    github: 'https://github.com/Significant-Gravitas/AutoGPT',
+    stars: 170000,
+    updated: '2026-06',
+    tags: ['platform', 'autonomous', 'pioneer', 'self-host'],
+    pricing: 'Free self-host; hosted platform tiers',
+    verdict: 'The project that kicked off the autonomous-agent hype — now a mature platform, still the highest-starred agent repo.',
+  },
 ];
 
 // 工具函数：按分类聚合
@@ -380,7 +506,7 @@ export function getAgentsByCategory(cat: Category): Agent[] {
 
 export function getFeatured(): Agent[] {
   // 首页推荐：每个分类里取 star 最高的或最具代表性的
-  return ['cline', 'aider', 'perplexity', 'browser-use', 'n8n', 'crewai']
+  return ['gemini-cli', 'aider', 'firecrawl', 'browser-use', 'n8n', 'autogpt']
     .map((slug) => agents.find((a) => a.slug === slug))
     .filter(Boolean) as Agent[];
 }
