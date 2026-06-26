@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 
 // GitHub Pages 部署配置
-// 1) site 改成你的最终访问地址（username.github.io 或自定义域名）
-// 2) base：仓库名。项目仓库就是 '/仓库名'；username.github.io 根仓库就改成 '/'
+// ⚠️ 绑定自定义域名后，域名走根路径，base 必须是 '/'
+//    （此时原始地址 102896351.github.io/Agents 会样式错乱，属正常，用域名访问即可）
 export default defineConfig({
-  site: 'https://102896351.github.io',
-  base: '/Agents',
+  site: 'https://agent.gonglue.xyz',
+  base: '/',
   build: {
     format: 'directory',
   },

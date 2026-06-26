@@ -83,7 +83,7 @@ a:hover { text-decoration: underline; }
   padding: 110px 0 64px;
   text-align: center;
   overflow: hidden;
-  background: url('/Agents/hero-bg.jpg') center center / cover no-repeat, var(--bg);
+  background: url('/hero-bg.jpg') center center / cover no-repeat, var(--bg);
 }
 /* 遮罩：让白色文字在任何区域都可读 */
 .hero::before {
