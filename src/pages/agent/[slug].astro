@@ -20,9 +20,40 @@ const cat = categories.find((c) => c.id === agent.category)!;
 const related = agents
   .filter((a) => a.category === agent.category && a.slug !== agent.slug)
   .slice(0, 3);
+
+// 替代品详情（用 slug 查找，去重 + 截断 4 个）
+const altAgents = (agent.alternatives ?? [])
+  .map((slug) => agents.find((a) => a.slug === slug))
+  .filter(Boolean)
+  .slice(0, 4) as typeof agents;
 ---
 
 <Base title={agent.name} description={agent.tagline}>
+  <!-- Per-page JSON-LD: SoftwareApplication schema for this agent -->
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://www.schema.org',
+      '@type': 'SoftwareApplication',
+      name: agent.name,
+      description: agent.description || agent.tagline,
+      url: `https://agent.gonglue.xyz/agent/${agent.slug}`,
+      applicationCategory: cat.label,
+      operatingSystem: 'Cross-platform',
+      offers: {
+        '@type': 'Offer',
+        price: agent.license === 'open-source' ? '0' : undefined,
+        priceCurrency: 'USD',
+      },
+      ...(agent.github ? { codeRepository: agent.github } : {}),
+      ...(agent.stars ? { interactionStatistic: {
+        '@type': 'InteractionCounter',
+        interactionType: 'https://schema.org/LikeAction',
+        userInteractionCount: agent.stars,
+      } } : {}),
+    })}
+  />
   <div class="container">
     <div class="detail-head">
       <a href={`${base}/#categories`} style="color: var(--text-muted); font-size: 14px;">
@@ -56,15 +87,53 @@ const related = agents
         </div>
 
         <h2>What it is</h2>
-        <p>{agent.name} is a {cat.label.toLowerCase()} agent. {agent.tagline}</p>
-
-        <h2>Best for</h2>
         <p>
-          {agent.tags.map((t) => `#${t}`).join(' · ')}
+          {agent.description
+            ? agent.description
+            : `${agent.name} is a ${cat.label.toLowerCase()} agent. ${agent.tagline}`}
         </p>
+
+        {agent.useCases && agent.useCases.length > 0 && (
+          <>
+            <h2>Best for</h2>
+            <ul class="usecase-list">
+              {agent.useCases.map((uc) => <li>{uc}</li>)}
+            </ul>
+          </>
+        )}
+
+        {(agent.pros || agent.cons) && (
+          <div class="pros-cons">
+            {agent.pros && agent.pros.length > 0 && (
+              <div class="pc-col pc-pros">
+                <h3>Pros</h3>
+                <ul>
+                  {agent.pros.map((p) => <li>{p}</li>)}
+                </ul>
+              </div>
+            )}
+            {agent.cons && agent.cons.length > 0 && (
+              <div class="pc-col pc-cons">
+                <h3>Cons</h3>
+                <ul>
+                  {agent.cons.map((c) => <li>{c}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
 
         <h2>Pricing</h2>
         <p>{agent.pricing}</p>
+
+        {agent.models && agent.models.length > 0 && (
+          <>
+            <h2>Underlying models</h2>
+            <div class="model-tags">
+              {agent.models.map((m) => <span class="model-tag">{m}</span>)}
+            </div>
+          </>
+        )}
 
         {agent.selfHost && (
           <>
@@ -102,6 +171,18 @@ const related = agents
             <div class="spec-row"><span class="k">Last updated</span><span class="v">{agent.updated}</span></div>
           )}
         </div>
+
+        {altAgents.length > 0 && (
+          <div class="alts">
+            <h3>Alternatives</h3>
+            {altAgents.map((a) => (
+              <a href={`${base}/agent/${a.slug}`} class="alt-link">
+                <span class="alt-name">{a.name}</span>
+                <span class="alt-arrow">→</span>
+              </a>
+            ))}
+          </div>
+        )}
       </aside>
     </div>
 
