@@ -306,6 +306,69 @@ export const agents: Agent[] = [
     pricing: 'Invite/subscription based',
     verdict: 'Hyped for end-to-end deliverables — judge it on the output, not the demo.',
   },
+
+  // ============= 新增 2026-06 =============
+
+  // ---------------- Coding（补充）----------------
+  {
+    slug: 'devin',
+    name: 'Devin',
+    tagline: 'Cognition’s autonomous software engineer that plans and ships full tasks.',
+    category: 'coding',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://devin.ai',
+    tags: ['autonomous', 'full-task', 'team-collaboration'],
+    pricing: 'From $500/mo (team plans)',
+    verdict: 'The original "AI engineer" — strongest on long, self-directed tasks, but pricey for individuals.',
+  },
+  {
+    slug: 'cody',
+    name: 'Sourcegraph Cody',
+    tagline: 'AI coding assistant that understands your entire codebase at scale.',
+    category: 'coding',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://sourcegraph.com/cody',
+    github: 'https://github.com/sourcegraph/cody',
+    tags: ['codebase-context', 'enterprise', 'autocomplete'],
+    pricing: 'Free tier; Pro $9/mo',
+    verdict: 'Unmatched context across huge monorepos — the enterprise pick for large codebases.',
+  },
+  {
+    slug: 'continue',
+    name: 'Continue',
+    tagline: 'Open-source autopilot for VS Code and JetBrains that you fully control.',
+    category: 'coding',
+    license: 'open-source',
+    licenseName: 'Apache-2.0',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://www.continue.dev',
+    github: 'https://github.com/continuedev/continue',
+    stars: 21000,
+    updated: '2026-06',
+    tags: ['vscode', 'jetbrains', 'BYOK', 'autocomplete'],
+    pricing: 'Free extension; bring your own models',
+    verdict: 'The most flexible open-source coding assistant — swap any model, keep your data private.',
+  },
+
+  // ---------------- Creative（补充）----------------
+  {
+    slug: 'lovart',
+    name: 'Lovart',
+    tagline: 'Design agent that turns briefs into full visual campaigns end-to-end.',
+    category: 'creative',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.lovart.ai',
+    tags: ['design', 'branding', 'image-generation'],
+    pricing: 'Free tier; Pro from $10/mo',
+    verdict: 'Goes beyond one-off images — manages a whole design workflow from brief to assets.',
+  },
 ];
 
 // 工具函数：按分类聚合
