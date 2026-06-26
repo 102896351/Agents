@@ -79,26 +79,42 @@ a:hover { text-decoration: underline; }
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 72px 0 48px;
+  position: relative;
+  padding: 110px 0 64px;
   text-align: center;
+  overflow: hidden;
+  background: url('/Agents/hero-bg.jpg') center center / cover no-repeat, var(--bg);
 }
+/* 遮罩：让白色文字在任何区域都可读 */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(11,13,18,0.55) 0%, rgba(11,13,18,0.75) 60%, rgba(11,13,18,0.9) 100%);
+  z-index: 0;
+}
+.hero .container { position: relative; z-index: 1; }
 .hero h1 {
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(34px, 5.5vw, 56px);
   line-height: 1.1;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
 }
 .hero h1 .grad {
-  background: linear-gradient(135deg, var(--accent-soft), #c084fc);
+  background: linear-gradient(135deg, #a78bfa, #67e8f9);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .hero p {
   font-size: 18px;
-  color: var(--text-soft);
+  color: rgba(255,255,255,0.82);
   max-width: 620px;
   margin: 0 auto 28px;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.5);
 }
 
 /* ---------- Search ---------- */
