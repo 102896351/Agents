@@ -1014,6 +1014,250 @@ export const agents: Agent[] = [
     models: ['Any LLM (OpenAI, Claude, local models)'],
     alternatives: ['crewai', 'langgraph', 'autogen'],
   },
+
+  // ============= 新增 2026-06 第三批 =============
+
+  // ---------------- Framework ----------------
+  {
+    slug: 'mastra',
+    name: 'Mastra',
+    tagline: 'TypeScript-native framework for building agents that reason, remember, and act.',
+    category: 'framework',
+    license: 'open-source',
+    licenseName: 'MIT',
+    selfHost: true,
+    difficulty: 3,
+    website: 'https://mastra.ai',
+    github: 'https://github.com/mastra-ai/mastra',
+    stars: 19000,
+    updated: '2026-06',
+    tags: ['typescript', 'memory', 'mcp', 'multi-agent', 'rag'],
+    pricing: 'Free library; Mastra Cloud paid',
+    verdict:
+      'The best pick for TypeScript developers — batteries-included (memory, tools, MCP, observability) with great DX.',
+    description:
+      'Mastra is a TypeScript-native agent framework that ships with everything you need out of the box: agent memory, tool use, MCP integration, RAG pipelines, structured output, observability, and multi-agent orchestration. It is purpose-built for TS and follows established AI patterns, which makes it a favorite among full-stack JS/TS teams.',
+    useCases: [
+      'Build production agents in a TypeScript codebase',
+      'Add memory + tools + RAG without stitching many libraries',
+      'Ship agents with built-in observability',
+    ],
+    pros: [
+      'TypeScript-native with excellent type safety and DX',
+      'Batteries included: memory, tools, MCP, RAG, evals',
+      'Fast-growing community and weekly releases',
+    ],
+    cons: [
+      'Younger ecosystem than LangChain/CrewAI',
+      'JS/TS only — no first-class Python',
+    ],
+    models: ['OpenAI', 'Anthropic', 'Google', 'local via Ollama'],
+    alternatives: ['langgraph', 'crewai', 'autogen'],
+  },
+  {
+    slug: 'openai-agents-sdk',
+    name: 'OpenAI Agents SDK',
+    tagline: 'OpenAI’s official lightweight framework for multi-step, handoff-based agents.',
+    category: 'framework',
+    license: 'open-source',
+    licenseName: 'MIT',
+    selfHost: true,
+    difficulty: 3,
+    website: 'https://openai.github.io/openai-agents-python/',
+    github: 'https://github.com/openai/openai-agents-python',
+    stars: 18000,
+    updated: '2026-06',
+    tags: ['python', 'openai', 'handoffs', 'guardrails'],
+    pricing: 'Free library; pay OpenAI API usage',
+    verdict:
+      'Minimal and opinionated — ideal if you live in OpenAI’s ecosystem and want agent handoffs done right.',
+    description:
+      'The OpenAI Agents SDK is an open-source, production-ready framework for building agentic AI apps. It focuses on a few powerful primitives — agents, handoffs, guardrails, and sessions — and is the successor to the experimental Swarm project. It pairs natively with OpenAI models and tools.',
+    useCases: [
+      'Build agents that hand tasks off to specialized sub-agents',
+      'Add input/output guardrails to an LLM app',
+      'Stay close to OpenAI’s recommended patterns',
+    ],
+    pros: [
+      'Official, well-maintained by OpenAI',
+      'Clean, minimal mental model (agents + handoffs)',
+      'First-class tracing via the Traces dashboard',
+    ],
+    cons: [
+      'Strongest when paired with OpenAI models',
+      'Fewer integrations than LangChain/LangGraph',
+    ],
+    models: ['OpenAI (primary)', 'other providers via LiteLLM'],
+    alternatives: ['langgraph', 'crewai', 'mastra'],
+  },
+
+  // ---------------- Research / Data ----------------
+  {
+    slug: 'chatgpt',
+    name: 'ChatGPT',
+    tagline: 'OpenAI’s general-purpose assistant with browsing, code, and now agent capabilities.',
+    category: 'research',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://chat.openai.com',
+    tags: ['general', 'browsing', 'code', 'gpts'],
+    pricing: 'Free; Plus $20/mo; Pro $200/mo',
+    verdict:
+      'The default starting point for most people — Deep Research and agent features keep pushing what a chat assistant can do.',
+    description:
+      'ChatGPT is OpenAI’s flagship conversational assistant. Beyond chat, it now includes web browsing, code execution, image generation, the GPTs marketplace, Deep Research (long-running research agents), and Operator-style browser agents on higher tiers. It is the most widely used AI assistant in the world.',
+    useCases: [
+      'General Q&A and writing',
+      'Deep Research across the web over many minutes',
+      'Running small automations via GPTs',
+    ],
+    pros: [
+      'Broadest capability set of any single assistant',
+      'Massive ecosystem of custom GPTs',
+      'Constantly updated with new agent features',
+    ],
+    cons: [
+      'Generalist — specialists beat it on narrow tasks',
+      'Higher tiers (Pro, Operator) are expensive',
+    ],
+    models: ['GPT-4o', 'GPT-4.1', 'o-series reasoning models'],
+    alternatives: ['perplexity', 'notebooklm', 'gemini-cli'],
+  },
+  {
+    slug: 'claude',
+    name: 'Claude (Anthropic)',
+    tagline: 'Anthropic’s assistant, prized for long context, careful reasoning, and writing.',
+    category: 'research',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://claude.ai',
+    tags: ['general', 'long-context', 'artifacts', 'writing'],
+    pricing: 'Free; Pro $20/mo; Max $100–200/mo',
+    verdict:
+      'Best-in-class for long documents and thoughtful writing — the agent you reach for when quality matters more than speed.',
+    description:
+      'Claude is Anthropic’s conversational assistant. It is known for a very large context window, careful and nuanced outputs, strong coding ability (which powers Claude Code), and the Artifacts feature for generating interactive content. Anthropic positions it as a safer, more steerable assistant.',
+    useCases: [
+      'Analyzing very long documents (books, codebases)',
+      'High-quality writing and editing',
+      'Building interactive artifacts (UIs, docs, diagrams)',
+    ],
+    pros: [
+      'Excellent long-context handling',
+      'Nuanced, high-quality prose',
+      'Strong safety and steerability',
+    ],
+    cons: [
+      'Smaller third-party ecosystem than OpenAI',
+      'Peak usage can require Max tier',
+    ],
+    models: ['Claude Sonnet', 'Claude Opus', 'Claude Haiku'],
+    alternatives: ['chatgpt', 'perplexity', 'gemini-cli'],
+  },
+  {
+    slug: 'deepseek',
+    name: 'DeepSeek',
+    tagline: 'Open-weight frontier models with a coding-specialist variant and a chat assistant.',
+    category: 'research',
+    license: 'open-source',
+    licenseName: 'MIT (weights)',
+    selfHost: true,
+    difficulty: 2,
+    website: 'https://www.deepseek.com',
+    github: 'https://github.com/deepseek-ai/DeepSeek-V3',
+    stars: 140000,
+    updated: '2026-06',
+    tags: ['open-weights', 'coding', 'reasoning', 'self-host'],
+    pricing: 'Free chat; open weights; API very cheap',
+    verdict:
+      'The open-weights breakthrough — frontier-tier reasoning at a fraction of the cost, runnable on your own hardware.',
+    description:
+      'DeepSeek is a Chinese AI lab whose open-weight models (DeepSeek-V3, DeepSeek-R1) rival proprietary frontier models on reasoning and coding while being freely available and dramatically cheaper to run. The models can be self-hosted, and power many BYOK setups (including Cline, Aider, and local pipelines).',
+    useCases: [
+      'Run frontier-tier reasoning without vendor lock-in',
+      'Power coding agents cheaply via API',
+      'Self-host a strong model on your own GPUs',
+    ],
+    pros: [
+      'Open weights — full control, self-hostable',
+      'Exceptional price/performance',
+      'Strong coding and math/reasoning',
+    ],
+    cons: [
+      'Heavier to self-host than using an API',
+      'Fewer native product features (no hosted artifacts)',
+    ],
+    models: ['DeepSeek-V3', 'DeepSeek-R1', 'DeepSeek-Coder'],
+    alternatives: ['chatgpt', 'claude', 'gemini-cli'],
+  },
+
+  // ---------------- Automation ----------------
+  {
+    slug: 'sierra',
+    name: 'Sierra',
+    tagline: 'Conversational AI platform for enterprise customer experience and support.',
+    category: 'automation',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://sierra.ai',
+    tags: ['enterprise', 'customer-support', 'cx', 'voice'],
+    pricing: 'Enterprise pricing',
+    verdict:
+      'The serious enterprise choice for customer-service agents — guardrails, analytics, and brand voice done right.',
+    description:
+      'Sierra is an enterprise conversational AI platform focused on customer experience. It lets large brands build agents that handle support across chat and voice, with strong guardrails, integration into CRM/ITSM systems, and analytics. It is co-founded by Bret Taylor and positioned against generic chatbot tooling.',
+    useCases: [
+      'Automate tier-1 customer support at scale',
+      'Voice + chat agents with consistent brand voice',
+      'Route and escalate with guardrails and analytics',
+    ],
+    pros: [
+      'Built for enterprise CX, not generic chat',
+      'Strong guardrails and observability',
+      'Integrates with CRM/ITSM stacks',
+    ],
+    cons: [
+      'Enterprise-only — no self-serve tier',
+      'Not for individual or small-team use',
+    ],
+    models: ['Multiple frontier models (model-agnostic)'],
+    alternatives: ['agentforce', 'lindy', 'decagon'],
+  },
+  {
+    slug: 'decagon',
+    name: 'Decagon',
+    tagline: 'AI customer-support agents that resolve tickets and take actions, not just answer.',
+    category: 'automation',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://decagon.ai',
+    tags: ['customer-support', 'enterprise', 'actions', 'analytics'],
+    pricing: 'Enterprise pricing',
+    verdict:
+      'Goes beyond FAQs — these agents actually execute workflows and track resolution analytics, loved by modern support teams.',
+    description:
+      'Decagon builds AI agents for customer support that do more than answer questions: they take actions (refunds, status updates, account changes), learn from resolved tickets, and report on metrics like deflection and CSAT. It targets modern B2B support teams and is one of the fast-rising players in AI support.',
+    useCases: [
+      'Resolve support tickets end-to-end, with actions',
+      'Deflect repetitive tickets at scale',
+      'Track deflection and resolution analytics',
+    ],
+    pros: [
+      'Agents take real actions, not just reply',
+      'Strong analytics on support outcomes',
+      'Fast to deploy on existing helpdesk data',
+    ],
+    cons: [
+      'Enterprise pricing, not for small teams',
+      'Requires clean support data to shine',
+    ],
+    models: ['Multiple frontier models (model-agnostic)'],
+    alternatives: ['sierra', 'agentforce', 'lindy'],
+  },
 ];
 
 // 工具函数：按分类聚合
