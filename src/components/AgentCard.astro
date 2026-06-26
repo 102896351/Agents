@@ -6,7 +6,7 @@ interface Props {
   agent: Agent;
   base?: string; // URL 前缀，用于 GitHub Pages 子路径
 }
-const { agent, base = import.meta.env.BASE_URL } = Astro.props;
+const { agent, base = import.meta.env.BASE_URL.replace(/\/$/, '') } = Astro.props;
 ---
 
 <a href={`${base}/agent/${agent.slug}`} class="card">
