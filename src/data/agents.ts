@@ -1258,6 +1258,214 @@ export const agents: Agent[] = [
     models: ['Multiple frontier models (model-agnostic)'],
     alternatives: ['sierra', 'agentforce', 'lindy'],
   },
+
+  // ============= 新增 2026-06 第四批（语音/视频/营销/安全）=============
+
+  // ---------------- Automation: 语音通话 ----------------
+  {
+    slug: 'vapi',
+    name: 'Vapi',
+    tagline: 'Developer-first platform for building production AI voice agents on phone calls.',
+    category: 'automation',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://vapi.ai',
+    github: 'https://github.com/VapiAI',
+    tags: ['voice', 'phone-calls', 'realtime', 'developers'],
+    pricing: 'Pay per minute of call',
+    verdict:
+      'The go-to API for devs who want AI phone agents in production — low latency and easy to wire into any stack.',
+    description:
+      'Vapi is a developer platform for building, testing, and deploying AI voice agents that can make and receive real phone calls. It abstracts the STT → LLM → TTS pipeline into a single API with sub-second latency, handles telephony, and ships SDKs for web and mobile. It is one of the two dominant API-first voice-agent platforms.',
+    useCases: [
+      'Inbound and outbound AI phone agents',
+      'Automated scheduling, screening, and support calls',
+      'Voice assistants embedded in apps',
+    ],
+    pros: [
+      'API-first, very developer friendly',
+      'Low end-to-end call latency',
+      'Handles telephony + voice pipeline together',
+    ],
+    cons: [
+      'Pay-per-minute costs scale with call volume',
+      'Voice quality depends on chosen TTS provider',
+    ],
+    models: ['Multiple STT/LLM/TTS providers (model-agnostic)'],
+    alternatives: ['retell', 'sierra'],
+  },
+  {
+    slug: 'retell',
+    name: 'Retell AI',
+    tagline: 'Full-stack managed platform for building and monitoring AI voice agents at scale.',
+    category: 'automation',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://www.retellai.com',
+    github: 'https://github.com/RetellAI',
+    tags: ['voice', 'phone-calls', 'managed', 'analytics'],
+    pricing: 'Pay per minute of call',
+    verdict:
+      'The managed, full-pipeline choice — strong when you want call analytics and monitoring out of the box.',
+    description:
+      'Retell AI is a managed platform for building, testing, deploying, and monitoring production-ready AI voice agents at scale. Like Vapi it provides the full STT→LLM→TTS pipeline, but it leans more into a turnkey managed experience with built-in call analytics, monitoring, and concurrency controls. It is Vapi’s main rival.',
+    useCases: [
+      'High-volume outbound call campaigns',
+      'Contact-center voice automation with monitoring',
+      'Voice agents that need analytics and QA',
+    ],
+    pros: [
+      'Managed end-to-end, less to wire up',
+      'Strong call analytics and monitoring',
+      'Handles concurrency at scale',
+    ],
+    cons: [
+      'Less bare-metal control than a pure API',
+      'Cost scales with minutes used',
+    ],
+    models: ['Multiple STT/LLM/TTS providers (model-agnostic)'],
+    alternatives: ['vapi', 'sierra'],
+  },
+
+  // ---------------- Creative: 视频生成 ----------------
+  {
+    slug: 'runway',
+    name: 'Runway',
+    tagline: 'AI video generation studio with cinematic control and the publicly-available Gen-4 model.',
+    category: 'creative',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://runwayml.com',
+    tags: ['video-generation', 'cinematic', 'image-to-video', 'gen-4'],
+    pricing: 'Free credits; Standard $15/mo',
+    verdict:
+      'The best publicly-available video model — when you need real control over camera and motion, this is the pick.',
+    description:
+      'Runway is an AI video generation studio whose Gen-4 / Gen-4.5 models are widely regarded as the best publicly available text-to-video and image-to-video tools. It offers fine control over motion, camera, and style, plus a full editing studio. It is the default choice for creators who need cinematic results without waiting for limited-access models.',
+    useCases: [
+      'Text-to-video and image-to-video clips',
+      'Cinematic b-roll and motion-controlled shots',
+      'Quick visual hooks for social content',
+    ],
+    pros: [
+      'Best publicly-available video quality',
+      'Strong motion and camera control',
+      'Full editing studio, not just a generator',
+    ],
+    cons: [
+      'Credits burn fast on longer clips',
+      'Peak quality needs paid tiers',
+    ],
+    models: ['Runway Gen-4 / Gen-4.5'],
+    alternatives: ['sora', 'pika'],
+  },
+  {
+    slug: 'sora',
+    name: 'Sora',
+    tagline: 'OpenAI’s text-to-video model — leading photorealism and long coherent clips.',
+    category: 'creative',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://openai.com/sora',
+    tags: ['video-generation', 'photorealism', 'openai', 'text-to-video'],
+    pricing: 'Included with ChatGPT Plus/Pro',
+    verdict:
+      'Top-tier realism and clip length — but gated access and inconsistent availability make it a sometimes-tool, not a daily one.',
+    description:
+      'Sora is OpenAI’s text-to-video model, known for the highest photorealism and the longest single coherent clips among frontier video models. As of 2026 it can generate up to ~60 seconds. Access is gated behind ChatGPT Plus/Pro and availability fluctuates, so many creators pair it with Runway as a reliable fallback.',
+    useCases: [
+      'Highest-realism short video clips',
+      'Long single-take shots that stay coherent',
+      'Concept and storyboard visualization',
+    ],
+    pros: [
+      'Class-leading photorealism',
+      'Long, coherent single clips',
+      'Integrated into the ChatGPT ecosystem',
+    ],
+    cons: [
+      'Gated, inconsistent availability',
+      'Less control over camera/motion than Runway',
+      'Higher tier required',
+    ],
+    models: ['Sora (OpenAI)'],
+    alternatives: ['runway', 'pika'],
+  },
+  {
+    slug: 'pika',
+    name: 'Pika',
+    tagline: 'Beginner-friendly video generation, especially strong at lip sync and quick edits.',
+    category: 'creative',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://pika.art',
+    tags: ['video-generation', 'lip-sync', 'easy', 'social'],
+    pricing: 'Free credits; Pro from $10/mo',
+    verdict:
+      'The friendly on-ramp to AI video — fastest path from idea to a shareable clip, with great lip sync.',
+    description:
+      'Pika is a video-generation tool focused on ease of use and shareable output. It is especially known for lip sync and quick, expressive image animation. It caps clips around 30 seconds but makes up for it with the lowest learning curve in the category, making it popular for social content and fast prototyping.',
+    useCases: [
+      'Fast, shareable social video clips',
+      'Lip-synced character animation',
+      'Quick idea prototyping before a heavier render',
+    ],
+    pros: [
+      'Easiest to learn in the video category',
+      'Excellent lip sync',
+      'Affordable entry pricing',
+    ],
+    cons: [
+      'Shorter max clip length',
+      'Less cinematic control than Runway',
+    ],
+    models: ['Pika (proprietary)'],
+    alternatives: ['runway', 'sora'],
+  },
+
+  // ---------------- Research: 安全研究 ----------------
+  {
+    slug: 'pentestgpt',
+    name: 'PentestGPT',
+    tagline: 'Open-source LLM-driven assistant that guides penetration testing step by step.',
+    category: 'research',
+    license: 'open-source',
+    licenseName: 'MIT',
+    selfHost: true,
+    difficulty: 4,
+    website: 'https://github.com/GreyDGL/PentestGPT',
+    github: 'https://github.com/GreyDGL/PentestGPT',
+    stars: 8000,
+    updated: '2026-06',
+    tags: ['security', 'pentesting', 'red-team', 'cli', 'self-host'],
+    pricing: 'Free; bring your own API keys',
+    verdict:
+      'A genuinely useful pair-programmer for security work — best for licensed pentesters who know what they’re doing.',
+    description:
+      'PentestGPT is an open-source, LLM-powered assistant designed to help with penetration testing. It reasons about a target, decomposes the pentest into sub-tasks, and suggests next steps and commands, maintaining context of the overall engagement. It is intended for use by security professionals within authorized engagements.',
+    useCases: [
+      'Guide and document authorized pentests',
+      'Suggest next steps and commands during a test',
+      'Teach the structured pentest methodology',
+    ],
+    pros: [
+      'Open-source and self-hostable',
+      'Reasons about the full engagement, not just one prompt',
+      'Useful for learning pentest workflow',
+    ],
+    cons: [
+      'Only for authorized security testing',
+      'Quality depends heavily on the backing model',
+      'Not a substitute for real pentest expertise',
+    ],
+    models: ['GPT-4', 'Claude', 'local models'],
+    alternatives: ['chatgpt', 'deepseek'],
+  },
 ];
 
 // 工具函数：按分类聚合

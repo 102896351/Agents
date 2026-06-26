@@ -224,6 +224,24 @@ a:hover { text-decoration: underline; }
 .badge.freemium { color: var(--accent-soft); border-color: rgba(129,140,248,0.3); }
 .badge.host { color: var(--text-muted); }
 
+/* 醒目的 GitHub stars 徽章（区别于普通灰 badge）*/
+.stars-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fde68a, #fbbf24);
+  color: #422006;
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  box-shadow: 0 1px 6px rgba(251, 191, 36, 0.18);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.stars-icon { display: block; }
+
 /* ---------- Detail ---------- */
 .detail-head {
   padding: 56px 0 24px;
