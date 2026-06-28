@@ -1741,6 +1741,274 @@ export const agents: Agent[] = [
     models: ['OpenAI', 'Anthropic (multi-provider)'],
     alternatives: ['jasper', 'agentforce', 'sierra'],
   },
+
+  // ============= 新增 2026-06 第六批（办公/翻译/音乐/语音/视频）=============
+
+  // ---------------- Automation: 办公/写作 ----------------
+  {
+    slug: 'notion-ai',
+    name: 'Notion AI',
+    tagline: 'AI assistant built into Notion — write, summarize, search, and build custom agents.',
+    category: 'automation',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.notion.com/product/ai',
+    tags: ['productivity', 'notes', 'workspace', 'custom-agents', 'summarization'],
+    pricing: 'Included with Notion plans; AI add-on ~$10/mo',
+    verdict:
+      'The default AI layer for anyone already in Notion — Custom Agents turn your wiki into an automated workspace.',
+    description:
+      'Notion AI is the assistant built into the Notion workspace. Beyond writing and summarizing, its 2026 standout is Custom Agents — user-built agents that search across all apps connected to Notion, automate busywork, and operate on your notes and docs. It is the most natural AI pick for teams whose knowledge already lives in Notion.',
+    useCases: [
+      'Summarize meetings, docs, and pages',
+      'Build custom agents on top of your workspace',
+      'Cross-app search and Q&A over your knowledge base',
+    ],
+    pros: [
+      'Deeply integrated into Notion workspace',
+      'Custom Agents work across connected apps',
+      'Zero setup for existing Notion users',
+    ],
+    cons: [
+      'Only valuable if you use Notion as your hub',
+      'AI add-on is a separate cost',
+    ],
+    models: ['OpenAI', 'Anthropic (multi-provider)'],
+    alternatives: ['chatgpt', 'claude', 'jasper'],
+  },
+  {
+    slug: 'grammarly',
+    name: 'Grammarly',
+    tagline: 'AI writing partner for grammar, tone, and clarity — now with productivity agents.',
+    category: 'automation',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.grammarly.com',
+    tags: ['writing', 'grammar', 'tone', 'productivity', 'browser-extension'],
+    pricing: 'Free; Premium ~$12/mo',
+    verdict:
+      'The everywhere writing assistant — sits in every textbox you use, catching what your eye misses.',
+    description:
+      'Grammarly is an AI writing assistant that works across browsers, desktop apps, and mobile. It started with grammar and spelling, and has expanded into tone adjustment, clarity rewrites, generative writing, and 2026 productivity agents that help with writing-heavy workflows. It is the most ubiquitous writing tool on the web.',
+    useCases: [
+      'Catch grammar and clarity issues anywhere you type',
+      'Adjust tone for different audiences',
+      'AI-assisted drafting and rewriting',
+    ],
+    pros: [
+      'Works in virtually every app and browser',
+      'Mature, reliable grammar engine',
+      'Useful free tier',
+    ],
+    cons: [
+      'Best features need Premium',
+      'Suggestions can feel prescriptive for strong writers',
+    ],
+    models: ['Proprietary (multi-provider)'],
+    alternatives: ['notion-ai', 'deepseek', 'jasper'],
+  },
+
+  // ---------------- Research: 翻译 ----------------
+  {
+    slug: 'deepl',
+    name: 'DeepL',
+    tagline: 'The most natural-sounding machine translation, prized for nuance and fluency.',
+    category: 'research',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.deepl.com',
+    tags: ['translation', 'localization', 'multilingual', 'writing'],
+    pricing: 'Free; Pro from $9/mo',
+    verdict:
+      'When translation quality matters more than language count, DeepL still beats Google and others on nuance.',
+    description:
+      'DeepL is a machine-translation service known for producing the most natural, fluent output among general-purpose translators, especially for European languages. It offers whole-document translation, glossary control, and tone options. In 2026 it remains the quality benchmark for translation where nuance and style matter.',
+    useCases: [
+      'Translate documents with natural, fluent output',
+      'Localize content with glossary and tone control',
+      'Bilingual writing assistance',
+    ],
+    pros: [
+      'Best-in-class translation fluency',
+      'Glossary and tone controls for precision',
+      'Strong free tier',
+    ],
+    cons: [
+      'Fewer languages than Google Translate',
+      'Strength concentrated in European languages',
+    ],
+    models: ['Proprietary'],
+    alternatives: ['chatgpt', 'claude', 'grammarly'],
+  },
+
+  // ---------------- Creative: 音乐生成 ----------------
+  {
+    slug: 'suno',
+    name: 'Suno',
+    tagline: 'Generate complete songs with vocals from a prompt — the most popular AI music maker.',
+    category: 'creative',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://suno.com',
+    tags: ['music', 'vocals', 'song-generation', 'audio'],
+    pricing: 'Free credits; Pro from $8/mo',
+    verdict:
+      'The crowd favorite for full songs with vocals — v5 quality is genuinely impressive for the price.',
+    description:
+      'Suno is the most widely used AI music generator, capable of producing complete songs (vocals + instrumentation) from a text prompt. Its v5 model is regarded as the quality leader for vocal tracks. It is the go-to for creators who want a finished song fast, from jingles to full tracks.',
+    useCases: [
+      'Generate full songs with vocals from a prompt',
+      'Quick jingles, background music, demos',
+      'Explore genres and vocal styles',
+    ],
+    pros: [
+      'Best vocal quality among AI music tools',
+      'Full songs, not just instrumental clips',
+      'Generous free credits',
+    ],
+    cons: [
+      'Less fine control than a DAW',
+      'Licensing nuances for commercial use',
+    ],
+    models: ['Suno v5 (proprietary)'],
+    alternatives: ['udio', 'elevenlabs'],
+  },
+  {
+    slug: 'udio',
+    name: 'Udio',
+    tagline: 'AI music generator favored by producers for its control and vocal expressiveness.',
+    category: 'creative',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://www.udio.com',
+    tags: ['music', 'producers', 'control', 'audio'],
+    pricing: 'Free credits; Standard from $10/mo',
+    verdict:
+      'The producer’s choice — more granular control than Suno, with strong vocal expressiveness.',
+    description:
+      'Udio is an AI music generator that competes directly with Suno. It is favored by music producers for offering more granular control over the generation process and expressive vocals. It is the pick when you want to shape a track rather than just get a finished result.',
+    useCases: [
+      'Produce tracks with section-level control',
+      'Expressive vocal performances',
+      'Iterate on stems and arrangements',
+    ],
+    pros: [
+      'More control than consumer-focused tools',
+      'Expressive, varied vocals',
+      'Popular with working producers',
+    ],
+    cons: [
+      'Steeper than Suno for casual users',
+      'Slightly behind Suno on sheer vocal polish',
+    ],
+    models: ['Udio (proprietary)'],
+    alternatives: ['suno', 'elevenlabs'],
+  },
+
+  // ---------------- Creative: 语音克隆/合成 ----------------
+  {
+    slug: 'elevenlabs',
+    name: 'ElevenLabs',
+    tagline: 'Ultra-realistic text-to-speech and voice cloning — the voice AI standard.',
+    category: 'creative',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://elevenlabs.io',
+    tags: ['voice', 'tts', 'voice-cloning', 'dubbing', 'audio'],
+    pricing: 'Free tier; Starter ~$5/mo',
+    verdict:
+      'The de-facto standard for AI voice — if you’ve heard a convincing AI voice lately, it was probably ElevenLabs.',
+    description:
+      'ElevenLabs is the leading voice AI platform, offering ultra-realistic text-to-speech, instant voice cloning, dubbing, and (in 2026) music generation. Its voices are widely regarded as the most natural-sounding, and it powers TTS in countless products and agents.',
+    useCases: [
+      'Generate natural narration and voiceovers',
+      'Clone voices for consistent characters',
+      'Dub content across languages',
+    ],
+    pros: [
+      'Best-in-class voice realism',
+      'Instant voice cloning',
+      'Broad language support and dubbing',
+    ],
+    cons: [
+      'Voice cloning raises ethical/consent concerns',
+      'Higher tiers needed for commercial scale',
+    ],
+    models: ['ElevenLabs (proprietary)'],
+    alternatives: ['suno', 'vapi', 'retell'],
+  },
+
+  // ---------------- Creative: 视频/数字人 ----------------
+  {
+    slug: 'heygen',
+    name: 'HeyGen',
+    tagline: 'Create AI avatar videos and clone your voice for talking-head content at scale.',
+    category: 'creative',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.heygen.com',
+    tags: ['video', 'avatar', 'voice-cloning', 'talking-head'],
+    pricing: 'Free credits; Creator from $24/mo',
+    verdict:
+      'The fastest way to a polished talking-head video without a camera — avatars look and sound convincing.',
+    description:
+      'HeyGen is an AI video platform that generates talking-head videos using customizable avatars and voice cloning. You script a video, pick an avatar (or your own cloned self), and get a polished video without filming. It is widely used for marketing, training, and social content.',
+    useCases: [
+      'Produce talking-head videos without filming',
+      'Localize videos with translated avatar dialogue',
+      'Scale personalized video outreach',
+    ],
+    pros: [
+      'Convincing avatars and lip sync',
+      'Personalized video at scale',
+      'Fast turnaround vs. traditional filming',
+    ],
+    cons: [
+      'Credits burn quickly on longer videos',
+      'Uncanny-valley risk on close inspection',
+    ],
+    models: ['HeyGen (proprietary)'],
+    alternatives: ['synthesia', 'runway', 'elevenlabs'],
+  },
+  {
+    slug: 'synthesia',
+    name: 'Synthesia',
+    tagline: 'Enterprise AI video studio for training and corporate communications with avatars.',
+    category: 'creative',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.synthesia.io',
+    tags: ['video', 'avatar', 'enterprise', 'training', 'corporate'],
+    pricing: 'From $29/mo',
+    verdict:
+      'The enterprise pick for corporate/training video — governance and scale that consumer tools lack.',
+    description:
+      'Synthesia is an AI video platform focused on enterprise use cases: training videos, internal comms, and corporate content generated from text using professional avatars. It emphasizes governance, brand consistency, and localization at scale, making it the default for L&D and corporate comms teams.',
+    useCases: [
+      'Generate training and onboarding videos',
+      'Localized corporate comms at scale',
+      'Consistent avatar-led brand content',
+    ],
+    pros: [
+      'Built for enterprise governance and scale',
+      'Professional, brand-safe avatars',
+      'Strong multi-language localization',
+    ],
+    cons: [
+      'No free tier',
+      'More corporate than creative in tone',
+    ],
+    models: ['Synthesia (proprietary)'],
+    alternatives: ['heygen', 'runway'],
+  },
 ];
 
 // 工具函数：按分类聚合
