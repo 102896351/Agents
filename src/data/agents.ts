@@ -1466,6 +1466,281 @@ export const agents: Agent[] = [
     models: ['GPT-4', 'Claude', 'local models'],
     alternatives: ['chatgpt', 'deepseek'],
   },
+
+  // ============= 新增 2026-06 第五批（数据/编码补充/图像/营销）=============
+
+  // ---------------- Coding（补充）----------------
+  {
+    slug: 'windsurf',
+    name: 'Windsurf',
+    tagline: 'AI-native IDE from Codeium with Cascade — a deeply context-aware agent.',
+    category: 'coding',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://windsurf.com',
+    tags: ['ide', 'agent', 'autocomplete', 'codeium'],
+    pricing: 'Free tier; Pro $15/mo',
+    verdict:
+      'The strongest Cursor rival in 2026 — Cascade’s context-aware flow is genuinely impressive, and the free tier is generous.',
+    description:
+      'Windsurf is the AI-native IDE built by Codeium (now rebranded around the Windsurf name). Its flagship feature is Cascade, an agent that reads the whole codebase and maintains context across multi-step edits. It pairs IDE-native autocomplete with a deeply integrated agent, directly competing with Cursor.',
+    useCases: [
+      'Multi-file refactors with full-project context',
+      'Agentic coding inside a dedicated IDE',
+      'Generous free tier for individual developers',
+    ],
+    pros: [
+      'Cascade agent has excellent whole-project context',
+      'Generous free tier (unlimited completions)',
+      'Fast, polished IDE experience',
+    ],
+    cons: [
+      'Newer ecosystem than Cursor / VS Code',
+      'Best features locked behind Pro',
+    ],
+    models: ['GPT-4.1', 'Claude Sonnet', 'Codeium proprietary'],
+    alternatives: ['cursor', 'claude-code', 'copilot'],
+  },
+  {
+    slug: 'tabnine',
+    name: 'Tabnine',
+    tagline: 'Privacy-first AI code assistant that runs across existing IDEs, including private models.',
+    category: 'coding',
+    license: 'freemium',
+    selfHost: true,
+    difficulty: 2,
+    website: 'https://www.tabnine.com',
+    tags: ['autocomplete', 'privacy', 'enterprise', 'self-host'],
+    pricing: 'Free basic; Pro $12/mo; Enterprise custom',
+    verdict:
+      'The enterprise privacy pick — if your code can’t leave your network, Tabnine (with self-hosted models) is built for exactly that.',
+    description:
+      'Tabnine is an AI code assistant focused on privacy, security, and compliance. Unlike cloud-only tools, it can run on your own infrastructure with your own models, making it popular in regulated industries (finance, defense, healthcare). It integrates across VS Code, JetBrains, and Visual Studio.',
+    useCases: [
+      'Code completion where code can’t leave the company',
+      'Compliant AI assistance in regulated industries',
+      'Self-hosted AI coding for security teams',
+    ],
+    pros: [
+      'Strong privacy and self-host story',
+      'Works across all major IDEs',
+      'Enterprise compliance features',
+    ],
+    cons: [
+      'Weaker agentic capabilities than Cursor/Windsurf',
+      'Self-hosted setup is non-trivial',
+    ],
+    models: ['Proprietary', 'self-hosted open models'],
+    alternatives: ['copilot', 'cody', 'continue'],
+  },
+  {
+    slug: 'replit-agent',
+    name: 'Replit Agent',
+    tagline: 'Build and deploy full apps from a prompt, entirely in the browser.',
+    category: 'coding',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://replit.com',
+    tags: ['browser', 'full-stack', 'deploy', 'beginner-friendly'],
+    pricing: 'Free starter; Core $20/mo',
+    verdict:
+      'The fastest path from idea to a deployed app — no local setup, no deploys to manage. Magic for prototypes and learners.',
+    description:
+      'Replit Agent is a browser-based agent that builds full applications from a natural-language prompt — scaffolding, code, dependencies, and deployment all handled in the Replit cloud IDE. It is the most beginner-friendly way to go from idea to a live app with zero local environment setup.',
+    useCases: [
+      'Prototype an app from a single prompt',
+      'Build and deploy without any local setup',
+      'Learn full-stack development by watching an agent',
+    ],
+    pros: [
+      'Zero local setup — everything in browser',
+      'End-to-end: build, run, deploy',
+      'Extremely beginner-friendly',
+    ],
+    cons: [
+      'Less control than a local IDE setup',
+      'Best features need the paid tier',
+    ],
+    models: ['Multiple frontier models'],
+    alternatives: ['cursor', 'windsurf', 'devin'],
+  },
+
+  // ---------------- Research: 数据分析 ----------------
+  {
+    slug: 'vanna',
+    name: 'Vanna',
+    tagline: 'Open-source Python agent that writes SQL for you from natural language, trained on your schema.',
+    category: 'research',
+    license: 'open-source',
+    licenseName: 'MIT',
+    selfHost: true,
+    difficulty: 3,
+    website: 'https://vanna.ai',
+    github: 'https://github.com/vanna-ai/vanna',
+    stars: 12000,
+    updated: '2026-06',
+    tags: ['sql', 'data-analysis', 'python', 'rag', 'self-host'],
+    pricing: 'Free library; hosted Vanna Cloud',
+    verdict:
+      'The de-facto open-source SQL agent — trains RAG on your own schema and docs, so it actually knows your database.',
+    description:
+      'Vanna is an open-source Python library for conversational SQL. Instead of a generic text-to-SQL wrapper, it uses RAG trained on your DDL, documentation, and past queries, so it improves over time and produces queries tailored to your specific database. It connects to Snowflake, BigQuery, Postgres, and more.',
+    useCases: [
+      'Ask questions of your database in plain English',
+      'Let non-technical teams self-serve analytics',
+      'Train a private SQL assistant on your schema',
+    ],
+    pros: [
+      'Open-source, RAG-trained on your own schema',
+      'Improves with more training data',
+      'Connects to all major databases',
+    ],
+    cons: [
+      'Needs Python + initial training setup',
+      'Quality depends on good DDL/docs',
+    ],
+    models: ['OpenAI', 'Anthropic', 'local models via Ollama'],
+    alternatives: ['chatgpt', 'deepseek'],
+  },
+
+  // ---------------- Creative: 图像生成 ----------------
+  {
+    slug: 'midjourney',
+    name: 'Midjourney',
+    tagline: 'The benchmark for artistic, cinematic AI image generation.',
+    category: 'creative',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.midjourney.com',
+    tags: ['image-generation', 'artistic', 'cinematic', 'discord'],
+    pricing: 'From $10/mo',
+    verdict:
+      'Still the king of aesthetics — when the look matters more than precise control, nothing else matches Midjourney’s eye.',
+    description:
+      'Midjourney is the most acclaimed AI image generator for artistic and cinematic output. It has long set the benchmark for visual quality, composition, and style. Originally Discord-only, it now has a full web app. It competes with Flux (photorealism) and Ideogram (text rendering), but leads on pure aesthetics.',
+    useCases: [
+      'Concept art and key visuals',
+      'Cinematic and editorial imagery',
+      'Mood boards and creative exploration',
+    ],
+    pros: [
+      'Best-in-class artistic quality',
+      'Distinctive, recognizable style',
+      'Active community and style ecosystem',
+    ],
+    cons: [
+      'No free tier',
+      'Less precise control than Flux',
+      'Weaker at text-in-image',
+    ],
+    models: ['Midjourney (proprietary)'],
+    alternatives: ['flux', 'lovart'],
+  },
+  {
+    slug: 'flux',
+    name: 'FLUX',
+    tagline: 'Open-weights image model from Black Forest Labs, leading in photorealism and prompt accuracy.',
+    category: 'creative',
+    license: 'open-source',
+    licenseName: 'Apache-2.0 (Schnell) / non-commercial (Dev)',
+    selfHost: true,
+    difficulty: 3,
+    website: 'https://blackforestlabs.ai',
+    github: 'https://github.com/black-forest-labs/flux',
+    stars: 7000,
+    updated: '2026-06',
+    tags: ['image-generation', 'photorealism', 'open-weights', 'self-host'],
+    pricing: 'Free self-host (Schnell); paid API for Pro',
+    verdict:
+      'The open-source answer to Midjourney — run it on your own GPU, or use the API. Best prompt adherence among open models.',
+    description:
+      'FLUX is a family of open-weights image-generation models from Black Forest Labs (founded by original Stable Diffusion authors). FLUX.1 Schnell is Apache-2.0 and freely self-hostable; FLUX.1 Dev and Pro push higher quality. It leads open models in photorealism, anatomy, and prompt accuracy, and is the backbone of many self-hosted image stacks.',
+    useCases: [
+      'Self-host a Midjourney-class image generator',
+      'Photorealistic product/scene imagery',
+      'Build image features into your own product',
+    ],
+    pros: [
+      'Open weights, freely self-hostable (Schnell)',
+      'Excellent prompt adherence and realism',
+      'Backed by the original Stable Diffusion team',
+    ],
+    cons: [
+      'Self-hosting needs a capable GPU',
+      'Pro tier behind paid API',
+    ],
+    models: ['FLUX.1 Schnell', 'FLUX.1 Dev', 'FLUX.1 Pro'],
+    alternatives: ['midjourney', 'lovart'],
+  },
+
+  // ---------------- Automation: 营销 ----------------
+  {
+    slug: 'jasper',
+    name: 'Jasper',
+    tagline: 'AI marketing copilot for on-brand content at scale, trained on your brand voice.',
+    category: 'automation',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.jasper.ai',
+    tags: ['marketing', 'content', 'brand-voice', 'copywriting'],
+    pricing: 'From $39/mo (Creator); Business custom',
+    verdict:
+      'The mature pick for marketing teams that need on-brand content velocity — years ahead of generic chat tools on brand consistency.',
+    description:
+      'Jasper is an AI marketing platform specialized in on-brand content generation. Its standout is Brand Voice, which trains on your existing content so outputs match your tone, style, and messaging. It also orchestrates multi-step marketing workflows and is one of the longest-established marketing AI tools.',
+    useCases: [
+      'Produce on-brand marketing copy at scale',
+      'Multi-channel campaigns with consistent voice',
+      'Marketing workflows with review and approvals',
+    ],
+    pros: [
+      'Industry-leading Brand Voice consistency',
+      'Purpose-built for marketing, not generic chat',
+      'Mature, enterprise-tested',
+    ],
+    cons: [
+      'Not cheap for small teams',
+      'Focused on copy — not full creative production',
+    ],
+    models: ['GPT', 'Claude', 'Anthropic (multi-provider)'],
+    alternatives: ['hubspot-breeze', 'copy-ai'],
+  },
+  {
+    slug: 'hubspot-breeze',
+    name: 'HubSpot Breeze',
+    tagline: 'AI agents built into HubSpot CRM for marketing, sales, and service teams.',
+    category: 'automation',
+    license: 'commercial',
+    selfHost: false,
+    difficulty: 2,
+    website: 'https://www.hubspot.com/products/ai',
+    tags: ['crm', 'marketing', 'sales', 'service', 'enterprise'],
+    pricing: 'Included with HubSpot plans; credits-based',
+    verdict:
+      'The natural choice if you already live in HubSpot — AI layered on top of your real CRM data, not a standalone tool.',
+    description:
+      'HubSpot Breeze is HubSpot’s suite of AI agents (Breeze Copilot, Breeze Agents for marketing/sales/service, and Breeze Intelligence). It is built directly into the HubSpot CRM, so its agents work with your real contacts, deals, and content. It is the top pick for small and mid-size businesses already on HubSpot.',
+    useCases: [
+      'Automate marketing content and campaigns in HubSpot',
+      'AI-assisted sales outreach and deal coaching',
+      'Service agents that deflect support tickets',
+    ],
+    pros: [
+      'Deeply integrated with HubSpot CRM data',
+      'One AI layer across marketing/sales/service',
+      'Strong for teams already on HubSpot',
+    ],
+    cons: [
+      'Mostly valuable if you use HubSpot already',
+      'Credits-based pricing can add up',
+    ],
+    models: ['OpenAI', 'Anthropic (multi-provider)'],
+    alternatives: ['jasper', 'agentforce', 'sierra'],
+  },
 ];
 
 // 工具函数：按分类聚合
