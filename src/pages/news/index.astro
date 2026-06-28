@@ -1,0 +1,91 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getNewsSorted, newsCategories, categoryAccent, type NewsCategory } from '../../data/news';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const allNews = getNewsSorted();
+
+// 分类对应的 emoji 图标（抽象配图用）
+const categoryIcon: Record<NewsCategory, string> = {
+  release: '🚀',
+  funding: '💰',
+  research: '🔬',
+  industry: '📈',
+  regulation: '⚖️',
+};
+---
+
+<Base title="AI News" description="Latest AI news aggregated from top sources — releases, funding, research, and industry moves, updated daily.">
+  <section class="news-hero">
+    <div class="container">
+      <h1>AI <span class="grad">News</span></h1>
+      <p>
+        The latest in artificial intelligence — aggregated from top sources and
+        refreshed daily. Releases, funding, research, and industry moves, all in one place.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Latest</h2>
+        <span class="count">{allNews.length} stories</span>
+      </div>
+
+      <!-- 分类筛选 -->
+      <div class="pills" id="news-filter">
+        <button class="pill active" data-cat="all">All</button>
+        {newsCategories.map((c) => (
+          <button class="pill" data-cat={c.id}>{c.label}</button>
+        ))}
+      </div>
+
+      <!-- 新闻卡片网格 -->
+      <div class="news-grid" id="news-grid">
+        {allNews.map((item) => (
+          <a href={`${base}/news/${item.slug}`} class="news-card" data-cat={item.category}>
+            <div class="news-cover">
+              <div class="cover-bg" style={`background: ${categoryAccent[item.category]}`}></div>
+              <div class="cover-icon">{categoryIcon[item.category]}</div>
+              <span class="cover-cat">{item.category}</span>
+            </div>
+            <div class="news-body">
+              <h3>{item.title}</h3>
+              <p class="news-summary">{item.summary}</p>
+              <div class="news-meta">
+                <span class="source">{item.source}</span>
+                <span>{item.date}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p class="empty hidden" id="news-empty">No stories in this category.</p>
+    </div>
+  </section>
+</Base>
+
+<script is:inline>
+  const pills = document.querySelectorAll('#news-filter .pill');
+  const cards = document.querySelectorAll('#news-grid .news-card');
+  const empty = document.getElementById('news-empty');
+  const count = document.querySelector('#news-grid')?.parentElement.querySelector('.count');
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      pills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      const cat = pill.dataset.cat;
+      let visible = 0;
+      cards.forEach((card) => {
+        const show = cat === 'all' || card.dataset.cat === cat;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      if (count) count.textContent = `${visible} ${visible === 1 ? 'story' : 'stories'}`;
+      if (empty) empty.classList.toggle('hidden', visible !== 0);
+    });
+  });
+</script>

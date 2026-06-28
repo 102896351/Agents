@@ -1,0 +1,117 @@
+---
+import Base from '../../layouts/Base.astro';
+import { news, categoryAccent, type NewsCategory } from '../../data/news';
+
+// 静态构建：为每条新闻生成独立页面
+export function getStaticPaths() {
+  return news.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const categoryIcon: Record<NewsCategory, string> = {
+  release: '🚀',
+  funding: '💰',
+  research: '🔬',
+  industry: '📈',
+  regulation: '⚖️',
+};
+
+// 相关新闻：同分类的其他 3 条
+const related = news
+  .filter((n) => n.category === item.category && n.slug !== item.slug)
+  .slice(0, 3);
+
+const formattedDate = new Date(item.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Base title={item.title} description={item.summary}>
+  <!-- 详情页专属结构化数据 -->
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: item.title,
+    description: item.summary,
+    datePublished: item.date,
+    articleSection: item.category,
+    author: { '@type': 'Organization', name: item.source },
+    mainEntityOfPage: `https://gonglue.xyz/news/${item.slug}`,
+  })} />
+
+  <div class="container">
+    <div class="news-detail-hero" style="max-width: 760px; margin: 0 auto;">
+      <a href={`${base}/news`} style="color: var(--text-muted); font-size: 14px;">
+        ← Back to AI News
+      </a>
+
+      <div class="news-detail-cover" style="margin-top: 20px;">
+        <div class="cover-bg" style={`background: ${categoryAccent[item.category]}`}></div>
+        <div class="cover-icon">{categoryIcon[item.category]}</div>
+      </div>
+
+      <span class="news-badge">{item.category}</span>
+      <h1>{item.title}</h1>
+      <div class="news-detail-meta">
+        <span class="source">{item.source}</span> · {formattedDate}
+      </div>
+    </div>
+
+    <div class="prose" style="max-width: 760px; margin: 0 auto;">
+      <p style="font-size: 17px; color: var(--text); line-height: 1.7;">
+        {item.summary}
+      </p>
+
+      <div class="verdict-box" style="margin-top: 28px;">
+        <div class="label">Read the full story</div>
+        <p style="margin: 0 0 14px; color: var(--text);">
+          This is a summary aggregated from <strong>{item.source}</strong>. For the complete
+          article, original reporting, and full context, visit the source.
+        </p>
+        <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" class="btn primary">
+          Read full article on {item.source} →
+        </a>
+      </div>
+
+      {item.tags.length > 0 && (
+        <div style="margin-top: 32px; display: flex; gap: 8px; flex-wrap: wrap;">
+          {item.tags.map((tag) => <span class="badge host">#{tag}</span>)}
+        </div>
+      )}
+    </div>
+
+    {related.length > 0 && (
+      <section class="section">
+        <div class="section-head">
+          <h2>More in {item.category}</h2>
+        </div>
+        <div class="news-grid">
+          {related.map((n) => (
+            <a href={`${base}/news/${n.slug}`} class="news-card">
+              <div class="news-cover">
+                <div class="cover-bg" style={`background: ${categoryAccent[n.category]}`}></div>
+                <div class="cover-icon">{categoryIcon[n.category]}</div>
+                <span class="cover-cat">{n.category}</span>
+              </div>
+              <div class="news-body">
+                <h3>{n.title}</h3>
+                <p class="news-summary">{n.summary}</p>
+                <div class="news-meta">
+                  <span class="source">{n.source}</span>
+                  <span>{n.date}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Base>

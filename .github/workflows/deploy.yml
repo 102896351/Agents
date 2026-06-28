@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # 每天 UTC 06:00（北京时间 14:00）自动抓新闻 + 重新构建部署
+    - cron: '0 6 * * *'
   workflow_dispatch: {}
 
 permissions:
@@ -25,6 +28,10 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm install
+      # 抓取最新 AI 新闻（失败不阻断构建，保留现有数据）
+      - name: Fetch AI news
+        run: node scripts/fetch-news.mjs
+        continue-on-error: true
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -39,3 +46,4 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
