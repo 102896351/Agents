@@ -66,13 +66,13 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
           '@type': 'ItemList',
           name: 'AI Agents Hub — A curated directory of AI agents',
           description: finalDesc,
-          url: 'https://agent.gonglue.xyz/',
+          url: 'https://gonglue.xyz/',
           numberOfItems: agents.length,
           itemListElement: agents.map((a, i) => ({
             '@type': 'ListItem',
             position: i + 1,
             name: a.name,
-            url: `https://agent.gonglue.xyz/agent/${a.slug}`,
+            url: `https://gonglue.xyz/agent/${a.slug}`,
             description: a.tagline,
           })),
         })}
@@ -86,14 +86,14 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
         '@context': 'https://www.schema.org',
         '@type': 'WebSite',
         name: 'AI Agents Hub',
-        url: 'https://agent.gonglue.xyz/',
+        url: 'https://gonglue.xyz/',
         description: finalDesc,
         inLanguage: 'en',
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: 'https://agent.gonglue.xyz/?q={search_term_string}',
+            urlTemplate: 'https://gonglue.xyz/?q={search_term_string}',
           },
           'query-input': 'required name=search_term_string',
         },

@@ -53,4 +53,4 @@ User-agent: Bytespider
 Allow: /
 
 # Point crawlers to the sitemap
-Sitemap: https://agent.gonglue.xyz/sitemap-index.xml
+Sitemap: https://gonglue.xyz/sitemap-index.xml
