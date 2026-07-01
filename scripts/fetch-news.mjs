@@ -115,22 +115,27 @@ function inferTags(title) {
 }
 
 // ---------- HTTP 抓取 ----------
-function fetchUrl(url, { timeout = 20000, headers = {} } = {}) {
+// text: true → 返回 UTF-8 字符串（用于 HTML/RSS）
+// text: false → 返回 Buffer（用于图片二进制）
+function fetchUrl(url, { timeout = 20000, headers = {}, text = true } = {}) {
   return new Promise((resolve, reject) => {
     const req = https.get(url, {
       headers: { 'User-Agent': 'AI-Agents-Hub-NewsBot/1.0', ...headers },
       timeout,
     }, (res) => {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return fetchUrl(res.headers.location, { timeout, headers }).then(resolve).catch(reject);
+        return fetchUrl(res.headers.location, { timeout, headers, text }).then(resolve).catch(reject);
       }
       if (res.statusCode !== 200) {
         return reject(new Error(`HTTP ${res.statusCode}`));
       }
-      let data = '';
-      res.setEncoding('utf8');
-      res.on('data', (chunk) => data += chunk);
-      res.on('end', () => resolve(data));
+      const chunks = [];
+      // 始终按 binary 收集，最后再决定怎么解码 → 避免 utf8 解码破坏 binary
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => {
+        const buf = Buffer.concat(chunks);
+        resolve(text ? buf.toString('utf8') : buf);
+      });
     });
     req.on('error', reject);
     req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
@@ -190,7 +195,8 @@ async function downloadImage(imageUrl, slug, outDir) {
     const filename = `${slug}${ext}`;
     const dest = path.join(outDir, filename);
 
-    const data = await fetchUrl(imageUrl, { timeout: IMG_DOWNLOAD_TIMEOUT });
+    // 关键：text: false 返回 Buffer，原样写盘
+    const data = await fetchUrl(imageUrl, { timeout: IMG_DOWNLOAD_TIMEOUT, text: false });
     await fs.writeFile(dest, data);
 
     return `/news/${filename}`;
