@@ -51,7 +51,7 @@ export const news: NewsItem[] = [
 Its stock has climbed more than 236% in the past month, briefly pushing its market cap to around \$1.27 trillion — at one point surpassing Meta and Tesla. Quarterly revenue quadrupled year-over-year to \$41.45 billion, with profits jumping from \$1.88 billion to \$28.2 billion.
 
 Micron has signed 16 strategic customer agreements across data center, consumer, and automotive segments to lock in long-term demand. Analysts say the memory supply crunch — dubbed "RAMageddon" — could persist into 2027, keeping prices and margins elevated. The key question is whether Micron can sustain growth without the bust cycle that has historically haunted memory makers.`,
-    imageUrl: '/news/why-wall-street-thinks-us-memory-techcr.jpg'?v=2',
+    imageUrl: '/news/why-wall-street-thinks-us-memory-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/28/why-wall-street-thinks-us-memory-maker-micron-is-the-next-nvidia/',
     date: '2026-06-28',
@@ -67,7 +67,7 @@ Micron has signed 16 strategic customer agreements across data center, consumer,
 For Apple, losing a senior executive in the Vision Products Group adds to a string of hardware departures as the company tries to keep pace in AI. The Vision Pro remains a niche product commercially, but it sits at the intersection of spatial computing and AI inference — both areas where Apple is under pressure to ship competitive models and silicon.
 
 OpenAI's hardware roadmap has been the subject of intense speculation for over a year. Hiring a seasoned Apple exec with shipping hardware experience suggests the lab is moving from "we're exploring" toward "we're building something specific."`,
-    imageUrl: '/news/apple-vision-pro-exec-is-reportedly-techcr.jpeg'?v=2',
+    imageUrl: '/news/apple-vision-pro-exec-is-reportedly-techcr.jpeg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/27/apple-vision-pro-exec-is-reportedly-leaving-for-openai/',
     date: '2026-06-27',
@@ -83,7 +83,7 @@ OpenAI's hardware roadmap has been the subject of intense speculation for over a
 The case has become a talking point in the AI-in-healthcare conversation, illustrating how LLMs are increasingly being used as a second opinion by technically literate patients. Christou is careful to note that Claude informed his questions and helped him frame conversations with his care team — it did not replace medical advice.
 
 The story highlights a regulatory gray zone: patients can ask LLMs anything, but integrating their output into clinical decision-making raises questions about liability, accuracy, and the line between "research" and "diagnosis" that no current framework cleanly resolves.`,
-    imageUrl: '/news/the-fittest-founder-in-the-room-techcr.png'?v=2',
+    imageUrl: '/news/the-fittest-founder-in-the-room-techcr.png?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/27/the-fittest-founder-in-the-room-got-cancer-heres-how-he-used-ai-to-fight-back/',
     date: '2026-06-27',
@@ -99,7 +99,7 @@ The story highlights a regulatory gray zone: patients can ask LLMs anything, but
 Industry analysts warn that if US labs cannot sell into Asian markets, the window for shaping global AI standards may close permanently. The result could be a fragmented AI ecosystem dominated by Chinese, Korean, and Japanese providers serving the world's largest concentration of users.
 
 The longer the export controls drag on, the more entrenched local competitors become — and the harder it will be for American labs to recover share once the restrictions eventually lift. The next six to twelve months are likely to determine whether the Asian market remains a frontier battleground or becomes a permanently separate stack.`,
-    imageUrl: '/news/asian-ai-startups-launch-mythos-like-models-techcr.jpeg'?v=2',
+    imageUrl: '/news/asian-ai-startups-launch-mythos-like-models-techcr.jpeg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/27/asian-ai-startups-launch-mythos-like-models-as-anthropics-export-ban-drags-on/',
     date: '2026-06-27',
@@ -115,7 +115,7 @@ The longer the export controls drag on, the more entrenched local competitors be
 Anthropic had previously limited Mythos to a small set of trusted partners amid safety concerns; the new authorization signals growing official comfort with deploying the model in critical infrastructure, defense-adjacent, and enterprise settings.
 
 The move also creates a useful precedent for how US frontier models might be distributed at scale: a vetted partner list, with explicit government sign-off, rather than open public access. Watch for similar treatment of OpenAI's GPT-5.6 and other near-frontier models in the coming weeks.`,
-    imageUrl: '/news/trump-admin-releases-anthropic-mythos-to-techcr.jpg'?v=2',
+    imageUrl: '/news/trump-admin-releases-anthropic-mythos-to-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/26/trump-admin-releases-anthropic-mythos-to-be-used-by-more-than-100-us-companies-agencies/',
     date: '2026-06-27',
@@ -133,7 +133,7 @@ GPT-5.6 Sol outperforms Anthropic's Claude Mythos 5 on several coding benchmarks
 Pricing is tiered: Sol at \$5/\$30 per million input/output tokens, Terra at half that, and Luna at \$1/\$6. OpenAI has also improved prompt caching to make repeated prompts cheaper and more predictable.
 
 The company was careful to publicly state that it does not believe "this kind of government access process should become the long-term default" — a notable framing given the cooperative tone of the rollout itself. Expect a wider public release in the coming weeks if the preview period goes smoothly.`,
-    imageUrl: '/news/openai-limits-gpt-56-rollout-after-government-techcr.jpg'?v=2',
+    imageUrl: '/news/openai-limits-gpt-56-rollout-after-government-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/26/openai-limits-gpt-5-6-rollout-after-government-request-says-restrictions-shouldnt-be-the-norm/',
     date: '2026-06-26',
@@ -149,7 +149,7 @@ The company was careful to publicly state that it does not believe "this kind of
 India is now one of the fastest-growing markets for AI consumer products, and OpenAI's bet is that local leadership and on-the-ground operational depth will determine who wins the next billion users. Indian consumers already use ChatGPT heavily; the question is whether OpenAI can convert that interest into paying subscribers and enterprise contracts before Anthropic, Google, and domestic players (Krutrim, Sarvam, others) close the window.
 
 The hire also signals that OpenAI is treating India not as a single market but as a regional hub for South Asia. Expect more local partnerships with telecom carriers and state-level digital initiatives over the next 12 months.`,
-    imageUrl: '/news/openai-poaches-uber-india-chief-to-techcr.jpg'?v=2',
+    imageUrl: '/news/openai-poaches-uber-india-chief-to-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/26/openai-poaches-uber-india-chief-to-lead-its-biggest-market-outside-the-u-s/',
     date: '2026-06-26',
@@ -165,7 +165,7 @@ The hire also signals that OpenAI is treating India not as a single market but a
 Custom inference chips — like OpenAI's Jalapeño, Google's TPUs, and Amazon's Trainium — let companies optimize for their specific workloads while reducing dependence on a single supplier. The result is a quiet but accelerating rewiring of the AI hardware stack.
 
 The competitive effect: Nvidia's pricing power erodes from below as more workloads run on alternatives, even if Nvidia retains the high-end training market for years. Customers also gain negotiating leverage — the credible threat of "we'll move more to in-house silicon" is enough to extract better terms on the Nvidia side that remains.`,
-    imageUrl: '/news/why-everyone-from-openai-to-spacex-techcr.jpg'?v=2',
+    imageUrl: '/news/why-everyone-from-openai-to-spacex-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/video/why-everyone-from-openai-to-spacex-is-building-their-own-chips-and-turning-up-the-heat-on-nvidia/',
     date: '2026-06-26',
@@ -181,7 +181,7 @@ The competitive effect: Nvidia's pricing power erodes from below as more workloa
 The argument: collective governance, not vendor competition, will determine how these systems get deployed. The Trump administration's recent executive order on AI review has accelerated that conversation, with both labs responding publicly about what kind of oversight they find acceptable.
 
 The shift is structural. When frontier models were research curiosities, lab-vs-lab benchmarks felt like the right frame. Now that the same models can identify software vulnerabilities at machine speed or guide novel-pathogen synthesis, the question isn't "whose model is better" — it's "what guardrails should any model of this class ship with, regardless of who built it." That is a question for governments, standards bodies, and ultimately voters — not for two startups in San Francisco.`,
-    imageUrl: '/news/it8217s-not-about-anthropic-vs-openai-techcr.jpg'?v=2',
+    imageUrl: '/news/it8217s-not-about-anthropic-vs-openai-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/26/its-not-about-anthropic-vs-openai-anymore/',
     date: '2026-06-26',
@@ -197,7 +197,7 @@ The shift is structural. When frontier models were research curiosities, lab-vs-
 Jalapeño is purpose-built for inference workloads rather than training, signaling where OpenAI expects to deploy its compute most heavily going forward: serving real-time requests to hundreds of millions of users. Custom silicon also lets OpenAI tune cost-per-token directly against the company's economic targets, rather than accepting Nvidia's margins.
 
 The risk: custom chips are notoriously hard. Google spent nearly a decade iterating TPUs before they were genuinely competitive with Nvidia GPUs at scale. OpenAI will need similar patience — and strong partnerships with foundries — to make Jalapeño a real Nvidia alternative rather than a press-release chip.`,
-    imageUrl: '/news/openai8217s-jalapeo-chip-is-big-tech8217s-techcr.jpg'?v=2',
+    imageUrl: '/news/openai8217s-jalapeo-chip-is-big-tech8217s-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/podcast/openais-jalapeno-chip-is-big-techs-spiciest-move-away-from-nvidia/',
     date: '2026-06-26',
@@ -215,7 +215,7 @@ CEO Sam Altman told staff that customer-by-customer approval is expected during 
 The underlying concern: frontier cyber tools can identify and exploit software vulnerabilities at machine speed, which poses an obvious risk to any organization running complex infrastructure. Since the most capable models remain closed, it is hard to gauge how real the threat is — but governments are choosing caution.
 
 The interesting open question is whether this becomes a permanent feature of frontier releases. Both OpenAI and Anthropic have signaled they don't want it to — but the political reality of releasing extremely capable models in 2026 may make some form of gated rollout the new normal.`,
-    imageUrl: '/news/the-white-house-is-asking-openai-techcr.jpg'?v=2',
+    imageUrl: '/news/the-white-house-is-asking-openai-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/25/the-white-house-is-asking-openai-to-slow-roll-the-release-of-its-new-model-over-safety-concerns/',
     date: '2026-06-25',
@@ -233,7 +233,7 @@ The startup builds simulated digital environments — replicas of websites and i
 Patronus counts most frontier AI labs as customers and saw revenue grow 15x over the past year. The team compares its approach to how Waymo trained autonomous vehicles — first building synthetic worlds to test against rare hazards (severe weather, a child running into the street) before any real-world driving.
 
 Current focus is on verifiable domains (software engineering, finance), where task correctness can be checked programmatically. Longer-term, the company wants to build environments in which agents can run for hours, days, or weeks — the kind of sustained task execution that current evals don't even attempt to measure.`,
-    imageUrl: '/news/patronus-ai-lands-50m-to-build-techcr.jpg'?v=2',
+    imageUrl: '/news/patronus-ai-lands-50m-to-build-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/25/patronus-ai-lands-50m-to-build-digital-worlds-that-stress-test-ai-agents/',
     date: '2026-06-25',
@@ -251,7 +251,7 @@ DataCamp, an AI education platform with 20 million users, reports "Claude" has b
 ChatGPT still leads by a wide margin in absolute users and revenue — but the trend lines favor Anthropic. The shift is notable because the consumer market is the one ChatGPT has owned since launch; Anthropic's gain here is harder to explain away as enterprise-only success.
 
 It also comes against a backdrop of regulatory friction for Anthropic: the Trump administration's recent move to restrict Mythos 5 and Fable 5 hasn't visibly dented consumer growth, at least not yet.`,
-    imageUrl: '/news/anthropic8217s-claude-is-winning-over-paid-techcr.jpg'?v=2',
+    imageUrl: '/news/anthropic8217s-claude-is-winning-over-paid-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/25/anthropics-claude-is-winning-over-paid-consumers-a-market-owned-by-chatgpt/',
     date: '2026-06-25',
@@ -271,7 +271,7 @@ The key technical claim: the action labels (which button was pressed, when) are 
 Founder Pim de Witte has drawn a hard line: General Intuition's models will not be used for lethal autonomous weapons. He envisions the company as an ecosystem enabler — the model layer that other robotics, simulation, and gaming startups build on, not a vertically integrated robotics company itself.
 
 Most of the new funding will go toward compute (the company has a deal with CoreWeave) and pre-training the next version of the model.`,
-    imageUrl: '/news/general-intuition8217s-23b-bet-that-video-techcr.jpg'?v=2',
+    imageUrl: '/news/general-intuition8217s-23b-bet-that-video-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/25/general-intuitions-2-3b-bet-that-video-games-can-train-ai-agents-for-the-real-world/',
     date: '2026-06-25',
@@ -289,7 +289,7 @@ The current model runs as a software simulation, with physical chip schematics e
 Rao argues energy will be the hard ceiling on AI scaling. As training runs grow and inference volumes explode, the available supply of power — not chips, not algorithms — will be the limiting factor for the industry.
 
 The bet is high-risk: building an entirely new computer architecture from scratch is famously hard, and many well-funded attempts have failed. But if Rao is even partially right, the cost economics of AI shift dramatically, and a lot of incumbent infrastructure bets look expensive in retrospect.`,
-    imageUrl: '/news/databricks-former-ai-chief-thinks-he-techcr.jpg'?v=2',
+    imageUrl: '/news/databricks-former-ai-chief-thinks-he-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/25/databricks-former-ai-chief-thinks-he-can-cut-ais-power-bill-by-1000x/',
     date: '2026-06-25',
@@ -307,7 +307,7 @@ Its platform runs on more than 35 GPU clusters globally (about a million GPUs) a
 Notably, Netris deliberately does not use AI to configure networks. CEO Alex Saroyan argues AI is non-deterministic — useful for creative work, dangerous when you're changing thousands of switch configurations that need to be persistent and repeatable. The company has been building its deterministic automation algorithm for eight years, long before the current AI wave.
 
 The funding will go toward hiring engineers and sales staff, expanding support for more hardware vendors, and adding capabilities to the platform's underlying algorithm.`,
-    imageUrl: '/news/netris-raises-15m-series-a-from-techcr.jpg'?v=2',
+    imageUrl: '/news/netris-raises-15m-series-a-from-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/25/netris-raises-15m-series-a-from-a16z-to-help-ai-neoclouds-go-live-faster/',
     date: '2026-06-25',
@@ -323,7 +323,7 @@ The funding will go toward hiring engineers and sales staff, expanding support f
 The acquisition is part of Adobe's campaign to keep video editors and creative professionals from defecting to rivals like Canva or DaVinci Resolve. Topaz has built a reputation for shipping models that run efficiently on consumer GPUs — a capability Adobe wants to bring in-house as it competes on AI-assisted creative tools.
 
 The Topaz stand-alone products will continue to be sold through the company's own website. The deal is expected to close in the second half of 2026; terms were not disclosed.`,
-    imageUrl: '/news/adobe-acquires-image-and-video-enhancement-techcr.jpg'?v=2',
+    imageUrl: '/news/adobe-acquires-image-and-video-enhancement-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/25/adobe-acquires-image-and-video-enhancement-tool-maker-topaz-labs/',
     date: '2026-06-25',
@@ -345,7 +345,7 @@ Wayve’s offering is part of a growing trend of AI startups. Rather than waitin
 Other startups that have recently completed employee tender offers include Decagon, which builds AI agents that handle customer service for enterprises like Duolingo and Hertz; ElevenLabs, the AI voice-generation company behind much of the internet's synthetic speech and dubbing tools; Linear, a popular project-management platform built for software teams; and Clay, a sales and marketing automation tool that helps companies research and reach prospects. (Clay has run two tenders in the last nine months alone.)
 
 These startups are able to provide employee liquidity primarily because investors are eager to buy more of the equity in these high-growth companies, even at a premium, betting the businesses will be worth even more down the line.`,
-    imageUrl: '/news/wayve-launches-85m-employee-tender-offer-techcr.jpg'?v=2',
+    imageUrl: '/news/wayve-launches-85m-employee-tender-offer-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/wayve-launches-85m-employee-tender-offer-at-8-5b-valuation/',
     date: '2026-07-01',
@@ -367,7 +367,7 @@ Now, after weeks of talks, Secretary of Commerce Howard Lutnick said Anthropic "
 Anthropic had already publicly pledged to do much of this voluntarily, months before the export rule existed. That's part of why cybersecurity experts were skeptical of the restrictions in the first place. To them, the ban looked less like a security fix and more like leverage, a way for the Trump administration to punish Anthropic for its executives' public criticism of how the government, and the president's political opponents, might use the technology.
 
 Mythos was originally made available to a select group of organizations beginning in April to allay concerns about its ability to identify and exploit vulnerabilities in software, while a version called Fable was released to the public in June with additional security guardrails.`,
-    imageUrl: '/news/trump-drops-restrictions-on-anthropics-mythos-techcr.jpg'?v=2',
+    imageUrl: '/news/trump-drops-restrictions-on-anthropics-mythos-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropics-mythos-and-fable-models/',
     date: '2026-07-01',
@@ -389,7 +389,7 @@ At first glance, this could be a way to stay ahead of competitors such as Swedis
 According to Jonathan Userovici, a general partner at VC firm Headline — whose portfolio includes AI companies like Mistral AI, but not Base44 — data is one of three key ingredients of defensibility for AI startups, alongside distribution and tech stack.
 
 The upshot is that players with strong brands are now leaning into their data and infrastructure to increase their defensibility, and Base44 fits that pattern. The company says the first iteration of its LLM, Base1, was developed and trained on a dataset generated from “tens of millions of real user interactions on the platform.”`,
-    imageUrl: '/news/vibe-coding-platform-base44-launches-own-model-techcr.jpeg'?v=2',
+    imageUrl: '/news/vibe-coding-platform-base44-launches-own-model-techcr.jpeg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/29/vibe-coding-platform-base44-launches-own-model-as-ai-startups-seek-defensibility/',
     date: '2026-06-30',
@@ -411,7 +411,7 @@ Headcount also rose across functions, including engineering, sales, administrati
 Despite these positive signals, the data isn’t as rosy as it seems. It skews heavily toward tech-forward, knowledge-work firms — ones that might have VC-backing and are growing fast anyway, making it difficult to say whether AI is contributing to the hiring or just showing up at companies that are expanding anyway.
 
 “This paper does not show that AI universally creates jobs,” the paper’s authors admit, “but it does counter claims that AI will lead to broad job losses.”`,
-    imageUrl: '/news/the-ai-jobs-debate-just-got-techcr.jpg'?v=2',
+    imageUrl: '/news/the-ai-jobs-debate-just-got-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/29/the-ai-jobs-debate-just-got-messier/',
     date: '2026-06-30',
@@ -433,7 +433,7 @@ The launch marks OKX's latest push beyond crypto trading as it seeks to become a
 Haider Rafique, OKX’s chief marketing officer and global managing partner, said the company believes "agentic commerce" could become a trillion-dollar market over the next five years, driven by micropayments and autonomous software.
 
 The marketplace is aimed at crypto developers building AI applications and solo entrepreneurs looking to automate parts of their businesses with AI agents, Rafique told TechCrunch. The company expects those developers to build applications for the marketplace, allowing other users to access AI-powered tools without having to build them from scratch.`,
-    imageUrl: '/news/crypto-exchange-okx-wants-ai-agents-techcr.jpg'?v=2',
+    imageUrl: '/news/crypto-exchange-okx-wants-ai-agents-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/crypto-exchange-okx-wants-ai-agents-to-hire-and-pay-each-other/',
     date: '2026-06-30',
@@ -455,7 +455,7 @@ Additionally, the company says Lumo's update makes it significantly more powerfu
 "Lumo 2.0 has been re-engineered from the ground up and the introduction of thinking mode gives it powerful new capabilities," said Andy Yen, founder and CEO at Proton. "Lumo 2.0 demonstrates that users no longer need to choose between powerful AI capabilities and meaningful privacy protections."
 
 The public version of Lumo appears roughly equivalent to other major chatbots in terms of usefulness. It answers questions in a similar format as Gemini and ChatGPT, with approximately the same level of detail and context.`,
-    imageUrl: '/news/lumo-protons-privacy-focused-ai-chatbot-gets-techcr.jpeg'?v=2',
+    imageUrl: '/news/lumo-protons-privacy-focused-ai-chatbot-gets-techcr.jpeg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/lumo-protons-privacy-focused-ai-chatbot-gets-an-upgrade/',
     date: '2026-06-30',
@@ -477,7 +477,7 @@ Amazon says \$1 billion will be committed to the new org, although the figure re
 Pioneered by Palantir, the forward-deployed engineer (FDE) model has become increasingly popular as a way to manage AI deployments. In a typical FDE system, an engineer from the contracting company (in this case, AWS) works for the client temporarily while the system is being established, allowing them to respond directly as internal opportunities or challenges emerge.
 
 In the FDE model, much of the relevant technology can be reused between deployments, while still being tailored to the specifics of each company’s needs and workflows. It also gives the client company an influx of expertise and puts primary responsibility for the deployment in the hands of the contractor. The biggest downside is the labor involved, since it means maintaining a full corps of FDE engineers to install and maintain the company’s technology.`,
-    imageUrl: '/news/amazon-launches-new-1-billion-fde-techcr.jpg'?v=2',
+    imageUrl: '/news/amazon-launches-new-1-billion-fde-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/amazon-launches-new-1-billion-fde-org-following-openai-and-anthropic/',
     date: '2026-06-30',
@@ -499,7 +499,7 @@ The company is also updating its recording suite to support multi-camera recordi
 The update brings new AI features as well. Users can use AI to draft a first cut of a recording as soon as it's finished, and the assistant can also create hooks and content for various social media platforms. The company is also adding an AI video enhancement feature, trained on conversational video podcasts, that it says can improve lighting, depth, and sharpness of recordings.
 
 Riverside, which has raised over \$60 million in funding, joins a host of platforms that have been trying to enter alternative publishing avenues to either diversify or expand their revenue streams. For instance, Substack in March launched a built-in recording studio that competes directly with Riverside, and in April, newsletter platform Beehiiv ventured into podcasting as well. In June, social network Mastodon said that it will allow users to publish their posts as newsletters.`,
-    imageUrl: '/news/podcasting-platform-riverside-enters-the-newsletter-techcr.jpeg'?v=2',
+    imageUrl: '/news/podcasting-platform-riverside-enters-the-newsletter-techcr.jpeg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/podcasting-platform-riverside-enters-the-newsletter-publishing-game/',
     date: '2026-06-30',
@@ -521,7 +521,7 @@ This allows developers to save the time spent on integration work to focus on wh
 Developers have long been able to search X, read posts, look up users, analyze conversations and trends, and do more using the platform's API. The hosted MCP doesn't add new capabilities on that front; it just makes them easier to expose to AI applications. By doing so, X can position itself as an information network filled with real-time data to retrieve and analyze, rather than just a social hangout.
 
 The move sees X joining a growing number of companies that now offer their own official MCP servers or endpoints, like GitHub, Slack, Notion, Stripe, and Salesforce.`,
-    imageUrl: '/news/x-now-offers-an-mcp-server-techcr.jpg'?v=2',
+    imageUrl: '/news/x-now-offers-an-mcp-server-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/x-now-offers-an-mcp-server-to-make-its-platform-easier-for-ai-tools-to-use/',
     date: '2026-06-30',
@@ -543,7 +543,7 @@ The launch, announced Tuesday at an AI for Science briefing, fits into Anthropic
 Here's how it works: One main AI assistant acts as a kind of project manager for scientists. It connects to more than 60 scientific databases and comes with prebuilt toolkits for specific fields, like genomics, protein structure, and chemistry. That assistant can then create sub-assistants to help split up the work, like a project lead delegating tasks to specialists, or hand work off to a custom “expert” assistant that the user has built for their own research. A separate fact-checker AI then double-checks the citations and calculations before anything goes to publication.
 
 That fact-check step matters, as more AI-assisted writing leads to fabricated citations and unverifiable stats slipping into papers. That said, it’s still the same underlying model checking itself, not an independent source of truth.`,
-    imageUrl: '/news/anthropics-claude-science-bets-on-workflow-techcr.jpg'?v=2',
+    imageUrl: '/news/anthropics-claude-science-bets-on-workflow-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/anthropics-claude-science-bets-on-workflow-not-a-new-model-to-win-over-scientists/',
     date: '2026-06-30',
@@ -565,7 +565,7 @@ According to Young Wang, Acti founder and CEO, this solves a problem familiar to
 The launch reflects a different idea about how consumers will ultimately embrace AI. Rather than asking users to open various AI chatbots, Acti showcases how AI can be embedded into the interfaces we already use.
 
 For instance, if a friend wanted to know where to eat nearby, Acti could drop in a local recommendation. Or if someone mentioned a stock in your conversation, Acti could be used to share the live price right there in the chat. Today, you'd have to switch to a search engine or other AI app to get this sort of information, then return to the app where the conversation occurred, which takes time.`,
-    imageUrl: '/news/acti-puts-ai-agents-directly-into-techcr.png'?v=2',
+    imageUrl: '/news/acti-puts-ai-agents-directly-into-techcr.png?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/',
     date: '2026-06-30',
@@ -587,7 +587,7 @@ Sonnet 5’s pitch is confirmation that agentic capability is the new baseline e
 Sonnet 5 promises performance close to that of Opus 4.8, but for much lower costs. Starting Tuesday, Claude Sonnet 5 will be the default model for free and Pro plans and is available for every subscription.
 
 At launch, Sonnet 5 is priced at \$2 per million input tokens and \$10 per million output tokens through August 31, after which the price will jump to \$3 per million input tokens and \$15 per million output tokens. That makes Sonnet 5 cheaper than Opus 4.8, as well as OpenAI’s GPT-5.5 and Google's Gemini 3.1 Pro. (It’s still more expensive than Gemini 3.5 Flash.)`,
-    imageUrl: '/news/anthropic-launches-claude-sonnet-5-as-techcr.jpg'?v=2',
+    imageUrl: '/news/anthropic-launches-claude-sonnet-5-as-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/',
     date: '2026-06-30',
@@ -609,7 +609,7 @@ The startup has attracted a notable group of investors, too, including VentureTe
 Although the startup's press release frames Tuesday's announcement as Etched "coming out of stealth," co-founders — CEO Gavin Uberti (pictured above) and president Robert Wachen — have actually been talking to TechCrunch about their chip plans since 2024. Both dropped out of Harvard and became Thiel fellows to found Etched, as Uberti told TechCrunch at the time.
 
 By 2024, Etched was already on investors' radar, having raised more than \$125 million. But on Patrick O'Shaughnessy's "Invest Like the Best" podcast, the founders said that back in 2023, they struggled to get investors interested — even with a 30-page memo arguing that AI would eventually need specialized chips, not just general-purpose GPUs. Every major investor they pitched passed. The company was reportedly operating month-to-month, close to running out of cash, in those early days.`,
-    imageUrl: '/news/nvidia-competitor-etched-hits-5b-valuation-techcr.jpg'?v=2',
+    imageUrl: '/news/nvidia-competitor-etched-hits-5b-valuation-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/nvidia-competitor-etched-hits-5b-valuation-1b-in-sales-for-ai-chip/',
     date: '2026-06-30',
@@ -631,7 +631,7 @@ While Nano Banana 2 is referred to as a "generalist workhorse," Banana 2 Lite is
 Despite consumer backlash over so-called AI slop created by image models, companies continue to invest heavily in AI tools that can generate imagery and videos. However, Google often markets its models as convenient tools that can assist with the creation of advertisements.
 
 That said, the ties between Hollywood and AI companies continue to tighten — much to the consternation of some creative communities and audiences. Indeed, Google just struck a \$75 million deal with the much-beloved indie studio A24 — a partnership that has suffered significant criticism from fans.`,
-    imageUrl: '/news/google-introduces-a-faster-cheaper-image-techcr.png'?v=2',
+    imageUrl: '/news/google-introduces-a-faster-cheaper-image-techcr.png?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/google-introduces-a-faster-cheaper-image-generator-with-nano-banana-2-lite/',
     date: '2026-06-30',
@@ -649,7 +649,7 @@ The round was led by Creandum, and, although the VC also declined to disclose th
 This isn’t just game money. In partnership with quant firm Tower Research Capital, EquiLibre’s algorithms have been trading billions in daily volume across the S&P 500 and Nasdaq. The startup claims its agents have been doing well since their rollout on crypto markets in 2025, and now on stock exchanges, with “a perfect record of zero negative months since inception," meaning they have finished each month with their investments up overall.
 
 By applying its AI to quant hedge funds, the startup is in a field where automation is commonplace and, if successful, improvements can quickly turn into cash. That made the startup appealing to Creandum, Sellers said.“The potential total addressable market of trading in the financial markets is one of the biggest on earth, and there are countless funds over the years that have generated quantums of profit that make most venture-backed successes look small,” Sellers said. But he noted that EquiLibre explicitly defines itself as “a lab first, not a finance firm.”Schmid and his two founders — CTO Rudolf Kadlec and CSO Matej Moravcik — don’t have a background in finance, and it is not what drives them, he told TechCrunch. “I'm not doing this because I'm excited about making markets efficient. I’m doing this because we are all excited about building new things that have never been built before, and this is a lot of fun to build,” Schmid said.`,
-    imageUrl: '/news/the-deepmind-trio-who-built-a-techcr.jpeg'?v=2',
+    imageUrl: '/news/the-deepmind-trio-who-built-a-techcr.jpeg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/the-deepmind-trio-who-built-a-poker-ai-are-now-making-money-for-quant-hedge-funds/',
     date: '2026-06-30',
@@ -671,7 +671,7 @@ The takeaway is that you'll be able to run your OpenClaw agents from your pocket
 OpenClaw went viral earlier this year around the launch of MoltBook, a social media site purportedly populated entirely by agents. In February, OpenClaw's creator, Peter Steinberger, announced that he had joined OpenAI.
 
 The MoltBook spectacle was later revealed to have been partially the work of humans impersonating agents, according to researchers, effective theater that doubled as marketing for OpenClaw (whatever its credibility cost). Still, the stunt pointed toward the agentic future, which has since kept expanding. Agents are now embedded across the AI landscape and are showing up in more places by the day, including your phone.`,
-    imageUrl: '/news/openclaw-is-finally-available-on-android-techcr.jpg'?v=2',
+    imageUrl: '/news/openclaw-is-finally-available-on-android-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/30/openclaw-is-finally-available-on-android-and-ios/',
     date: '2026-06-30',
@@ -693,7 +693,7 @@ All told, South Korean tech companies have committed to spend over \$900 billion
 Lee said existing chip facilities in Yongin and Pyeongtaek, the heart of South Korea's semiconductor belt just south of Seoul, have "already reached their limits," and urged companies to accelerate investment in the southwest, hoping to spread the AI wealth beyond the nation's capital. "We must secure overwhelming production capacity in advance," he said.
 
 Yet, Lee pushed back against media reports that the government had pressured companies into the investments, reportedly saying the decisions reflected the companies' own judgment. "The government's role is to invest its capabilities so that companies can invest without losses and with better prospects," he was quoted as saying.`,
-    imageUrl: '/news/south-korean-tech-giants-commit-over-techcr.jpg'?v=2',
+    imageUrl: '/news/south-korean-tech-giants-commit-over-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/29/south-korean-tech-giants-commit-over-550b-to-ease-ramageddon/',
     date: '2026-06-29',
@@ -715,7 +715,7 @@ This deal follows Newsom's March executive order that intends to accelerate the 
 "While others in Washington are designing policy and creating contracts in the shadow of misuse, we’re focused on doing this the right way," Newsom said at the time.
 
 As Anthropic forges a closer relationship with the state of California, the federal government has made an enemy out of the OpenAI rival. Earlier this year, Anthropic and the U.S. Department of Defense clashed over a contract that would give the government agency permission to deploy Claude for any lawful use. Anthropic sought to explicitly carve out protections that prevent the government from using its technology to surveil Americans or deploy autonomous weapons without human oversight. But Defense Secretary Pete Hegseth refused, and the agency signed a deal with OpenAI instead. The government went as far as to declare Anthropic a "supply-chain risk," preventing the company from working with any other Pentagon contractors.`,
-    imageUrl: '/news/anthropic-and-gov-newsom-forge-deal-techcr.jpeg'?v=2',
+    imageUrl: '/news/anthropic-and-gov-newsom-forge-deal-techcr.jpeg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/29/anthropic-and-gov-newsom-forge-deal-allowing-california-government-to-use-claude-at-half-price/',
     date: '2026-06-29',
@@ -737,7 +737,7 @@ Gemini can also pull actual images of you from Google Photos, so you don’t nee
 Google initially rolled out the Personal Intelligence feature earlier this year, making it widely available to all U.S. users in March. The company recently expanded this functionality to users in India and Japan.
 
 Personal Intelligence is an opt-in feature, allowing you to decide which apps Gemini can access. Once enabled, it is set as the default for every prompt, but you can disable it using a new toggle in the Tools menu.`,
-    imageUrl: '/news/geminis-personalized-ai-image-generation-is-techcr.jpg'?v=2',
+    imageUrl: '/news/geminis-personalized-ai-image-generation-is-techcr.jpg?v=2',
     source: 'TechCrunch AI',
     sourceUrl: 'https://techcrunch.com/2026/06/29/geminis-personalized-ai-image-generation-is-now-free-for-u-s-users/',
     date: '2026-06-29',
