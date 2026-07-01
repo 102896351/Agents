@@ -330,7 +330,14 @@ function generateNewsFile(items, seedSlugs) {
     const safeTitle = tsString(it.title);
     const safeSummary = tsString(it.summary || '');
     const safeSource = tsString(it.source);
-    const safeImage = tsString(it.imageUrl || '');
+    // Cache-bust local image URLs so Cloudflare doesn't serve old (possibly
+    // broken/placeholder) versions cached from previous deploys. External
+    // fallback URLs are left untouched.
+    let img = it.imageUrl || '';
+    if (img.startsWith('/news/') && !img.includes('?v=')) {
+      img = img + '?v=2';
+    }
+    const safeImage = tsString(img);
     const safeContent = tsEscape(it.content || '');
     const safeTags = JSON.stringify(it.tags || ['ai']);
     return `  {${seedTag}

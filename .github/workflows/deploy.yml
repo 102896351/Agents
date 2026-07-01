@@ -32,6 +32,12 @@ jobs:
       - name: Fetch AI news
         run: node scripts/fetch-news.mjs
         continue-on-error: true
+      # 给本地图片 URL 加 ?v=2 cache-bust，避免 Cloudflare edge 缓存
+      # 命中旧的（可能是占位图/损坏）版本。fetch-news 每次会重新生成
+      # news.ts 且不带 ?v=，所以这一步是构建前必需的。
+      - name: Cache-bust local image URLs
+        run: node scripts/cachebust-images.cjs --v=2
+        continue-on-error: true
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
