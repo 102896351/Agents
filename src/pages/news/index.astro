@@ -45,11 +45,17 @@ const categoryIcon: Record<NewsCategory, string> = {
       <div class="news-grid" id="news-grid">
         {allNews.map((item) => (
           <a href={`${base}/news/${item.slug}`} class="news-card" data-cat={item.category}>
-            <div class="news-cover">
-              <div class="cover-bg" style={`background: ${categoryAccent[item.category]}`}></div>
-              <div class="cover-icon">{categoryIcon[item.category]}</div>
-              <span class="cover-cat">{item.category}</span>
-            </div>
+            {item.imageUrl ? (
+              <div class="news-cover" style={`background-image: url(${item.imageUrl}); background-size: cover; background-position: center;`}>
+                <span class="cover-cat">{item.category}</span>
+              </div>
+            ) : (
+              <div class="news-cover">
+                <div class="cover-bg" style={`background: ${categoryAccent[item.category]}`}></div>
+                <div class="cover-icon">{categoryIcon[item.category]}</div>
+                <span class="cover-cat">{item.category}</span>
+              </div>
+            )}
             <div class="news-body">
               <h3>{item.title}</h3>
               <p class="news-summary">{item.summary}</p>
