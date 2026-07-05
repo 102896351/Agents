@@ -243,6 +243,28 @@ export const agents: Agent[] = [
     ],
     models: ['Claude 3.5/3.7 Sonnet', 'GPT-4o/4.1', 'Gemini 2.0/2.5', 'DeepSeek', 'Local LLMs via Ollama'],
     alternatives: ['continue', 'aider', 'claude-code', 'roo-cline'],
+    quickStart: [
+      'Open VS Code → Extensions (Cmd/Ctrl+Shift+X) → search "Cline" → install.',
+      'Click the Cline robot icon in the sidebar → choose API Provider (OpenRouter, Anthropic, OpenAI, Bedrock, etc.) and paste your key.',
+      'Tip: OpenRouter gives one key that works across every model, including Claude Sonnet and free models — easier for testing.',
+      'Type a task in Cline\'s chat box (e.g. "Add a /health endpoint to this Express app") and approve each step in the diff view.',
+      'Optional: `npm i -g cline` to also get the CLI for headless use.',
+    ],
+    sampleInput:
+      '"Refactor this Express server to use async/await everywhere, add input validation with Zod, and add a Vitest suite covering the POST /users route."',
+    sampleOutput:
+      'Modified 5 files:\n  src/routes/users.ts (async/await conversion, +Zod schema, +18 lines)\n  src/middleware/validate.ts (new)\n  src/server.ts (apply middleware)\n  src/routes/__tests__/users.test.ts (new — 4 test cases)\n  package.json (added zod, vitest)\n12/12 tests pass. Linter clean. Cline produced 1 commit per file with sensible messages.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '35,000+', source: 'github.com/cline/cline, 2026' },
+      { label: 'Supported API providers', value: '12+ (OpenRouter, Anthropic, OpenAI, Bedrock, Azure, Vertex, Cerebras, Groq, ...)' },
+      { label: 'First-party MCP client', value: 'Native, can create + install new MCP servers on the fly' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want an open-source, BYOK autonomous agent living inside your existing VS Code — no new editor to learn, full control over which model and which costs.',
+      skipIf:
+        'You want zero setup or a managed experience — Copilot or Cursor (with sensible defaults out of the box) will get you running faster.',
+    },
   },
   {
     slug: 'aider',
@@ -278,6 +300,28 @@ export const agents: Agent[] = [
     ],
     models: ['Claude 3.5/3.7 Sonnet', 'GPT-4o/4.1', 'Gemini 2.5', 'DeepSeek', 'Local models'],
     alternatives: ['claude-code', 'cline', 'gemini-cli'],
+    quickStart: [
+      'Install: `pip install aider-chat` (Python 3.8+ with pipx recommended).',
+      'Set your API key: `export OPENAI_API_KEY=sk-...` (or `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, etc.).',
+      'From inside a git repo, run: `aider hello.js` — Aider starts a chat session with hello.js added to context.',
+      'Describe the change in plain English; Aider will show a diff and (by default) auto-commit each successful change.',
+      'Use `/add <file>` and `/drop <file>` mid-session to refile files; `/undo` rolls back the last commit; `/diff` shows what changed.',
+    ],
+    sampleInput:
+      '$ aider hello.js\n> write a JavaScript function `sumArray(nums)` that returns the sum, with a docstring and a JSDoc return type.\n  Then write 3 Vitest tests covering empty arrays, mixed numbers, and decimals.',
+    sampleOutput:
+      'hello.js (new):\n  /**\n   * Sums an array of numbers.\n   * @param {number[]} nums\n   * @returns {number} sum\n   */\n  export function sumArray(nums) { return nums.reduce((a, b) => a + b, 0); }\n\nhello.test.js (new): 3 tests, all passing.\n2 new commits:\n  a1b2c3d feat(hello): add sumArray with JSDoc\n  d4e5f6a test(hello): vitest suite for sumArray',
+    benchmarks: [
+      { label: 'GitHub stars', value: '19,000+', source: 'github.com/Aider-AI/aider' },
+      { label: 'Supported model families', value: 'Claude / GPT / Gemini / DeepSeek / local Ollama' },
+      { label: 'Auto-commit behavior', value: 'One commit per logical change, with descriptive message' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You live in the terminal, think in diffs and commits, and want every AI change baked into a clean git history you can review with standard git workflows.',
+      skipIf:
+        'You want a GUI chat or inline editor experience — for that, pair Aider with Continue (editable view) or just use Cline / Cursor.',
+    },
   },
 
   // ---------------- Research ----------------
@@ -783,6 +827,28 @@ export const agents: Agent[] = [
     ],
     models: ['Any (Claude, GPT, Gemini, DeepSeek, local Ollama models)'],
     alternatives: ['cline', 'cody', 'cursor', 'copilot'],
+    quickStart: [
+      'Install the "Continue" extension in VS Code or the "Continue" plugin in JetBrains IDEs.',
+      'Open Continue from the sidebar → click the ⚙ config button → pick "Open config.json".',
+      'Choose model providers in `config.json`: e.g. `models: [{ provider: "anthropic", model: "claude-3-5-sonnet-latest" }]` and add your API key.',
+      'For local models, swap to `provider: "ollama"` with a base URL like `http://localhost:11434` — works fully offline.',
+      'Hotkeys: Cmd+L (chat), Cmd+I (edit inline), Tab (autocomplete). Try `@docs` to attach docs as context.',
+    ],
+    sampleInput:
+      'In Continue chat, with @file src/utils/parseDate.ts selected:\n  "@file this function is called with mixed-format dates in 4 places. Refactor it to accept either ISO strings or epoch numbers and return a normalized UTC ISO string. Then write Vitest tests for both inputs."',
+    sampleOutput:
+      'src/utils/parseDate.ts (rewritten, +12 / -8):\n  - Accepts string | number input via overload\n  - Returns parseDate().toISOString()\n  - Throws TypeError with a clear message on bad input\nsrc/utils/__tests__/parseDate.test.ts (new): 6 cases — ISO string, epoch number, missing tz, invalid string, undefined, NaN. 6/6 pass.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '23,000+', source: 'github.com/continuedev/continue' },
+      { label: 'Discord community', value: '11,000+ members' },
+      { label: 'Built by', value: 'Y Combinator alumni, $3M seed, founded 2023' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want an open-source, fully-configurable coding assistant that can swap to local models for privacy, and you\'re willing to edit a config.json to tune it.',
+      skipIf:
+        'You want zero-config onboarding — Copilot Pro or Cursor will get you typing with AI in 60 seconds without touching a config file.',
+    },
   },
 
   // ---------------- Creative（补充）----------------
@@ -850,6 +916,29 @@ export const agents: Agent[] = [
     ],
     models: ['GPT-4o / GPT-4.1', 'Claude 3.5/3.7 Sonnet (in some plans)'],
     alternatives: ['cursor', 'cody', 'claude-code'],
+    quickStart: [
+      'Free tier: github.com/features/copilot → "Get started" → sign in with your GitHub account → 2,000 code completions / month + chat access.',
+      'Pro ($10/mo): install the Copilot extension in VS Code / JetBrains / Visual Studio → sign in → 300 premium requests and unlimited chat.',
+      'Use Copilot Chat: Ctrl+I (inline edit), Ctrl+Shift+I (chat panel), or @workspace in chat to ask about your repo.',
+      'Open a PR → Copilot auto-generates a description draft; review and commit.',
+      'Team / Business ($19–$39 per user/month) adds admin controls, audit logs, and code referencing on private repos.',
+    ],
+    sampleInput:
+      'In VS Code chat: "Refactor this 200-line React component into 3 smaller components, keep tests green, and write a single-line PR description."',
+    sampleOutput:
+      'src/ProfilePage.tsx → split into src/ProfileHeader.tsx, ProfileBody.tsx, ProfileFooter.tsx. New index.ts barrel.\n12/12 tests still green. Lint clean (no new warnings).\nPR opened with auto-generated description:\n  "Refactor ProfilePage into Header/Body/Footer components. No behavior change. Tests unchanged."',
+    benchmarks: [
+      { label: 'Free completions / month', value: '2,000', source: 'github.com/features/copilot' },
+      { label: 'Free models (2026 Q2)', value: 'Haiku 4.5, GPT-5 mini, more', source: 'Copilot free tier' },
+      { label: 'Installs across the ecosystem', value: '20M+', source: 'GitHub blog, 2026' },
+      { label: 'Pro / Business / Enterprise', value: '$10 / $19 / $39 per user/mo' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want the most polished and ubiquitous AI coding experience, with first-class GitHub PR / Issue / code-review integration and a generous free tier.',
+      skipIf:
+        'You want self-hosting, BYOK models, or deep project-wide context for big refactors — Cline, Continue, or Claude Code will go further. Copilot is also the default, not the leader.',
+    },
   },
   {
     slug: 'codex',
@@ -1629,6 +1718,30 @@ export const agents: Agent[] = [
     ],
     models: ['GPT-4.1', 'Claude Sonnet', 'Codeium proprietary'],
     alternatives: ['cursor', 'claude-code', 'copilot'],
+    quickStart: [
+      'Download Windsurf from codeium.com/windsurf (Win / macOS / Linux).',
+      'Sign in with Google, GitHub, or email — no payment needed for the free tier (unlimited completions, recent models).',
+      'Open a folder → Cascade panel opens automatically; click "Cascade" → describe a task.',
+      'Press Tab for inline autocomplete (Supercomplete); ⌘L to open Cascade chat; ⌘I for inline edit.',
+      'Pro $15/mo unlocks the latest Claude / GPT models and faster premium requests; Team $30/user/mo adds SSO and analytics.',
+    ],
+    sampleInput:
+      'In Cascade chat: "Refactor this Express server: convert callbacks to async/await, add Zod request validation, and write a Vitest suite for the POST /users route. Keep the existing tests green."',
+    sampleOutput:
+      'Cascade plan (visible inline):\n  Step 1: Convert callbacks → async/await across 5 files\n  Step 2: Add Zod schemas per route\n  Step 3: Generate Vitest coverage for POST /users\n  Step 4: Run tests + lint, fix anything that breaks\nResult:\n  - src/routes/users.ts (+18 / -9, async/await + Zod)\n  - src/middleware/validate.ts (new, 31 lines)\n  - src/routes/__tests__/users.test.ts (new, 4 test cases)\n  - 12/12 tests pass; lint clean',
+    benchmarks: [
+      { label: 'Free completions', value: 'Unlimited, recent models included', source: 'codeium.com/windsurf' },
+      { label: 'Pro price', value: '$15/mo (annual) / $20 month-to-month', source: '2026 pricing' },
+      { label: 'Users (March 2026)', value: '1,000,000+', source: '新浪科技 article' },
+      { label: 'Enterprise customers', value: '4,000+', source: '新浪科技 article' },
+      { label: 'Company valuation', value: '$1.25B', source: '腾讯云 article' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a dedicated AI-native IDE with the strongest project-wide context engine on the market (Cascade\'s 20-tool-call chain), and a free tier that\'s actually generous enough to ship.',
+      skipIf:
+        'You already live in VS Code and just want a plugin — Copilot, Cline, or Continue will feel less disruptive. Or if you want a terminal-native workflow, Claude Code / Aider will be faster.',
+    },
   },
   {
     slug: 'tabnine',
