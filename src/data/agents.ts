@@ -993,6 +993,29 @@ export const agents: Agent[] = [
     ],
     models: ['Custom fine-tuned models + Claude / GPT-class'],
     alternatives: ['claude-code', 'manus', 'codex', 'aider'],
+    quickStart: [
+      'Open devin.ai → request access (Cognition drips invites; Team plan from $500/mo).',
+      'Add the GitHub repo you want Devin to work on, then create a task: "Fix bug #123, write tests, open a PR."',
+      'Devin spins up its own IDE + browser, plans the work, edits files in a branch, runs tests, and opens a PR.',
+      'Watch the live stream or let it run async — ping you when the PR is up.',
+      'Review the PR diff, leave comments, ask Devin to address them in the same session.',
+    ],
+    sampleInput:
+      'Task: "In the auth-service repo, refactor session-management from in-memory to Redis-backed with sliding-window expiry. Add integration tests."',
+    sampleOutput:
+      'PR #847 opened with:\n  - src/session/store.ts (new Redis client wrapper)\n  - src/session/manager.ts (refactor — TTL now 30min sliding)\n  - tests/integration/session.test.ts (new — 8 cases incl. expiry & race)\n  - CHANGELOG entry, migration runbook\nDevin ran lint + 312 tests; CI green. Comment addressed your feedback within the same session.',
+    benchmarks: [
+      { label: 'Origin', value: 'First widely-publicized "AI engineer" (SWE-bench marketing 2024)', source: 'Cognition AI' },
+      { label: 'Pricing', value: 'Team from $500/mo; Enterprise custom (often $2k+/seat/yr)' },
+      { label: 'Strength', value: 'Long, multi-hour tasks vs. single-file inline edits' },
+      { label: 'Workflow', value: 'Full IDE + browser + shell in one session; own branch per task' },
+    ],
+    decisionAid: {
+      pickIf:
+        'Your team has a backlog of long-running, well-specified coding tickets and you want to hand them off to an autonomous agent — Devin is the original and most-tested "AI engineer" for that workflow.',
+      skipIf:
+        'You primarily want inline autocomplete or small edits — Cursor, Copilot, and Claude Code are way faster. Devin is also expensive compared to alternatives, so unless you trust it to close tickets end-to-end, it\'s overkill.',
+    },
   },
   {
     slug: 'cody',
@@ -1025,6 +1048,29 @@ export const agents: Agent[] = [
     ],
     models: ['Claude 3.5/3.7 Sonnet', 'GPT-4o/4.1', "Sourcegraph's own models"],
     alternatives: ['cursor', 'copilot', 'continue'],
+    quickStart: [
+      'Install the "Cody" extension from Sourcegraph in VS Code or JetBrains.',
+      'Sign in with Sourcegraph.com (free) or connect your enterprise Cody instance.',
+      'Run "Cody: Sign In" → pick your LLM provider → start with autocomplete.',
+      'Chat with @-mention to attach files: `@src/api/users.ts explain the auth flow here`.',
+      'For monorepo queries: open Sourcegraph.com, point it at your GitHub org — Cody then indexes your full codebase and answers questions across it.',
+    ],
+    sampleInput:
+      'Workspace: yfinance (Python, ~10k files across 200 repos).\n\nChat: "@workspace where is the Ticker.history() method defined and which other repos depend on it?"',
+    sampleOutput:
+      'Cody answer:\n  - "Ticker.history() is defined in yfinance/ticker.py:142 (also re-exported in __init__.py:18). 14 other internal services in the org import it — most via `from yfinance import Ticker`. Full dep graph attached."\nInline citations jump to each repo file. No hallucinated paths.',
+    benchmarks: [
+      { label: 'Best fit', value: 'Large monorepos and cross-codebase Q&A' },
+      { label: 'Pricing (Pro)', value: '$9/mo (individual); Enterprise on-prem available' },
+      { label: 'Knowledge', value: 'Indexes entire GitHub / GitLab / Bitbucket orgs in the background' },
+      { label: 'Top plan', value: 'Pro: full chat + multi-file edits + custom commands' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You work in a big monorepo (or many repos) and need cross-file context that inline assistants can\'t see — Cody\'s codebase-wide index is the differentiator.',
+      skipIf:
+        'You mostly edit single files in a single repo — Cursor or Copilot give you autocomplete + chat with faster latency. For self-hosting / privacy, look at Continue or Tabnine.',
+    },
   },
   {
     slug: 'continue',
@@ -1203,6 +1249,29 @@ export const agents: Agent[] = [
     ],
     models: ['codex-1 (OpenAI custom), GPT-4o class'],
     alternatives: ['devin', 'claude-code', 'aider'],
+    quickStart: [
+      'Open ChatGPT → click "Codex" in the sidebar (Plus / Pro / Team tiers).',
+      'Connect your GitHub repo (one-time OAuth), pick a branch, click "Create task".',
+      'Type the task: "Add unit tests for src/orders/ — open a PR if lint + tests pass."',
+      'Watch the Cloud VM logs live, or background it and check the PR when ready.',
+      'Stack multiple tasks — Codex runs them in parallel sandboxes, so 6 PRs land roughly at once.',
+    ],
+    sampleInput:
+      'Tasks submitted in one batch:\n  - "Tighten input validation in src/api/users/* and add zod schemas"\n  - "Replace lodash.get with native optional chaining across utils/"\n  - "Update package.json to drop unused deps"',
+    sampleOutput:
+      '~15 min later, 3 PRs opened:\n  - #451: zod validation (+12 files, all tests pass)\n  - #452: lodash cleanup (-420 lines across 38 files, no behavior change)\n  - #453: dep cleanup (-340 KB bundle, lockfile regenerated)\nEach PR has its own focused diff and a one-line summary from Codex.',
+    benchmarks: [
+      { label: 'Inclusion', value: 'Bundled with ChatGPT Plus ($20) / Pro ($200) / Team' },
+      { label: 'Sandbox isolation', value: 'Each task runs in its own cloud VM — no local env' },
+      { label: 'Parallelism', value: 'Multiple tasks at once across separate branches' },
+      { label: 'Underlying model', value: 'codex-1 (OpenAI custom); some GPT-4o class fallback' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You already pay for ChatGPT Plus/Pro and have a backlog of small coding tasks — Codex runs them in parallel while you keep coding locally.',
+      skipIf:
+        'You want local execution and full control over the model — Aider, Cline, or Claude Code are local-first. For deep reasoning on long agent tasks, Devin is the deeper (and pricier) pick.',
+    },
   },
   {
     slug: 'gemini-cli',
@@ -1238,6 +1307,30 @@ export const agents: Agent[] = [
     ],
     models: ['Gemini 2.5 Pro', 'Gemini 2.0 Flash'],
     alternatives: ['claude-code', 'aider', 'cline'],
+    quickStart: [
+      'Install: `npm install -g @google/gemini-cli` (or `brew install gemini-cli` on macOS).',
+      'Run `gemini` in any directory → first run opens a Google OAuth flow for free Gemini API access.',
+      'Free tier: 60 requests / minute, 1,000 requests / day on Gemini 2.5 Flash — no credit card required.',
+      'Type `gemini "explain this repo and add a Vitest suite for src/orders.ts"`. It reads files, edits code, runs shell.',
+      'For Google Cloud Workflows / Firebase: `gemini extensions install <name>` adds first-party integrations.',
+    ],
+    sampleInput:
+      '"Refactor src/db/connection.ts to use a connection pool with PgBouncer-compatible settings, and add retry-with-backoff around query errors."',
+    sampleOutput:
+      'Gemini CLI:\n  - Reads src/db/connection.ts\n  - Proposes pgbouncer-friendly pool + exponential backoff helper\n  - Writes the patch in-place\n  - Runs `pnpm test` to verify (uses Gemini Pro if the patch is non-trivial)\nPatch diff + test output. Free-tier request counter ticks.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '35,000+', source: 'github.com/google-gemini/gemini-cli, May 2026' },
+      { label: 'License', value: 'Apache-2.0' },
+      { label: 'Default model', value: 'Gemini 2.5 Pro / 2.0 Flash' },
+      { label: 'Free tier', value: '60 req/min, 1,000 req/day on Gemini 2.5 Flash (no credit card)' },
+      { label: 'Context window', value: 'Up to 1M tokens on Gemini 2.5 Pro — biggest in the open-source CLI space' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a real terminal agent that\'s free out of the box, with the largest context window in the OSS CLI space and direct Google Cloud integration — Gemini CLI is the new default for many.',
+      skipIf:
+        'You live exclusively in Claude or other frontier models and don\'t need Google Cloud — Claude Code will feel sharper on most coding tasks today. Gemini models still trail Claude on long reasoning, so verify on your own workload.',
+    },
   },
 
   // ---------------- Research（补充）----------------
@@ -2100,6 +2193,29 @@ export const agents: Agent[] = [
     ],
     models: ['Proprietary', 'self-hosted open models'],
     alternatives: ['copilot', 'cody', 'continue'],
+    quickStart: [
+      'Install the Tabnine extension in VS Code / JetBrains / Visual Studio.',
+      'Pick your plan: Free basic autocomplete, Pro $12/mo (chat + full-agent mode), Enterprise (self-hosted).',
+      'For self-hosted: deploy the Tabnine app on Kubernetes behind your firewall → connect the IDE extension to your org endpoint.',
+      'Tabnine learns your team\'s codebase patterns to personalize completions — runs locally to keep code on your network.',
+      'For air-gapped deployments: Self-hosted Enterprise + bring-your-own-model (e.g. fine-tuned Code Llama) works fully offline.',
+    ],
+    sampleInput:
+      'Self-hosted setup (Enterprise):\n  helm install tabnine tabnine/tabnine \\\n    --set selfHosted=true \\\n    --set model=finetuned-code-llama-13b.gguf \\\n    --set airGap.enabled=true\n  → IDE plugin → Settings → Enterprise endpoint → auth via SSO.\n  All completions served from your own GPUs. Code never leaves.',
+    sampleOutput:
+      'A 1-line autocomplete suggestion appears in 80ms. A multi-line block suggestion appears in ~250ms with the model\'s top-p=0.95. Telemetry (usage stats) stays in your cluster.',
+    benchmarks: [
+      { label: 'License / hosting', value: 'SaaS + self-hosted; on-prem Kubernetes support' },
+      { label: 'BYO model', value: 'Yes — point Tabnine at any OpenAI-compatible LLM endpoint' },
+      { label: 'Compliance', value: 'SOC 2, ISO 27001; on-prem for air-gapped teams' },
+      { label: 'Pricing', value: 'Free basic / Pro $12/mo / Enterprise custom' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re in regulated industry (finance / defense / healthcare) and the network policy is "code never leaves" — Tabnine self-hosted with a BYO model is the standard answer.',
+      skipIf:
+        'You\'re a solo dev or small team without compliance constraints — Copilot, Cursor, and Continue will give you more model variety and faster autocomplete for cheaper.',
+    },
   },
   {
     slug: 'replit-agent',
