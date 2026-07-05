@@ -281,12 +281,20 @@ a:hover { text-decoration: underline; }
 
 .detail-grid {
   display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 48px;
   padding: 24px 0 64px;
+  align-items: start;
+}
+.detail-grid > aside {
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
 }
 @media (max-width: 760px) {
-  .detail-grid { grid-template-columns: 1fr; }
+  .detail-grid { grid-template-columns: 1fr; gap: 24px; }
+  .detail-grid > aside { position: static; max-height: none; }
 }
 .prose {
   font-size: 16px;
