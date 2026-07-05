@@ -519,8 +519,32 @@ export const agents: Agent[] = [
       'Expensive — bundled with $200/mo ChatGPT Pro',
       'Still struggles with CAPTCHAs and unusual layouts',
     ],
-    models: ['Computer-Using Agent (CUA) — GPT-4o class vision model'],
+    models: ['Computer-Using Agent (CUA) — o3 vision-action model', 'Tools: built-in visual browser + text browser + terminal + API access'],
     alternatives: ['browser-use', 'firecrawl'],
+    quickStart: [
+      'Subscribe to ChatGPT Pro ($200/mo) — Operator is bundled in. Plus / Team access is rolling out.',
+      'Open ChatGPT → use case → "Run tasks with Operator" → describe what you need (e.g. "Find the cheapest direct flight from SFO to Tokyo between Nov 10–17").',
+      'Operator opens its own virtual browser, navigates with mouse + keyboard, asks you to confirm sensitive steps (payments, login).',
+      'July 2026 update: rolled into the new "ChatGPT Agent" which combines Operator + Deep Research + ChatGPT into one tool that picks tools on its own.',
+      'On benchmarks: Humanity\'s Last Exam 41.6% / 44.4% with parallel votes; BrowseComp 68.9% (SOTA).',
+    ],
+    sampleInput:
+      'Task: "Browse the NFL schedule for the 2025 regular season and plan a route to see all 30 MLB teams ballparks, including hotels and a final CSV + map."',
+    sampleOutput:
+      'Operator + Deep Research workflow:\n  - ~10 min runtime in its virtual computer\n  - Output: Excel itinerary + interactive map visualization (slides-ready)\n  - Visible screen-recording of every browser action\n  - Tools chosen dynamically: visual browser for booking sites, text browser for long-form schedules, terminal for CSV cleanup',
+    benchmarks: [
+      { label: 'Humanity\'s Last Exam (single pass)', value: '41.6% (was 26.6% for Deep Research alone)', source: 'OpenAI July 2026' },
+      { label: 'BrowseComp', value: '68.9% (SOTA; +17.4 vs Deep Research)', source: 'OpenAI July 2026' },
+      { label: 'FrontierMath', value: '27.4% accuracy', source: 'OpenAI July 2026' },
+      { label: 'Investment-banking analyst tasks', value: 'Matches / beats junior IB associates (1–3 yrs experience)', source: 'OpenAI demo, July 2026' },
+      { label: 'Underlying model (May 2025)', value: 'CUA, built on o3', source: '至顶网' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You already pay for ChatGPT Pro and want hands-off browser tasks — Operator (now ChatGPT Agent) gives you the best-in-class UX and is included in the $200/mo plan.',
+      skipIf:
+        'You want self-hosting, fine-grained control, or a programmatic API — Browser Use, Firecrawl, and Playwright give you building blocks at a fraction of the cost.',
+    },
   },
   {
     slug: 'browser-use',
@@ -556,6 +580,29 @@ export const agents: Agent[] = [
     ],
     models: ['Any LLM (Claude, GPT-4o, Gemini, local models via Ollama)'],
     alternatives: ['firecrawl', 'playwright', 'operator'],
+    quickStart: [
+      'Python ≥ 3.11. `pip install browser-use` then `playwright install` (downloads Chromium).',
+      'Set one LLM key in `.env` (e.g. `OPENAI_API_KEY=...`).',
+      'Create an agent: `from browser_use import Agent; from langchain_openai import ChatOpenAI; agent = Agent(task="...", llm=ChatOpenAI(model="gpt-4o"))`; then `await agent.run()`.',
+      'For persistent sessions, pass your own Playwright `BrowserContext` so cookies / localStorage survive between runs.',
+      'Add a Gradio UI for visual debugging: `python examples/ui/gradio_demo.py`.',
+    ],
+    sampleInput:
+      '```python\nfrom browser_use import Agent\nfrom langchain_openai import ChatOpenAI\nimport asyncio\n\nasync def main():\n    agent = Agent(\n        task="Find all h2 headings and all anchor links on https://example.com/docs",\n        llm=ChatOpenAI(model="gpt-4o"),\n    )\n    print(await agent.run())\n\nasyncio.run(main())\n```',
+    sampleOutput:
+      'Returns a dict like:\n  {"headings": ["Getting Started", "API Reference", "Pricing"],\n   "links": [{"text": "Docs", "href": "/docs"}, {"text": "Sign up", "href": "/signup"}]}\n~30 sec runtime. Browser screenshots + DOM dumps cached in the run log for replay.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '55,000+', source: 'github.com/browser-use/browser-use' },
+      { label: 'Underlying engine', value: 'Playwright + LangChain' },
+      { label: 'Vision', value: 'Optional screenshot capture for vision-capable LLMs' },
+      { label: 'Modes', value: 'Sync + async; can attach persistent browser context for logged-in flows' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want to build a custom web agent in Python with full control over the model, data, and orchestration — Browser Use is the canonical OSS layer for this.',
+      skipIf:
+        'You want an out-of-the-box experience with no code — Operator is simpler. For reading/scraping pages rather than interacting with them, Firecrawl is the better fit.',
+    },
   },
 
   // ---------------- Automation ----------------
@@ -594,27 +641,28 @@ export const agents: Agent[] = [
     models: ['Any LLM via OpenAI-compatible API (Claude, GPT, local models)'],
     alternatives: ['make', 'zapier-agents', 'lindy'],
     quickStart: [
-      'Install: `pip install crewai crewai-tools`.',
-      'Pick an LLM: `from langchain_openai import ChatOpenAI` (or Anthropic / OpenRouter / Ollama) and load your API key.',
-      'Define agents: each Agent has role, goal, backstory, optional tools, and an LLM.',
-      'Define Tasks with explicit expected_output, then bind them to a Crew with process=sequential or hierarchical.',
-      'Run: `crew.kickoff(inputs={"topic": "..."})`. Verbose=True prints every thought and tool call.',
+      'Try cloud: sign up at n8n.io → create a workspace → open the visual editor.',
+      'Self-host: `docker run -it --rm --name n8n -p 5678:5678 docker.n8n.io/n8nio/n8n`, then open http://localhost:5678.',
+      'Build a workflow: drag a trigger node (e.g. Webhook, Schedule) onto the canvas → drag an action (Slack, Gmail, HTTP) → draw a line between them.',
+      'For AI: add an "AI Agent" node wired to the LangChain integration; point at any OpenAI-compatible model.',
+      'For custom code: drop in a Code node and write JavaScript / Python; access upstream data with $json or item.json.',
     ],
     sampleInput:
-      'Task: "Draft a 600-word blog post on the current state of multi-agent systems, citing 3 papers from 2025–2026."',
+      'Trigger: "Webhook" (POST /webhook/inbound-email)\nAction 1: HTTP node → POST to Gmail API to fetch unread\nAction 2: AI Agent node → "Summarize each unread email; classify as billing/support/sales"\nAction 3: Switch node → routes by category\nAction 4a (billing): Slack post to #billing\nAction 4b (support): Create Zendesk ticket\nAction 4c (sales): Append to Google Sheet',
     sampleOutput:
-      'Crew execution (~3 min, 3 agents):\n  1. Researcher → 5 candidate papers pulled + 1-sentence summaries [3 min]\n  2. Writer → 600-word Markdown draft with citations, intro / 3 sections / conclusion [2 min]\n  3. Editor → fact-check pass, source links pinned to each claim [1 min]\nFinal post saved to ./draft.md. 18 LLM calls, ~9,000 tokens.',
+      'Workflow runs ~6 sec per inbound payload. Real-time visual execution logs. 0 manual touches. Easy to inspect what the AI decided; if a node mis-categorizes, you can add a "Reviewer" agent before the Switch and gate it on a confidence threshold.',
     benchmarks: [
-      { label: 'GitHub stars', value: '44,700+', source: 'github.com/joaomdmoura/crewAI, April 2026' },
-      { label: 'License', value: 'MIT' },
-      { label: 'Certified developers', value: '~100,000 community', source: 'Tencent Cloud article' },
-      { label: 'Process modes', value: 'Sequential / Hierarchical / Custom' },
+      { label: 'GitHub stars', value: '186,000+', source: 'github.com/n8n-io/n8n' },
+      { label: 'Integrations', value: '400+ pre-built nodes' },
+      { label: 'License', value: 'Sustainable Use License (free self-host; restrictions on SaaS resale)' },
+      { label: 'Templates', value: '900+ ready-made workflow templates' },
+      { label: 'Origin', value: 'Founded 2019 in Berlin by Jan Oberhauser; name = "nodemation"' },
     ],
     decisionAid: {
       pickIf:
-        'You want the fastest path to a multi-agent system that "just works" — CrewAI\'s role-task-crew abstraction is the easiest mental model on the market.',
+        'You want to glue SaaS tools with custom logic and stay self-hostable for compliance / cost — n8n is the most flexible open-source automation platform.',
       skipIf:
-        'You need fine-grained control over graph execution, cycles, and conditional retries — LangGraph gives you a true state-machine. AutoGen is also better for open-ended research agents.',
+        'You want a managed, zero-ops cloud experience with the broadest catalog — Zapier (paid) wins on ecosystem. If you want a visual canvas with a lighter learning curve and pure cloud, Make is friendlier.',
     },
   },
   {
@@ -773,6 +821,29 @@ export const agents: Agent[] = [
     ],
     models: ['Any LLM (Claude, GPT-4o, Gemini, local models)'],
     alternatives: ['autogen', 'langgraph', 'autogpt'],
+    quickStart: [
+      'Install: `pip install crewai crewai-tools`.',
+      'Pick an LLM: `from langchain_openai import ChatOpenAI` (or Anthropic / OpenRouter / Ollama) and load your API key.',
+      'Define agents: each Agent has role, goal, backstory, optional tools, and an LLM.',
+      'Define Tasks with explicit expected_output, then bind them to a Crew with process=sequential or hierarchical.',
+      'Run: `crew.kickoff(inputs={"topic": "..."})`. Verbose=True prints every thought and tool call.',
+    ],
+    sampleInput:
+      'Task: "Draft a 600-word blog post on the current state of multi-agent systems, citing 3 papers from 2025–2026."',
+    sampleOutput:
+      'Crew execution (~3 min, 3 agents):\n  1. Researcher → 5 candidate papers pulled + 1-sentence summaries [3 min]\n  2. Writer → 600-word Markdown draft with citations, intro / 3 sections / conclusion [2 min]\n  3. Editor → fact-check pass, source links pinned to each claim [1 min]\nFinal post saved to ./draft.md. 18 LLM calls, ~9,000 tokens.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '44,700+', source: 'github.com/joaomdmoura/crewAI, April 2026' },
+      { label: 'License', value: 'MIT' },
+      { label: 'Certified developers', value: '~100,000 community', source: 'Tencent Cloud article' },
+      { label: 'Process modes', value: 'Sequential / Hierarchical / Custom' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want the fastest path to a multi-agent system that "just works" — CrewAI\'s role-task-crew abstraction is the easiest mental model on the market.',
+      skipIf:
+        'You need fine-grained control over graph execution, cycles, and conditional retries — LangGraph gives you a true state-machine. AutoGen is also better for open-ended research agents.',
+    },
   },
   {
     slug: 'autogen',
@@ -863,6 +934,29 @@ export const agents: Agent[] = [
     ],
     models: ['Claude / GPT-class (closed source internals)'],
     alternatives: ['devin', 'lovart', 'autogpt'],
+    quickStart: [
+      'Sign up at manus.im with email → enter your invite code (or join the waitlist; in 2026 invite codes briefly traded for ~$25k on secondary markets).',
+      'Type a goal in plain English: "Plan a 7-day Japan trip with daily budget, hotel zones, and an Osaka street-food list → CSV."',
+      'Manus breaks the task down into steps, runs browser / code / data workflows in a sandboxed cloud environment, and streams progress.',
+      'When complete, you get the deliverable directly: Excel, slide deck, working website, or PDF report.',
+      'Bench the GAIA benchmark (general AI assistant eval) — Manus hit SOTA across 3 difficulty levels in 2025.',
+    ],
+    sampleInput:
+      'Goal: "Build a TypeScript + React prototype for a personal habit-tracker. Include localStorage persistence and a streak counter, then zip and host it on a shareable URL."',
+    sampleOutput:
+      'Manus deliverables:\n  - /src/App.tsx (React + TypeScript, persistence via localStorage)\n  - /src/components/StreakBadge.tsx\n  - 1-page README.md\n  - 1 short demo GIF (auto-recorded browser interaction)\n  - Public share URL: https://share.manus.im/abc123\nTotal runtime: ~8 minutes. 23 sub-steps visible in the run log.',
+    benchmarks: [
+      { label: 'GAIA benchmark (Mar 2025 launch)', value: 'SOTA across easy / medium / hard levels', source: 'Manus launch benchmark' },
+      { label: 'User-cost (Beta pricing)', value: 'Starter $39/mo (3,900 credits + 2 concurrent); Pro $199/mo (19,900 credits + 5 concurrent + high-effort mode)', source: 'Manus pricing blog 2026' },
+      { label: 'Architecture', value: 'Multiple-agent system: planning, execution, validation agents running in a sandboxed cloud VM' },
+      { label: 'Reach', value: '40+ use-case categories (recruiting, finance, real estate, education, research)' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want to hand off a complete deliverable — research, code prototype, spreadsheet — rather than write the steps yourself, and you can stomach the Beta-tier pricing.',
+      skipIf:
+        'You need a programmatic API or want to deeply tune the agent pipeline — Manus is closed-source. For code-specific long-horizon tasks, Devin is more engineering-focused. For pure coding-assist while you write, prefer Cursor or Cline.',
+    },
   },
 
   // ============= 新增 2026-06 =============
