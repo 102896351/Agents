@@ -28,6 +28,17 @@
 
 export type License = 'open-source' | 'commercial' | 'freemium';
 
+export interface Benchmark {
+  label: string;
+  value: string;
+  source?: string;
+}
+
+export interface DecisionAid {
+  pickIf: string;
+  skipIf: string;
+}
+
 export interface Agent {
   slug: string;
   name: string;
@@ -51,6 +62,12 @@ export interface Agent {
   cons?: string[];
   models?: string[];
   alternatives?: string[];
+  // 决策辅助字段（全部可选）
+  quickStart?: string[];             // 5-10 行具体起步步骤
+  sampleInput?: string;              // 一个真实输入样本
+  sampleOutput?: string;             // 对应的真实输出（可截断）
+  benchmarks?: Benchmark[];          // 量化指标，可带来源
+  decisionAid?: DecisionAid;         // pickIf / skipIf 两句话
 }
 
 export type Category =
@@ -110,6 +127,29 @@ export const agents: Agent[] = [
     ],
     models: ['Claude 3.5 Sonnet', 'Claude 3.7 Sonnet', 'Claude 4 (Sonnet/Opus)'],
     alternatives: ['aider', 'cline', 'gemini-cli', 'cursor'],
+    quickStart: [
+      'macOS / Linux / WSL: `curl -fsSL https://claude.ai/install.sh | bash`',
+      'Windows PowerShell (admin): `irm https://claude.ai/install.ps1 | iex` (no Node.js required)',
+      'Verify: `claude --version` — should print something like v2.1.88',
+      'Run `claude` in any repo; on first launch it walks you through login + API key setup.',
+      'Optional MCP: `claude mcp add filesystem npx @modelcontextprotocol/server-filesystem` to give Claude Code file-system tools.',
+    ],
+    sampleInput:
+      '"In this repo, find every place we construct a Date from user input, normalize them to UTC ISO strings, and add Vitest tests. Don\'t change the wire format."',
+    sampleOutput:
+      'Modified 4 files:\n  src/dates/parse.ts (renamed to fromUser, +18 lines handling tz, +14 tests)\n  src/api/orders.ts (2 call sites updated)\n  src/api/users.ts (1 call site updated)\n  src/types.ts (added DateUserInput brand type)\nAll 47 tests pass. New tests: parseUserDateToUtc across 6 edge cases (DST, leap second, missing tz, ISO with offset, epoch number, naive string). Diff: +312 / -84.',
+    benchmarks: [
+      { label: 'SWE-bench Verified (Opus 4.6)', value: '80.8%', source: 'Anthropic Claude Code research' },
+      { label: 'Sessions analyzed (Anthropic study)', value: '400,000', source: 'anthropic.com/research/claude-code-expertise' },
+      { label: 'Human planning decisions / Claude execution', value: '70% / 80%', source: 'same Anthropic study, Oct 2025–Apr 2026' },
+      { label: 'Newbie vs expert session success rate', value: '15% → 33%', source: 'same Anthropic study' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You work across large repos and do many multi-file refactors / migrations; you can stomach a terminal-only workflow and want the strongest reasoning model wired in.',
+      skipIf:
+        'You want a GUI, you\'re on a Pro-only budget, or you need an IDE that "just works" without composing your own MCP server list — try Cursor or Cline instead.',
+    },
   },
   {
     slug: 'cursor',
@@ -146,6 +186,28 @@ export const agents: Agent[] = [
     ],
     models: ['Claude 3.5/3.7 Sonnet', 'GPT-4o', 'GPT-4.1', 'Cursor custom models'],
     alternatives: ['copilot', 'cody', 'claude-code'],
+    quickStart: [
+      'Download Cursor from https://cursor.com (macOS / Windows / Linux).',
+      'Sign in with GitHub or Google — a 14-day Pro trial is auto-activated on new accounts.',
+      'Open a project folder. The .cursorrules file at the root defines your project conventions.',
+      'Press Cmd+I (macOS) or Ctrl+I (Windows/Linux) to open Composer (Agent mode).',
+      'Try: "Explain what this repo does", then "Add a /health endpoint to this Express app".',
+    ],
+    sampleInput:
+      '@UserController.java add @Valid validation, a try/catch with @ControllerAdvice, and JUnit tests for the three POST endpoints',
+    sampleOutput:
+      'UserController.java:\n  + @PostMapping("/users") now validates request body via @Valid.\n  + Throws UserNotFoundException (409) and ValidationException (400) instead of returning nulls.\n  + New UserValidationAdvice intercepts exceptions and returns { error, code } per project schema.\nTests: 3 new JUnit tests covering 200 / 400 / 409 paths, all passing. Diff: +84 / -22.',
+    benchmarks: [
+      { label: 'Hobby free completions', value: '2,000 / month', source: 'cursor.com/pricing' },
+      { label: 'Pro fast Premium requests', value: '500 / month, then slower (never cut off)' },
+      { label: 'Business Privacy Mode', value: 'Code never leaves machine', source: 'Business tier only' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You live in VS Code and want an AI layer that respects your existing extensions, keybindings, and themes — no new editor to learn.',
+      skipIf:
+        'You need self-hosting or a fully local/offline code agent (Cursor is cloud-only by default — even Privacy Mode routes prompts to managed models).',
+    },
   },
   {
     slug: 'cline',
@@ -1028,6 +1090,28 @@ export const agents: Agent[] = [
     ],
     models: ['Any LLM (OpenAI, Claude, local models via LiteLLM)'],
     alternatives: ['crewai', 'langgraph', 'autogen'],
+    quickStart: [
+      'Prereqs: Docker Engine 20.10+, Docker Compose 2.0+, Git 2.30+, Node 16+. Hardware: 4+ CPU cores, 8 GB RAM min, 10 GB free disk.',
+      'macOS / Linux: `curl -fsSL https://setup.agpt.co/install.sh -o install.sh && bash install.sh`',
+      'Windows: open PowerShell as admin → `iwr https://setup.agpt.co/install.bat -o install.bat; ./install.bat` (WSL2 enabled).',
+      'Open http://localhost:3000 in a browser — the Agent Builder loads with a blank canvas.',
+      'Drag a "trigger" block + an "AI agent" block + an "output" block, save the agent, click Run.',
+    ],
+    sampleInput:
+      'Agent name: "Viral Video Finder"\nTrigger: every 6 hours\nBlock 1 (Reddit scraper): pull top 10 posts in r/videos (past 6h, score > 1000)\nBlock 2 (LLM): pick the 3 posts most likely to be viral B-roll for short-form video; justify each pick\nBlock 3 (video composer): render a 15-sec clip with the Reddit thumbnail + the LLM\'s caption\nBlock 4 (output): post to /tmp/auto-videos/ and ping a webhook',
+    sampleOutput:
+      'Saved 3 clips in /tmp/auto-videos/\n  - 2026-07-05_sunset_microwave.mp4 (caption: "POV: your microwave becomes sentient at golden hour")\n  - 2026-07-05_parking_lot_dance.mp4 (caption: "Why is this lot full at 3am")\n  - 2026-07-05_cat_holds_door.mp4 (caption: "Citizen of the year nominee")\nRun completed in 4m12s, webhook delivered.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '170,000+', source: 'github.com/Significant-Gravitas/AutoGPT' },
+      { label: 'agbenchmark categories', value: '12+ (reasoning, web, code, etc.)', source: 'repo docs' },
+      { label: 'Min self-host hardware', value: '4 cores / 8 GB RAM / 10 GB disk', source: 'install docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a self-hostable, reference-quality agent platform you can poke at, fork, and benchmark — and you have the hardware or a spare VPS with 8 GB RAM.',
+      skipIf:
+        'You want a turnkey SaaS for end users, or you\'re put off by Polyform Shield on the autogpt_platform/ folder (restricts competitive SaaS). For SaaS-style multi-agent orchestration, try CrewAI or LangGraph.',
+    },
   },
 
   // ============= 新增 2026-06 第三批 =============
@@ -1314,6 +1398,30 @@ export const agents: Agent[] = [
     ],
     models: ['Model-agnostic: any STT / LLM / TTS provider', 'Common: GPT-4o, Claude, Deepgram, ElevenLabs'],
     alternatives: ['retell', 'sierra'],
+    quickStart: [
+      'Sign up at https://vapi.ai → create a workspace → grab an API key from Settings.',
+      'In the dashboard, click "Create Assistant" → pick the voice (e.g. ElevenLabs "Rachel") and the LLM (e.g. GPT-4o).',
+      'Type the system prompt, e.g. "You are Alex, an appointment scheduler. Ask for the customer\'s name and preferred date, then book them."',
+      'Click "Test in Browser" to dry-run the conversation (no telephony cost yet).',
+      'Attach a phone number (Vapi provisions one for ~$2/mo, or import your Twilio number) and ship to production.',
+    ],
+    sampleInput:
+      'Assistant config:\n  Voice: ElevenLabs "Rachel" (en-US, warm)\n  STT: Deepgram Nova-2\n  LLM: GPT-4o, temperature 0.4\n  System prompt: "You are Alex from Acme Dental. Greet the caller, confirm if they\'re an existing patient, ask the reason for calling, and offer the next 2 available slots from our schedule. Never quote prices."\n  Tools: [list_available_slots, book_appointment]',
+    sampleOutput:
+      'Inbound call routed in 320ms, average call length 1m48s\nCaller: "I have a toothache"\nAlex: "I\'m sorry to hear that. Are you an existing Acme Dental patient?"\nCaller: "Yes"\nAlex: "Thanks. I have Tuesday 10:15 AM with Dr. Lee or Wednesday 2:00 PM with Dr. Park — which works better?"\nCaller chose Tuesday. Slot booked, confirmation SMS sent.\nTotal voice minutes that month: 4,210. Cost (estimate): $0.07/min × 4,210 = $295.',
+    benchmarks: [
+      { label: 'Total calls handled (lifetime)', value: '1,000,000,000+', source: 'vapi.ai homepage' },
+      { label: 'Calls / day', value: '1,000,000–5,000,000', source: 'TechCrunch May 2026' },
+      { label: 'Average end-to-end latency', value: '<500ms', source: 'vapi.ai' },
+      { label: 'Enterprise uptime SLA', value: '99.9%', source: 'vapi.ai' },
+      { label: 'Amazon Ring inbound routing', value: '100%', source: 'TechCrunch May 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re an engineering team that wants an API-first voice platform you can weave into your own stack, with model-agnostic flexibility and SOC2/HIPAA compliance baked in.',
+      skipIf:
+        'You want a managed contact-center with built-in QA dashboards, lead scoring, and concurrency controls out of the box — Retell AI is the more "ops-y" choice. For pre-built enterprise workflows instead of plumbing, try Sierra.',
+    },
   },
   {
     slug: 'retell',
@@ -1901,6 +2009,29 @@ export const agents: Agent[] = [
     ],
     models: ['Suno v5 (proprietary)', 'Suno Studio (DAW layer)'],
     alternatives: ['udio', 'elevenlabs'],
+    quickStart: [
+      'Sign up at https://suno.com (free tier gives 50 credits/day, ~10 songs, non-commercial).',
+      'Click "Create" → switch to Custom mode for prompt + lyrics control (Simple mode is fine for quick sketches).',
+      'Type a prompt: e.g. "indie folk, male vocal, summer vibe, gentle guitar and brushed drums, 130 bpm".',
+      'Optionally paste your own lyrics; otherwise Suno writes them.',
+      'Click Create (costs 80–150 credits per song). When you like a take, click "Download" or "Extend" to keep the song going.',
+    ],
+    sampleInput:
+      'Style prompt: "dreamy synth-pop, female vocal, reverb-drenched, 110 bpm, key of F# minor, hi-hat rolls on the chorus"\n\nLyrics (excerpt):\n  I keep the porch light on for no one\n  the cat is the only witness now\n  you said forever like it was nothing\n  forever folded easy enough',
+    sampleOutput:
+      '"Porch Light (demo)" — a 3:42 track, female vocal in F# minor, 110 bpm\nStructure: 8-bar verse / 8-bar pre-chorus / 8-bar chorus / 8-bar verse 2 / outro with vocal ad-lib\n2 generations created; pick #2 picked because the chorus melody hits higher on "easy enough".\nFree-tier render is watermarked; Pro rerender removes the watermark and grants commercial use.',
+    benchmarks: [
+      { label: 'Paying users', value: '2,000,000+', source: 'CEO LinkedIn, Feb 2026' },
+      { label: 'Annual recurring revenue', value: '$300M', source: 'CEO LinkedIn, Feb 2026' },
+      { label: 'Series C / valuation', value: '$250M raised / $2.45B', source: 'Menlo Ventures lead, Dec 2025' },
+      { label: 'Free → Pro song ratio', value: '~10 free songs/day → ~500 songs/mo on Pro', source: 'credit math from pricing' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a finished song with vocals in seconds — jingles, B-roll, demos, full releases. v5 vocals are the best in class and Pro is a clean commercial license.',
+      skipIf:
+        'You need fine arrangement control or DAW-style stems on the cheap (pick Udio); or you only need instrumentals (pick Stable Audio / AIVA); or you\'re a vocal purist who records real singers yourself.',
+    },
   },
   {
     slug: 'udio',

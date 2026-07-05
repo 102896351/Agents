@@ -123,6 +123,50 @@ const altAgents = (agent.alternatives ?? [])
           </div>
         )}
 
+        {agent.quickStart && agent.quickStart.length > 0 && (
+          <>
+            <h2>Quick start</h2>
+            <ol class="quickstart-list">
+              {agent.quickStart.map((step) => <li>{step}</li>)}
+            </ol>
+          </>
+        )}
+
+        {(agent.sampleInput || agent.sampleOutput) && (
+          <>
+            <h2>Sample input / output</h2>
+            <div class="sample-io">
+              {agent.sampleInput && (
+                <div class="sample-block sample-in">
+                  <div class="sample-label">Input</div>
+                  <pre><code>{agent.sampleInput}</code></pre>
+                </div>
+              )}
+              {agent.sampleOutput && (
+                <div class="sample-block sample-out">
+                  <div class="sample-label">Output</div>
+                  <pre><code>{agent.sampleOutput}</code></pre>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+        {agent.benchmarks && agent.benchmarks.length > 0 && (
+          <>
+            <h2>Benchmarks</h2>
+            <div class="bench-table">
+              {agent.benchmarks.map((b) => (
+                <div class="bench-row">
+                  <span class="bench-k">{b.label}</span>
+                  <span class="bench-v">{b.value}</span>
+                  {b.source && <span class="bench-s">— {b.source}</span>}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
         <h2>Pricing</h2>
         <p>{agent.pricing}</p>
 
@@ -144,6 +188,20 @@ const altAgents = (agent.alternatives ?? [])
               This gives you full control over data and deployment.
             </p>
           </>
+        )}
+
+        {agent.decisionAid && (
+          <div class="decision-aid">
+            <h3>Should you pick this?</h3>
+            <div class="da-row">
+              <span class="da-tag da-pick">Pick it if</span>
+              <span class="da-text">{agent.decisionAid.pickIf}</span>
+            </div>
+            <div class="da-row">
+              <span class="da-tag da-skip">Skip it if</span>
+              <span class="da-text">{agent.decisionAid.skipIf}</span>
+            </div>
+          </div>
         )}
       </div>
 
