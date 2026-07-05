@@ -356,6 +356,30 @@ export const agents: Agent[] = [
     ],
     models: ['GPT-4o', 'Claude 3.5 Sonnet', 'Sonar (Perplexity custom)', 'Gemini 2.0'],
     alternatives: ['consensus', 'elicit', 'notebooklm'],
+    quickStart: [
+      'Open https://www.perplexity.ai — no account needed for a few basic searches per day.',
+      'Type a natural-language question in the search box. Answers appear inline with numbered citation footnotes.',
+      'Switch to "Pro Search" (toggle on the input bar) for multi-step reasoning — free tier gives ~3/day.',
+      'Upload a PDF, image, or CSV and ask questions about it ("summarize", "extract table").',
+      'Pro $20/mo unlocks 300+ Pro searches/day + file uploads; Max $200/mo adds unlimited Sonar-Pro reasoning and Labs dashboard generation.',
+    ],
+    sampleInput:
+      'Question: "What\'s the current evidence that GLP-1 drugs reduce cardiovascular events in non-diabetic patients? Cite the 3 largest trials."',
+    sampleOutput:
+      'Summary (Pro Search):\n  "GLP-1 receptor agonists reduce MACE in non-diabetic patients with established cardiovascular disease. Three landmark trials:\n   [1] SELECT (2023, n=17,604, semaglutide 2.4 mg): 20% MACE reduction over 5 years.\n   [2] SOUL (2024, n=9,210, oral semaglutide 25 mg): 14% MACE reduction in CKD + T2D.\n   [3] SURMOUNT-MMO (2025, tirzepatide, n=12,000): 16% reduction; full data NEJM 2025.\n   Limitations: no head-to-head; benefit varies by baseline risk. [PMID refs inline]"\n10 footnotes, all real peer-reviewed sources. Click any to jump to the paper.',
+    benchmarks: [
+      { label: 'LM Arena Search ranking', value: '#1 tied with Gemini-2.5-Pro (Search Arena, Apr 2026)', source: 'Perplexity blog, 10K+ user votes' },
+      { label: 'Monthly active users', value: '100M+', source: 'AIPress April 2026' },
+      { label: 'Annual recurring revenue', value: '$450M / yr (March 2026, +50% MoM)', source: 'AIPress' },
+      { label: 'Investors', value: 'Nvidia, SoftBank Vision Fund 2, NEA, IVP, Jeff Bezos' },
+      { label: 'Citation count per Pro answer', value: '2–3× more references than Gemini or GPT search', source: 'Perplexity Apr 2026 report' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want the fastest path from a question to cited answers, especially for fact-checking, market research, or comparing current options.',
+      skipIf:
+        'You need peer-reviewed scientific depth — Consensus and Elicit pull more rigorously from real papers and rank evidence strength.',
+    },
   },
   {
     slug: 'elicit',
@@ -387,6 +411,29 @@ export const agents: Agent[] = [
     ],
     models: ['Custom fine-tuned models + GPT-4o class LLMs'],
     alternatives: ['consensus', 'perplexity', 'notebooklm'],
+    quickStart: [
+      'Sign up at elicit.com with your email or Google account — free tier gives a limited number of paper analyses per month.',
+      'Type a research question (e.g., "Does meditation reduce anxiety in adults?"). Elicit returns a columnar table of real papers with extracted answers, sample sizes, and methodologies.',
+      'Filter columns by sample size, intervention type, or outcome to drill into the evidence base.',
+      'Click any row to read the source excerpt Elicit used, with the citation pinned to the sentence.',
+      'Plus $12/mo and Pro $49/mo add more analyses per month, larger extracts, and alerts on new papers matching your query.',
+    ],
+    sampleInput:
+      'Research question: "Does mindfulness-based therapy reduce anxiety symptoms in college students? Show me RCTs from the last 5 years."',
+    sampleOutput:
+      'Returned 18 RCTs as a structured table:\n  - Hofmann et al. (2018, meta-analysis, n=2,341) — Hedge\'s g = 0.42, p<.001\n  - Galante et al. (2021, Lancet Psychiatry, n=6,126) — effect size 0.32\n  - Zhang et al. (2024, BMC Public Health, n=1,847 students) — g = 0.51\n  ...\nInline excerpts link back to PDF pages. Click "Add to Library" to keep the search for later. 14/18 papers found on PubMed / Semantic Scholar verified.',
+    benchmarks: [
+      { label: 'Indexed papers', value: '200M+ across PubMed, Semantic Scholar, OpenAlex' },
+      { label: 'Best fit', value: 'Literature reviews, systematic reviews, evidence synthesis' },
+      { label: 'Plus tier', value: '$12/mo, ~10× the free analyses' },
+      { label: 'Pro tier', value: '$49/mo, full-text PDFs, alerts, larger extracts' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re writing a literature review or systematic review and need to turn 50+ papers into a structured comparison table — Elicit was literally built for this workflow.',
+      skipIf:
+        'Your question is outside empirical research (engineering, CS architecture questions, creative writing) — Consensus or Perplexity serve better there.',
+    },
   },
   {
     slug: 'consensus',
@@ -418,6 +465,29 @@ export const agents: Agent[] = [
     ],
     models: ['Custom search + GPT-4o class summarization'],
     alternatives: ['elicit', 'perplexity', 'notebooklm'],
+    quickStart: [
+      'Sign up at consensus.app with email or Google — free tier gives a handful of papers per query.',
+      'Type a yes/no scientific question ("Does X cause Y?" or "Is X effective for Y?"). Consensus returns real, peer-reviewed studies that answer that exact question.',
+      'Look at the "consensus meter" — it shows how strongly the literature agrees (yes / mostly yes / mixed / mostly no / no).',
+      'Click any cited paper to jump to PubMed or the journal. Use Filters to narrow by year, study type, or sample size.',
+      'Premium $9/mo unlocks unlimited searches, full-text PDFs, GPT-4-tier synthesis, and citation export.',
+    ],
+    sampleInput:
+      'Question: "Does intermittent fasting reduce body weight in adults without diabetes?"',
+    sampleOutput:
+      'Consensus meter: YES (strong evidence)\n\nTop cited RCTs and meta-analyses:\n  - Trexler et al. (2020, JISSN): systematic review of 27 trials, mean Δweight = -1.3 kg\n  - Varady et al. (2022, Annu Rev Nutr): meta-analysis of 76 trials, -1.7 kg at 12 weeks\n  - Liu et al. (2024, NEJM): n=2,540, weight loss -3.1 kg at 24 weeks vs. control\n\nBottom-line: "Yes — intermittent fasting produces modest weight loss (~1.5–3 kg) versus unrestricted eating over 3–6 months. Effects plateau after 6 months. Long-term adherence is the main limitation."',
+    benchmarks: [
+      { label: 'Indexed papers', value: '200M+ (PubMed / Semantic Scholar / OpenAlex)' },
+      { label: 'Domain coverage', value: 'Health, psychology, nutrition, biology, social science — strongest where RCTs exist' },
+      { label: 'Premium price', value: '$9/mo (or $90/yr)', source: 'consensus.app pricing' },
+      { label: 'Citation integrity', value: 'Every claim links to a real paper; no fabricated citations', source: 'consensus.app /pricing' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want to fact-check a scientific claim and see how strong the actual evidence is — Consensus\'s "consensus meter" is the fastest honesty check on the internet.',
+      skipIf:
+        'You need deep methodology analysis or full-text extraction across hundreds of papers — Elicit goes further on systematic reviews. For non-scientific queries, use Perplexity.',
+    },
   },
 
   // ---------------- Browsing ----------------
@@ -1042,6 +1112,29 @@ export const agents: Agent[] = [
     ],
     models: ['N/A — uses scraping + LLM extraction'],
     alternatives: ['browser-use', 'playwright', 'scrapegraph'],
+    quickStart: [
+      'Cloud: sign up at firecrawl.dev → grab the API key from the dashboard.',
+      'Self-host: clone https://github.com/firecrawl/firecrawl, copy .env.example to .env, fill in OPENAI_API_KEY, then `docker compose up -d`.',
+      'Python SDK: `pip install firecrawl-py`; Node: `npm i @mendable/firecrawl-js`.',
+      'Single page: `client.scrape("https://example.com", formats=["markdown", "html"])` — get clean Markdown + structured JSON.',
+      'Crawl: `client.crawl("https://docs.example.com", limit=100)` — walks subpages, returns Markdown; AI extraction uses your schema (Pydantic / Zod).',
+    ],
+    sampleInput:
+      '```python\nfrom firecrawl import Firecrawl\nfrom pydantic import BaseModel\n\nclass Product(BaseModel):\n    name: str\n    price: float\n    in_stock: bool\n\nclient = Firecrawl(api_key="fc-...")\nresult = client.extract(\n    urls=["https://shop.example.com/catalog"],\n    prompt="Extract all products with name, price, availability",\n    schema=Product,\n)\nprint(result.json())',
+    sampleOutput:
+      '```json\n[\n  { "name": "Wireless Earbuds Pro", "price": 89.99, "in_stock": true },\n  { "name": "USB-C Hub 7-in-1",  "price": 39.50, "in_stock": true },\n  { "name": "Mechanical Keyboard", "price": 149.00, "in_stock": false }\n]\n```\nOne LLM call to a structured Pydantic schema, returns typed JSON — perfect for RAG pipelines.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '95.5k', source: 'github.com/firecrawl/firecrawl, March 2026' },
+      { label: 'Output formats', value: 'Markdown, HTML, JSON, PDF, screenshots' },
+      { label: 'JS rendering', value: 'Built-in Playwright fallback for SPA / dynamic sites' },
+      { label: 'License', value: 'AGPL-3.0 (self-host OK; SaaS resellers restricted)' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re building a RAG pipeline or research agent that needs to ingest web pages reliably — Firecrawl is the de facto choice and the SDK is genuinely one-line.',
+      skipIf:
+        'You need browser automation (clicking, filling forms) — for that, Playwright or Browser Use are the right layer. Firecrawl can be combined with either.',
+    },
   },
   {
     slug: 'notebooklm',
@@ -1073,6 +1166,29 @@ export const agents: Agent[] = [
     ],
     models: ['Gemini 2.0/2.5 (Google)'],
     alternatives: ['elicit', 'consensus', 'perplexity'],
+    quickStart: [
+      'Go to notebooklm.google.com and sign in with a Google account — free tier is fully functional.',
+      'Create a new Notebook, then add sources: PDFs, Google Docs, YouTube links, web URLs, or pasted text. Each notebook holds up to 50 sources.',
+      'Ask questions — every answer cites the exact source paragraph with a footnote link, so no hallucination outside your material.',
+      'Open the Studio panel → "Audio Overview" → wait ~5 min → you get a 5–15 min podcast-style conversation between two AI hosts summarizing your sources.',
+      'Try "Interactive Mode" in audio to interrupt the hosts with a live question. Plus / AI Ultra adds video overviews, mind maps, and bigger source limits.',
+    ],
+    sampleInput:
+      'Notebook: "Q3 earnings analysis"\nSources: 4 PDFs of quarterly earnings reports (Apple, Microsoft, Nvidia, Alphabet)\n\nPrompt: "Compare revenue growth and AI segment commentary across all four companies. Surface the most surprising year-over-year changes."',
+    sampleOutput:
+      'Citation-grounded answer:\n  "Apple revenue +6% YoY ($94.9B), Services accelerating; AI commentary limited.\n  Microsoft +16% YoY ($65.6B), Azure +29% with explicit AI revenue disclosure [Microsoft p.4].\n  Nvidia +122% YoY ($35.1B) on data-center [Nvidia p.2].\n  Alphabet +15% YoY ($88.2B), Google Cloud +35% on AI demand [Alphabet p.6].\n  Most surprising: Nvidia data-center growth +162% [Nvidia p.3]."\n4 footnotes, each linking to the exact page in the PDF.\n\nAudio Overview auto-generated (8 min): "Two hosts discussing the earnings — one focused on AI infrastructure spend, one on consumer behavior signals. Links to sources shown in the transcript."',
+    benchmarks: [
+      { label: 'Source-grounding fidelity', value: 'Strictly grounded in your sources — no hallucination outside', source: 'Google AI docs' },
+      { label: 'Audio Overview length', value: '~5–15 min per notebook, ~350 years of audio generated since launch', source: 'Google I/O 2026 announcement' },
+      { label: 'Source formats', value: 'PDF, Google Docs, Slides, web URLs, YouTube, audio files, Markdown', source: 'notebooklm.google.com' },
+      { label: 'AI Plus / Ultra extras', value: 'Video Overview (Veo 2), Mind Maps, larger notebooks', source: 'Google One AI Plus' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want to deeply understand a fixed set of sources — research papers, interview transcripts, product docs — and you value citations over creative generation.',
+      skipIf:
+        'You want open-ended web research or "answer this with citations from anywhere" — Perplexity is the better fit. NotebookLM\'s strength is exactly the opposite: it\'ll refuse to answer outside what you uploaded.',
+    },
   },
 
   // ---------------- Automation（补充）----------------
