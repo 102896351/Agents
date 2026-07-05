@@ -593,6 +593,29 @@ export const agents: Agent[] = [
     ],
     models: ['Any LLM via OpenAI-compatible API (Claude, GPT, local models)'],
     alternatives: ['make', 'zapier-agents', 'lindy'],
+    quickStart: [
+      'Install: `pip install crewai crewai-tools`.',
+      'Pick an LLM: `from langchain_openai import ChatOpenAI` (or Anthropic / OpenRouter / Ollama) and load your API key.',
+      'Define agents: each Agent has role, goal, backstory, optional tools, and an LLM.',
+      'Define Tasks with explicit expected_output, then bind them to a Crew with process=sequential or hierarchical.',
+      'Run: `crew.kickoff(inputs={"topic": "..."})`. Verbose=True prints every thought and tool call.',
+    ],
+    sampleInput:
+      'Task: "Draft a 600-word blog post on the current state of multi-agent systems, citing 3 papers from 2025–2026."',
+    sampleOutput:
+      'Crew execution (~3 min, 3 agents):\n  1. Researcher → 5 candidate papers pulled + 1-sentence summaries [3 min]\n  2. Writer → 600-word Markdown draft with citations, intro / 3 sections / conclusion [2 min]\n  3. Editor → fact-check pass, source links pinned to each claim [1 min]\nFinal post saved to ./draft.md. 18 LLM calls, ~9,000 tokens.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '44,700+', source: 'github.com/joaomdmoura/crewAI, April 2026' },
+      { label: 'License', value: 'MIT' },
+      { label: 'Certified developers', value: '~100,000 community', source: 'Tencent Cloud article' },
+      { label: 'Process modes', value: 'Sequential / Hierarchical / Custom' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want the fastest path to a multi-agent system that "just works" — CrewAI\'s role-task-crew abstraction is the easiest mental model on the market.',
+      skipIf:
+        'You need fine-grained control over graph execution, cycles, and conditional retries — LangGraph gives you a true state-machine. AutoGen is also better for open-ended research agents.',
+    },
   },
   {
     slug: 'zapier-agents',
@@ -692,6 +715,29 @@ export const agents: Agent[] = [
     ],
     models: ['Any LLM (Claude, GPT-4o, Gemini, local models)'],
     alternatives: ['crewai', 'autogen', 'autogpt'],
+    quickStart: [
+      'Install: `pip install langgraph langchain-openai`.',
+      'Define state with a TypedDict: { question, documents, route, generation, rewrite_count }.',
+      'Add nodes as plain Python functions: router_node, retriever_node, grader_node, rewriter_node, generator_node.',
+      'Build the graph: `workflow = StateGraph(State)`, add nodes + edges, then `add_conditional_edges` for the router / grader branches.',
+      'Compile: `app = workflow.compile()` and call `app.invoke({...})` to run.',
+    ],
+    sampleInput:
+      'Input: "What\'s our company\'s data retention policy for EU customers?"\nGraph nodes: router → [vector|graph|web|direct] → grader → [generate | rewrite (≤3) | web-fallback] → hallucination-check → END.',
+    sampleOutput:
+      ' 1. router → "vector" (factual / static knowledge)\n 2. vector_node → 4 docs from internal policy repository\n 3. grader → 3/4 docs graded "relevant"\n 4. generator → answers from those 3 docs only\n 5. hallucination_check → "grounded: yes" → END\nFinal answer with inline citations to each supporting document. ~6 LLM calls, no infinite loop.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '12,000+', source: 'github.com/langchain-ai/langgraph' },
+      { label: 'SDKs', value: 'Python and TypeScript' },
+      { label: 'Key advantage', value: 'Cycles + persistent state — full DAG control' },
+      { label: 'Origin', value: 'LangChain team; spun out as production-grade layer in 2025' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You need fine-grained control over cycles, retries, human-in-the-loop, or persistent state — LangGraph is the graph-of-truth for serious agent workflows.',
+      skipIf:
+        'You just want "a team of agents" with minimal mental model — CrewAI is faster. For one-step tasks you can do in a Jupyter cell, you probably don\'t need a graph at all.',
+    },
   },
   {
     slug: 'crewai',
@@ -762,6 +808,29 @@ export const agents: Agent[] = [
     ],
     models: ['Any LLM (Azure OpenAI, OpenAI, Claude, local models)'],
     alternatives: ['crewai', 'langgraph'],
+    quickStart: [
+      'Install: `pip install pyautogen` (or `autogen-agentchat`).',
+      'Set your `config_list = [{"model": "gpt-4o", "api_key": "..."}]`.',
+      'Create agents: `AssistantAgent` for the LLM and `UserProxyAgent` to execute code / human input.',
+      'Spin up a GroupChat if you want 3+ agents collaborating; otherwise `.initiate_chat(assistant, message=...)` for one-to-one.',
+      'Enable Docker in `code_execution_config` if your agents will run code, otherwise use a sandboxed work_dir.',
+    ],
+    sampleInput:
+      'Task: "Write a Python script that downloads the top 10 trending repos from GitHub and saves them to CSV. Test it."',
+    sampleOutput:
+      'Assistant generates the script (60+ lines, uses requests + pandas), explains the logic, then runs it via UserProxyAgent:\n  Verified: 10 repos saved to top_repos.csv. Passes a quick AST lint. AutoGen\'s enable_docker was left off so the script ran inside a sandboxed work_dir.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '38,000+', source: 'github.com/microsoft/autogen' },
+      { label: 'License', value: 'MIT + Creative Commons for code-execution docs' },
+      { label: 'Successor', value: 'AutoGen functionality merged into Microsoft Agent Framework (Oct 2026)', source: 'Microsoft Devblogs' },
+      { label: 'Patterns', value: 'AssistantAgent / UserProxyAgent / GroupChat / Nested chat / Docker-isolated execution' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want Microsoft\'s research-grade multi-agent patterns with deep human-in-the-loop and code-execution safety — especially for academic or open-ended conversational workflows.',
+      skipIf:
+        'You want a quicker on-ramp — CrewAI is the most approachable. For production graph workflows with cycles, LangGraph is more mature. AutoGen is now part of Microsoft Agent Framework going forward.',
+    },
   },
 
   // ---------------- Creative ----------------
@@ -1357,6 +1426,29 @@ export const agents: Agent[] = [
     ],
     models: ['OpenAI', 'Anthropic', 'Google', 'local via Ollama'],
     alternatives: ['langgraph', 'crewai', 'autogen'],
+    quickStart: [
+      'Install: `npm create mastra@latest` then follow the CLI; or `pnpm add @mastra/core @mastra/agents`.',
+      'Set one provider key in `.env`: `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` (or `GOOGLE_GENERATIVE_AI_API_KEY` — Gemini has a generous free tier).',
+      'Run `npm run dev` → opens Mastra Playground in your browser to design agents visually.',
+      'Define an Agent: `new Agent({ name: "assistant", instructions: "...", model: anthropic("claude-3-5-sonnet"), tools: [...] })`.',
+      'Compose Workflows (durable state machines with loops/branching) and Evals (model-graded unit tests on agent output).',
+    ],
+    sampleInput:
+      'Code:\n  import { Agent } from "@mastra/core"\n  import { anthropic } from "@ai-sdk/anthropic"\n\n  const supportAgent = new Agent({\n    name: "support-bot",\n    instructions: "You answer questions about our product. Cite the linked docs page.",\n    model: anthropic("claude-3-5-sonnet-latest"),\n    tools: [],\n  })\n\n  const result = await supportAgent.generate("How do I reset my password?")\n  console.log(result.text)',
+    sampleOutput:
+      'Agent response with citation: "To reset your password, open Settings → Security → Password → Reset. Reference: docs.example.com/security#reset [Source 1]."\nTool calls visible in Playground. Execution time logged via OpenTelemetry. Easily swapped to evals.csv for regression tracking.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '19,000+', source: 'github.com/mastra-ai/mastra' },
+      { label: 'Backed by', value: 'YC W25; founded by the Gatsby team', source: 'Toutiao article' },
+      { label: 'Codebase', value: '99.8% TypeScript' },
+      { label: 'Primitives', value: 'Agents / Tools / Workflows (durable graphs) / RAG / Evals / Integrations (auto-generated type-safe clients)' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a TypeScript / Next.js team and want the batteries-included DX — memory, MCP, RAG, evals, and observability in one typed package.',
+      skipIf:
+        'You prefer Python — LangGraph, CrewAI, or AutoGen are stronger there. For pure graph control over cycles and retries with no extra opinions, LangGraph beats Mastra.',
+    },
   },
   {
     slug: 'openai-agents-sdk',
@@ -1393,6 +1485,30 @@ export const agents: Agent[] = [
     ],
     models: ['OpenAI (primary)', 'other providers via LiteLLM'],
     alternatives: ['langgraph', 'crewai', 'mastra'],
+    quickStart: [
+      'Install: `pip install openai-agents` (Python) or `npm i @openai/agents` (TypeScript, beta).',
+      'Import: `from agents import Agent, Runner` and set `OPENAI_API_KEY`.',
+      'Define a primary agent: `Agent(name="triage", instructions="You triage support tickets")`.',
+      'Run: `result = Runner.run_sync(triage, "the user said: ...")` — synchronous, async helpers also available.',
+      'Add handoffs (other agents the LLM can route to), guardrails (input/output validators), and tracing (free Traces dashboard).',
+    ],
+    sampleInput:
+      'Build a 2-agent "TriageBot":\n\n  from agents import Agent, Runner\n\n  billing = Agent(name="Billing", instructions="Resolve billing questions.")\n  support = Agent(\n    name="Support",\n    instructions="You triage tech-support tickets. Hand off to Billing for invoice issues.",\n    handoffs=[billing],\n  )\n\n  out = Runner.run_sync(support, "I was double-charged on my last invoice")',
+    sampleOutput:
+      'Trace: support → (handoff:reason=invoice) → billing → (tool_call: process_refund) → final.\nFinal message: "I\'m processing your $39 refund now. Reply with the invoice number to confirm." Full trace visible at platform.openai.com/traces.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '18,000+', source: 'github.com/openai/openai-agents-python' },
+      { label: 'License', value: 'MIT' },
+      { label: 'Primitives', value: 'Agents + Handoffs + Guardrails + Sessions + Tracing' },
+      { label: 'Produced by', value: 'OpenAI; successor to the experimental Swarm framework' },
+      { label: 'April 2026 update', value: 'Native sandbox + harness separation (compute ↔ control); supports multi-container parallel execution', source: 'OpenAI / TechCrunch' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You live in OpenAI\'s ecosystem and want the least-surprise path — handoffs, guardrails, and tracing are first-class, and you get a hosted Traces UI for free.',
+      skipIf:
+        'You want framework-agnostic across multiple model vendors — LangGraph or CrewAI don\'t lock you in. For heavier graph control or Python data workloads, LangGraph is the better fit.',
+    },
   },
 
   // ---------------- Research / Data ----------------
