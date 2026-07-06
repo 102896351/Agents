@@ -1997,6 +1997,32 @@ export const agents: Agent[] = [
     ],
     models: ['Runway Gen-4 / Gen-4.5'],
     alternatives: ['sora', 'pika'],
+    quickStart: [
+      'Sign up at https://runwayml.com with Google or email — free credits land in your account immediately.',
+      'Open "Generate → Video" and pick "Gen-4" as the model (Gen-4.5 in paid plans; older Gen-3 for legacy use).',
+      'Choose Text-to-Video or Image-to-Video; upload a starting frame for I2V (image controls motion best).',
+      'Type a prompt of ~30–80 words focused on subject + camera + motion + style — keep it concrete.',
+      'Click "Generate" (5 credits for 5s, 10 credits for 10s) and review the 4 candidates; "Extend" the best one to grow the scene.',
+      'Export at 1080p/4K from the editor; Pro plan removes the watermark and unlocks longer clips.',
+    ],
+    sampleInput:
+      'Prompt: "Tracking shot, 35mm film look. A vintage red bicycle leans against a yellow mailbox in golden-hour sunlight. A woman in a linen dress walks into frame, places a letter in the box, looks back over her shoulder, smiles."\n\nSettings:\n  Model: Gen-4\n  Mode: Image-to-Video (reference frame uploaded: 1920×1080)\n  Motion: Medium (5/10)\n  Camera: Static frame, subject enters from left\n\nDuration: 10 seconds',
+    sampleOutput:
+      '4 candidate 10s clips generated in ~62s.\nPicked #2 — best entrance timing (woman enters at 1.4s, clean shadow continuity).\nExtended → 16s total: she places the letter and smiles; +9 credits.\nExported 1080p ProRes 422 LT (4 credits), then a 1:1 crop for Instagram (-2 credits).\nTotal credits: 17.',
+    benchmarks: [
+      { label: 'Max clip length', value: '10s native (extendable to 30s+)', source: 'Runway docs' },
+      { label: 'Generation time (10s Gen-4)', value: '~60s for 4 candidates', source: 'Runway homepage' },
+      { label: 'Resolution out', value: 'Up to 4K (paid plans)', source: 'Runway pricing 2026' },
+      { label: 'Standard plan', value: '$15/mo, 625 credits', source: 'Runway pricing 2026' },
+      { label: 'Used by', value: '30M+ creators worldwide', source: 'Runway homepage, May 2026' },
+      { label: 'Hollywood adoption', value: 'Used in Oscar-winning short "The Frost" (2025)', source: 'Variety, Feb 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a creator or studio that needs cinematic control — motion intensity, camera, style refs — and a polished in-browser editor for cutting, not just rendering.',
+      skipIf:
+        'You need photorealistic single-take 60s clips and have ChatGPT Pro — go Sora first, fall back to Runway when access is gated. Or if you only need 5–10s social clips with cheap lip sync, Pika is faster.',
+    },
   },
   {
     slug: 'sora',
@@ -2030,6 +2056,31 @@ export const agents: Agent[] = [
     ],
     models: ['Sora (OpenAI)'],
     alternatives: ['runway', 'pika'],
+    quickStart: [
+      'Sora ships inside ChatGPT. Subscribe to Plus ($20/mo) for limited access, Pro ($200/mo) for priority + 1080p + 5× more generations.',
+      'In ChatGPT, open the Sora composer (or go to sora.com and log in with your ChatGPT account).',
+      'Pick "Video" → "Text-to-Video", or "Remix" to riff off a published public clip.',
+      'Type a detailed 30–80 word prompt: subject, motion, camera move, lens/length, lighting, style. Sora rewards cinematic direction.',
+      'Choose duration: 5s / 10s / 15s / 20s; Pro tier unlocks up to 60s on select scenes.',
+      'Generate, review 2–3 candidates, "Extend" the best, then export up to 1080p (Pro).',
+    ],
+    sampleInput:
+      'Prompt: "Extreme close-up on weathered hands turning the dial of a 1970s portable radio. Dust motes drift through a shaft of afternoon sunlight. Color graded to warm Kodak 1976. Slow push-in. Audio: faint static between stations."\n\nSettings:\n  Model: Sora 2\n  Duration: 15s\n  Aspect ratio: 16:9\n  Quality: HD (Pro)',
+    sampleOutput:
+      'Rendered in ~3 min (Pro priority queue).\nPicked take #2 — tighter moodier cut; the dial click lands cleanly on the 12s mark.\nExtended to 22s total: the radio pulls in a faint song, +3 generations.\nExported 1080p ProRes (Pro): 4 GB file.\nGotcha: long clips can drift from the original color grade on Extend — re-prompt if it slips.',
+    benchmarks: [
+      { label: 'Max single clip', value: '60s (Sora 2, Pro tier)', source: 'OpenAI Sora 2 launch, Dec 2025' },
+      { label: 'Max resolution', value: '1080p (Pro); 4K rolling', source: 'OpenAI 2026 roadmap' },
+      { label: 'Plus plan', value: '$20/mo, ~50 generations/mo', source: 'ChatGPT Plus pricing' },
+      { label: 'Pro plan', value: '$200/mo, ~500 generations/mo, priority', source: 'ChatGPT Pro pricing' },
+      { label: 'Generations (first 6 mo)', value: '12M+ public renders', source: 'The Information, May 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want class-leading photorealism and the longest single coherent clips (~60s) on the market, and you\'re fine paying $200/mo for the Pro tier to unlock it.',
+      skipIf:
+        'You need fine-grained control over per-shot camera/motion — Runway is more surgical. Or if access flakiness bugs you, pair Sora with Runway as a fallback for daily deliverables.',
+    },
   },
   {
     slug: 'pika',
@@ -2062,6 +2113,32 @@ export const agents: Agent[] = [
     ],
     models: ['Pika (proprietary)'],
     alternatives: ['runway', 'sora'],
+    quickStart: [
+      'Sign up at https://pika.art with Google or Discord — free plan gets 30 credits/month (enough for ~3 short videos).',
+      'Click "Generate" in the dashboard; "Image + Video" mode is where Pika\'s strengths (lip sync, Pikaffects) live.',
+      'Upload a starting image (or use one of Pika\'s preset starting frames).',
+      'Type a short motion prompt, or pick a preset ("Pikaffects": Melt, Squish, Explode, Levitate, Inflate…).',
+      'Tweak "Strength of motion" and "Motion strength" sliders between 1–5; preview takes ~15–30s.',
+      'Download up to 1080p — paid plans remove the watermark and unlock 1080p/Pro clean exports.',
+    ],
+    sampleInput:
+      'Starting image: a cat in a spacesuit, cinematic studio lighting.\nPreset: "Lip Sync"\nAudio: a 4-second WAV saying "I have a dream, and it\'s about laser pointers."\n\nSettings:\n  Strength: 3 / 5\n  Lip-sync: enabled\n  Aspect ratio: 16:9\n  Duration: 4s',
+    sampleOutput:
+      'Generated 1 candidate in 18s on Pika 2.2.\nMouth movements track the audio closely; eye blink rhythm stays natural.\nAdded a "Explode" Pikaffect after generation — space fur particles drift off, +6 credits.\nExport: 1080p MP4 (10 credits; free watermark, Pro clean).\nTotal credits: ~22.',
+    benchmarks: [
+      { label: 'Model', value: 'Pika 2.2 (proprietary)', source: 'pika.art' },
+      { label: 'Max clip length', value: '30s (paid); 4–10s typical', source: 'Pika pricing 2026' },
+      { label: 'Render time (4s clip)', value: '15–30s', source: 'Pika user benchmarks' },
+      { label: 'Free credits', value: '30/mo ≈ 3 videos', source: 'Pika pricing 2026' },
+      { label: 'Pro plan', value: '$10/mo (annual) / $14 month-to-month', source: 'Pika pricing 2026' },
+      { label: 'User base', value: '8M+ creators (Discord + web)', source: 'Pika company blog, 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want the lowest-friction path from a single image to a shareable 5–10s video clip, especially for social, with class-leading lip sync as a one-click preset.',
+      skipIf:
+        'You need clips longer than 30s, full cinematic control, or photorealistic body movement — Runway or Sora serve those better. For deepfake-grade lip sync at full video length, dedicated tools like Hedra win on quality.',
+    },
   },
 
   // ---------------- Research: 安全研究 ----------------
@@ -2321,6 +2398,31 @@ export const agents: Agent[] = [
     ],
     models: ['Midjourney (proprietary)'],
     alternatives: ['flux', 'lovart'],
+    quickStart: [
+      'Subscribe at midjourney.com — no free tier since 2024; Basic $10/mo, Pro $60/mo for Stealth + 30h fast hours.',
+      'In the web app (Discord legacy still works), open the Create panel — V7 is default since May 2026; V6 still selectable.',
+      'Type a prompt; use /describe on a reference image to extract style notes you can fold back in.',
+      'Toggle Style Reference (--sref URL) and/or Character Reference (--cref URL) for visual consistency across generations.',
+      'Click Generate (4-image grid), upscale the best (U1–U4), vary (V1–V4), or push into the Editor for outpaint / inpaint.',
+      'Downloads are PNG; Pro tier covers commercial use under Midjourney\'s terms.',
+    ],
+    sampleInput:
+      'Prompt: "Editorial fashion shot, model wearing a translucent iridescent trench coat, standing in a Tokyo alley at 3am after rain. Neon reflections, film grain, 35mm Fuji 400H color palette. Lo-fi magazine vibe, asymmetric framing."\n\nFlags:\n  --ar 2:3\n  --style raw\n  --sref https://cdn.midjourney.com/.../iridescent-fashion.jpg\n  --v 7',
+    sampleOutput:
+      '4 candidates in ~28s.\nPicked image 2 — composition feels more deliberate, neon bounce just right on the coat hem.\nU2 → Upscale (Subtle) → 2048×3072 PNG.\nEdited in Midjourney Editor: brushed the alley puddle reflection, added a small smoke wisp.\nFinal PNG: 2048×3072, 5.1 MB.\nV7 tip: full-body human posture is much improved over V6; default to V7 for people shots.',
+    benchmarks: [
+      { label: 'Latest model', value: 'V7 (May 2026); V6 retained', source: 'Midjourney release notes' },
+      { label: 'Max output res', value: 'Up to ~2048×3072 PNG (V7)', source: 'Midjourney help 2026' },
+      { label: 'Basic / Standard / Pro', value: '$10 / $30 / $60 per month', source: 'Midjourney pricing' },
+      { label: 'Community size', value: '20M+ users', source: 'Midjourney community post, 2026' },
+      { label: 'Commercial use', value: 'Paid plans; no free tier since 2024', source: 'Midjourney ToS' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want the highest-aesthetic image generation on the market and prioritize mood and style over photorealism or precise anatomy. Best pick for editorial, art, and marketing visuals.',
+      skipIf:
+        'You need precise control, photorealism, anatomy accuracy, or text-in-image rendering — FLUX leads on those axes, and Midjourney has no free tier. For full-brand consistency in a managed product, Ideogram or Adobe Firefly are different choices.',
+    },
   },
   {
     slug: 'flux',
@@ -2357,6 +2459,31 @@ export const agents: Agent[] = [
     ],
     models: ['FLUX.1 Schnell', 'FLUX.1 Dev', 'FLUX.1 Pro'],
     alternatives: ['midjourney', 'lovart'],
+    quickStart: [
+      'Pick a tier: [schnell] (Apache-2.0, fastest, fully open) for self-hosting; [dev] (non-commercial) for higher quality; [pro] via API for production.',
+      'Fastest path: install ComfyUI or Automatic1111 → drop the FLUX.1 Schnell checkpoint (.safetensors) into models/Stable-diffusion/.',
+      'For API: sign up at api.bfl.ml, grab a key, and use the playground at blackforestlabs.ai.',
+      'Default model: [dev] for quality, [schnell] for speed. Start at 20–30 inference steps, guidance ~3.5.',
+      'Prompts work clean: subject + setting + lens + lighting. FLUX is known for adherence — over-styling with weights is rarely needed.',
+      'Export PNG/JPEG from the UI, or via the BFL API at 1MP / 2MP presets (Pro up to 4MP).',
+    ],
+    sampleInput:
+      'Endpoint: api.bfl.ml/v1/flux-pro-1.1\nBody: {\n  "prompt": "Photorealistic product photo of a glass perfume bottle on a marble pedestal, soft top-down lighting, dew droplets on glass, editorial perfume-ad aesthetic, 85mm lens look",\n  "width": 1024,\n  "height": 1024,\n  "steps": 30,\n  "guidance": 3.5,\n  "seed": 4815162342\n}',
+    sampleOutput:
+      'Generated in ~6.5s on FLUX Pro 1.1 (BFL API).\nSingle image, 1024×1024 PNG.\nAnatomy, lighting, dew physics all rendered correctly on first try — typical FLUX.\nCost: $0.05 (FLUX Pro credit rate).\nNote: for real product series, pair with ControlNet / IP-Adapter for multi-shot consistency; base FLUX API gives one image per call.',
+    benchmarks: [
+      { label: 'Variants', value: '[schnell] Apache-2.0; [dev] non-commercial; [pro] API', source: 'BFL docs' },
+      { label: 'Self-host minimum GPU', value: '24 GB VRAM (RTX 4090) for [schnell]/[dev]', source: 'BFL GitHub README' },
+      { label: 'Pro API render time', value: '~5–10s (1024×1024)', source: 'BFL playtest, 2026' },
+      { label: 'Open-source license', value: 'Apache-2.0 (Schnell); Dev gated weights', source: 'BFL license terms' },
+      { label: 'Pricing (Pro API)', value: '$0.05 / image', source: 'BFL pricing 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You need photorealism, anatomy, and prompt adherence, with either (a) full self-host on your own GPU or (b) a cheap API at scale (~$0.05/image). Best open-weights image model of 2026.',
+      skipIf:
+        'You want pure aesthetic/artistic flair — Midjourney still wins on style. Or if you need a managed cloud product with brand-consistency features, Ideogram or Adobe Firefly target those.',
+    },
   },
 
   // ---------------- Automation: 营销 ----------------
