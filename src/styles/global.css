@@ -856,8 +856,8 @@ a:hover { text-decoration: underline; }
   font-size: 13px;
   line-height: 1.5;
   color: #d6deeb;
-  white-space: pre;
-  word-break: normal;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .bench-table {
