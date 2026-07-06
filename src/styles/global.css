@@ -327,8 +327,6 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 22px;
-  position: sticky;
-  top: 88px;
 }
 .specs h3 { margin: 0 0 16px; font-size: 15px; }
 .spec-row {
