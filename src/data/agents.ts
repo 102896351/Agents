@@ -2406,6 +2406,32 @@ export const agents: Agent[] = [
     ],
     models: ['GPT-4', 'Claude', 'local models'],
     alternatives: ['chatgpt', 'deepseek'],
+    quickStart: [
+      'Prereq: you have authorization to test the target (written scope / Rules of Engagement). Unauthorized testing is illegal.',
+      'pip install pentestgpt (or git clone https://github.com/GreyDGL/PentestGPT).',
+      'Set OPENAI_API_KEY (or another provider) in your env; PentestGPT defaults to GPT-4 class.',
+      'Run: pentestgpt --reasoning-model gpt-4o --parsing-model gpt-4o-mini.',
+      'Follow the on-screen flow: 1) enter target + scope, 2) enter starting test (recon / enum / vuln), 3) accept the next-step suggestion or modify.',
+      'Always validate PentestGPT\'s commands in a sandbox / lab before running against production targets.',
+    ],
+    sampleInput:
+      'Target: 10.10.14.0/24 (internal HackTheBox-style lab)\nScope (authorized): all hosts on that subnet, all TCP/UDP ports\nEngagement start: 09:00 Mon, 60-day engagement\n\n# PentestGPT CLI\n> pentestgpt --target 10.10.14.0/24 --scope "tcp_1-65535, udp_1-1024"\n> Reasoning model: gpt-4o\n> Parsing model:  gpt-4o-mini\n> Recommended first step (PentestGPT suggests):\n  "Run an Nmap full TCP scan with safe scripts and Service version detection."\n  # nmap -sV -sC -p- --script=safe -T4 -oA recon/tcp_full 10.10.14.0/24\n  Accept (y/n)? y',
+    sampleOutput:
+      'Recon phase completed in ~28 minutes (automated):\n  7 live hosts; 12 open services detected.\nPentestGPT suggested next steps:\n  1. Inspect open services on 10.10.14.18 (Apache 2.4.49 — known CVE-2021-41773 candidate).\n  2. Check SMB null-session on 10.10.14.22 (Windows 10 22H2).\n  3. Run nuclei templates against the discovered services.\n\nTime savings: PentestGPT sequence-coverage reduced manual recon-script writing by ~70%.\nNotes (manual review):\n  - 1 false positive on SSH banner (showed OpenSSH 8.2 → real is 7.9).\n  - All AI-suggested commands verified safe in lab sandbox.\nFinal report (PentestGPT-assisted, markdown): 14 pages, fully cited, hand-reviewed.',
+    benchmarks: [
+      { label: 'License', value: 'MIT (open source)', source: 'GitHub repository' },
+      { label: 'GitHub stars', value: '8k', source: 'GitHub 2026' },
+      { label: 'Reasoning backends', value: 'GPT-4o, Claude, Gemini, local Ollama', source: 'PentestGPT docs' },
+      { label: 'Suggested commands origin', value: 'Trained on HackTricks, OWASP WSTG, PayloadsAllTheThings', source: 'PentestGPT paper 2023' },
+      { label: 'Operational guard', value: 'Operator review required before execution; no auto-execute', source: 'PentestGPT docs' },
+      { label: 'Auditability', value: 'Full session log + commands retained for report writing', source: 'PentestGPT docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re an authorized pentester / red teamer who knows the methodology and wants AI-suggested next steps and report scaffolding — it speeds you up without taking control away.',
+      skipIf:
+        'You\'re learning pentesting from zero — start with TryHackMe / HTB, not an AI agent. And don\'t run PentestGPT against systems you don\'t have explicit written authorization to test.',
+    },
   },
 
   // ============= 新增 2026-06 第五批（数据/编码补充/图像/营销）=============
@@ -2771,6 +2797,32 @@ export const agents: Agent[] = [
     ],
     models: ['GPT', 'Claude', 'Anthropic (multi-provider)'],
     alternatives: ['hubspot-breeze', 'copy-ai'],
+    quickStart: [
+      'Sign up at jasper.ai with SSO/email — 7-day free trial, no credit card required.',
+      'Creator $39/mo: 1 user seat, 1 Brand Voice, 50k words/mo; Pro $69/user/mo: 3 Brand Voices + workflows.',
+      'Business custom: unlimited seats, advanced workflows, API + custom integrations.',
+      'Click "Brand Voice" → upload 30+ samples of your best content (blog posts, sales emails); Jasper trains a style.',
+      'Open Campaigns → choose a template (Blog Post, Ad Copy, Email Sequence) → describe the brief.',
+      'Iterate via "Improve" buttons (more witty, shorter, formal) — Jasper keeps Brand Voice constraints across all outputs.',
+    ],
+    sampleInput:
+      'Brief: "SaaS startup newsletter for product managers. Topic: launching a new analytics pipeline feature. Tone: precise, lightly playful, no buzzwords. Audience: B2B SaaS PMs at Series B companies. Goal: drive feature click-throughs from the newsletter to a landing page."\n\nBrand Voice reference:\n  Trained on: 6 blog posts from "[company]" (Jan–May 2026), 4 product launch emails, 2 case studies\n  Tone tags: witty, precise, opinionated, no buzzwords\n\nConstraints:\n  - ≤ 600 words\n  - One primary CTA\n  - Include the 1 new feature name and the 1 number that proves its impact',
+    sampleOutput:
+      'Newsletter draft (~520 words) in 28 seconds, Brand-Voice-true:\n  - Subject: "less logs, more answers"\n  - Hook: anecdote about query latency (matches prior newsletter tone)\n  - Body: 3 sections — what shipped, why it matters, who built it\n  - CTA: "open the dashboard" → points to the analytics page\nBrand-Voice check passed:\n  - "precise, lightly playful" — yes\n  - "no buzzwords" — flagged 2 ("synergy", "leverage") → auto-rewrote\nWorker review: 1 edit needed for the closing anecdote phrasing. Took ~2 min total.',
+    benchmarks: [
+      { label: 'Founded', value: '2021, Austin TX; raised $131M total', source: 'Jasper company page' },
+      { label: 'Plans', value: 'Creator $39/mo; Pro $69/user/mo; Business custom', source: 'Jasper pricing 2026' },
+      { label: 'Brand Voice training', value: '~1 minute per voice on 30+ samples', source: 'Jasper product' },
+      { label: 'Templates', value: '90+ (Blog, Ads, Email, SEO, Video script)', source: 'Jasper templates gallery' },
+      { label: 'Integrations', value: 'Webflow, HubSpot, Surfer SEO, Zapier, Make, Google Docs', source: 'Jasper integrations' },
+      { label: 'ARR (2025)', value: '$130M+ (estimated from public disclosures)', source: 'Jasper funding reporting' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a marketing team with a defined brand voice, producing content at scale across channels, and you need approval workflows + multi-seat collaboration.',
+      skipIf:
+        'You\'re a solo founder who just wants occasional copy help — ChatGPT / Claude is enough. If you\'re already paying for HubSpot, Breeze is included and probably sufficient.',
+    },
   },
   {
     slug: 'hubspot-breeze',
@@ -2803,6 +2855,31 @@ export const agents: Agent[] = [
     ],
     models: ['OpenAI', 'Anthropic (multi-provider)'],
     alternatives: ['jasper', 'agentforce', 'sierra'],
+    quickStart: [
+      'Breeze is included with HubSpot subscriptions. Free CRM users get Breeze capabilities with usage-credit limits.',
+      'Pro+ plans (Marketing Hub Pro / Sales Hub Pro / Service Hub Pro) raise the credit cap; Enterprise plans unlock Breeze Agents more fully.',
+      'In the HubSpot CRM sidebar, click the Breeze icon → ask questions about your contacts, deals, content.',
+      '"Content Agent": drafts blog posts, emails, landing pages using your HubSpot knowledge base + brand voice.',
+      '"Prospecting Agent" + "Sales Agent": research and personalize outreach for Sales Hub Pro users.',
+      '"Service Agent": lives in your Service Hub conversations, deflects tier-1 tickets with knowledge-base answers.',
+    ],
+    sampleInput:
+      'Workspace: Acme SaaS — Marketing Hub Pro ($890/mo) + Sales Hub Pro ($150/user/mo)\n\nContent Agent brief:\n  Topic: "How mid-market SaaS companies evaluate AI assistants in 2026 (vs. 2024)"\n  Output: Blog post, 1,400–1,800 words, target keyword "AI assistants for B2B SaaS"\n  Reference: 12 prior blog posts in our HubSpot blog\n  Brand voice: "data-led, opinionated, no fluff; we cite our sources inline"\n\nSales Agent prompt:\n  "Find me 50 mid-market SaaS VPs of Sales with hiring pages mentioning AI tools in the last 30 days."',
+    sampleOutput:
+      'Blog draft: 1,612 words generated in ~4 minutes. Outline + first draft saved as draft post in HubSpot.\n  - Inline citations: 9 sources (industry reports, comparison studies) auto-linked\n  - SEO score (HubSpot native): 82/100 — keyword density optimal, meta description drafted\n  - Internal links: 4 added automatically (to relevant HubSpot knowledge base pages)\n  - Edit by writer: tightened the intro and replaced 1 example with a 2026 stat (15 min edit)\n\nProspecting list: 47 contacts (3 removed at email verification).\n  - Each contact: title, company, signal page, suggested opener\n  - 1-click send: pushed as sequences to the AE queue in CRM\n  - Avg reply rate: 12.4% (above HubSpot\'s agency benchmark of 8%)',
+    benchmarks: [
+      { label: 'Plans', value: 'Included with HubSpot subscriptions; higher tiers raise usage caps', source: 'HubSpot product' },
+      { label: 'Workspace credit model', value: 'Monthly credits; agents cost 1+ credits per use', source: 'HubSpot pricing 2026' },
+      { label: 'Customer base', value: '~290k customers; ~6.5M CRM users globally', source: 'HubSpot Q1 2026 earnings' },
+      { label: 'Agents shipped', value: 'Copilot, Content, Sales, Service, Knowledge Base Agent', source: 'HubSpot Breeze launch, INBOUND 2024' },
+      { label: 'Compliance', value: 'SOC 2 Type II; GDPR; HIPAA via BAA on Enterprise', source: 'HubSpot trust portal' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You already live in HubSpot — Contacts, Deals, Marketing Hub, Service Hub. Breeze is the natural AI layer over your real data, no extra integration.',
+      skipIf:
+        'You\'re not on HubSpot — getting HubSpot just to use Breeze is overkill; use Jasper, Copy.ai, or chat tools. For pure voice / phone agents, Breeze doesn\'t cover voice — pair with Vapi or Sierra.',
+    },
   },
 
   // ============= 新增 2026-06 第六批（办公/翻译/音乐/语音/视频）=============
@@ -2839,6 +2916,32 @@ export const agents: Agent[] = [
     ],
     models: ['OpenAI', 'Anthropic (multi-provider)'],
     alternatives: ['chatgpt', 'claude', 'jasper'],
+    quickStart: [
+      'Notion AI is included in all Notion plans for free during preview (limits apply). Notion AI add-on $10/user/mo unlocks full usage.',
+      'Click "AI" button on any text block → choose "Ask AI to write / summarize / translate / action items."',
+      'For documents: highlight text → ask AI to extract action items, generate TL;DR, simplify, or change tone.',
+      'Custom Agents (GA 2026): click "Agents" in the sidebar → pick or build → assign to a page → the agent reads Notion + connected apps (Slack, Google Drive, etc.).',
+      'Q&A: type "/" → "AI" → "Ask Notion" → ask in natural language; Notion searches all accessible pages.',
+      'Database AI: select a database → click "AI" → auto-fill properties (status summaries, tags, next-action suggestions).',
+    ],
+    sampleInput:
+      'Notion workspace context:\n  - "Q2 Planning" database (32 rows of project briefs)\n  - Connected apps: Slack (3 channels), Google Drive (Q2 OKRs doc), GitHub (acme/website repo)\n\nCustom Agent: "PM Q&A"\n  Trigger: any new comment "@PM-QA" on a project row\n  Action: pull the row brief, search Slack for mentions, summarize relevant Q2 OKRs, respond in Notion\n  Tone: concise, technical\n\nQuestion (typed in Notion AI search):\n  "What are the three biggest risks to the Mobile launch right now?"',
+    sampleOutput:
+      '"PM Q&A" agent response (auto-posted in comment):\n"Three biggest risks, ranked by mention frequency in Slack #mobile-launch and OKR doc (May 15–Jun 15):\n  1. TestFlight review delays (12 Slack mentions) — OKR §4.2 reference\n  2. App Tracking Transparency consent friction (9 mentions; 2 design review threads attached)\n  3. Push-notification budget overrun (6 mentions, OKR §5.1 target)."\n\nQ&A search response (~3 sec, 4 sources linked):\n  Aggregated answer from 4 pages (1 OKR doc, 2 project briefs, 1 Slack thread) with inline citations.',
+    benchmarks: [
+      { label: 'Plans', value: 'Included (preview) / $10/user/mo add-on', source: 'Notion pricing 2026' },
+      { label: 'Knowledge base scale', value: 'Custom Agent searches across all pages you have access to', source: 'Notion product' },
+      { label: 'Connected apps', value: 'Slack, Google Drive, GitHub, Jira, Asana, Linear, +more', source: 'Notion integrations' },
+      { label: 'AI queries/day (free)', value: '5 per workspace member', source: 'Notion help center' },
+      { label: 'Custom Agents', value: 'GA since March 2026; no-code builder', source: 'Notion product' },
+      { label: 'Notion users', value: '~5M paying seats, 100M+ users (gating)', source: 'Notion company blog 2025' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a team whose knowledge base already lives in Notion — wikis, project trackers, meeting notes — and you want an AI that can search it all and run automations across connected apps.',
+      skipIf:
+        'You need enterprise document governance outside Notion (Microsoft 365 Copilot lives in Teams/SharePoint). For pure creative writing/grammar, Grammarly is more direct.',
+    },
   },
   {
     slug: 'grammarly',
@@ -2871,6 +2974,32 @@ export const agents: Agent[] = [
     ],
     models: ['Proprietary (multi-provider)'],
     alternatives: ['notion-ai', 'deepseek', 'jasper'],
+    quickStart: [
+      'Install the Grammarly extension (Chrome, Edge, Safari, Firefox) or the desktop app — sign in with Google or email.',
+      'Free tier: grammar, spelling, tone; basic generative rewrites.',
+      'Premium $12/mo (annual) / $14.99 month-to-month: full-sentence rewrites, tone adjustments, plagiarism detection, advanced AI generation.',
+      'Business $15/user/mo (annual): brand tone, style guide, admin analytics, team usage reporting.',
+      'GrammarlyGO: type in any textbox → click the Grammarly icon → prompt "make this clearer" or "summarize this email thread" → output appears inline.',
+      '2026 productivity agents: link Gmail / Outlook / Slack → set rules ("rewrite all customer emails into friendly tone") → agent fires automatically.',
+    ],
+    sampleInput:
+      'Email draft (in Gmail):\n\n  "Per my previouse email, I am writing to follow up on the status of our Q3 engagment. As discussed, please find the relevent documentation attatched. I would appreciate if you could revert back at your earliest convinience."\n\nGrammarly suggestions:\n  - spelling: "previouse" → "previous"; "engagment" → "engagement"; "relevent" → "relevant"\n  - attatched → attached\n  - tone: Formal — a bit stiff\nPrompt: "Make this clearer and friendlier, keep it under 80 words"',
+    sampleOutput:
+      '"Following up on my previous email — could you share where we are with the Q3 engagement? I\'ve attached the relevant docs (and fixed a couple of typos, thanks auto-correct). Happy to jump on a quick call if it\'s easier. — Sam"\n\nGrammarly checks completed in ~2 seconds:\n  - Spelling: 5 fixed (already had them queued from realtime)\n  - Tone shift: Formal → Friendly (suggestion applied)\n  - Sentence clarity: removed "Per my previous email" opener (per Grammarly\'s corporate-tone guidance)\n  - Plagiarism scan: clean (Premium feature)\nTime saved: ~6 minutes per status email × 12 emails/week ≈ 70 min/week.',
+    benchmarks: [
+      { label: 'Plans', value: 'Free; Premium $12/mo; Business $15/user/mo (annual)', source: 'Grammarly pricing 2026' },
+      { label: 'Platforms', value: 'Browser extension (4), desktop app (Mac/Win), iOS/Android keyboards, MS Office add-in', source: 'Grammarly products' },
+      { label: 'Active users', value: '40M+ DAU on Grammarly Editor; 30M+ on browser extension', source: 'Grammarly company' },
+      { label: 'Languages supported', value: 'English (premium); Spanish, French, German, Portuguese, Italian (basic AI)', source: 'Grammarly docs' },
+      { label: 'Tone detection', value: '8 tones (formal, friendly, confident, etc.)', source: 'Grammarly product' },
+      { label: 'Brand tone', value: 'Business plan: upload a brand voice guide', source: 'Grammarly Business' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You write a lot in tools where Grammarly\'s extension naturally lives (Gmail, Docs, Slack, Notion) and you want both grammar and tone/coherence in one place.',
+      skipIf:
+        'You only need generative writing or ChatGPT-style Q&A — that\'s not Grammarly\'s core. For technical / programming writing, use GitHub Copilot Chat in your IDE.',
+    },
   },
 
   // ---------------- Research: 翻译 ----------------
