@@ -1478,6 +1478,31 @@ export const agents: Agent[] = [
     ],
     models: ['Einstein / OpenAI / Anthropic (via Salesforce)'],
     alternatives: ['lindy', 'n8n', 'zapier-agents'],
+    quickStart: [
+      'Sign in to Salesforce → App Launcher → "Agentforce Builder" (added to your org with Einstein AI enabled).',
+      'Einstein AI + 1 Agentforce user license = roughly $2 per conversation billed at runtime.',
+      'Open the "Agent Builder" canvas; pick a template (Sales Coach, Service Agent, SDR, Personal Shopper) or start blank.',
+      'Drop in "Topics" (what the agent handles) → Actions (Flows + Apex invocable methods + HTTP calls).',
+      'Connect Data Cloud / Knowledge articles so the agent pulls the right context and grounds its responses.',
+      'Test in the "Agentforce Testing Center" with synthetic conversations, then deploy to a Service Cloud channel (chat, SMS, voice).',
+    ],
+    sampleInput:
+      'Topic: "Order Status" (Service)\nDefinition:\n  Trigger phrases: "where\'s my order", "tracking number", "check delivery"\n  Instructions:\n    - Always ask for order number (format: ORD-XXXX).\n    - Pull order from Commerce Cloud via getOrderStatusById action.\n    - If ETA is within 2 business days, do NOT mention delays.\n    - For damaged-on-arrival, open a "Damaged Shipment" case via Flow.\n\nAction: getOrderStatusById\n  Input: { orderId: string }\n  Output: { eta: date, courier: string, status: enum }\n\nChannel: Service Cloud Web Chat (production)\nEscalation rule: if customer sends "supervisor" or "manager" → route to human queue "Tier-2 NA"',
+    sampleOutput:
+      'Day-1 rollout (Service Cloud, NA queue):\n  Conversations routed: 2,310\n  Resolved without human: 1,820 (78.8%)\n  Avg handle time: 1m 42s (was 6m 12s with full human)\n  CSAT: 4.51 / 5\n  Escalations to Tier-2: 290 (12.5%)\n  Per-conversation cost: $1.95 average\n  Hidden catch: 8% of conversations triggered Flow regressions from a Salesforce Spring \'26 release — re-ground your Topics when the next release ships.',
+    benchmarks: [
+      { label: 'Launched', value: 'Dreamforce 2024; GA since Feb 2025', source: 'Salesforce' },
+      { label: 'Per-conversation pricing', value: 'From $2.00 / conversation', source: 'Salesforce pricing 2026' },
+      { label: 'Slack-native', value: 'Build agents inside Slack channels since 2025', source: 'Salesforce+Slack' },
+      { label: 'Atlas Reasoning Engine', value: 'New reasoning layer shipped Feb 2026', source: 'Salesforce Dreamforce 2025' },
+      { label: 'Einstein Trust Layer', value: 'Zero data retention by default; Data Cloud grounding', source: 'Salesforce security brief' },
+    ],
+    decisionAid: {
+      pickIf:
+        'Your revenue, service, and contact-center workflows already live in Salesforce. Agentforce eliminates integration cost and inherits your existing security model.',
+      skipIf:
+        'You want a CX platform built for non-Salesforce stacks (Sierra is stack-agnostic), or you want pricing per resolved ticket with analytics out of the box (Decagon). For pure voice automation at scale, Vapi or Retell.',
+    },
   },
   {
     slug: 'lindy',
@@ -1509,6 +1534,31 @@ export const agents: Agent[] = [
     ],
     models: ['Claude / GPT-class via Lindy'],
     alternatives: ['zapier-agents', 'n8n', 'make'],
+    quickStart: [
+      'Sign up at lindy.ai with Google or email — free tier gives 400 task credits/month (~200 AI runs).',
+      'Open the Lindy Builder; pick a starting template (Email Triage, Meeting Scheduler, Lead Enricher, Slack Summarizer).',
+      'Customize in plain English: e.g. "When an email arrives with the subject Invoice, extract the dollar amount and post it to #finance Slack."',
+      'Add Skills (Gmail, Slack, Calendar, Webhook, HubSpot) — each Skill is one click; you can chain 10+ per Lindy.',
+      'For more control: use the "Code" step to write 1-line JavaScript — Lindy runs it inline, no server setup.',
+      'Pro $49/mo adds credit packs; Enterprise for SSO / SOC 2 / HIPAA / multi-seat admin.',
+    ],
+    sampleInput:
+      'Lindy name: "Inbound Lead Sorter"\nTriggers: "When a new row is added to Airtable \'Inbound\'"\nSteps:\n  1. Look up company name (clearbit-enrich)\n  2. Score fit (rules: employees > 50 → 3, < 50 → 1)\n  3. If score >= 2: draft personalized reply using the contact\'s website tagline (claude-step)\n  4. Slack-DM the AE on call with the lead details + draft reply\n  5. Update Airtable status = "queued"\n  6. Schedule a follow-up reminder 48h later if no AE response\n\nTools / Skills used: Airtable, Clearbit, Slack, Gmail (draft only), Calendar',
+    sampleOutput:
+      '9 inbound leads/day processed avg.\nOf those:\n  - 6 auto-drafted replies (score ≥ 2)\n  - 3 routed to manual queue (score = 1, ~33% of volume)\n  - 7 / 6 replied to by AE within 4 hours\n  - 2 closed-won from auto-drafted replies in first 30 days\nCredits used: ~85 / day (well below free tier 400/mo).\nLindy credits: 1 enrichment ≈ 1 credit, 1 claude-step ≈ 2 credits, 1 Slack DM ≈ 1 credit.',
+    benchmarks: [
+      { label: 'Free tier', value: '400 task credits/month', source: 'Lindy pricing 2026' },
+      { label: 'Pro plan', value: '$49/month + credit packs', source: 'Lindy pricing 2026' },
+      { label: 'Integrations', value: 'Gmail, Calendar, Slack, HubSpot, Salesforce, Airtable, Notion, Webhook, HTTP — 60+', source: 'Lindy docs' },
+      { label: 'No-code builder', value: 'Plain English + Code step (JS) for advanced', source: 'Lindy product page' },
+      { label: 'Funding (May 2026)', value: '$35M Series B led by Benchmark; total $52M', source: 'TechCrunch May 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a solo founder, ops person, or small team without engineering capacity and need a plain-English agent builder that already plugs into Gmail / Calendar / Slack.',
+      skipIf:
+        'You need an enterprise CRM-native agent (Agentforce for Salesforce), or you want a deeply programmable no-code (n8n / Make), or you need per-resolved-ticket pricing with full CX analytics (Decagon).',
+    },
   },
 
   // ---------------- Framework（补充）----------------
@@ -1909,6 +1959,31 @@ export const agents: Agent[] = [
     ],
     models: ['Multiple frontier models (model-agnostic)'],
     alternatives: ['agentforce', 'lindy', 'decagon'],
+    quickStart: [
+      'Demo + scoping call only (no self-serve). Sierra sends an SA to map your highest-value agent use cases (support, brand voice, IT).',
+      'Agreement phase: provide brand voice docs, top-50 support topics, CRM/ITSM connector list → Sierra configures your "Agent Studio".',
+      'In Studio: review guardrails (topic whitelist, escalation triggers, red-line phrase list), test against your historical tickets.',
+      'Rollout: deploy to web chat, in-app, or voice — Sierra runs on chat and phone with the same backend.',
+      'Day-2 ops: use the Analytics dashboard for deflection, CSAT, AHT, escalations; tune Topics weekly.',
+      'SLA: 99.95% uptime; FedRAMP Moderate planned Q4 2026, SOC 2 Type II, HIPAA for healthcare customers.',
+    ],
+    sampleInput:
+      'Sierra engagement setup (illustrative):\n\nCustomer: large insurance carrier, 12M support contacts/yr\n  Stack: ServiceNow ITSM + Salesforce Service Cloud + Genesys voice\n  Brand voice docs: 38 pages ("we\'re your calm, capable neighbor")\n  Top topics: claim status, policy change, billing dispute, roadside assistance\n  Guardrails:\n    - NO claim payout amounts\n    - escalate if user mentions "lawyer" / "lawsuit"\n    - never say "I don\'t know" — always offer human handoff\n  Compliance: SOC 2 Type II, HIPAA + state insurance regulations\n\nPilot scope:\n  - 1 brand, 4 topics, English + Spanish\n  - Web chat + voice (Genesys transfer)\n  - 90-day rollout, success = 45% deflection at ≥ 4.4 CSAT',
+    sampleOutput:
+      'Pilot results (90 days, anonymized):\n  Deflection: 47% (above target 45%)\n  CSAT (post-resolution survey): 4.51 / 5\n  Containment rate (no human touched): 71% web chat, 53% voice\n  Avg handle time saved per contact: 4m 12s\n  Annualised cost savings (vs $14/contact human baseline): $26M\n  Escalations: 9% (within guardrail envelopes)\n\nHidden catch: "I don\'t know" policy created awkward phrasing on edge cases — Sierra\'s tone team wrote 12 fallback one-liners, deployed as a guardrail bundle week 4.',
+    benchmarks: [
+      { label: 'Founded', value: '2024, Bret Taylor + Clay Bavor', source: 'sierra.ai' },
+      { label: 'Customers', value: 'Public refs include ADT, WeightWatchers, Cigna', source: 'sierra.ai customer pages' },
+      { label: 'Architecture', value: 'Agent Studio + Topics + Composer (Q4 2025)', source: 'Sierra platform tour 2025' },
+      { label: 'Compliance', value: 'SOC 2 Type II, HIPAA; FedRAMP Moderate planned Q4 2026', source: 'Sierra trust portal' },
+      { label: 'Voice + chat', value: 'Same backend, deploy to phone / web / in-app', source: 'Sierra product' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a Fortune 1000 brand that wants a managed, opinionated agent platform with strong brand voice and integrations into your CRM/ITSM stack — and you\'d rather pay enterprise pricing than staff an in-house AI team.',
+      skipIf:
+        'You\'re a self-serve team without enterprise procurement muscle (Lindy / n8n is too lightweight; Vapi is the closer). For CRMs that already live on Salesforce, Agentforce has lower integration tax.',
+    },
   },
   {
     slug: 'decagon',
@@ -1941,6 +2016,31 @@ export const agents: Agent[] = [
     ],
     models: ['Multiple frontier models (model-agnostic)'],
     alternatives: ['sierra', 'agentforce', 'lindy'],
+    quickStart: [
+      'Demo + scoping call (no self-serve free tier). Decagon reads your top-20 ticket categories and 90 days of transcripts before the call.',
+      'Pilot setup: 30-day "Build" phase where Decagon\'s ML team trains your first agent on your knowledge base + historical tickets.',
+      'Deploy to one channel first (Zendesk, Intercom, or Salesforce Service Cloud) → measure deflection, CSAT, resolution accuracy.',
+      'Production mode: Decagon ships "AI Actions" for refunds, account changes, status updates — agents go beyond answering.',
+      'Analytics: live dashboard tracks deflection (target 50%+), CSAT (target ≥ 4.4), resolution rate (target ≥ 70%), and surfaces gap topics for retraining.',
+      'Pricing tiers: Enterprise (custom) — typically $0.50–$2.00 per resolved ticket.',
+    ],
+    sampleInput:
+      'Decagon agent config (sample):\n\nTopic: "Subscription Pause / Cancel"\n  Inputs allowed:\n    - email of subscriber\n    - reason (select: too expensive, not using, competitor, other)\n  Actions:\n    - pause_subscription (refunds pro-rated remaining)\n    - offer_save_offer (3 months at 50% off) — if reason = "too expensive"\n    - escalate_retention (if reason = "competitor" → tag #competitive-risk)\n  Tone: empathetic, short\n  Never:\n    - quote competitor pricing\n    - say "I can\'t do that" — always escalate to retention human\nChannel: Zendesk + Intercom (production)',
+    sampleOutput:
+      '30-day post-pilot metrics:\n  Total tickets routed: 84,200\n  Resolved end-to-end (no human): 59,150 (70.3%)\n  Deflection (no human touched): 55.8%\n  CSAT: 4.47 / 5\n  Avg resolution time: 1m 12s (was 3h 48s human baseline)\n  Top improvement areas flagged:\n    - "what happens to my data after pause?" (12% of escalations) → retrained FAQ\n  Outcome: 14% of subscribers who paused via Decagon returned within 60 days vs 8% historical.',
+    benchmarks: [
+      { label: 'Founded', value: '2023; $65M Series B in 2025 led by Bain Capital Ventures', source: 'TechCrunch 2025' },
+      { label: 'Customers', value: 'Public refs include Notion, Bilt, ClassPass, Eventbrite', source: 'decagon.ai customers' },
+      { label: 'Action library', value: '80+ pre-built actions (refunds, account changes, status, retention)', source: 'Decagon platform' },
+      { label: 'Pricing', value: '~$0.50–$2.00 per resolved ticket', source: 'Decagon sales briefs' },
+      { label: 'Avg deflection', value: '50–70% in published case studies', source: 'Decagon case studies' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You run support at scale (10k+ tickets/month), want agents that take real actions (refunds, account changes), and need first-class analytics on deflection + resolution rate.',
+      skipIf:
+        'You\'re a smaller team without a clean Zendesk/Intercom knowledge base to train on — the build phase needs good source data. For lighter-weight no-code, Lindy or n8n are closer fits.',
+    },
   },
 
   // ============= 新增 2026-06 第四批（语音/视频/营销/安全）=============
@@ -2040,6 +2140,32 @@ export const agents: Agent[] = [
     ],
     models: ['Multiple STT/LLM/TTS providers (model-agnostic)'],
     alternatives: ['vapi', 'sierra'],
+    quickStart: [
+      'Sign up at retellai.com with Google/email → create a workspace → grab a "Live API" or "BYO Twilio" key.',
+      'Click "Create Agent" → pick a voice (Cartesia Sonic 2 / ElevenLabs / OpenAI TTS) and LLM (GPT-4o / Claude / Gemini).',
+      'Type the system prompt and add tools (functions) — Retell exposes them via function-calling JSON.',
+      'Test in the in-browser console (no telephony cost). When happy, connect a phone number (Retell provisions numbers in 50+ countries, or import Twilio).',
+      'Roll out: push to a campaign, embed in your IVR via SIP, or trigger from your CRM webhook.',
+      'Live monitoring: Retell\'s dashboard shows concurrency, call success, latency, sentiment per call, full transcript search.',
+    ],
+    sampleInput:
+      'Retell agent config (sample):\n\nName: "Acme Claw Appointment Scheduler"\nVoice: ElevenLabs "Rachel"\nLLM: GPT-4o, temperature 0.4\n\nSystem prompt:\n  "You are Alex from Acme Dental. Greet callers, verify patient identity (DOB + last name),\n   check available slots in the Acme scheduling system, and book or reschedule.\n   If patient asks about pricing, do NOT quote — offer to transfer to billing.\n   Never claim to be human."\n\nTools (function-calling):\n  - get_available_slots(date_window: "YYYY-MM-DD..YYYY-MM-DD")\n  - book_slot(slot_id: string, patient_id: string)\n  - lookup_patient(dob: "YYYY-MM-DD", last_name: string)\n  - transfer_to_billing(reason: string)\n\nTransfer rules:\n  - on_keyword(["lawyer", "lawsuit", "manager"]) → warm transfer to human queue',
+    sampleOutput:
+      'Day-7 production monitoring (10,400 calls):\n  Containment (no human): 71%\n  Avg call length: 1m 38s\n  Avg latency: 412ms (Retell dashboard p95: 720ms)\n  Booking success rate: 68% (after identity verification)\n  Top failure modes (flagged by Retell\'s auto-QA):\n    - patient_dob miss-typed in 12% of calls → tighter prompt phrased\n    - intent "schedule for spouse" not in tool → add get_slots_for_patient_ids\nCost: 10,400 calls × ~$0.085/min average (incl. Twilio number) = $748.84/week',
+    benchmarks: [
+      { label: 'Pricing', value: '$0.07–$0.13 / minute (per-call)', source: 'Retell pricing 2026' },
+      { label: 'Concurrency limit', value: 'Up to 10,000 concurrent calls (Enterprise)', source: 'Retell platform' },
+      { label: 'Liveness / latency', value: '~400–700ms typical (p95)', source: 'Retell docs' },
+      { label: 'STT options', value: 'Deepgram, Whisper, Cartesia', source: 'Retell product' },
+      { label: 'Customers', value: 'Roadrunner, Cox Auto, Choice Hotels, mortgage servicing ops', source: 'Retell customer pages' },
+      { label: 'BYO telephony', value: 'Yes — Twilio / Vonage / Telnyx SIP trunks', source: 'Retell docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a managed, monitor-rich voice platform — built-in call analytics, concurrency, QA tools, and white-glove enterprise support out of the box. Strong when your team is operations-led, not engineering-led.',
+      skipIf:
+        'You want a low-level API you fully control (Vapi gives you that); or you only need a few voice flows and the cost of concurrency is overkill (single-channel SMB use case).',
+    },
   },
 
   // ---------------- Creative: 视频生成 ----------------
