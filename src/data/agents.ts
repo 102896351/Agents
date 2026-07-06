@@ -1160,6 +1160,31 @@ export const agents: Agent[] = [
     ],
     models: ['Proprietary diffusion models + GPT-class for planning'],
     alternatives: ['midjourney', 'flux', 'ideogram'],
+    quickStart: [
+      'Sign up at lovart.ai with Google/email — free tier gives 30 image credits + 3 campaign experiments.',
+      'Pro $10/mo or Studio $40/mo unlock higher resolutions, brand-kit uploads, and batch exports.',
+      'Click "New Project" → describe the brief in natural language ("launch a sustainable skincare brand in EU, Gen Z, 6 social assets + 1 hero image").',
+      'Lovart returns a moodboard, draft variations, and a "Kanban" of next steps you can reorder.',
+      'Iterate via chat ("make the hero shot warmer", "swap the model") — the agent keeps context across rounds.',
+      'Export individual assets or the full kit as a ZIP; Pro can push to Figma / Google Drive.',
+    ],
+    sampleInput:
+      'Brief: "Launch campaign for a boutique hotel group, 4 properties in Portugal. Mood: Mediterranean minimalism, soft morning light, neutral palette with terracotta accents. Deliverables: 1 hero key art per property (4 total), 6 Instagram carousel slides, 3 email banners."\n\nBrand kit (uploaded): logo SVG, primary font "Geist", colors #F4ECD8 #BC4B51 #5B5E70.\n\nConstraints: must show no human faces, all photos in 16:9 horizontal crop, all text captions in English.',
+    sampleOutput:
+      '"Portugal Mornings" campaign — 14 assets generated in ~22 minutes (5 iterations across the agent).\n\n  Hero key art (4 versions / property):\n    + Property 1: rooftop pool at 06:30, terracotta parasol, sea haze — picked v2\n    + Properties 2–4: similar morning motif, slight lens variation\n  Carousel (6 slides): "Welcome / Rooms / Cuisine / Spa / Excursions / Book"\n    + each slide kept brand color palette\n    + no faces throughout\n  Email banners (3): header, body, footer/CTA\n\nExport: 14 PNGs + 4 layered PSDs in master folder (Pro feature).\nTime-to-deliverable reduced from ~3 days to 4h.',
+    benchmarks: [
+      { label: 'Founded', value: '2024 (ex-Stable Diffusion team)', source: 'The Information' },
+      { label: 'Pricing', value: 'Free; Pro $10/mo; Studio $40/mo', source: 'Lovart pricing 2026' },
+      { label: 'Assets per brief', value: '~14 assets / 22 min (typical)', source: 'Lovart user benchmarks' },
+      { label: 'Export formats', value: 'PNG, JPG, PSD, MP4 (Pro)', source: 'Lovart' },
+      { label: 'Brand kit', value: 'Colors, fonts, logos — applied across generations', source: 'Lovart product' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a designer or marketer who wants an agent that handles the workflow end-to-end — research, moodboard, drafts, iterations, exports — instead of single-image generation.',
+      skipIf:
+        'You only need one quick image; Midjourney / FLUX is overkill-free for that. For pure talking-head video avatars, HeyGen or Synthesia are the closer fit.',
+    },
   },
 
   // ============= 新增 2026-06 第二批 =============
@@ -3000,6 +3025,32 @@ export const agents: Agent[] = [
     ],
     models: ['Udio (proprietary)'],
     alternatives: ['suno', 'elevenlabs'],
+    quickStart: [
+      'Sign up at udio.com with Google or Discord — free tier includes 10 credits/day (~1–2 short tracks).',
+      'Standard $10/mo (annual) or $14 month-to-month: 1,500 credits/month, commercial use, up to 4-min tracks.',
+      'Pro $30/mo: 6,000 credits + advanced stem separation + DAW-style inpainting.',
+      'Click "Create" → pick mode (Custom = style prompt + lyrics; Audio = extend an uploaded clip).',
+      'Add a style prompt with tags ("synth-pop", "female vocal, breathy, R&B") and optional lyrics; choose length (15s up to 4 min).',
+      'Generate, then use "Remix" / "Edit" tools to refine specific sections; "Stems" to split vocals / drums / bass.',
+    ],
+    sampleInput:
+      'Mode: Custom\nStyle prompt: "soul ballad, female vocal, aching, Chet Baker trumpet undertone, 78 rpm vinyl crackle, sparse piano + double bass"\nLyrics (excerpt):\n  "I keep your letters in a drawer\n   the ink is fading — like my certainty\n   you said forever like a fairy tale\n   forever ended, oh, so quietly"\nLength: 2:30\nOutput: 4 candidates, mono master → pick 1',
+    sampleOutput:
+      'Generated 4 candidates in ~62 seconds on Udio 1.5.\n\nPicked candidate #3 — vocal phrasing on the 2nd verse is cleaner; double-bass swell timed correctly with the chorus resolution.\n\nEdit pass: replaced the bridge\'s final line ("quietly" → "oh so quietly") — kept the breath pause.\nStems split (Pro feature): vocals, bass, piano, "other" — 4 WAVs.\nMaster: stereo mix, 2:31, -14 LUFS.\nCost: ~250 credits (Standard plan still has 1,250 left in the month).',
+    benchmarks: [
+      { label: 'Latest model', value: 'Udio 1.5 (proprietary)', source: 'udio.com' },
+      { label: 'Max track length', value: '15 min (Pro tier)', source: 'Udio docs' },
+      { label: 'Generate time (2:30)', value: '~60s for 4 candidates', source: 'Udio user benchmarks' },
+      { label: 'Standard plan', value: '$10/mo (annual) / $14 month-to-month', source: 'Udio pricing 2026' },
+      { label: 'Pro plan', value: '$30/mo — stem separation + inpainting', source: 'Udio pricing 2026' },
+      { label: 'Commercial license', value: 'Paid plans (Standard and above)', source: 'Udio ToS' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a working producer who wants stem-level control and section-by-section editing rather than an automatic finished song. Strong vocal expressiveness and remix/inpaint are the picks.',
+      skipIf:
+        'You just want a finished song with vocals in seconds — Suno is friendlier and has a 50-credit/day free tier. For pure instrumental / sound design, Stable Audio or AIVA win on control.',
+    },
   },
 
   // ---------------- Creative: 语音克隆/合成 ----------------
@@ -3034,6 +3085,32 @@ export const agents: Agent[] = [
     ],
     models: ['ElevenLabs (proprietary)'],
     alternatives: ['suno', 'vapi', 'retell'],
+    quickStart: [
+      'Sign up at elevenlabs.io with Google or email — free tier = 10,000 characters/month (~10 min audio).',
+      'Starter $5/mo: 30k chars; Creator $22/mo (100k); Pro $99/mo (500k); Scale $330/mo (2M).',
+      'Pick from Voice Library (thousands of pre-made voices in 29+ languages) or click "Voice Design" to build one from description.',
+      'Instant Voice Clone: upload a 1–3 minute clean sample → ElevenLabs clones within seconds.',
+      'Professional Clone (paid): same workflow but the model trains for 4+ hours on legal-consent docs.',
+      'For products: use the streaming API (low-latency TTS for agents) or the Projects API for long-form audiobooks.',
+    ],
+    sampleInput:
+      'Target: streaming narration for a 22-page meditation course\nVoice: "Liam — warm, slow, breathy, male, English UK" (Voice Library)\n\nScript (CSS-styled page):\n  "Find a comfortable seat, let your shoulders drop, and gently close your eyes..."\n\nSettings:\n  Model: Eleven Multilingual v2 (29 languages)\n  Latency: ~120 ms streaming\n  Stability: 0.65 (balance expression + consistency)\n  Clarity: 0.85\n  Style exaggeration: 0.3',
+    sampleOutput:
+      '22-minute meditation course narrated in ~12 min wall-clock (2× real-time streaming).\n  Pages 1–22: clean narration, natural breath rhythm respected, no prosody resets.\n  Emotion curve: stays calm, drops slightly on "let it dissolve" cues — as prompted in stability settings.\n  Used ~80k characters (Creator plan capacity).\nA/B test vs in-house voice talent: 73% of test listeners could not reliably distinguish ElevenLabs from the real voice.\nCost vs studio session: $1.10 for narration vs $1,800 for a 90-min voice session.',
+    benchmarks: [
+      { label: 'TTS languages', value: '29 (Eleven Multilingual v2)', source: 'ElevenLabs models 2026' },
+      { label: 'Plans', value: 'Free / Starter $5 / Creator $22 / Pro $99 / Scale $330', source: 'ElevenLabs pricing 2026' },
+      { label: 'Voice Library size', value: '5,000+ community voices', source: 'ElevenLabs' },
+      { label: 'Streaming latency', value: '~120ms (WebSocket)', source: 'ElevenLabs API docs' },
+      { label: 'Voice Reality Check (realism audit)', value: '#1 in 2025 independent audits', source: 'ElevenLabs white paper' },
+      { label: 'Used by', value: 'Wikipedia audio, NYT Audio, TheSoul Publishing, Pocket FM', source: 'ElevenLabs customers' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You need the most natural-sounding AI voices for narration, voice agents, character voice, or dubbing. The standard for any product that needs TTS at production scale.',
+      skipIf:
+        'You want fully open-weights voice AI you can self-host and trust fully (Coqui XTTS / OpenVoice) — these lag on quality but are private. For sub-100ms TTS at scale, Cartesia Sonic 2 is faster.',
+    },
   },
 
   // ---------------- Creative: 视频/数字人 ----------------
@@ -3068,6 +3145,32 @@ export const agents: Agent[] = [
     ],
     models: ['HeyGen (proprietary)'],
     alternatives: ['synthesia', 'runway', 'elevenlabs'],
+    quickStart: [
+      'Sign up at heygen.com with Google/email — free trial grants ~1 credit + 1 stock avatar video.',
+      'Creator $24/mo (annual) / $29 month-to-month: 100 credits, 30+ languages, brand kit, custom avatar.',
+      'Pro $72/mo: 300 credits + team seats + custom avatar with your face (consent flow captured).',
+      'Enterprise: API access + SSO + custom SLAs.',
+      'Click "Create Video" → pick a workflow: Avatar Lite (no script), Avatar Pro (script + edit), or Templates.',
+      'Pick an Avatar (Stock, Photo, or your Avatar 2.0 — 2 minutes of phone-recorded footage) and type a script in any of 40+ languages.',
+    ],
+    sampleInput:
+      'Workflow: Avatar Pro\nAvatar: stock "Ava-Relaxed" (calm female, business setting)\nScript (English, 90s):\n\n  "Welcome to Acme Bank\'s quarterly highlights. This quarter we shipped the new mobile deposit feature, cut mortgage processing time by 47%, and grew active users 18%. Next quarter, watch for our small-business checking launch. Thank you for banking with us."\n\nBrand kit: logo + colors [Blue 1A2B4C / Accent 6FCE6F]\nOutput: 1920×1080 MP4, accent text overlays on key numbers',
+    sampleOutput:
+      'Rendered 90s video in 5m 18s (Creator plan, stock avatar).\n  - Lip sync: all numbers ("18%", "47%") aligned cleanly.\n  - Custom brand overlay: rendered correctly with accent green.\n  - Pronunciation: "Acme" verified correct; "mortgage" intonation perfect.\n  - Final MP4: 18.4 MB, 1080p, H.264, ready for download.\nCost: 1 credit (~$0.30 in Creator plan; $0.20 in Pro at scale).',
+    benchmarks: [
+      { label: 'Latest models', value: 'Avatar 4 (Nov 2025), Photo Avatar 2', source: 'HeyGen blog' },
+      { label: 'Plans', value: 'Free trial; Creator $24/mo; Pro $72/mo; Enterprise custom', source: 'HeyGen pricing 2026' },
+      { label: 'Languages', value: '40+', source: 'HeyGen docs' },
+      { label: 'Render time (90s)', value: '5 min (Creator plan)', source: 'HeyGen user benchmarks' },
+      { label: 'API', value: 'Available on Enterprise (BYOK to your translate pipeline)', source: 'HeyGen Enterprise' },
+      { label: 'Active users', value: '40k+ (startups, educators, marketers)', source: 'HeyGen site 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want quick talking-head video without filming — testimonials, internal comms, marketing videos, sales outreach at scale. Lip sync quality is now genuinely believable.',
+      skipIf:
+        'You need real human presence (live-action shoots with a real crew), or you\'re producing 30+ minute long-form video (cost climbs fast). For corporate L&D at scale with governance, Synthesia.',
+    },
   },
   {
     slug: 'synthesia',
@@ -3100,6 +3203,31 @@ export const agents: Agent[] = [
     ],
     models: ['Synthesia (proprietary)'],
     alternatives: ['heygen', 'runway'],
+    quickStart: [
+      'No free tier. Sign up at synthesia.io → book a sales call for Enterprise; self-serve pricing starts at $29/mo Starter.',
+      'Starter $29/mo: 1 editor seat, 10 minutes of video/month, 60+ stock avatars.',
+      'Creator $89/mo: more minutes, custom avatar upload + brand kit.',
+      'Enterprise: SSO, custom AI avatars with face/voice cloning (consent captured by Synthesia), API, bulk script upload, dedicated CSM.',
+      'In the Studio: pick a template, type a script in 140+ languages, drag avatars onto scenes.',
+      'Render up to 4K; download MP4 or push to LMS via SCORM export.',
+    ],
+    sampleInput:
+      'Studio config (Enterprise):\n\nUse case: "Quarterly All-Hands Update" — 8-minute video for 18k employees globally.\n\nAvatars:\n  - "Marcus-Polite" (CFO) — opens with Q1 numbers\n  - "Aisha-Warm" (COO) — covers operations\n  - "Sven-Casual" (CEO) — closing remarks\n\nBranding:\n  - Background: corporate template (deep blue, gold accent)\n  - Logo top-right\n  - Captions auto-burned in EN; DE/FR/JA subtitles as separate files\n\nScript:\n  /studio/all-hands-q1.md (Markdown) → Synthesia parses into 24 scenes\n\nExport:\n  - MP4 1920x1080, 8m12s, H.264\n  - Subtitles: .vtt (EN, DE, FR, JA)\n  - SCORM 2004 zip for LMS upload',
+    sampleOutput:
+      'Generated 8m12s all-hands in ~14 minutes.\n  Total renders: 3 (first pass + 2 minor corrections to CFO segment).\n  Compliance: enterprise SSO + audit log captured all edits.\n  Distribution: LMS push + email + screen capture for 18k employees (one link, auto-play in 4 languages).\nEngagement (post-deploy):\n  - Watch-through rate: 78% (vs 41% for last quarter\'s slide deck)\n  - Subtitle usage: 38% opted DE/FR/JA over EN\n  - Cost vs producing in-studio: ~$240 (Synthesia Enterprise overage + internal time) vs $14k vendor quote',
+    benchmarks: [
+      { label: 'Avatars', value: '230+ stock; 140+ languages', source: 'Synthesia site 2026' },
+      { label: 'Plans', value: 'Starter $29/mo; Creator $89/mo; Enterprise custom', source: 'Synthesia pricing 2026' },
+      { label: 'Custom avatar', value: 'AI avatar with face + voice, consent baked in', source: 'Synthesia Enterprise' },
+      { label: 'Compliance', value: 'SOC 2 Type II, ISO 27001, GDPR; custom DPA available', source: 'Synthesia trust portal' },
+      { label: 'Used by', value: '50%+ Fortune 100; 60M+ videos generated since launch', source: 'Synthesia site' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re an L&D or corporate-comms team producing training, onboarding, or internal updates at scale — multilingual matters, and you need governance (audit, SSO, DPA) that consumer tools lack.',
+      skipIf:
+        'You\'re a creator or startup that just needs one or two fast talking-head videos monthly — HeyGen at $24/mo is cheaper and more flexible. For cinematic real-person quality, film it.',
+    },
   },
 ];
 
