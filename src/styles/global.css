@@ -767,8 +767,8 @@ a:hover { text-decoration: underline; }
 }
 
 .alts {
-  margin-top: 16px;
-  padding: 16px;
+  margin-top: 24px;
+  padding: 20px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
