@@ -695,6 +695,31 @@ export const agents: Agent[] = [
     ],
     models: ['OpenAI / Anthropic models via Zapier'],
     alternatives: ['make', 'n8n', 'lindy'],
+    quickStart: [
+      'Sign up at zapier.com (free tier includes 100 tasks/month and single-step Zaps).',
+      'Click "Agents" → "Create your first agent" → describe what it should do in plain English.',
+      'Connect apps: Zaps already linked to your account work automatically; connect Slack / Gmail / HubSpot with one click each.',
+      'Customize the agent\'s "Tools": pick actions (e.g. "Create HubSpot Contact", "Send Gmail") and the agent decides when to invoke them.',
+      'Test in the playground (~10 free trial runs); turn on for production.',
+      'Plans: Free / Starter $20/mo (750 tasks); Professional $49/mo (2k tasks); Team $99/mo (10k + shared agents).',
+    ],
+    sampleInput:
+      'Agent: "Inbound Lead Qualifier"\nGoal: "When a new lead is added to HubSpot (via webhook), enrich with Clearbit, score by company size, send a personalized Slack DM with the enrichment. Skip leads with < 20 employees. Daily report to #sales at 8am."\n\nTools:\n  - hubspot_get_contact\n  - clearbit_enrich\n  - slack_send_dm\n  - slack_post_channel_message\n\nTrigger: HubSpot webhook',
+    sampleOutput:
+      'Day-7 production behavior:\n  - Inbound leads processed: 184\n  - Enriched successfully: 168 (91.3%)\n  - Auto-skipped (<20 employees): 32 (17.4%)\n  - Slack DMs sent: 152\n  - Daily summary posted to #sales at 08:00 — used 0 of SDR time\nEdge cases the agent flagged (auto-saved as "needs human review"):\n  - 6 leads with conflicting emails across HubSpot / Clearbit\n  - 2 spam-looking contacts (gmail.com + .edu domain)\nHuman-in-loop saved: ~11 hours/week vs manual enrichment + DM',
+    benchmarks: [
+      { label: 'Integrations', value: '7,000+ apps (industry-leading)', source: 'Zapier integration directory' },
+      { label: 'Plans', value: 'Free / Starter $20 / Professional $49 / Team $99', source: 'Zapier pricing 2026' },
+      { label: 'Task model', value: 'Per-task metered; agents use bundled tasks', source: 'Zapier docs' },
+      { label: 'Agent GA', value: 'Late 2024; agents available in paid plans', source: 'Zapier product' },
+      { label: 'Build-code escape hatch', value: 'Custom Code (JS / Python) step inside agent', source: 'Zapier docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'Your existing automation stack already runs on Zapier (you have hundreds of Zaps); adding Agents layers AI on top of proven integrations and shortens the learning curve.',
+      skipIf:
+        'You need complex branching/looping (Make or n8n are stronger), you need self-hosting (n8n is the standard), or you\'re a non-Zapier user not needing its 7,000-app reach.',
+    },
   },
   {
     slug: 'make',
@@ -726,6 +751,31 @@ export const agents: Agent[] = [
     ],
     models: ['HTTP module can call any LLM API; no first-class AI nodes yet'],
     alternatives: ['zapier-agents', 'n8n', 'lindy'],
+    quickStart: [
+      'Sign up at make.com — Free tier gives 1,000 ops/month (~10 simple scenarios).',
+      'Click "Create a new scenario" → drag the first app\'s module onto the canvas → connect apps with bubbles + lines (visual flow).',
+      'Choose scenario type: Scheduled, Instant (webhook), or App-event triggered.',
+      'Add modules: data transforms (filter, router, iterator), AI via the "OpenAI" module or HTTP-callable text generation.',
+      'Test step-by-step ("Run Once") → schedule → enable.',
+      'Pricing: Core $9/mo (10k ops); Pro $16/mo (10k+); Teams $29/mo; Enterprise custom. Operations = actions, not runs.',
+    ],
+    sampleInput:
+      'Scenario: "Stripe → NetSuite Monthly Close Sync"\nTrigger: Schedule, 1st of the month at 02:00 UTC\n\nModules (12 total):\n  1. Stripe: list_charges(date_window)\n  2. Filter (amount > 0; status = "succeeded")\n  3. Iterator (process each charge)\n  4. HTTP: Get customer info from Salesforce by Stripe customer ID\n  5. NetSuite: search_transactions_external_id\n  6. Router:\n     - Branch A: no match → NetSuite create_invoice\n     - Branch B: match → NetSuite update_invoice\n  7. Aggregator (group by customer)\n  8. Error handler module: Slack #finance-ops alert on failures\n  9. Set variable (count of sync successes / failures)\n  10. Gmail: email finance@acme.com with monthly summary\n\nError tolerance: max retries = 3, pause on error.',
+    sampleOutput:
+      'Run on 2026-07-01 02:00 UTC:\n  - Stripe charges processed: 4,820\n  - Filtered to succeeded: 4,801\n  - Created invoices in NetSuite: 142\n  - Updated existing invoices: 4,659\n  - Failed: 19 (all sandboxed in error handler; Slack alert dispatched, finance team triaged manually)\n  - Total ops used: ~14,460 (would have exceeded 10k Core cap; needs Pro or Teams at this volume)\n\nCompared with manual monthly close: 4 days → 30 minutes + 1 hour of failure triage.',
+    benchmarks: [
+      { label: 'Plans', value: 'Free; Core $9/mo; Pro $16/mo; Teams $29/mo; Enterprise custom', source: 'Make pricing 2026' },
+      { label: 'Integrations', value: '1,500+ apps + HTTP / Webhook / SMTP for anything else', source: 'Make integration directory' },
+      { label: 'Visual canvas', value: 'Drag-drop modules with full branching / loops / error handling', source: 'Make product' },
+      { label: 'Free ops tier', value: '1,000 ops / month', source: 'Make pricing 2026' },
+      { label: 'API', value: 'Public REST API + scenario webhooks for custom integration', source: 'Make docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You build complex multi-step automations with branching / loops / error handling and prefer a visual canvas over Zapier\'s linear step list. Cheaper than Zapier at high volumes.',
+      skipIf:
+        'Your automations are simple one-shots (Zapier wins for non-technical setup + simple flows), or you need self-hosting (n8n is the default). For pure AI agents without visual flow, try Lindy or Zapier Agents.',
+    },
   },
 
   // ---------------- Framework ----------------
@@ -2579,6 +2629,31 @@ export const agents: Agent[] = [
     ],
     models: ['Multiple frontier models'],
     alternatives: ['cursor', 'windsurf', 'devin'],
+    quickStart: [
+      'Sign up at replit.com with Google/GitHub/email — free tier includes the Replit IDE + a small Agent invocation allowance.',
+      'Replit Core $20/mo (annual): always-on apps, persistent storage, larger Agent quota, custom domains.',
+      'Click "Create Repl" → "Agent" mode → describe the app you want ("a tiny URL shortener with analytics") → Replit Agent scaffolds it.',
+      'Iterate: chat with the Agent ("add a /stats endpoint", "make the dashboard dark mode") → it edits files, runs tests, and deploys.',
+      'Deployment: one-click "Deploy" → runs at $repl-name.$username.replit.app; upgrade for custom domains.',
+      'Best for solo devs, learners, and rapid prototyping. For serious production, consider Replit\'s reserved VMs ($) or migrate out.',
+    ],
+    sampleInput:
+      'Prompt: "Build me an SMS-based expense tracker for small businesses. Workers text in expense notes from their phone (Twilio webhooks), the agent parses merchant + amount, stores it in Postgres, and returns a daily report email to the admin. Include an admin web page to filter expenses by worker. Use Replit\'s built-in DB."\n\nIteration 2 (chat): "Add a chart of weekly spend per worker, and a Slack notification when an expense exceeds $200."\nIteration 3 (chat): "Make sure all the secrets (Twilio auth, DB URL, Slack webhook) go in Replit Secrets, not in code."',
+    sampleOutput:
+      'Built and deployed end-to-end in ~22 minutes.\n\nIteration 1 (8m): Scaffolded Twilio webhook receiver, Postgres tables (workers / expenses), admin auth, basic dashboard.\nIteration 2 (7m): Added chart.js weekly-spend chart + Slack webhook with daily cron.\nIteration 3 (5m, security pass): Moved 4 secrets to Replit Secrets manager.\nIteration 4 (2m, my own): Custom domain (expense.acme.com) — wired up via DNS.\n\nDeployed at: https://expense-tracker-oncall.replit.app\nCost: $0 during build; $7/mo reserved VM for "always on" (Core plan includes this for small apps).',
+    benchmarks: [
+      { label: 'Plans', value: 'Free (Hacker); Core $20/mo; Teams + Enterprise custom', source: 'Replit pricing 2026' },
+      { label: 'Languages', value: 'Python, Node, Java, Go, Rust, C++, HTML/CSS/JS via Nix', source: 'Replit docs' },
+      { label: 'Persistent storage', value: 'Replit DB (KV) + Postgres; always-on $7/mo reserved VM', source: 'Replit docs' },
+      { label: 'Agent actions', value: 'Files, run shell, install packages, edit DB, deploy — all gated by user approval', source: 'Replit Agent docs' },
+      { label: 'Always-on apps', value: 'Yes for paid tiers; free tier sleeps after inactivity', source: 'Replit docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a single browser tab to take you from idea to a deployed full-stack app — no local install, no cloud setup. Ideal for prototypes, learning, hackathon-style projects.',
+      skipIf:
+        'You\'re a serious production engineer who needs Docker / K8s / observability out of the box — pair Replit for prototyping with a real platform for prod. For long-context coding, Cursor / Windsurf / Claude Code are more surgical.',
+    },
   },
 
   // ---------------- Research: 数据分析 ----------------
