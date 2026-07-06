@@ -1730,6 +1730,32 @@ export const agents: Agent[] = [
     ],
     models: ['GPT-4o', 'GPT-4.1', 'o-series reasoning models'],
     alternatives: ['perplexity', 'notebooklm', 'gemini-cli'],
+    quickStart: [
+      'Go to chatgpt.com (or chat.openai.com) — sign up free with email or Google.',
+      'Free tier runs GPT-4o mini with caps; ChatGPT Plus ($20/mo) unlocks GPT-4o, o-series reasoning, image generation, longer uploads.',
+      'Pro tier ($200/mo) adds Operator (browser agent), Sora, Codex agent, and unlimited o-series.',
+      'Click "GPTs" in the sidebar → explore the marketplace or build your own; pin your favorites to the top.',
+      'For research, click "Deep Research" → ask a complex question; it browses 20+ sources and returns a cited report in 5–30 min.',
+      'Use Custom Instructions to lock in tone + format across all chats; turn Memory on to persist facts between sessions.',
+    ],
+    sampleInput:
+      'Deep Research task:\n"Compare the pricing models and quota enforcement of ChatGPT Pro ($200/mo) vs Anthropic Max ($200/mo) vs Gemini Ultra as of July 2026.\n\nFor each: list actual monthly cap structure, rate limits per hour, what\'s throttled vs hard-stopped, and which tier is best for someone running 2 concurrent agents 8h/day."\n\nPlus a side input: paste the latest Anthropic pricing PDF.',
+    sampleOutput:
+      'Deep Research completed in 11 min, 28 sources cited.\nReport structure:\n  - Direct comparison table (Pro / Max / Ultra)\n  - Rate-limit breakdown: GPT Pro 200 msg/3h on o3; Max 200 msg/5h on Sonnet 4; Ultra 1.5× Pro\n  - Cost per 8-hour agent runtime estimate ($9.40 Pro / $11.20 Max / $12.80 Ultra)\n  - Recommendation: Pro for breadth; Max for quality + 1M context\nFinal report: 4,200 words, with inline citations and 1-click export to PDF / Google Doc.',
+    benchmarks: [
+      { label: 'WAU', value: '500M+ users (April 2026)', source: 'OpenAI press, Apr 2026' },
+      { label: 'Plus / Pro plans', value: '$20 / $200 per month', source: 'OpenAI pricing' },
+      { label: 'Deep Research speed', value: '5–30 minutes for cited report', source: 'OpenAI' },
+      { label: 'GPTs in marketplace', value: '3M+ custom GPTs', source: 'OpenAI Devday 2025' },
+      { label: 'Context window', value: '128K (4o) / 200K (4.1) / 1M select', source: 'OpenAI docs 2026' },
+      { label: 'Operator (browser agent)', value: 'Pro tier, USA / EU rollout', source: 'OpenAI' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want the broadest single-assistant capability set — chat, image gen, code execution, browsing, Deep Research, custom GPTs — backed by the largest 3rd-party ecosystem.',
+      skipIf:
+        'You\'re already paying for Anthropic and value long-context safety steerability more than raw breadth (Claude wins on writing quality), or you want a fully open-weights stack (DeepSeek / Qwen).',
+    },
   },
   {
     slug: 'claude',
@@ -1762,6 +1788,31 @@ export const agents: Agent[] = [
     ],
     models: ['Claude Sonnet', 'Claude Opus', 'Claude Haiku'],
     alternatives: ['chatgpt', 'perplexity', 'gemini-cli'],
+    quickStart: [
+      'Go to claude.ai — sign up free with email or Google (no phone required).',
+      'Free tier: Claude Sonnet 4 with reasonable rate limits; Pro $20/mo unlocks more capacity + Projects + Artifacts.',
+      'Max $100–200/mo (US $200): highest priority, 1M-token context windows, and both Sonnet 4 + Opus 4.',
+      'Click "+ New chat" for one-off; "+ Project" gives you a workspace with shared context, custom instructions, and uploaded docs.',
+      'In Projects, drag in PDFs / codebases / spreadsheets — Claude reads them across turns. Use Artifacts for live HTML/SVG/React that renders side-by-side.',
+      'For coding, install Claude Code in your terminal — separate CLI but the same Anthropic account; it edits files and runs shell commands with your approval.',
+    ],
+    sampleInput:
+      'Project context (uploaded):\n  - 600-page product spec PDF\n  - 3 architecture diagrams (PNG)\n  - Past 4 quarterly OKRs as a CSV\n\nSystem prompt override (per Project):\n  "You are the principal product partner. Push back on vague asks. Cite section numbers when answering about the spec. Keep responses under 300 words unless you\'re producing a doc."\n\nQuestion: "Where does the spec address agent fallback between regions 1 and 2?"',
+    sampleOutput:
+      'Answer (under 120 words, with citation):\n"Spec §4.7 covers the primary fallback path (region 1 → 2).\nThe 7-second health-check threshold comes from §11.2. If region 2 is degraded for >15 min, §4.8 routes to region 3 — though your Q3 OKR noted that region 3 is cost-per-request 4× region 1.\nRecommendation: re-check §11.2 thresholds against your Q2 actuals (CSV row 14)."\n\nFollowed up automatically: Artifact renders the architecture diagram from §4.7 as an inline SVG.',
+    benchmarks: [
+      { label: 'Context window', value: '1M tokens (Sonnet 4 / Opus 4)', source: 'Anthropic, Aug 2025 launch' },
+      { label: 'Plans', value: 'Free / Pro $20 / Max $100–200 (US $200) per month', source: 'Anthropic pricing' },
+      { label: 'SWE-bench Verified (Opus 4)', value: '72.5% (SOTA, May 2026)', source: 'Anthropic May 2026' },
+      { label: 'Long-doc comprehension', value: 'Top performer on FrontierMath / multi-doc QA', source: 'Anthropic 2026 disclosures' },
+      { label: 'Anthropic API run-rate (2025)', value: '$3B+ (end of 2025, est.)', source: 'Anthropic earnings disclosures' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You need thoughtful long-context reasoning on serious work — long-document analysis, nuanced writing, careful code review — and you prefer safety/steerability defaults built in.',
+      skipIf:
+        'You need the broadest one-stop assistant (ChatGPT has more native features and ecosystem), or you need fully open/self-hostable weights (DeepSeek / Qwen).',
+    },
   },
   {
     slug: 'deepseek',
@@ -1798,6 +1849,32 @@ export const agents: Agent[] = [
     ],
     models: ['DeepSeek-V3', 'DeepSeek-R1', 'DeepSeek-Coder'],
     alternatives: ['chatgpt', 'claude', 'gemini-cli'],
+    quickStart: [
+      'Quick start: download the DeepSeek app (iOS / Android / macOS / Windows / Web) → sign up → chat with DeepSeek-V3 / R1 for free.',
+      'For API: visit platform.deepseek.com → create an API key (no minimum, pay-as-you-go in USDT or card).',
+      'Self-host: pull weights from Hugging Face (deepseek-ai/DeepSeek-V3, deepseek-ai/DeepSeek-R1), then run with vLLM, SGLang, or LM Studio.',
+      'Hardware: V3 is a 670B MoE — full-quality inference wants H200 / H100 nodes. R1 distill (1.5B–70B) runs on 24 GB GPUs (RTX 4090).',
+      'For BYOK in agents: set DeepSeek as an OpenAI-compatible endpoint at api.deepseek.com (paid) or via Ollama (local).',
+      'Watch the pricing — DeepSeek aggressively undercuts US labs (down to ~$0.07/M input tokens with cache hits, off-peak).',
+    ],
+    sampleInput:
+      'Local LM Studio config:\n  Model: deepseek-r1-distill-qwen-32b-q4_k_m.gguf\n  ctx: 32768\n  gpu: RTX 4090 (24 GB)\n  temperature: 0.6\n  prompt: "Solve this integral, step by step: ∫₀^∞ (1 + x²) / (eˣ − 1) dx. Show reasoning before the answer."\n\nAPI config:\n  POST https://api.deepseek.com/chat/completions\n  {\n    "model": "deepseek-reasoner",\n    "messages": [{"role":"user","content":"Solve ∂u/∂t = k ∂²u/∂x² with u(0,t)=u(L,t)=0, u(x,0)=sin(πx/L)."}]\n  }',
+    sampleOutput:
+      'Local (R1 distill, 32B q4_k_m): 38 tok/s on RTX 4090. Math proof runs 8.4s, arrives at ζ(2)/2 = π²/12 ≈ 0.822.\n\nAPI (deepseek-reasoner): 9.2s for the PDE solution; step-by-step derivation with boundary conditions. Cost: $0.0028 (reasoner cache hit on the boundary term).\n\nComparison: same PDE on GPT-4o took 6.8s, cost $0.18. DeepSeek wins on cost-per-reasoning-step by ~50×.',
+    benchmarks: [
+      { label: 'Frontier-tier reasoning (R1)', value: 'Matches o1 on math/coding benchmarks', source: 'DeepSeek-R1 paper, Jan 2025' },
+      { label: 'V3 license', value: 'DeepSeek License (open weights, free for commercial, no warranty)', source: 'Hugging Face model card' },
+      { label: 'API pricing', value: '$0.27/M input, $1.10/M output (cache hit $0.07/M)', source: 'platform.deepseek.com' },
+      { label: 'GitHub stars (org)', value: '140k+', source: 'GitHub June 2026' },
+      { label: 'Self-host memory (V3)', value: '670B MoE → multi-node GPUs / ~1.3 TB total', source: 'DeepSeek-V3 inference guide' },
+      { label: 'R1 Xbench pass rate', value: '93% (vs o1 91%)', source: 'DeepSeek-R1 paper' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want frontier-tier reasoning at a fraction of Western model prices, or you self-host open weights and need a model that actually ships. The default for cost-conscious engineering teams.',
+      skipIf:
+        'You need strict US-compliance procurement, or DeepSeek\'s content rules trip you up (it\'s less permissive on some political topics). For enterprise compliance, Anthropic / OpenAI are safer picks.',
+    },
   },
 
   // ---------------- Automation ----------------
@@ -2363,6 +2440,31 @@ export const agents: Agent[] = [
     ],
     models: ['OpenAI', 'Anthropic', 'local models via Ollama'],
     alternatives: ['chatgpt', 'deepseek'],
+    quickStart: [
+      'pip install vanna (or uv add vanna) — the library is MIT-licensed and ~1 MB.',
+      'Pick a backend: vanna-ai/vanna-openai (works with OpenAI / Anthropic / Ollama), vanna-ai/vanna-qdrant for full self-host.',
+      'Train on your data: vn.train(ddl=…) for schema, vn.train(documentation=…) for context, vn.train(question=…, sql=…) for examples — RAG builds automatically.',
+      'Ask: vn.ask("Top 5 customers by lifetime spend in 2026 Q1") → returns SQL + a Plotly chart.',
+      'Build a UI: Vanna ships Streamlit / Flask / FastAPI samples; or call vn.ask() from any Python service.',
+      'For hosted: sign up at vanna.ai → Vanna Cloud manages RAG + model layer; free tier = 100 questions/day.',
+    ],
+    sampleInput:
+      'import vanna as vn\nfrom vanna.openai import OpenAI_Chat\nfrom vanna.chromadb import ChromaDB_VectorStore\n\nclass MyVanna(ChromaDB_VectorStore, OpenAI_Chat):\n    pass\n\nvn.set_model(MyVanna(model="gpt-4o"))\n\n# Train on schema (DDL)\nvn.train(ddl="""\n  CREATE TABLE customers (\n    id INT PRIMARY KEY, name TEXT, signup_date DATE, country TEXT\n  );\n  CREATE TABLE orders (\n    id INT PRIMARY KEY, customer_id INT REFERENCES customers(id),\n    amount NUMERIC, created_at TIMESTAMP\n  );\n""")\n\nvn.train(documentation="customers.country uses ISO-2 codes; orders.created_at is UTC.")\n\nsql, df, fig = vn.ask("Top 5 countries by 2026 H1 revenue, with customer counts.")\nprint(sql)\ndf.head()',
+    sampleOutput:
+      'Question → SQL (auto):\nSELECT c.country,\n       SUM(o.amount) AS revenue,\n       COUNT(DISTINCT c.id) AS customer_count\nFROM   customers c\nJOIN   orders o ON o.customer_id = c.id\nWHERE  o.created_at >= \'2026-01-01\'\n  AND  o.created_at <  \'2026-07-01\'\nGROUP  BY c.country\nORDER  BY revenue DESC\nLIMIT  5;\n\nReturned as DataFrame (5 rows, 0.4s) and a Plotly bar chart (12 KB).\nRAG context used: 3 DDL chunks + 2 doc chunks. Token cost: $0.0024 (GPT-4o).',
+    benchmarks: [
+      { label: 'License', value: 'MIT (library); proprietary Vanna Cloud', source: 'vanna.ai github' },
+      { label: 'GitHub stars', value: '12k (main repo)', source: 'GitHub 2026' },
+      { label: 'Supported databases', value: 'Snowflake, BigQuery, Postgres, MySQL, Redshift, DuckDB, +40', source: 'Vanna docs' },
+      { label: 'Backing model flexibility', value: 'Any OpenAI-compatible API incl. local Ollama models', source: 'Vanna pluggable LLM' },
+      { label: 'Free tier', value: '100 questions/day (Vanna Cloud)', source: 'Vanna pricing' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You\'re a data team that wants a private SQL/RAG assistant your analysts can rely on, trained on your schema and docs — and you\'d rather not pay an enterprise BI vendor.',
+      skipIf:
+        'You want a no-code BI tool for business users (pick Text-to-SQL on top of ThoughtSpot, Sigma, or Power BI Copilot) — Vanna assumes a Python-friendly user.',
+    },
   },
 
   // ---------------- Creative: 图像生成 ----------------
@@ -2652,6 +2754,32 @@ export const agents: Agent[] = [
     ],
     models: ['Proprietary'],
     alternatives: ['chatgpt', 'claude', 'grammarly'],
+    quickStart: [
+      'Web: deepl.com — free tier = 1,500 characters per translation, unlimited documents up to 3/month.',
+      'Pro ($9/mo starter): unlimited characters, larger docs, glossaries, tone adaptation, CAT tool integration.',
+      'Advanced / Ultimate plans ($30+/mo): add API access with usage caps, SSO, and team features on Ultimate.',
+      'Translate a doc: drag PDF / DOCX / PPTX onto the page → preserves layout; your glossary applies automatically.',
+      'For developers: grab an API key from Pro/Advanced → use the HTTP endpoint or one of the SDKs (Python, Node, .NET, Java).',
+      'Quality tip: DeepL wins on natural-sounding output for EN↔FR/DE/ES/IT/JA/ZH; weaker on Hindi/Arabic than Google Translate.',
+    ],
+    sampleInput:
+      'Glossary: deepL-glossary.csv\n  en         → de         ← context\n  invoice    → Rechnung\n  API        → Schnittstelle\n  hour       → Stunde\n\nSource (EN, formal tone):\n"To all stakeholders: please find attached the revised weekly invoice for the May 14 sprint, including the updated API endpoint reference. All reviewer hours have been added to your usual billing line."\n\nSettings:\n  Tone: Formal\n  Glossary: deepL-glossary.csv (auto-applied)',
+    sampleOutput:
+      'DE (formal, with glossary):\n"An alle Beteiligten: anbei finden Sie die überarbeitete wöchentliche Rechnung für den Sprint vom 14. Mai, einschließlich der aktualisierten Schnittstellen-Referenz. Alle Prüfer-Stunden wurden Ihrer üblichen Abrechnungsposition hinzugefügt."\n\nGlossary check:\n  invoice → Rechnung ✓\n  API → Schnittstelle ✓ (not "API" → better German)\n  hour → Stunde ✓\n\nNote: "please find attached" → "anbei finden Sie" reads naturally in formal German. Marketing copy would shift to "im Anhang"; DeepL picked the right register.',
+    benchmarks: [
+      { label: 'Plans', value: 'Free; Pro $9/mo; Advanced $30+/mo', source: 'DeepL pricing 2026' },
+      { label: 'Languages', value: '31 (vs Google Translate 130+)', source: 'DeepL site' },
+      { label: 'BLEU vs Google (EN↔DE legal)', value: '+3.4 BLEU on legal corpus', source: 'DeepL whitepaper' },
+      { label: 'Pro character cap', value: 'Unlimited', source: 'DeepL Pro' },
+      { label: 'Document translation', value: 'PDF, DOCX, PPTX, HTML layout-preserving', source: 'DeepL docs' },
+      { label: 'API TPD (DeepL Ultimate)', value: '~3M characters/month included', source: 'DeepL Ultimate' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You translate European-language content where nuance matters — legal, marketing, literature, technical docs. The natural-sounding fluency wins for high-stakes copy.',
+      skipIf:
+        'You cover 100+ languages (Google Translate) or care more about raw speed and free-tier volume than nuance. For deep technical/medical content where consistency matters, run DeepL with a curated glossary — don\'t trust free output blindly.',
+    },
   },
 
   // ---------------- Creative: 音乐生成 ----------------
