@@ -3433,6 +3433,336 @@ export const agents: Agent[] = [
         'You\'re a creator or startup that just needs one or two fast talking-head videos monthly — HeyGen at $24/mo is cheaper and more flexible. For cinematic real-person quality, film it.',
     },
   },
+
+  // ============= 2026-Q2 新增（英文市场流量补强）=============
+
+  // ---------------- Coding: Trae（ByteDance）----------------
+  {
+    slug: 'trae',
+    name: 'Trae',
+    tagline: 'ByteDance\'s AI-native IDE — free tier, one-click import from Cursor/VS Code, multi-model.',
+    category: 'coding',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://trae.ai',
+    tags: ['ide', 'byte-dance', 'multi-model', 'free-tier', 'global'],
+    pricing:
+      'Free tier (4 SOLO runs/day); Pro $10/mo (annual) — unlimited SOLO + premium models + CUE Pro; Teams custom. International build runs Claude Sonnet 4 / GPT-4o / DeepSeek / Doubao-1.5-pro.',
+    verdict:
+      'The fastest-growing IDE of 2026 Q2 — 6M+ registered users, 98% Chinese-prompt accuracy, half the price of Cursor Pro for premium features.',
+    description:
+      'Trae is an AI-native IDE shipped by ByteDance in 2025 and rolled out globally through 2026 Q2. Built on a VS Code fork, it supports one-click import of extensions/themes/shortcuts from Cursor or VS Code. Inside the IDE, Trae layers three agent modes — SOLO (end-to-end full app), Builder (project scaffolding), and inline prediction (CUE) — on top of a multi-model picker (Claude / GPT-4o / DeepSeek / Doubao-1.5-pro). It targets the same segment as Cursor and Windsurf but with a notably freer free tier.',
+    useCases: [
+      'Solo developers who want a free Cursor-like AI IDE',
+      'Coders migrating from Cursor / VS Code with zero setup cost',
+      'International teams needing multi-language IDE support (Chinese 98% accuracy)',
+      'Full-app builds from a single prompt',
+    ],
+    pros: [
+      'Free tier with 4 SOLO runs/day — no trial window limits',
+      'One-click import of Cursor / VS Code settings, themes, keymaps',
+      'Multi-model picker (Claude Sonnet 4, GPT-4o, DeepSeek, Doubao)',
+      'Strongest Chinese-language prompt accuracy on the market (98%)',
+    ],
+    cons: [
+      'Pro features (unlimited SOLO + premium models) cost $10/mo, similar shape to Cursor',
+      'Brand recognition outside Chinese markets still catching up to Cursor',
+      'Editor ecosystem (extensions, themes) narrower than Cursor/VS Code',
+    ],
+    models: ['Claude Sonnet 4', 'GPT-4o', 'DeepSeek V3/R1', 'Doubao-1.5-pro'],
+    alternatives: ['cursor', 'windsurf', 'claude-code'],
+    quickStart: [
+      'Go to trae.ai and download the IDE for macOS / Windows / Linux (English build).',
+      'Create an account with email or Google — free tier is unlimited on basic features.',
+      'On first launch, choose "Import from Cursor" or "Import from VS Code" to copy settings, extensions, themes, keymaps in one click.',
+      'Press Cmd+I / Ctrl+I to open inline AI chat; Cmd+L / Ctrl+L opens the Side Chat panel.',
+      'Switch model: in the AI panel, pick Claude Sonnet 4 / GPT-4o / DeepSeek / Doubao per task — switching is one click.',
+      'For end-to-end app builds, activate "SOLO Mode" from the top bar; describe the app, watch the agent scaffold it.',
+    ],
+    sampleInput:
+      'Project: small e-commerce site, Next.js 14 + Tailwind + Stripe test checkout\n\nIn SOLO Mode:\n"Build a Next.js 14 storefront with: 6 product cards on the homepage, product detail pages, cart with Zustand, and a Stripe test-mode checkout. Use Tailwind. Add a /admin route stub. Deploy target is Replit."\n\nIn inline editor, hovering utils.ts:\n"Add a TypeScript-native deep merge that preserves arrays (not Object.assign). Add tests."',
+    sampleOutput:
+      'SOLO build (4m 18s on Trae Pro):\n  Next.js project created at workspace/next-storefront\n  Files touched: 38\n  - src/app/page.tsx — 6 product cards, layout grid\n  - src/app/product/[slug].tsx — detail page, add-to-cart\n  - src/lib/cart.ts — Zustand store (8 actions)\n  - src/lib/deepMerge.ts — TypeScript-native, preserves arrays\n  - src/lib/deepMerge.test.ts — 4 test cases, all pass\n  \n  npm run build: passes\n  4 npm warnings (deprecated packages) — noted, not blocking\n  Deploy: "Live preview" turned on, Vercel-deployable\n\nCost: Free tier (4 SOLO runs/day) on basic; Pro $10/mo for unlimited + premium models.',
+    benchmarks: [
+      { label: 'Funding / parent', value: 'ByteDance, 2026 Q2 international rollout', source: 'Trae site' },
+      { label: 'Models supported', value: 'Claude Sonnet 4, GPT-4o, DeepSeek V3/R1, Doubao 1.5 Pro', source: 'Trae product' },
+      { label: 'Plans', value: 'Free (4 SOLO/day); Pro $10/mo annual; Teams custom', source: 'Trae pricing 2026' },
+      { label: 'Users (cumulative)', value: '6M+ registered', source: 'Trae site 2026' },
+      { label: 'Chinese-prompt accuracy', value: '9.8/10 (best in class)', source: 'CSDN 2026 review' },
+      { label: 'One-click import', value: 'Cursor / VS Code settings, extensions, shortcuts', source: 'Trae docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want an AI-native IDE with a generous free tier, strong multi-language support, and the lowest friction from Cursor or VS Code (one-click import). Strong pick if you optimize for $/month over the top benchmark.',
+      skipIf:
+        'You need the top SWE-bench scores (Claude Code is the leader) or you need the agent available on headless Linux / remote dev-server environments (Trae is desktop-centric).',
+    },
+  },
+
+  // ---------------- Automation: Dify ----------------
+  {
+    slug: 'dify',
+    name: 'Dify',
+    tagline: 'Open-source LLM app platform — build production AI apps with RAG, agents, and workflows.',
+    category: 'automation',
+    license: 'open-source',
+    licenseName: 'BSL 1.1 (open-core, no SaaS resale until 2027)',
+    selfHost: true,
+    difficulty: 2,
+    website: 'https://dify.ai',
+    github: 'https://github.com/langgenius/dify',
+    stars: 80000,
+    updated: '2026-07',
+    tags: ['no-code', 'rag', 'llm-platform', 'self-host', 'open-source'],
+    pricing:
+      'Cloud: Sandbox free (limited); Starter $59/mo (5k messages); Pro $159/mo (unlimited). Self-host: free under BSL 1.1.',
+    verdict:
+      'The go-to open-source LLM platform — Ship AI apps with RAG + agents + workflows without rebuilding infra. Self-hostable, model-agnostic, and Forbes AI 50 listed.',
+    description:
+      'Dify is an open-source platform for building production-grade AI applications. It exposes a unified visual builder for chatbots, agents, RAG pipelines, and human-in-loop workflows, then publishes the result as an API or web app. Dify supports 75+ LLM providers behind one OpenAI-compatible interface, hybrid retrieval (BM25 + vector + rerank) for 20+ document formats, and a built-in tool ecosystem (webhooks, Google search, Slack, SQL, custom HTTP). Its open-core BSL license allows commercial self-hosting and excludes only SaaS resale until 2027, after which it goes fully Apache. The platform is Forbes AI 50-listed in 2026 with an estimated valuation of $2.1B.',
+    useCases: [
+      'Build internal Q&A agents over company wikis / docs / Notion / GitHub',
+      'Customer-support agents with RAG over help center articles',
+      'Multi-step agent workflows (research, summarize, post to Slack / HubSpot)',
+      'Self-hosted AI gateway: one OpenAI-compatible endpoint for all your teams',
+    ],
+    pros: [
+      'True model-agnostic — OpenAI, Anthropic, Bedrock, Cohere, Hugging Face, Ollama, LM Studio, etc.',
+      'Hybrid retrieval (BM25 + vector + rerank) outperforms pure vector RAG',
+      'Self-host on your own infra (Docker compose) keeps data in-house',
+      'One platform for Chatbot / Agent / Workflow / RAG — no stitching multiple vendors',
+    ],
+    cons: [
+      'Cloud pricing ($59/mo for 5k messages) is steeper than per-call AI gateways',
+      'BSL license prohibits SaaS resale until 2027 (commercial use OK)',
+      'Self-host setup assumes Docker / K8s / DevOps capacity',
+    ],
+    models: ['OpenAI', 'Anthropic', 'Azure OpenAI', 'AWS Bedrock', 'Cohere', 'Hugging Face', 'Ollama (local)', 'LM Studio', 'Replicate'],
+    alternatives: ['zapier-agents', 'make', 'langgraph'],
+    quickStart: [
+      'Cloud: go to dify.ai → sign up free — 200 message credits on Starter ($59/mo).',
+      'Self-host: clone github.com/langgenius/dify → docker compose up -d (Docker required).',
+      'Click "Create App" → choose type: Chatbot / Agent / Workflow / Completion / Text generator.',
+      'Pick a model provider: OpenAI / Anthropic / Bedrock / Cohere / Ollama / self-hosted LM Studio.',
+      'Add a Knowledge Base (RAG): upload PDFs / CSVs / Notion sync / web crawl → Dify chunks, embeds, and indexes automatically.',
+      'Wire up tools (Google Search, webhooks, send email, SQL queries) → publish as an API or share as an embeddable web widget.',
+    ],
+    sampleInput:
+      'App: "Internal Q&A Agent for Engineering"\nType: Agent\nModel provider: Anthropic Claude Sonnet 4\nSystem prompt: "You answer engineering questions about our repo acme/cloud. Use only the provided Knowledge Base. If unsure, say so explicitly and link to the closest doc."\n\nKnowledge Base:\n  - 28-day crawl of docs.acme.io\n  - synced GitHub repo (auto-refresh on PR merge)\n  - 12 architecture PDFs uploaded manually\n\nTools enabled:\n  - Web search (DDG)\n  - Slack post-message\n\nChannel deployment:\n  - Slack app: /ask (Slash command)\n  - Web widget (embed on internal portal)\n  - API: POST /v1/chat-messages with X-API-Key',
+    sampleOutput:
+      'Production behavior (90 days):\n  - Total queries: 14,820\n  - Resolved from KB without hallucination: 12,610 (85%)\n  - "I don\'t know, let me search" returns: 1,420 (9.6%)\n  - Hard escalation to human: 790 (5.3%)\n  - Slack engagements increased 28%; internal wiki hits dropped 22%\nLatency: P50 1.2s, P95 3.8s with Claude Sonnet 4 + hybrid RAG.\nCost: $240/mo Sonnet 4 + $0 self-host on existing 8-core VM.\nOperational note: 2% of answers hallucinated outside the KB — added a "post-hoc KB guardrail agent" that re-checks each response and flags suspicious answers for review.',
+    benchmarks: [
+      { label: 'GitHub stars', value: '80k+ on github.com/langgenius/dify', source: 'GitHub 2026' },
+      { label: 'License', value: 'BSL 1.1 (open-core, full Apache after 2027)', source: 'Dify LICENSE' },
+      { label: 'Plans', value: 'Cloud: Sandbox free / Starter $59/mo / Pro $159/mo; self-host free', source: 'Dify pricing 2026' },
+      { label: 'Model providers', value: 'OpenAI, Anthropic, Azure, AWS Bedrock, Cohere, HF, Ollama, LM Studio, Replicate', source: 'Dify models' },
+      { label: 'Knowledge retrieval', value: 'Hybrid (BM25 + vector) + re-rank; supports 20+ formats', source: 'Dify docs' },
+      { label: 'Forbes AI 50 list (2026)', value: '~$2.1B valuation', source: 'Forbes AI 50, Apr 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a self-hostable, low-code platform to build production-grade AI apps with RAG, agents, and workflows under your own data — without paying per-call API tax to a vendor.',
+      skipIf:
+        'You only need simple no-code personal agents (Lindy is friendlier) or pure visual automations without AI (Make is cheaper). For pure LLM agent frameworks with code, LangGraph or CrewAI.',
+    },
+  },
+
+  // ---------------- Coding: JetBrains Junie ----------------
+  {
+    slug: 'junie',
+    name: 'JetBrains Junie',
+    tagline: 'JetBrains-native coding agent — runs inside IntelliJ, PyCharm, WebStorm, and GoLand.',
+    category: 'coding',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://www.jetbrains.com/junie/',
+    tags: ['jetbrains', 'ide-native', 'plan-mode', 'enterprise', 'polyglot'],
+    pricing:
+      'AI Free (6 Junie chats/month on JetBrains account); AI Pro $10/mo or AI Pro+ $20/mo (Junie + inline completion + JetBrains AI Premium features).',
+    verdict:
+      'The default coding agent for JetBrains users — speaks IntelliJ\'s run configs, debugger, and test runner. Plan Mode with test-driven verification sets it apart.',
+    description:
+      'JetBrains Junie is the vendor-native AI coding agent built by JetBrains. It installs as a plugin into IntelliJ IDEA, PyCharm, WebStorm, GoLand, CLion, RustRover, Rider, RubyMine, and DataSpell — all of which already have 10M+ developers as a combined base. Junie runs Claude (Sonnet 4 / Opus 4) in the cloud and offers two modes: Ask (read-only Q&A about code) and Plan (multi-step task with explicit verification at each step, including running tests). It integrates with existing JetBrains run configurations, the debugger, and the test runner — a notable difference from generic IDE plugins.',
+    useCases: [
+      'JetBrains users who want a vendor-native coding agent that knows their IDE',
+      'Multi-step feature implementation with test-driven verification',
+      'Polyglot teams (Java, Kotlin, Python, Go, Rust, JS/TS) on one JetBrains stack',
+      'Enterprise teams that already pay JetBrains for IDE licenses',
+    ],
+    pros: [
+      'Plan Mode with test-driven verification — not just LLM-generated code, but proof of passing tests',
+      'Vendor-native: talks to your existing run configs, debugger, test runner',
+      '10M+ JetBrains IDE developer base — instant onboarding',
+      'Multi-language across the full JetBrains fleet',
+    ],
+    cons: [
+      'Won\'t run on VS Code / Cursor / Vim — JetBrains only',
+      'AI free tier is steeply limited (6 Junie chats/month)',
+      'Cloud-only runs (no fully-local execution path for sensitive code)',
+    ],
+    models: ['Claude Sonnet 4', 'Claude Opus 4'],
+    alternatives: ['cursor', 'windsurf', 'opencode', 'copilot'],
+    quickStart: [
+      'Open IntelliJ IDEA / PyCharm / WebStorm / GoLand (2024.3 or newer) → Tools menu → install the "Junie" plugin.',
+      'Sign in with your JetBrains account — free tier includes 6 Junie chat interactions per month.',
+      'AI Pro $10/mo or AI Pro+ $20/mo unlocks unlimited Junie plus inline completion across all JetBrains IDEs.',
+      'In the editor: highlight code → right-click → "Ask Junie". Or open the Junie tool window on the right side for a chat panel.',
+      'For multi-step tasks: type /plan or click "Plan Mode" → Junie lists steps → approve → it runs them with test-driven verification at each.',
+      'Junie understands your Git state, existing run configurations, and tests — it uses what you already have, not generic scaffolding.',
+    ],
+    sampleInput:
+      'Project: PyCharm 2025.3, Python 3.12, FastAPI backend\n\nIn Junie Plan Mode:\n"Add a /v1/billing endpoint that:\n  - Accepts POST with customer_id (UUID) + amount_usd (Decimal)\n  - Loads customer from Postgres (sqlalchemy async session)\n  - Strips a 2.9% + 30¢ fee, deposits the net to Stripe via existing stripe_service.create_transfer\n  - Returns 201 with txn_id, or 4xx with error code\nWrite the test cases that cover happy path, insufficient-funds, and stripe-timeout. Run pytest at the end and ensure all pass."',
+    sampleOutput:
+      'Junie execution log (3m 42s on AI Pro tier):\n  Step 1 — Plan: 6 sub-tasks identified; showed diff preview.\n  Step 2 — Created app/api/v1/billing.py (62 lines, type-safe with Decimal handling).\n  Step 3 — Added SQLAlchemy async loader pattern.\n  Step 4 — Reused stripe_service.create_transfer (no duplication).\n  Step 5 — tests/v1/test_billing.py (8 tests, 3 categories).\n  Step 6 — Ran pytest:\n    8 passed in 1.7s\n    Coverage of billing.py: 96%\nFinal summary: "Implemented /v1/billing with full test pass. No existing tests were broken (12/12 in unrelated tests remain green)."\nNo auto-commit (Junie pauses for git commit approval by default).',
+    benchmarks: [
+      { label: 'Plans', value: 'AI Free (6 chats/mo); AI Pro $10/mo; AI Pro+ $20/mo', source: 'JetBrains pricing 2026' },
+      { label: 'IDEs supported', value: 'IntelliJ, PyCharm, WebStorm, GoLand, CLion, RustRover, Rider, RubyMine, DataSpell', source: 'JetBrains Junie docs' },
+      { label: 'Mode', value: 'Plan mode + Ask mode (read-only Q&A)', source: 'JetBrains Junie docs' },
+      { label: 'Engines', value: 'Claude Sonnet 4 / Opus 4 (Anthropic)', source: 'JetBrains Junie' },
+      { label: 'JetBrains IDE user base', value: '10M+ developers', source: 'JetBrains 2025 disclosure' },
+      { label: 'SWE-bench Verified', value: 'Top 10 tier (Junie AI Pro)', source: 'JetBrains 2026 update' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You live in JetBrains IDEs (IntelliJ / PyCharm / WebStorm / GoLand), hate IDE-switching, and want a vendor-native coding agent that talks to your existing run configs, debugger, and test runner.',
+      skipIf:
+        'Your editor is VS Code / Cursor / Vim — Junie doesn\'t run there. For open-source terminal-coding agents, OpenCode or Aider.',
+    },
+  },
+
+  // ---------------- Coding: OpenCode (anomaly) ----------------
+  {
+    slug: 'opencode',
+    name: 'OpenCode',
+    tagline: 'Open-source terminal coding agent — 75+ LLM providers, runs locally, MIT-licensed.',
+    category: 'coding',
+    license: 'open-source',
+    licenseName: 'MIT',
+    selfHost: true,
+    difficulty: 2,
+    website: 'https://anomaly.to/opencode',
+    github: 'https://github.com/anomalyco/opencode',
+    stars: 158000,
+    updated: '2026-07',
+    tags: ['terminal', 'multi-model', 'mit', 'self-host', 'cli'],
+    pricing: 'Free (MIT); you bring your own API key (Anthropic / OpenAI / Ollama / Groq / etc.).',
+    verdict:
+      'The Linux-loved, MIT-licensed answer to Claude Code — most flexible coding agent of 2026 with 75+ provider integrations and full TUI + IDE support.',
+    description:
+      'OpenCode is a fully open-source terminal coding agent built by Anomaly. Shipped as a native TUI plus plugins for Neovim, Helix, Emacs, and a VS Code fork in beta, it speaks 75+ LLM providers through one unified interface — Anthropic, OpenAI, Google, AWS Bedrock, Groq, OpenRouter, and any Ollama-served local model. It comes with LSP support for TypeScript, Go, Python, and Rust built in, and offers an immutable encrypted /share URL mode for handing off sessions. With 158k+ GitHub stars, OpenCode is the largest open-source coding agent not built on top of one vendor\'s tooling.',
+    useCases: [
+      'Linux/server developers who want a coding agent without a desktop GUI',
+      'Teams needing a vendor-neutral, MIT-licensed agent for compliance',
+      'Mixed-cloud setups that span Anthropic + OpenAI + local Ollama',
+      'TUI / Neovim / Helix users wanting agent mode in their editor',
+    ],
+    pros: [
+      'Fully MIT-licensed, no vendor lock-in',
+      '75+ LLM providers through one unified CLI',
+      'Built-in LSP for TypeScript / Go / Python / Rust',
+      'Encrypted immutable /share URLs for session hand-off',
+    ],
+    cons: [
+      'TUI-first interface is not for users wanting a polish-heavy GUI',
+      'VS Code extension is in beta (use Cursor or Windsurf for VS Code-native feel)',
+      'You bring your own API key — costs depend on your provider pick',
+    ],
+    models: ['Claude Sonnet 4 / Opus 4', 'GPT-4o', 'Google Gemini 3', 'AWS Bedrock', 'Groq', 'OpenRouter', 'Ollama (local)', 'any OpenAI-compatible endpoint'],
+    alternatives: ['claude-code', 'codex', 'aider', 'windsurf'],
+    quickStart: [
+      'Install: brew install anomaly/tap/opencode (macOS) / scoop install opencode (Windows) / curl-sh (Linux).',
+      'cd into any git repository → run `opencode` → TUI launcher appears.',
+      'Pick your model provider from the in-app picker: Anthropic / OpenAI / Google / Bedrock / Groq / OpenRouter / local Ollama.',
+      'Type `/` for slash commands: /models, /session, /share; Tab toggles between them.',
+      'For LSP-aware edits: OpenCode ships with TypeScript / Go / Python / Rust LSP support; enable per-project with `opencode.json`.',
+      'Share a session: type `/share` → produces an immutable, encrypted conversation URL (great for handing off debugging sessions to a teammate).',
+    ],
+    sampleInput:
+      'Repo: acme/multi-tenant-saas (Go module, ~40k LOC, Postgres backend)\n\nopencode> "We\'re hitting a memory leak in the metrics exporter — p99 RSS climbs 80MB/hour under load. Reproduce in test, identify root cause, fix, run benchmarks. Don\'t change public APIs."\n\nSelected model: Claude Opus 4 (reasoning mode)\n\nSlash: /share →  yields share link after task',
+    sampleOutput:
+      'OpenCode TUI session log (16m elapsed):\n\nStep 1: Created branch fix/metrics-leak.\nStep 2: Ran `go test -bench=. ./internal/metrics` to reproduce baseline. RSS climbs at +0.93 MB per 10k req.\nStep 3: Traced allocation: found that *http.Request bodies were kept by the global exporter in a sync.Map without eviction.\nStep 4: Generated patch (4 file edits, 32 lines net):\n  - Replaced sync.Map with bounded LRU (size 4096).\n  - Added per-request context.WithTimeout(15s) for spillover cleanup.\n  - Added test case testing/replay_test.go.\nStep 5: Re-ran benchmarks: RSS growth -94.3% (-88 MB → -5 MB over an hour under the same load).\nStep 6: All tests green (12,488 of 12,488 pass). No public API changes.\nStep 7: /share generated share URL with full transcript + diff.\n\nWrote commit: "fix(metrics): bound exporter in-memory map to address RSS leak".',
+    benchmarks: [
+      { label: 'GitHub stars', value: '158k+ (anomalyco/opencode)', source: 'GitHub 2026' },
+      { label: 'License', value: 'MIT (fully open source)', source: 'opencode GitHub' },
+      { label: 'Provider integrations', value: '75+ LLM providers via unified API', source: 'OpenCode docs' },
+      { label: 'TUI / Editor', value: 'Native terminal UI + plugins (Neovim, Helix, Emacs); VS Code fork in beta', source: 'OpenCode docs' },
+      { label: 'LSP support', value: 'TypeScript / Go / Python / Rust (built-in)', source: 'OpenCode product' },
+      { label: 'Share mode', value: 'Encrypted, immutable session URLs', source: 'OpenCode docs' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want a fully open-source coding agent with strong Linux / container / CI support, no vendor lock-in, and the freedom to pick any model (including local Ollama). The OSS Claude Code.',
+      skipIf:
+        'You need a polish-heavy GUI IDE experience (Cursor or Windsurf). For JetBrains, Junie. For broader cross-IDE AI chat, Copilot Chat.',
+    },
+  },
+
+  // ---------------- Coding: CodeRabbit (PR review) ----------------
+  {
+    slug: 'coderabbit',
+    name: 'CodeRabbit',
+    tagline: 'AI PR reviewer — line-by-line comments on every PR within minutes, free for OSS.',
+    category: 'coding',
+    license: 'freemium',
+    selfHost: false,
+    difficulty: 1,
+    website: 'https://coderabbit.ai',
+    github: 'https://github.com/coderabbit',
+    tags: ['pr-review', 'github', 'gitlab', 'bitbucket', 'dev-tools'],
+    pricing:
+      'Free for public repos; Pro $12/dev/mo for private repos (per-developer billing); Enterprise custom with SSO/audit/on-prem.',
+    verdict:
+      'The default AI PR reviewer on GitHub — line-by-line comments, walkthrough of changes, and a chat to ask follow-ups. Free for OSS, $12/dev/mo otherwise.',
+    description:
+      'CodeRabbit is an AI code reviewer that lives inside pull requests on GitHub, GitLab, Bitbucket, and Azure DevOps. Within ~2 minutes of opening a PR, it posts a top-level walkthrough plus a stream of inline line-by-line comments with concrete fix suggestions (often code-diff level). It is aware of your formatter (Ruff, Mypy, ESLint, Prettier, Clippy, etc.), your test runner, and your CI failures, and it can produce both stylistic and logical feedback. Pricing tiers: free for public/open-source repos; Pro at $12/dev/mo for private repos with full review features; Enterprise tier adds SSO, audit logs, custom models, RBAC, and on-prem deployment.',
+    useCases: [
+      'Pull-request reviews on private repos with concrete fix suggestions',
+      'Style + lint enforcement at PR time (Ruff, Mypy, ESLint, Prettier-aware)',
+      'Walking a new contributor through a complex PR via walkthrough + chat',
+      'Free OSS repo reviews with no per-dev cost',
+    ],
+    pros: [
+      'Free for public/open-source repos — no per-dev cost on OSS',
+      '~2-minute review SLA per PR — fast turnaround',
+      'Walkthrough + chat mode for follow-up questions on the same PR',
+      'Tooling-aware: integrates with your formatter and linter configs',
+    ],
+    cons: [
+      'PR review isn\'t a substitute for end-to-end coding agents (Cursor / Windsurf)',
+      'Free OSS tier is review-only; Pro $12/dev/mo is per-developer (gets expensive on large teams)',
+      'Cloud-only (Enterprise tier supports on-prem)',
+    ],
+    models: ['GPT-4o', 'Claude Sonnet 4', 'Gemini 3 Pro'],
+    alternatives: ['copilot', 'cursor'],
+    quickStart: [
+      'Go to coderabbit.ai → "Sign in with GitHub" (or GitLab / Bitbucket / Azure DevOps).',
+      'Install the GitHub App on your org or specific repos. Free on public repos; Pro $12/dev/mo on private.',
+      'Open any PR → CodeRabbit posts a review within 1–3 minutes with inline comments + summary.',
+      'Click "Chat" on the PR → talk to CodeRabbit to ask for changes, fixes, or clarifications.',
+      'Add a `.coderabbit.yaml` to customize review focus (style guide, auto-suggestions, walkthrough level).',
+      'Enterprise tier: SSO, audit logs, custom models, RBAC, and on-prem install for regulated teams.',
+    ],
+    sampleInput:
+      'Repo: acme/api-server (private, Python / FastAPI)\nPR #1842: "Add /v1/billing endpoint"\n\nCodeRabbit config (.coderabbit.yaml):\n  reviews:\n    profile: detailed\n    auto_suggestions: true\n    walkthrough_level: high\n  tools:\n    ruff: enable\n    mypy: enable\n\nPR diff (+220 lines): adds billing.py, tests, alembic migration.',
+    sampleOutput:
+      'CodeRabbit review (2m 11s after PR opened):\n\nSummary comment on PR:\n"Adds /v1/billing with 3 distinct handlers, 6 new DB columns, and 8 test cases. Suggests 4 refactors before merge: (a) split the 142-line billing_service.py into 3 single-responsibility modules, (b) replace manual Decimal arithmetic with `decimal.Decimal.quantize`, (c) extract retry policy into the stripe abstraction, (d) tighten test isolation."\n\nInline comments (12 total, 3 actionable):\n  - billing.py:84 — "Use `Decimal.quantize(Decimal(\'0.01\'))` instead of rounding manually"\n  - billing.py:131 — "Consider `stripe.Transfer.create(..., idempotency_key=...)` to prevent double-charges"\n  - tests/test_billing.py:62 — "This test depends on real Stripe — use `stripe-mock` for CI"\n\nWalkthrough mode: "Path A → Customer lookup → Decimal math → Stripe transfer → Response"\nChat: "What\'s the failure mode if Stripe returns 502? Re-route to retry queue? Add a circuit breaker?"\n\nAfter applying suggestions: 4 file changes, ruff + mypy clean, all 8 new tests pass.',
+    benchmarks: [
+      { label: 'Free / paid model', value: 'Free for OSS; Pro $12/dev/mo; Enterprise custom', source: 'CodeRabbit pricing 2026' },
+      { label: 'Integrations', value: 'GitHub, GitLab, Bitbucket, Azure DevOps', source: 'CodeRabbit docs' },
+      { label: 'Review speed', value: '~2 minutes from PR open', source: 'CodeRabbit product' },
+      { label: 'Tooling awareness', value: 'Ruff, Mypy, ESLint, Prettier, Clippy, etc.', source: 'CodeRabbit docs' },
+      { label: 'Walkthrough / chat', value: 'PR-level walkthrough + chat for follow-ups', source: 'CodeRabbit product' },
+      { label: 'Used by', value: '2M+ developers on 1M+ repos', source: 'CodeRabbit site 2026' },
+    ],
+    decisionAid: {
+      pickIf:
+        'You want every PR reviewed by an AI within minutes without spending reviewer hours — especially on private repos where code quality and CI signal regressions matter.',
+      skipIf:
+        'You only need inline code completion (Copilot / Cursor). For end-to-end coding agents that read and write code, Cursor / Windsurf / OpenCode.',
+    },
+  },
 ];
 
 // 工具函数：按分类聚合
