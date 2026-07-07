@@ -288,7 +288,7 @@ a:hover { text-decoration: underline; }
 }
 .detail-grid > aside {
   position: sticky;
-  top: 16px;
+  top: 80px;
 }
 @media (max-width: 760px) {
   .detail-grid { grid-template-columns: 1fr; gap: 24px; }
