@@ -39,6 +39,22 @@ jobs:
         run: node scripts/cachebust-images.cjs --v=2
         continue-on-error: true
       - run: npm run build
+      # AdSense ads.txt must exist in the built artifact with the correct
+      # publisher ID. Without this guard, an accidental removal or rename
+      # of public/ads.txt would silently ship a 404 at the live origin,
+      # breaking AdSense verification for days. Fail fast here instead.
+      - name: Verify ads.txt in dist
+        run: |
+          if [ ! -f dist/ads.txt ]; then
+            echo "::error::dist/ads.txt missing — AdSense will fail verification"
+            exit 1
+          fi
+          if ! grep -q "pub-1606763409380030" dist/ads.txt; then
+            echo "::error::dist/ads.txt publisher ID mismatch"
+            cat dist/ads.txt
+            exit 1
+          fi
+          echo "ads.txt OK: $(wc -c < dist/ads.txt) bytes"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
