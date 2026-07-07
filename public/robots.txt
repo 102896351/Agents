@@ -9,6 +9,12 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
+# Google AdSense crawler (publisher verification + ads.txt crawl).
+# Without an explicit Allow, a future global Disallow: / would silently
+# break AdSense ads.txt verification — surface that risk with this rule.
+User-agent: Mediapartners-Google
+Allow: /
+
 User-agent: Bingbot
 Allow: /
 
