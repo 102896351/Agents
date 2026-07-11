@@ -29,13 +29,20 @@ jobs:
           cache: npm
       - run: npm install
       # 抓取最新 AI 新闻（失败不阻断构建，保留现有数据）
+      # IMPORTANT: only run on schedule, NOT on push. If we run on push, the
+      # verbatim content from RSS overwrites any [auto] entries a human has
+      # rewritten in news.ts between cron runs — which silently destroys
+      # original-content work and re-exposes the site to duplicate-content
+      # SEO risk. Push deploys should be deterministic: build whatever is
+      # already committed in news.ts.
       - name: Fetch AI news
+        if: github.event_name == 'schedule'
         run: node scripts/fetch-news.mjs
         continue-on-error: true
-      # 给本地图片 URL 加 ?v=2 cache-bust，避免 Cloudflare edge 缓存
-      # 命中旧的（可能是占位图/损坏）版本。fetch-news 每次会重新生成
-      # news.ts 且不带 ?v=，所以这一步是构建前必需的。
+      # Cache-bust runs on the [auto] entries fetch-news just produced, so
+      # same gate applies — only run on schedule.
       - name: Cache-bust local image URLs
+        if: github.event_name == 'schedule'
         run: node scripts/cachebust-images.cjs --v=2
         continue-on-error: true
       - run: npm run build
