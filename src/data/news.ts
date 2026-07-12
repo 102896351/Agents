@@ -1,6 +1,6 @@
 // ============================================================
 //  AI News 数据源 —— 由 scripts/fetch-news.mjs 自动生成
-//  最后更新：2026-07-01T04:59:47.931Z
+//  最后更新：2026-07-12T11:55:11.023Z
 //  标 [seed] 的条目来自 src/data/news-seeds.ts（手工精选，不会被覆盖）
 //  标 [seed] 的 content / imageUrl 由人工维护；其余由脚本自动抓取
 // ============================================================
@@ -331,348 +331,362 @@ The Topaz stand-alone products will continue to be sold through the company's ow
     tags: ["adobe","video","image"],
   },
   {
-    slug: 'wayve-launches-85m-employee-tender-offer-techcr',
-    title: "Wayve opens $85M employee tender at $8.5B valuation",
-    summary: "The UK self-driving startup is running its second structured buyback in two years, signaling that AI firms now treat liquidity events as core retention strategy rather than a once-in-a-decade perk.",
-    content: `British autonomous-driving company Wayve is running a fresh tender that lets employees cash out part of their vested equity — an \$85M buyback priced at the company's most recent \$8.5B mark. The deal is being syndicated to existing and new investors.
+    slug: 'openai-bets-on-families-as-chatgpt-techcr',
+    title: "OpenAI is hiring a family-product PM as ChatGPT's audience ages up",
+    summary: "A new San Francisco PM role focused on parents, caregivers, and older adults points to a strategic shift: OpenAI now treats households, not individuals, as the durable unit of consumer stickiness.",
+    content: `Three years after ChatGPT made generative AI a household word, OpenAI is reorganising its product thinking around the household itself. The company is hiring a dedicated product manager in San Francisco to design experiences for families, caregivers, and older adults across its consumer apps — a role that requires "experience building products for parents and families, and other trust-sensitive consumer experiences," per the job posting.
 
-That valuation was set in February, when the nine-year-old startup closed a \$1.2B Series D led by Eclipse Ventures, Balderton Capital, and SoftBank Vision Fund 2, with participation from Ontario Teachers' Pension Plan, Baillie Gifford, Microsoft, NVIDIA, and Uber. The current tender marks Wayve's second employee liquidity event, following a smaller round attached to its May 2024 Series C.
+The move lands on top of a demographic shift the company has not previously publicised. Sensor Tower data shared with TechCrunch shows the share of ChatGPT users aged 35 and older rising to 31% in Q2, up from 26% a year earlier, while the 18–24 cohort fell to 29% from 34%. In the US, nearly one in four smartphone-using parents used ChatGPT during the quarter, up from 16% a year earlier.
 
-The pattern is now standard for top-tier AI startups. Rather than waiting years for a public exit, companies are using recurring tenders as a retention lever — giving staff a concrete reason not to defect to a competitor (or start their own thing) the moment their options vest. Decagon, ElevenLabs, Linear, and Clay have all run similar buybacks recently, with Clay doing two in the last nine months alone.
+Ben Bajarin, CEO of Creative Strategies, frames this as a transition from "tools for individual productivity" to "technology designed for households" — the same path Google, Apple, and Meta eventually followed as their platforms became embedded in daily life. The difference, he argues, is stakes: an AI assistant is not mediating content or devices, it is mediating decisions, plans, and conversations inside a family.
 
-The mechanism works because investors are still willing to pay a premium to increase exposure to high-growth AI businesses, betting those stakes will look cheap in hindsight. Employees get a real, dated exit; investors get more of the cap table; the company keeps the talent it would otherwise lose. Everyone wins — provided the underlying growth story still holds.`,
-    imageUrl: '/news/wayve-launches-85m-employee-tender-offer-techcr.jpg?v=2',
+The strategic logic is straightforward. Teens are the most fickle user segment; multi-year retention lives with parents, kids' homework, and ageing relatives — the account that nobody in the household churns from. A family surface is also the natural upsell surface for the consumer business, and a credibility-building prerequisite for OpenAI's enterprise pitch. Whoever wins the family account first sets the vocabulary of "AI in the home" for the next decade.`,
+    imageUrl: '/news/openai-bets-on-families-as-chatgpt-techcr.jpg?v=2',
     source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/wayve-launches-85m-employee-tender-offer-at-8-5b-valuation/',
-    date: '2026-07-01',
+    sourceUrl: 'https://techcrunch.com/2026/07/11/openai-bets-on-families-as-chatgpt-goes-deeper-into-households/',
+    date: '2026-07-11',
+    category: 'industry',
+    tags: ["openai","gpt"],
+  },
+  {
+    slug: 'openai-says-gpt-56-is-the-techcr',
+    title: "OpenAI declares GPT-5.6 the \"preferred model\" for Microsoft 365 Copilot",
+    summary: "After Bloomberg reported Microsoft was quietly routing Word and Excel to in-house MAI models, OpenAI's GPT-5.6 launch doubles as a public defence of a relationship that no longer looks exclusive.",
+    content: `Earlier this week Bloomberg reported that Microsoft had begun swapping some of OpenAI's software for its in-house MAI models inside Word and Excel — a story that, in the industry's shorthand, posed an obvious question: are the two companies drifting apart? On Thursday OpenAI used the launch of GPT-5.6 to publicly answer "no." The new model is now the "preferred model" powering Microsoft 365 Copilot, OpenAI said in a blog post accompanying the launch, and will back the full suite — Word, Excel, PowerPoint, and Cowork.
+
+"Our partnership with Microsoft has always been about bringing the benefits of advanced AI to more individuals and organizations, and we're excited to continue building on that shared commitment," OpenAI wrote. The phrasing is deliberately soft. "Preferred model" is the most ambiguous possible declaration — it preserves OpenAI's distribution into the most important enterprise AI install base in the world, while leaving Microsoft room to keep routing specific workloads to MAI as cost or compliance dictates.
+
+That ambiguity is, in fact, the deal. Microsoft has spent two years building MAI precisely so it can negotiate from a position of internal capacity. A clean "exclusive" relationship would erase the leverage MAI created. A clean "replacement" would forfeit the market position of Copilot, which still depends on OpenAI's frontier models for the workloads Microsoft cannot match internally. The compromise is a loosely-coupled dependency: OpenAI stays the default, MAI remains a margin lever, and both companies get to call the arrangement a partnership.
+
+For the broader market the message is more nuanced than it looks. OpenAI is not denying that Microsoft is internalising parts of the stack — it is reframing internalisation as portfolio diversification rather than a breakup. The press release and the Bloomberg story can both be true.`,
+    imageUrl: '/news/openai-says-gpt-56-is-the-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/openai-says-gpt-5-6-is-the-preferred-model-for-microsoft-copilot-amid-breakup-chatter/',
+    date: '2026-07-10',
+    category: 'industry',
+    tags: ["openai","gpt","microsoft"],
+  },
+  {
+    slug: 'hugging-faces-ceo-on-why-companies-techcr',
+    title: "Hugging Face's Delangue: companies are done renting their AI",
+    summary: "On Equity, the Hugging Face CEO argues the same arc plays out at every Fortune 500 — prototype on frontier APIs, migrate to open weights as costs scale. Half the Fortune 500 now download from Hugging Face.",
+    content: `On TechCrunch's Equity podcast this week, Hugging Face CEO Clem Delangue made a familiar but increasingly hard-to-ignore argument: the companies that matter are getting off the frontier-API treadmill. The pattern, in his telling, is "start on frontier APIs, but as you scale, the costs push them towards open source models." Hugging Face — GitHub-for-AI in his framing — now serves roughly half the Fortune 500 with shared open models and datasets.
+
+The economics behind the migration are not subtle. Frontier API pricing is per-token; at small scale it is a rounding error, at large scale it is the dominant line item on the AI bill. The marginal-cost curve of inference is steeper than the marginal-cost curve of training, which means the more a product succeeds on a frontier API, the more that product subsidises the frontier lab. At some volume threshold — and Delangue has seen it hit every category from search to coding to customer support — the rational move is to bring the model in-house, weight by weight, and pay only the inference cost.
+
+That transition is what Hugging Face is monetising. The company is no longer a model zoo with a search bar; it is the deployment graph for serious enterprise AI. Being where the workload lands is the durable position.
+
+Delangue also tied the rental-to-ownership arc to the broader open-vs-closed fight, framing it as a hedge against a future where "a handful of big companies could end up controlling everything." For enterprises that already survived one platform-shift hostage crisis (the cloud), the calculus is familiar. Own the model, or be told what it costs next quarter.`,
+    imageUrl: '/news/hugging-faces-ceo-on-why-companies-techcr.png?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/10/hugging-faces-ceo-on-why-companies-are-done-renting-their-ai/',
+    date: '2026-07-10',
+    category: 'industry',
+    tags: ["ai"],
+  },
+  {
+    slug: 'sk-hynix-raises-265b-in-the-techcr',
+    title: "SK Hynix raises $26.5B in the largest foreign IPO in US history",
+    summary: "The HBM supplier to Nvidia priced 177.9M ADRs at $149, opened 14% above IPO, was 7x oversubscribed — and turned \"Korea Discount\" into \"AI premium\" overnight.",
+    content: `The AI chip boom produced its biggest Wall Street moment on Friday. SK Hynix, the South Korean memory giant, raised \$26.5 billion (KRW 40 trillion) in its US market debut — the largest IPO by a non-American company in US history, surpassing Alibaba's \$25 billion listing in 2014.
+
+The mechanics of the deal matter. SK Hynix sold 177.9 million American depositary shares at \$149 each, structured so US investors can buy in at roughly a tenth of what a full share costs in Seoul. It priced at a 2.7% premium to its own three-day average back home — and was reportedly more than seven times oversubscribed. The stock, trading temporarily as SKHYV on Friday before switching to SKHYV→SKHY on Monday, opened 14% above IPO and kept rising.
+
+That demand is the headline. Korean companies have historically traded at a discount to their global peers — the so-called Korea Discount — over concerns about corporate governance, low shareholder returns, regulatory opacity, and North Korea risk. SK Hynix did not just close that gap, it inverted it. The reason is straightforward: SK Hynix makes high-bandwidth memory (HBM), the specialised DRAM stack that sits next to every Nvidia AI GPU. With HBM supply one of the tightest chokepoints in the AI buildout, the discount logic stopped applying the moment HBM became the most strategically relevant memory product on Earth.
+
+Washington's response was immediate. Both SK Hynix and Samsung are now being pressed to commit to new US fabs. If the US wants to call AI a sovereign industry, it needs sovereign memory — and the only companies that can deliver that at scale right now are Korean.`,
+    imageUrl: '/news/sk-hynix-raises-265b-in-the-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/10/sk-hynix-raises-26-5b-in-the-biggest-foreign-ipo-in-us-history-is-urged-to-build-new-us-fabs/',
+    date: '2026-07-10',
     category: 'funding',
     tags: ["ai"],
   },
   {
-    slug: 'trump-drops-restrictions-on-anthropics-mythos-techcr',
-    title: "White House lifts export licensing on Anthropic's Mythos and Fable",
-    summary: "Anthropic will restore public access to its frontier models on July 1, after the Commerce Department dropped the export-license requirement that had effectively blacklisted them abroad.",
-    content: `The US government has walked back the export licensing rule it imposed on Anthropic's two most advanced models in mid-June, clearing the way for the company to restore public access to Mythos and Fable on Wednesday, July 1.
+    slug: 'open-source-ai-matters-more-than-techcr',
+    title: "After the Fable pullback, Hugging Face's Delangue makes the case for open source as default",
+    summary: "In the wake of Anthropic's halted Mythos/Fable release, Hugging Face's CEO is using Equity to argue that open weights are the only durable safeguard against concentration risk.",
+    content: `The same week Anthropic briefly pulled its Mythos/Fable frontier model from public access and watched the White House move the goalposts on safety review, Hugging Face CEO Clem Delangue took to TechCrunch's Equity podcast to make the structural case for open source AI. His frame: the open-vs-closed question is no longer academic, because the alternative to open weights is a small number of frontier labs with the legal and political standing to decide what gets released and to whom.
 
-The original order, dated June 12, had placed both products on the Commerce Department's export-restricted list, requiring foreign nationals to obtain specific approval before using them. Anthropic said complying at scale was impractical and effectively ended public access to the models.
+That timing is not coincidental. The Fable incident crystallised the concentration risk Hugging Face has been warning about for two years — the possibility that "a handful of big companies could end up controlling everything." When even a single frontier model can be effectively banned on national-security grounds, the dependence of the AI economy on closed weights becomes an operational, not just philosophical, exposure. Open weights, by contrast, are not subject to a single government's licensing decision.
 
-Under the new arrangement, Commerce Secretary Howard Lutnick said Anthropic has agreed to "proactively detect and address security risks," work with the US government on "protocols and standards and releases" for future frontier models, and inform the government of "any malicious activity" discovered through those systems.
+Hugging Face's scale is the evidence. Roughly half the Fortune 500 now download models or datasets through the platform. The deployment graph of enterprise AI is no longer concentrated at three API endpoints; it is dispersed across thousands of in-house inference stacks, each one reachable when a frontier provider is not.
 
-Notably, most of what Anthropic agreed to in the deal mirrors voluntary commitments the company had already made months before the original rule — a fact that has fueled cybersecurity researchers' skepticism that the export ban was ever a security measure, rather than political leverage. Critics read the original move as retaliation for public criticism by Anthropic's leadership about how the administration might deploy the technology against its political opponents.
-
-For the market, the reversal is the more important signal: it ends a roughly three-week window in which Anthropic's most capable models were simply unavailable to most non-US users — a window that may have shifted decisions among enterprise buyers in ways that are not easily reversed.`,
-    imageUrl: '/news/trump-drops-restrictions-on-anthropics-mythos-techcr.jpg?v=2',
+The strategic implication extends beyond model choice. Open weights are also a hedge against lock-in to compute providers. If your weights are open, you can move between hyperscalers, between neoclouds, between in-house and rented inference, without retraining. In a market where compute contracts are now nine-figure monthly line items, that portability is the closest thing to a price-control mechanism the customer side has.`,
+    imageUrl: '/news/open-source-ai-matters-more-than-techcr.png?v=2',
     source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropics-mythos-and-fable-models/',
-    date: '2026-07-01',
+    sourceUrl: 'https://techcrunch.com/podcast/open-source-ai-matters-more-than-ever-according-to-hugging-faces-clem-delangue/',
+    date: '2026-07-10',
+    category: 'industry',
+    tags: ["ai"],
+  },
+  {
+    slug: 'apple-sues-openai-over-alleged-trade-techcr',
+    title: "Apple sues OpenAI for trade-secret theft, naming Chief Hardware Officer Tang Tan",
+    summary: "Filed in the Northern District of California, the suit alleges OpenAI's senior leadership directed a pattern of recruitment, code-name disclosure, and security circumvention — with the iPhone as the obvious prize.",
+    content: `Apple filed a federal lawsuit on Friday against OpenAI, alleging a coordinated pattern of trade-secret theft directed by OpenAI's senior leadership — including Chief Hardware Officer Tang Tan, a 24-year Apple veteran who most recently served as VP of product design for the iPhone and Apple Watch. The complaint, filed in the Northern District of California, accuses Tan of using Apple's confidential project code names during OpenAI recruiting, asking job candidates to bring Apple hardware components to interviews, coaching departing Apple employees on how to evade Apple's security procedures, and requesting details about unannounced products.
+
+The lawsuit is about people before it is about code. In a hardware business, the moat is institutional knowledge that lives in human heads — the relationships between teams, the unannounced product spec, the production constraint that nobody wrote down. Apple's complaint is that OpenAI ran a structured extraction operation against that institutional knowledge, with Tan as the named vector.
+
+The context is the threat, not the grievance. OpenAI is rumoured to be developing its first hardware product, which analyst Ming-Chi Kuo has suggested could be a smartphone built around AI agents rather than apps. If such a device ships, it would be the first serious frontal challenge to the iPhone since the iPhone itself. OpenAI's \$6.5 billion acquisition last year of Jony Ive's hardware startup io — named in the filing, though Ive himself is not — is now part of the evidence chain.
+
+For Apple, the suit is also a defensive perimeter. The iPhone is the platform on which the App Store economics, the Services revenue, and the developer lock-in all rest. Any credible competitor has to attack the hardware, not the OS, and that is exactly what OpenAI appears to be preparing.`,
+    imageUrl: '/news/apple-sues-openai-over-alleged-trade-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/',
+    date: '2026-07-10',
+    category: 'industry',
+    tags: ["openai"],
+  },
+  {
+    slug: 'meta-removes-controversial-ai-feature-on-techcr',
+    title: "Meta pulls Instagram \"Muse Image\" @-mention feature three days after launch",
+    summary: "After a public backlash over using public profiles without consent, Meta walked back the feature, saying it \"missed the mark\" — the fastest notable feature rollback in the social network's recent AI rollout.",
+    content: `Meta has axed a feature in Muse Image, its new AI image generator built by Meta Superintelligence Labs, that allowed users to generate images by @-mentioning any public Instagram account and using that account's public photos as a reference. The feature, rolled out earlier this week alongside the rest of Muse Image, "missed the mark" and is no longer available, Meta said in a Friday blog post — first surfaced by Puck News's Dylan Byers.
+
+"Our intent was to provide a useful creative tool and to give people control over whether their public content could be referenced in this way. We've heard the feedback that this feature missed the mark, so it's no longer available," Meta wrote. The walk-back is notable for its speed: roughly 72 hours from launch to removal. The closest recent comparable is Microsoft Recall's reversal in 2024, and even that took a week.
+
+The underlying issue is consent. A public Instagram profile is public in the social sense — visible to other users — but users had no notice that their photos could now be incorporated into stranger-generated AI images, no notification when they were, and (at launch) no clean opt-out. The "@-mention" framing made the misuse obvious: anyone could write "@janedoe" into a prompt and have the model produce a synthetic image using her face. The surface that felt like a harmless "creative tool" yesterday was a non-consensual face-mixing engine today.
+
+For Meta's broader AI rollout the cost is reputational, not just feature-specific. Muse Image's launch was positioned as Meta's first real generative-image product out of the new Superintelligence Labs. The fastest result of that launch was the loudest privacy backlash of the year. The lesson is one the industry keeps relearning: opt-in beats opt-out when the asset is recognisable.`,
+    imageUrl: '/news/meta-removes-controversial-ai-feature-on-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/10/meta-removes-controversial-ai-feature-on-instagram-after-backlash/',
+    date: '2026-07-10',
+    category: 'industry',
+    tags: ["meta"],
+  },
+  {
+    slug: 'metas-new-ai-chips-will-begin-techcr',
+    title: "Meta's MTIA chips enter production in September, alongside $125–145B capex year",
+    summary: "Co-designed with Broadcom and manufactured by TSMC, Meta's latest AI accelerators will use a modular chiplet architecture that the company explicitly designed to outlast a single AI workload cycle.",
+    content: `Meta is on track to begin production of its next-generation Meta Training and Inference Accelerator (MTIA) chips in September, according to an internal memo seen by Reuters. At least one chip in the family completed its testing phase in about six weeks — fast for a custom AI silicon programme.
+
+The stack is the usual Meta-wide design: Broadcom handles chip architecture, TSMC manufactures, Samsung supplies the RAM, Sandisk the storage, and Sumitomo Electric the fibre optics. What is unusual is the architecture choice. Meta detailed the four new MTIA chips in March as a modular chiplet design — meaning the company can mix and match compute, memory, and interconnect tiles, swapping in newer tiles as the workload shifts without redesigning the whole die. "Each MTIA generation builds on the last, using modular chiplets, incorporating the latest AI workload insights and hardware technologies, and deploying on a shorter cadence," Meta wrote at the time.
+
+That choice is the strategic tell. AI workload specs change faster than 18-month chip tape-outs. A monolithic design locks Meta into a specific balance of training vs inference, transformer vs convolution, batch vs online — bets that often look wrong two quarters later. Chiplets let the company cycle the parts that age fast while keeping the parts that age slowly. It is the same playbook AMD and Intel have used against Nvidia in the general-purpose CPU market, applied to AI silicon.
+
+The economics are the bigger story. Meta is on track for \$125–145 billion in capital expenditure this year, much of it AI infrastructure. Anything that displaces dollar-for-dollar Nvidia spend — even for narrow workloads like ranking and recommendation — is a strategic lever. Meta has been producing its own AI chips since 2023; the September tape-out is the first generation the company is willing to scale broadly.`,
+    imageUrl: '/news/metas-new-ai-chips-will-begin-techcr.png?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/metas-new-ai-chips-will-begin-production-in-september/',
+    date: '2026-07-09',
+    category: 'industry',
+    tags: ["meta"],
+  },
+  {
+    slug: 'instagram-users-heres-how-to-stop-techcr',
+    title: "How to keep Meta's Muse Image from using your Instagram photos",
+    summary: "As long as your profile is public, anyone can @-mention you into a synthetic image. TechCrunch walks through the opt-out path — and what the broader rollout says about platform consent in the AI era.",
+    content: `Meta's Muse Image — the new image-generation feature embedded in Facebook, Instagram, WhatsApp, and Messenger — has a quietly aggressive default: any user can @-mention a public Instagram account and use that account's public photos as a reference for an AI-generated image. Only private accounts and accounts held by under-18 users are automatically excluded.
+
+The opt-out exists, but it is not advertised. The relevant control is buried in the "What others see" and "Generative AI" sections of Instagram's settings — a series of toggles that, until this week, most users had no reason to know about. TechCrunch's walkthrough, published earlier in the week, was one of the first mainstream guides to surface those toggles in plain language.
+
+The bigger story is not the opt-out path. It is what the rollout reveals about platform consent in the AI era. Public social media profiles are no longer "public" in the way users have historically understood the word. They are not just visible to other humans; they are reference data for a generative model that can recombine them into synthetic content the original user has never seen and never approved of. The "public profile = visible" mental model, baked into two decades of social network UX, no longer describes the actual surface area of what a public profile is.
+
+The Muse Image rollout also exposes the regulatory gap. Most existing US privacy frameworks were written around the question "is the data visible to other users?" not "is the data a training input for a generative model?" Consent in the AI era is a different question, and the platforms — Meta included — are clearly still working out which parts of the answer they have to give the user voluntarily versus under compulsion.`,
+    imageUrl: '/news/instagram-users-heres-how-to-stop-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/how-to-stop-metas-ai-image-generator-from-using-your-instagram-photos/',
+    date: '2026-07-09',
+    category: 'industry',
+    tags: ["meta"],
+  },
+  {
+    slug: 'how-did-the-government-decide-openais-techcr',
+    title: "How did the government decide OpenAI's Sol was safe to release? Nobody quite knows.",
+    summary: "The Trump administration's frontier-model executive order left the actual safety criteria unfilled. Anthropic's Fable was briefly pulled, OpenAI's Sol was not. Researchers and former policy advisors are now openly asking what the threshold is.",
+    content: `OpenAI is rolling out Sol, its newest flagship LLM, to the public — and the model is considered at least on par with Anthropic's Fable, a frontier model whose capabilities (or perhaps its ownership) were concerning enough to the White House that it was briefly pulled from public access. The obvious question is symmetry: if Fable was restricted, why was Sol cleared? Short answer: nobody outside a very small circle appears to know.
+
+"Frankly, I don't have visibility into those exact processes, so yes, I don't feel like I have enough information to say whether they're adequate or not," Mina Narayanan, a senior research analyst at Georgetown's Center for Security and Emerging Technology, told TechCrunch. Anthropic, she noted, has said it was in conversation with the government and developed classifiers to detect jailbreak attempts, but the substance of those conversations is not public. Dean W. Ball, a former Trump policy advisor now working at OpenAI, wrote in his newsletter last month that "nobody knows what the requirements are to get licensed." Andy Konwinski — co-founder of Databricks, Perplexity, and the Laude Institute — said the same thing: "It's existentially a problem. Safety or not, it's about who has the power to make decisions — who gatekeeps and decides on permissions?"
+
+Eighteen months into the Trump administration, there is still no public answer. The May executive order on frontier models laid out a roadmap for evaluation, but the specifics have yet to be filled in. Sriram Krishnan, a former Andreessen Horowitz partner who served as a senior AI advisor at the White House until last month, told the Financial Times: "There will not be an FDA for AI." Whether that is a constraint or a choice, the practical result is the same: every frontier-model release is now effectively a fait accompli, with whatever safety review happens taking place behind a wall the press, the public, and most of the industry cannot see through.`,
+    imageUrl: '/news/how-did-the-government-decide-openais-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/how-did-the-government-decide-openais-frontier-model-was-safe-to-release/',
+    date: '2026-07-09',
+    category: 'release',
+    tags: ["openai"],
+  },
+  {
+    slug: 'paris-based-ai-voice-startup-gradium-raises-techcr',
+    title: "Paris-based Gradium raises $100M seed with Nvidia, opens Bay Area office",
+    summary: "A voice-AI lab spun out of Kyutai has reopened its seed round with Nvidia as a new investor, raising the round to nine figures — and will use the cash to compete for talent in Anthropic's and OpenAI's backyard.",
+    content: `Gradium, a Paris-based voice-AI startup spun out of the research lab Kyutai, has reopened its seed round to Nvidia and a small group of other investors, bringing the round to a total of \$100 million, the company said Thursday. The capital will fund a Bay Area office that Gradium frames, in its own words, as "strengthening its position at the heart of the world's leading AI ecosystem."
+
+That last clause is the strategic tell. Paris is one of the strongest AI research cities in Europe, and Gradium's CTO Neil Zeghidour — a former Google Brain, DeepMind, and Facebook researcher — has the network to recruit there at a discount. But "discount" is a relative term. The premium for senior AI research talent in the Bay Area is large and getting larger, and the company that can hire near the labs whose models Gradium's voice agents will sit next to has a real information advantage. Gradium is choosing to pay that premium.
+
+The product thesis is sub-200ms latency voice. The "awkward pause" that turns a voice assistant from feeling conversational to feeling like a phone tree is the single biggest adoption blocker for agentic voice. Gradium's claim is that its models can deliver voice in a single round-trip without the user-perceptible delay. If that holds at scale, it is the moat. ElevenLabs, the current category leader, is reportedly at \$11 billion post-money as of February; Gradium at \$100M seed is implicitly several orders of magnitude behind on capital but competing on the same technical surface.
+
+The customer list helps. Since its December launch Gradium has landed Renault as an early design partner, alongside undisclosed financial-services and consumer accounts. For an AI agent builder that needs a low-latency voice stack, Gradium is one of the few credible non-ElevenLabs options emerging in 2026.`,
+    imageUrl: '/news/paris-based-ai-voice-startup-gradium-raises-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/paris-based-ai-voice-startup-gradium-raises-100m-seed-backed-by-nvidia/',
+    date: '2026-07-09',
+    category: 'funding',
+    tags: ["ai"],
+  },
+  {
+    slug: 'google-will-now-disclose-which-ads-techcr',
+    title: "Google will now label ads that were created or edited with AI",
+    summary: "A new \"How this ad was made\" disclosure in My Ad Center will indicate AI involvement, but the system leans on advertiser self-attestation — Google does not independently verify.",
+    content: `Google is rolling out a new disclosure in its "My Ad Center" panel — accessible globally via the three-dot menu or info icon on ads in Search, YouTube, and Discover — that flags when an ad was created or edited with AI. The label, surfaced under a new "How this ad was made" item, builds on a policy that previously applied only to election ads.
+
+The strategic logic is two-sided. Generative AI dramatically lowers the cost of producing ad creative — a small business that used to need a \$5,000 product photoshoot can now generate two hundred variants in an afternoon — and Google, as the largest digital-ad platform in the world, has an interest in keeping that creative supply flowing. But it also has an interest in not letting AI-generated creative become the default untrustworthy surface, because the moment users stop trusting the ads, the inventory price falls. Disclosure is the minimum-viable trust mechanism that lets the supply expand without collapsing the demand.
+
+The implementation choice is what it is. When advertisers use Google's own generative AI ad tools, the disclosure is automatic. When the ad is created elsewhere and merely run through Google's ad stack, the advertiser has to self-attest via a new control — Google will not independently check. In some markets, local law will require the label regardless.
+
+That asymmetry is the weak point. Self-attestation-based disclosure is only as honest as the worst-in-class advertiser. The real test of the policy is not Google's own creative tools — those are already covered — but the long tail of AI-generated creative that will now be uploaded to the platform from third-party tools and labeled on the honour system. The web is about to get a lot more synthetic, and Google's disclosure layer is a useful first step that is unlikely to be the last.`,
+    imageUrl: '/news/google-will-now-disclose-which-ads-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/google-will-now-disclose-which-ads-are-made-with-ai/',
+    date: '2026-07-09',
+    category: 'industry',
+    tags: ["google"],
+  },
+  {
+    slug: 'new-york-times-says-openai-hid-techcr',
+    title: "New York Times says OpenAI hid 78M internal ChatGPT logs and a \"Bloom\" filter in copyright suit",
+    summary: "A new sanctions motion alleges OpenAI ran a project called \"Project Giraffe\" to track copyrighted regurgitation in its own outputs — then submitted a 20M-log sample so heavily redacted the court called it \"unusable.\"",
+    content: `The New York Times and The Daily News escalated their two-year copyright suit against OpenAI this week with a new motion for sanctions, alleging the company has spent the litigation hiding the very tools and datasets that could prove its models trained on and reproduce their journalism.
+
+The most consequential new claim involves an April deposition of OpenAI data privacy engineer Vinnie Monaco. According to the plaintiffs, Monaco revealed that OpenAI had been running internal searches and evaluations of its own training corpus specifically to detect copyrighted works — and that, beginning before the Times filed its suit, OpenAI had assembled a database of roughly 78 million de-identified ChatGPT conversations, used internally to measure how often the model was regurgitating copyrighted material. On top of that dataset, OpenAI allegedly implemented a "Bloom" filter as part of a project called "Project Giraffe," which detected and recorded instances of regurgitation in model outputs shortly after the lawsuit was filed.
+
+The 20-million-log sample OpenAI eventually submitted to the court is the other half of the story. The Times had originally asked for 120 million logs; OpenAI negotiated that down to 20 million and submitted a sample the court described as so heavily redacted as to be "unusable." The plaintiffs also allege OpenAI deleted billions of ChatGPT outputs after the suit was filed in direct violation of the court's preservation order, and substituted millions of logs in the requested sample.
+
+If the sanctions motion succeeds, the consequences extend well beyond the Times. The internal tracking architecture the plaintiffs describe is not unique to OpenAI — it is, in fact, the kind of compliance scaffolding any frontier model operator would build if it took copyright exposure seriously. The question the case will eventually answer is whether building that scaffolding and then stonewalling discovery with it is treated as evidence of consciousness of guilt, or as ordinary corporate litigation behaviour.`,
+    imageUrl: '/news/new-york-times-says-openai-hid-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/new-york-times-says-openai-hid-evidence-in-chatgpt-copyright-trial/',
+    date: '2026-07-09',
+    category: 'industry',
+    tags: ["openai","gpt"],
+  },
+  {
+    slug: 'meta-enters-the-crowded-ai-coding-techcr',
+    title: "Meta enters the agentic-coding race with Muse Spark 1.1 at $1.25/$4.25 per million tokens",
+    summary: "The new multimodal model targets enterprise code migrations and multi-step agentic tasks, priced in line with Claude Haiku 4.5 and GPT-5.6 Luna — Meta's late but coordinated play for the developer seat.",
+    content: `Meta publicly launched Muse Spark 1.1 on Thursday, a multimodal model purpose-built for agentic coding — the class of workloads where an AI plans a multi-step task, invokes external tools, writes code, runs it, and iterates. Spark 1.1, the first version of which was announced in April, can engage in multistep reasoning, manage digital workflows, and deploy new features inside enterprise systems, the company says.
+
+Meta is the last of the hyperscalers to ship a serious code model at this tier. Anthropic and OpenAI have had production-grade coding offerings for over a year. That Meta is late matters less than how it is pricing: \$1.25 per million input tokens and \$4.25 per million output tokens, in line with — albeit slightly above — Anthropic's Claude Haiku 4.5 and OpenAI's GPT-5.6 Luna. The pricing is competitive, not aggressive, which is a tell. Meta is not racing to the bottom on tokens; it is going after the enterprise code-migration workload, where price is a second-order concern behind capability.
+
+The pitch is precisely that workload. "Muse Spark 1.1 delivers exceptional performance in personal agentic tasks that require planning and orchestration across a range of external apps and services," the company wrote. The subtext is large-codebase refactors, multi-repository migrations, and CI/CD automation — the kind of automation that an enterprise engineering organisation will pay nine figures a year to make reliable.
+
+For Meta, Spark is also the productivity tool Meta itself will deploy internally across Facebook, Instagram, and WhatsApp before any external customer touches it. The external launch is the second-order monetisation. The first-order monetisation is Meta's own developer headcount, which is now the largest captive user base for the model.`,
+    imageUrl: '/news/meta-enters-the-crowded-ai-coding-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/meta-enters-the-crowded-ai-coding-battle-with-muse-spark-1-1/',
+    date: '2026-07-09',
+    category: 'industry',
+    tags: ["meta","coding"],
+  },
+  {
+    slug: 'can-ai-answer-the-3-trillion-techcr',
+    title: "Sequoia's David Cahn puts the AI capex bill at $1.5T — and the required revenue at $3T",
+    summary: "Three years after his original $200B reckoning, Cahn is back with a number seven times larger. The hyperscalers' 2028 free-cash-flow projections are now the bet that closes the gap.",
+    content: `Three years ago Sequoia partner David Cahn was the first person in venture capital to do the math on AI infrastructure and publish a number. In 2023, starting from Nvidia's reported \$50 billion annual GPU revenue and adding the implied cost of data-centre operations and operator margins, he concluded that the industry would need \$200 billion in revenue to pay back the up-front capex. The paper read as a provocation; it ended up as a roadmap.
+
+The 2026 update is bigger. Cahn now puts AI infrastructure spend for the year at \$1.5 trillion. The implied revenue required to justify that spend — given the same ratio of revenue-to-capex his 2023 model produced — is roughly \$3 trillion, and probably more, because the cost of memory and the use of inference-specific or exotic chips are both rising. "Recently, the required revenue per GW of CapEx has sharply increased due to these bottleneck dynamics and rising costs of construction," he writes.
+
+On the other side of the ledger, the actual revenue is much smaller. Anthropic is thought to have hit \$60 billion in annualised run-rate revenue. OpenAI reportedly earned \$13 billion in 2025, said it was at a \$20 billion ARR by November, and is presumably higher now. Combined, that is a fraction of \$3 trillion. The remainder of the gap is what the hyperscalers' 2028 free-cash-flow projections are betting on — and Apollo chief economist Torsten Slok is now pointing at those 2028 projections specifically as the test the market is watching.
+
+The fundamental question is whether AI is a productivity layer (cheaper, faster — revenue shows up as cost savings somewhere else) or a new demand layer (new spend — revenue shows up as new line items). If it is the former, \$3T is a stretch. If it is the latter, \$3T might be conservative. Cahn's number is the question, not the answer.`,
+    imageUrl: '/news/can-ai-answer-the-3-trillion-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/can-ai-answer-the-3-trillion-question/',
+    date: '2026-07-09',
+    category: 'industry',
+    tags: ["ai"],
+  },
+  {
+    slug: 'elon-musk-praises-mythosfable-promises-not-techcr',
+    title: "Elon Musk: Anthropic \"obviously the leader in AI,\" promises not to cut them off",
+    summary: "Six months after calling Anthropic a non-contender, Musk is now publicly endorsing the lab — which is also one of SpaceX's largest customers at $1.25B/month through May 2029.",
+    content: `In a post on X Thursday, Elon Musk did something that would have been unthinkable a year ago: he publicly endorsed Anthropic. "I was clearly wrong about Anthropic," he wrote, referring to a September 2025 post in which he said, "Winning was never in the set of possible outcomes for Anthropic." His new framing: "They are obviously currently the leader in AI. No company has released a model as good as Mythos/Fable and they will undoubtedly have Mythos 2 ready soon."
+
+The endorsement is more than a vibe shift. As of July 2026, Anthropic is one of SpaceX's largest customers. In May, Anthropic signed a deal to purchase the entire 300-megawatt output of xAI's Colossus 1 data center near Memphis, at \$1.25 billion per month through May 2029 — a contract worth roughly \$40 billion in revenue to SpaceX's xAI unit over its life. Google also signed a deal in the same window to rent SpaceX infrastructure through June 2029, for \$920 million per month.
+
+That commercial relationship is the subtext of every line Musk now writes about Anthropic. When he promises "I would never cut them off in a way that hurt them badly, even as a competitor. That's not my style," he is also confirming that the largest single B2B contract in the AI infrastructure market is, on his end, a long-term commitment he is not going to weaponise. The reassurance is not purely altruistic; it is the cost of sustaining the \$40 billion revenue line.
+
+The broader signal is the reorganisation of AI power. The dominant axis of competition is no longer "model lab versus model lab" — it is "compute owner versus model owner." Anthropic, OpenAI, and Google are now the buyers; SpaceX/xAI, Microsoft, Amazon, Oracle, and the neoclouds are the sellers. Musk's pivot from "AI doomer" to "Anthropic's biggest infrastructure fan" is the most public case study in that reorganisation.`,
+    imageUrl: '/news/elon-musk-praises-mythosfable-promises-not-techcr.jpg?v=2',
+    source: 'TechCrunch AI',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/elon-musk-praises-mythos-fable-promises-not-to-cut-off-anthropic/',
+    date: '2026-07-09',
     category: 'industry',
     tags: ["anthropic"],
   },
   {
-    slug: 'vibe-coding-platform-base44-launches-own-model-techcr',
-    title: "Base44 ships its own LLM as vibe-coding defensibility play",
-    summary: "Wix-owned Base44 has started rolling out a custom model trained on \"tens of millions of real user interactions\" — betting that owning the weights is the only durable moat for AI app-builders.",
-    content: `Base44, the Tel Aviv vibe-coding startup that Wix acquired for \$80M a year ago, has begun rolling out its own large language model — a notable move for a company that was barely six months old and had eight people when it was bought.
+    slug: 'openai-is-shutting-down-atlas-but-techcr',
+    title: "OpenAI is sunsetting Atlas and folding its browser features into ChatGPT and a Chrome extension",
+    summary: "Nine months after launch, OpenAI is admitting the standalone AI browser did not work — and routing its agentic-browsing capabilities into the surfaces users already inhabit.",
+    content: `OpenAI is shutting down Atlas, the AI-powered browser it launched in October with ChatGPT at its core, less than a year after launch. The agentic browsing features Atlas was built to demonstrate are being redistributed into a new Chrome extension and a beefed-up ChatGPT desktop app.
 
-The new model, called Base1, is the first output of a bet that frontier LLMs from OpenAI and Anthropic are not always the right fit. "Training and owning the model as part of [our] entire stack allows us a lot more optimizations on latency, cost, and efficiency," founder Maor Shlomo said.
+The move is the clearest signal yet that "AI browser" is not, in fact, a category. Perplexity's Comet, The Browser Company's Dia, and OpenAI's Atlas all launched in the same 12-month window on the same thesis — that an AI-native browser would displace Chrome as the place where people spend time online. None of them meaningfully moved Chrome's market share. The conclusion OpenAI is now drawing out loud, after Atlas: the browser is a feature, not a destination.
 
-The play is also a defensive one. With Swedish rival Lovable already a unicorn after its Series A last summer — and running entirely on third-party models — the question of how a vibe-coding platform builds a long-term moat has become pressing. Shlomo expects that other players at sufficient scale "will train their own models" because, in his view, vertical training data becomes the unfair advantage.
+The replacement strategy is to fight the surface the user is already on, not the one OpenAI wishes they were on. The new Chrome extension gives ChatGPT the context of whatever page the user is viewing — they can ask questions, summarise content, or hand off longer tasks from inside the existing browser. That puts the extension in direct competition with Google's Gemini Side Panel, which already performs several of the same tasks. OpenAI is, in other words, fighting Chrome from inside Chrome.
 
-The thesis echoes a broader pattern: investors and operators have converged on a three-legged framework of defensibility for AI-native products — proprietary data, distribution, and a customized tech stack. Base44 is betting all three get sharper when the model itself is owned. The company says Base1 was trained on "tens of millions of real user interactions on the platform" — a dataset that competitors simply cannot replicate.`,
-    imageUrl: '/news/vibe-coding-platform-base44-launches-own-model-techcr.jpeg?v=2',
+The desktop ChatGPT app is also getting a more capable browser — one that can browse websites, log into accounts, download files, and interact with web pages without the user leaving ChatGPT. A separate cloud browser, running remotely on OpenAI's servers, is where the app's agents will complete tasks on a user's behalf. The pattern: ChatGPT is the OS, the browser is a file picker. The OS-layer abstraction was always OpenAI's actual product strategy. Atlas was a detour.`,
+    imageUrl: '/news/openai-is-shutting-down-atlas-but-techcr.jpg?v=2',
     source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/29/vibe-coding-platform-base44-launches-own-model-as-ai-startups-seek-defensibility/',
-    date: '2026-06-30',
-    category: 'release',
-    tags: ["coding"],
-  },
-  {
-    slug: 'the-ai-jobs-debate-just-got-techcr',
-    title: "Ramp data complicates the \"AI kills jobs\" narrative",
-    summary: "Companies spending heavily on AI grew headcount 10.2% — including 12% in entry-level roles — undercutting the assumption that AI adoption is broadly reducing junior headcount.",
-    content: `A joint study from Ramp and Revelio Labs — tracking enterprise AI spend and workforce records across nearly 22,000 companies — pushes back against the dominant narrative that AI is shrinking the labor market.
-
-Among "high-intensity adopters" (defined as companies spending an average of \$30 per employee per month on AI in their first three months), overall headcount grew 10.2%, with entry-level roles specifically up 12%. Growth was broad across functions: engineering, sales, administration, customer support, finance, marketing, and scientist roles. The information sector — software, internet, media, and tech-adjacent firms — saw the strongest gains.
-
-The caveats are real. The dataset skews toward tech-forward, VC-backed, knowledge-work firms that were likely to be growing anyway. Whether AI is causing the hiring or just landing at companies that were already expanding is genuinely hard to disentangle from this kind of observational data.
-
-Even so, the counter-signal matters. Through May 2026, roughly 90,000 layoffs were publicly attributed to AI in the US, and some forecasters estimate 15% of US jobs are at risk over the next five years. A dataset that shows the heaviest AI spenders also growing junior headcount fastest is at minimum a meaningful complication to that story — and, as the authors note, "it does counter claims that AI will lead to broad job losses," even if it does not prove the opposite.`,
-    imageUrl: '/news/the-ai-jobs-debate-just-got-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/29/the-ai-jobs-debate-just-got-messier/',
-    date: '2026-06-30',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/openai-is-shutting-down-atlas-but-its-ai-browser-ambitions-are-still-growing/',
+    date: '2026-07-09',
     category: 'industry',
-    tags: ["ai"],
+    tags: ["openai"],
   },
   {
-    slug: 'crypto-exchange-okx-wants-ai-agents-techcr',
-    title: "OKX launches marketplace for AI agents to hire and pay each other",
-    summary: "The crypto exchange is opening a stablecoin-powered platform where AI agents can act as both customers and service providers — Star Xu calls it \"infrastructure designed for autonomous software.\"",
-    content: `Crypto exchange OKX is moving beyond trading and into a market it believes will be a trillion-dollar opportunity: "agentic commerce." Its new marketplace, called OKX AI, lets AI agents discover services from one another, settle payments in stablecoins, and build portable on-chain reputations.
+    slug: 'an-ai-agent-startup-just-let-techcr',
+    title: "Lyzr used its own AI agent to run a $100M Series B, fielding 130+ investors",
+    summary: "The three-year-old Jersey City startup's SivaClaw system drafted memos, tracked slide engagement, and replaced the traditional Sand Hill Road fundraising dance — pulling in $400M of investor interest at a ~$500M valuation.",
+    content: `The cleanest product demo in AI this year is not a benchmark score or a coding eval. It is a startup that let its own AI agent run the company's \$100 million Series B. Lyzr, a three-year-old Jersey City, New Jersey startup that helps enterprises build AI agents, used its in-house system SivaClaw to field questions from more than 130 investors, draft investment memos, and track which slides individual backers lingered on. The round closed at a roughly \$500 million valuation, Bloomberg reported.
 
-The platform opens to developers this week after a 50-partner closed beta. It builds on technology OKX has been developing for over a year — AI agent wallets, stablecoin payment rails, and persistent on-chain identity — and is the company's clearest signal yet that it wants to be seen as a fintech platform, not just a crypto trading venue.
+The most telling detail is how little human legwork was involved. Lyzr told Bloomberg it pulled in \$400 million of investor interest from Silicon Valley, the Middle East, and the financial sector without a founder ever needing to fly out for the traditional Sand Hill Road coffee-meeting-and-warm-intro dance. The capital is chasing AI deployments so aggressively that founders with credible traction barely have to leave their desks to raise nine figures.
 
-The bet is structural. "The coming decade will be defined by one-person companies that generate over a million dollars in annual revenue — because every individual effectively gains an unlimited workforce," CEO Star Xu said. "Traditional financial infrastructure was built for humans. The agentic economy needs infrastructure designed for autonomous software."
+For the AI agent category broadly, the use case is self-referentially compelling. Lyzr did not just claim its agent could do enterprise work; it used the agent to do a real, materially important piece of work, with measurable outcomes (130+ investors fielded, \$100M closed, \$500M valuation) and no founder travel. The product is, in a literal sense, what it does.
 
-For the developer-facing pitch, OKX is targeting two groups: crypto-native engineers building AI applications, and solo entrepreneurs who want to automate parts of their business with agents. The company expects those developers to publish AI-powered tools on the marketplace, after which any user — or any agent — can pay to invoke them. The CMO, Haider Rafique, estimates the agentic commerce market could be worth a trillion dollars over the next five years, driven primarily by micropayments at machine-to-machine scale.`,
-    imageUrl: '/news/crypto-exchange-okx-wants-ai-agents-techcr.jpg?v=2',
+The risk is one the AI agent category is going to have to confront soon. The "our agent ran our raise" story is excellent marketing the first time it is told. By the fifth telling, the bar for what counts as evidence shifts. The category's long-term credibility depends on whether SivaClaw-class agents keep producing outcomes that look more like a \$100M fundraise than like a slide deck.`,
+    imageUrl: '/news/an-ai-agent-startup-just-let-techcr.png?v=2',
     source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/crypto-exchange-okx-wants-ai-agents-to-hire-and-pay-each-other/',
-    date: '2026-06-30',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/an-ai-agent-startup-just-let-its-agent-run-its-100-million-fundraise/',
+    date: '2026-07-09',
     category: 'industry',
     tags: ["agent"],
   },
   {
-    slug: 'lumo-protons-privacy-focused-ai-chatbot-gets-techcr',
-    title: "Proton's Lumo 2.0 adds vision, persistent memory, and a \"thinking mode\"",
-    summary: "The privacy-focused AI chatbot gains image analysis, image generation, 76% faster response times, and a new reasoning toggle — without changing Proton's strict no-logs stance.",
-    content: `Proton, the Swiss company best known for its encrypted email and VPN products, has shipped a major update to Lumo, the public AI chatbot it launched last year.
+    slug: 'openai-launches-its-new-family-of-techcr',
+    title: "OpenAI ships GPT-5.6 across Sol, Terra, and Luna — plus a workplace product called ChatGPT Work",
+    summary: "Sol is positioned as OpenAI's strongest cybersecurity model yet; the company also says Sol is 54% more token-efficient than its predecessor on coding tasks. A direct attack on Microsoft 365 Copilot.",
+    content: `OpenAI unveiled its new GPT-5.6 model family on Thursday, with three variants: Sol (the workhorse), Terra (the intermediate option), and Luna (the budget tier). The family marks OpenAI's broadest capability upgrade in a year and ships alongside a new workplace product, ChatGPT Work, that targets the same enterprise seat Microsoft 365 Copilot currently dominates.
 
-Lumo 2.0 adds three things that matter. First, vision: users can now upload images and ask Lumo to analyze or edit them, or generate imagery from a prompt. Second, persistent memory scoped to Projects (the widget that ties Lumo to Proton's other productivity apps) — so a user can teach Lumo their preferences once and have those preferences stick across sessions. Third, a "thinking mode" toggle for more complex questions that takes longer but goes deeper.
+The headline technical claim is efficiency. CEO Sam Altman has said publicly that Sol is 54% more token-efficient than the previous generation on AI coding tasks. For an enterprise customer paying per token, a 54% efficiency improvement is functionally a 54% price cut at the same workload — or, equivalently, the same dollar now buys nearly twice as much output. Token efficiency, not raw benchmark scores, is the competitive lever that has been moving enterprise procurement decisions in 2026, and Sol is positioned to lead on it.
 
-Proton says response times on most queries are up to 76% faster than the previous version. The privacy story is unchanged: no logs, encrypted by default, and no data used for training — the same posture Proton has applied across its other products.
+Sol is also framed as OpenAI's "strongest cybersecurity model yet, achieving frontier performance with significantly fewer tokens." That phrasing is the answer to the Trump administration's earlier attempts to restrict Sol's rollout on national-security grounds. The model supports defensive cybersecurity work — threat modelling, code review and patching, blue-team simulations — which is the precise capability profile the White House said it wanted to verify before Sol could be released at scale. The implication of the launch is that the cyber-safety review is now considered closed, at least on OpenAI's side.
 
-The result is a chatbot that now roughly matches the on-the-surface usefulness of Gemini or ChatGPT, with Proton arguing the trade-off — slightly less raw capability for stronger privacy guarantees — is the right one for a meaningful slice of users. The framing from CEO Andy Yen: "Lumo 2.0 demonstrates that users no longer need to choose between powerful AI capabilities and meaningful privacy protections." Whether that's true at scale depends on whether the privacy guarantees hold up under independent audit, but as a feature story, Lumo 2.0 closes most of the obvious gaps with mainstream alternatives.`,
-    imageUrl: '/news/lumo-protons-privacy-focused-ai-chatbot-gets-techcr.jpeg?v=2',
+ChatGPT Work is the more direct commercial signal. The product is positioned as a workplace companion that runs on desktop, web, and mobile and handles "drafting documents, spreadsheets, and presentations." That is the Microsoft 365 surface area, in two sentences. The product that runs on OpenAI's models is now competing with the product that runs on OpenAI's models.`,
+    imageUrl: '/news/openai-launches-its-new-family-of-techcr.jpg?v=2',
     source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/lumo-protons-privacy-focused-ai-chatbot-gets-an-upgrade/',
-    date: '2026-06-30',
-    category: 'industry',
-    tags: ["ai"],
-  },
-  {
-    slug: 'amazon-launches-new-1-billion-fde-techcr',
-    title: "AWS assembles a billion-dollar forward-deployed engineer org for AI",
-    summary: "Following OpenAI and Anthropic, Amazon is dedicating internal headcount to embed engineers at customer sites and ship purpose-built agents — a hybrid sales-and-engineering model that the FDE pioneers at Palantir would recognize.",
-    content: `Amazon Web Services is the latest frontier-model and cloud platform to formalize a forward-deployed engineer (FDE) practice, with a new internal organization backed by a billion dollars in internal resources.
-
-The mandate is concrete: AWS engineers will embed at customer sites to deploy purpose-built agents, with a focus on fast engagements and a deliberate handoff plan that leaves the customer self-sufficient afterward. As AWS VP of frontier AI Francessca Vasquez put it, "customers leave AWS FDE deployments with both new solutions and new engineering capabilities" — the goal is a sustainable in-house AI practice, not a permanent AWS dependency.
-
-The FDE pattern is not new. Palantir essentially built the category, and OpenAI and Anthropic have run their own versions in support of strategic enterprise deals. The model's appeal is straightforward: a contracting engineer works inside the customer's environment for the duration of the rollout, sees real production problems, and ships systems tailored to the customer's specific workflows — while leaving behind the engineering know-how the customer will need to evolve those systems long-term.
-
-The tradeoff is unit economics. Maintaining a large standing FDE team is labor-intensive, and the work is hard to templatize across very different customers. AWS's \$1B commitment suggests the company is treating FDE as a strategic moat — one of the few service offerings that can keep large enterprise customers on the platform as the AI value chain gets more competitive.`,
-    imageUrl: '/news/amazon-launches-new-1-billion-fde-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/amazon-launches-new-1-billion-fde-org-following-openai-and-anthropic/',
-    date: '2026-06-30',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/openai-launches-its-new-family-of-models-with-gpt-5-6/',
+    date: '2026-07-09',
     category: 'release',
-    tags: ["openai","anthropic"],
+    tags: ["openai","gpt"],
   },
   {
-    slug: 'podcasting-platform-riverside-enters-the-newsletter-techcr',
-    title: "Riverside launches AI-built newsletters from existing recordings",
-    summary: "The video and podcast platform is staying out of Substack's lane and instead turning the recordings its users already have into newsletter-ready content, in-app.",
-    content: `Riverside, the video and podcast recording platform that has raised over \$60M to date, is adding newsletters to its product — but not the way the obvious competitors built theirs.
+    slug: 'fidji-simo-steps-down-from-openais-techcr',
+    title: "OpenAI's No. 2 executive Fidji Simo is stepping down to a part-time advisory role",
+    summary: "Simo's medical leave turned out to be longer than expected. Her departure — alongside the exits of CPO Weil and CMO Rouch — leaves a thin C-suite just as OpenAI eyes a public offering.",
+    content: `Fidji Simo, OpenAI's No. 2 executive and the CEO of Applications since May 2025, is stepping down to a part-time advisory role, The Wall Street Journal reported Thursday. In an internal note, Simo said her ongoing medical leave — first disclosed in April as a relapse of a neuroimmune condition — had proven longer and harder than expected.
 
-The new feature, shipping inside Riverside, lets users take recordings already in the platform and use AI to turn them into newsletter drafts. The pitch, from co-founder and CEO Nadav Keyson: creators and business users on Riverside are already producing information-dense spoken content. For most of them, speaking is more natural than writing, and the ideas are already in the conversation. "So instead of asking them to start over in a separate tool, we help them turn a recording they've already made into newsletter-ready content with far less effort," he said.
+Simo was a structural appointment. She joined OpenAI's board in 2024 and then took the newly created CEO of Applications role reporting directly to Sam Altman, with COO Brad Lightcap, CFO Sarah Friar, and CPO Kevin Weil all moving under her. The structure was designed to free Altman to focus on research, compute, and safety, while Simo ran the consumer and enterprise product surface. Less than 18 months later, Lightcap is in a "special projects" role, Rouch has left to focus on cancer recovery, Weil has also left, and Simo is now part-time. The C-suite bench that was supposed to scale OpenAI to a public company is, in fact, thinner than it was a year ago.
 
-Riverside is explicit that it is not chasing Substack, Mailchimp, Beehiiv, or Ghost. The point is to extend the value of an existing recording session, not to compete for the blank-page writing market. Users can still create and send newsletters from scratch if they want.
+Simo's background was the reason she was hired. She came from Instacart, where she was CEO from 2021 through the 2023 IPO, and before that spent over a decade at Meta running the Facebook app. She was the consumer-product operator OpenAI's executive team had conspicuously lacked. She was also, in the public narrative, the person widely expected to take on even more responsibility once OpenAI went public — making her departure a real succession question for Altman to answer at the worst possible moment.
 
-The release also adds a multi-camera recording mode, support for remote guests, and a recording-finished AI draft that produces hooks and content for social platforms. The model is "the recording is the source of truth; everything else is generated downstream" — a thesis that has a lot of appeal in 2026, when the cost of turning one artifact into many has dropped to near zero.`,
-    imageUrl: '/news/podcasting-platform-riverside-enters-the-newsletter-techcr.jpeg?v=2',
+The IPO timing makes the optics harder. OpenAI is reportedly preparing a public offering. The executive who would have been the public-market face of the consumer and enterprise product is now in an advisory role. Altman's remaining bench needs to be deeper than it currently looks, and quickly.`,
+    imageUrl: '/news/fidji-simo-steps-down-from-openais-techcr.jpg?v=2',
     source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/podcasting-platform-riverside-enters-the-newsletter-publishing-game/',
-    date: '2026-06-30',
+    sourceUrl: 'https://techcrunch.com/2026/07/09/fidji-simo-steps-down-from-openais-no-2-role/',
+    date: '2026-07-09',
     category: 'industry',
-    tags: ["ai"],
-  },
-  {
-    slug: 'x-now-offers-an-mcp-server-techcr',
-    title: "X ships a hosted MCP server to make its API AI-friendly by default",
-    summary: "X is now running its own Model Context Protocol endpoint so AI tools like Claude and Cursor can talk to the platform without per-developer integration work.",
-    content: `X is making its platform more accessible to AI tools by hosting a Model Context Protocol (MCP) server that handles authentication and protocol translation for any developer who wants to connect an AI assistant to the X API.
-
-MCP is the open standard for connecting AI models to external tools and data sources. Until now, any developer who wanted Claude, Cursor, Grok Build, or another MCP-compatible assistant to talk to X had to build and host their own MCP server, write the X API glue, and handle authentication. With X's hosted MCP, that work goes away: the assistant connects to a single X-managed endpoint, and the user authenticates with their own X account's permissions.
-
-What X gets in return is strategic positioning. The platform has long been a firehose of real-time conversation — exactly the kind of signal that an LLM-based agent wants to query, summarize, or act on. By making that data trivially accessible to AI tools, X is repositioning itself as an information network for AI systems, not just a social hangout for people.
-
-X joins GitHub, Slack, Notion, Stripe, and Salesforce as the latest major platform to ship a hosted MCP endpoint. The pattern is now standard: any platform that wants to stay in the path of AI workflows has to expose itself through MCP, or accept that AI tools will use unofficial integrations that may break.`,
-    imageUrl: '/news/x-now-offers-an-mcp-server-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/x-now-offers-an-mcp-server-to-make-its-platform-easier-for-ai-tools-to-use/',
-    date: '2026-06-30',
-    category: 'industry',
-    tags: ["ai"],
-  },
-  {
-    slug: 'anthropics-claude-science-bets-on-workflow-techcr',
-    title: "Anthropic's Claude Science is a workbench, not a new model",
-    summary: "Anthropic ships a research environment that wraps the same Claude models with 60+ scientific databases, sub-agent delegation, and a fact-checker — betting that scientists want operating layers, not more raw capability.",
-    content: `Anthropic has launched Claude Science, a dedicated workbench for computational research. The company is being explicit about what this is and isn't: "not a new AI model and not a more capable model for biology. It runs the same Claude models already available to everyone today (including Claude Opus 4.8), with no special access and no gating."
-
-The workbench builds on Anthropic's October 2025 launch of Claude for Life Sciences, which made the standard Claude chatbot better at life-sciences tasks. Claude Science is the dedicated environment for doing that work end-to-end.
-
-The architecture has three layers. A primary AI assistant acts as a project manager, connecting to more than 60 scientific databases and exposing prebuilt toolkits for genomics, protein structure, chemistry, and similar fields. That primary assistant can spawn sub-agents for parallel tasks — a project-lead-and-specialist model — and can hand work to a custom "expert" assistant the user has built for their specific research area. A separate fact-checker agent reviews citations and calculations before anything ships toward a paper.
-
-The third layer is the most interesting, and the most uncertain. The fact-checker is a guardrail against the well-known problem of LLMs fabricating citations — but it's still the same underlying model reviewing its own outputs, not an independent ground truth. Whether that's enough to catch real errors in a research context, or whether the workbench will need a separate non-Claude verification path, is the open question.`,
-    imageUrl: '/news/anthropics-claude-science-bets-on-workflow-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/anthropics-claude-science-bets-on-workflow-not-a-new-model-to-win-over-scientists/',
-    date: '2026-06-30',
-    category: 'industry',
-    tags: ["anthropic","claude"],
-  },
-  {
-    slug: 'acti-puts-ai-agents-directly-into-techcr',
-    title: "Acti ships an agentic keyboard for iOS and Android",
-    summary: "Singapore startup Acti is building AI tools at the keyboard layer, betting that the universal input surface is the right place to make agents feel native rather than bolted on.",
-    content: `A Singapore-based startup called Acti is launching what it calls an "agentic keyboard" for iOS and Android — a system-level text input that does more than suggest the next word, with hooks that let AI agents take actions inside the apps the user is already using.
-
-The pitch from founder and CEO Young Wang is about the user's context. Right now, anyone using an AI assistant has to context-switch between the conversation and the app they're actually trying to act in. "Today's AI agents are fundamentally limited because user context stays fragmented across separate apps," Wang said. Acti's bet is that the keyboard sits in all of them, which makes it a natural place to host a context layer that belongs to the user rather than to any one platform.
-
-In practice, that means a keyboard that can drop restaurant recommendations into a chat, share a stock price mid-conversation, or pull a calendar entry into an email draft — all without leaving the foreground app. Today each of those requires a trip to a separate AI assistant; the value of doing it at the keyboard layer is speed and friction.
-
-The launch is a useful marker for where the consumer-AI argument is heading in 2026: away from the "open a chatbot" model, toward embedding the AI in interfaces the user is already in. The race is on for which surface wins that bet — and the keyboard is one of the most natural candidates, given that every action on a phone passes through it.`,
-    imageUrl: '/news/acti-puts-ai-agents-directly-into-techcr.png?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/',
-    date: '2026-06-30',
-    category: 'regulation',
-    tags: ["agent"],
-  },
-  {
-    slug: 'anthropic-launches-claude-sonnet-5-as-techcr',
-    title: "Anthropic ships Claude Sonnet 5 as a cheap agentic workhorse",
-    summary: "Sonnet 5 lands at $2/Anthropic’s Claude Sonnet 5 brings stronger agentic capabilities, lower pricing, and improved safety, positioning the model as a cheaper alternative to Opus, GPT-5.5, and Gemini Pro.0 per million tokens (rising to $3/Anthropic’s Claude Sonnet 5 brings stronger agentic capabilities, lower pricing, and improved safety, positioning the model as a cheaper alternative to Opus, GPT-5.5, and Gemini Pro.5 after August) and becomes the default for free and Pro plans — positioning it as the new floor on price-per-agentic-run.",
-    content: `Anthropic has released Claude Sonnet 5, the next generation of its mid-tier model, with a clear thesis: agentic capability is now table stakes, and the actual competition is on price-per-agentic-run.
-
-The model can plan, use tools (browsers, terminals, and so on), and run autonomously at a level that, just a few months ago, required larger and more expensive models, according to Anthropic. The framing is nearly identical to what OpenAI said about GPT-5.6 Sol (which launched in preview last week with multi-agent orchestration) and Google said about Gemini 3.5 Flash (which it pitched as the inflection point from chatbot to autonomous agent). Everyone is now claiming the same thing, and the differentiator has shifted to cost and reliability.
-
-Pricing for Sonnet 5 is \$2 per million input tokens and \$10 per million output tokens through August 31, after which it rises to \$3 and \$15 respectively. That undercuts both Opus 4.8 and the equivalent OpenAI and Google frontier models, though it remains above Gemini 3.5 Flash — Google's budget-tier bet.
-
-Operationally, Sonnet 5 becomes the default model for free and Pro plans from launch. The signal there is about user acquisition and habit formation: by making the default experience run on the mid-tier, Anthropic sets a lower price floor across the industry and likely pulls some marginal use cases back from OpenAI. The strategic question is whether \$3/\$15 still leaves room for the open-weights challengers to win on cost, or whether the new ceiling simply defines what "cheap" means.`,
-    imageUrl: '/news/anthropic-launches-claude-sonnet-5-as-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/',
-    date: '2026-06-30',
-    category: 'release',
-    tags: ["anthropic","claude","agent"],
-  },
-  {
-    slug: 'nvidia-competitor-etched-hits-5b-valuation-techcr',
-    title: "Etched emerges with $5B valuation and Nvidia competitor Etched hits $5B valuation, $1B in sales for AI chipB in chip orders",
-    summary: "The Nvidia competitor, founded by two Harvard dropouts and backed by Karpathy, Hinton, and Druckenmiller, says it has Nvidia AI chip competitor Etched says it has already booked $1 billion under contract for the inference systems powered by its chip.B in contracts and a working TSMC-manufactured chip aimed squarely at inference.",
-    content: `Etched, a chip startup founded in 2022 by Thiel fellows Gavin Uberti and Robert Wachen (both Harvard dropouts), has come out with a progress report that puts the company at a \$5B post-money valuation with \$1B in contract orders already booked.
-
-The orders are for "frontier inference clusters" — Etched's term for full-stack systems that bundle the chip, custom-designed racks, and software. The pitch is that the chip is built specifically to run inference for frontier models faster, cheaper, and more power-efficient than Nvidia's general-purpose GPUs. Inference is the dominant cost center for AI companies serving customers at scale, which is why anyone claiming a real efficiency win tends to attract investor attention fast.
-
-The numbers behind the headline are significant. Etched has raised \$800M total, with the most recent \$500M closed unannounced in December at \$5B post. Investors include VentureTech Alliance, Jane Street, Hudson River Trading, Two Sigma, Ribbit Capital, and Stripes (which led the December round). The angel list reads like a who's-who of modern AI: Andrej Karpathy, Geoffrey Hinton, Fei-Fei Li, Arthur Mensch, and Scott Wu, plus Stanley Druckenmiller and Peter Thiel.
-
-Etched's positioning — a chip purpose-built for inference rather than training — is the right one for the moment. Training markets are dominated by Nvidia, and the long-term economic engine of AI is serving inference at scale. Whether the company can deliver on the implied performance claims is the open question, and one the company is now letting customers start answering.`,
-    imageUrl: '/news/nvidia-competitor-etched-hits-5b-valuation-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/nvidia-competitor-etched-hits-5b-valuation-1b-in-sales-for-ai-chip/',
-    date: '2026-06-30',
-    category: 'funding',
-    tags: ["ai"],
-  },
-  {
-    slug: 'google-introduces-a-faster-cheaper-image-techcr',
-    title: "Google's Nano Banana 2 Lite targets high-volume image workflows",
-    summary: "At $0.034 per 1,000 images and a four-second latency floor, Google's new image model is aimed squarely at creators who need to iterate fast and cheap — not at one-off perfect renders.",
-    content: `Google has released Nano Banana 2 Lite, a faster and cheaper version of its in-house image model family, designed for the high-volume workflows that AI content creation increasingly demands.
-
-The new model produces images in about four seconds, well below the latency of the original Nano Banana and Nano Banana 2. Pricing lands at \$0.034 per 1,000 images — low enough to make iterative prompting and bulk production economically sensible for individual creators, not just enterprises with large model budgets.
-
-The positioning is explicit. Nano Banana 2 was marketed as a "generalist workhorse," and the Lite variant extends that line into a tier optimized for rapid iteration at scale. Google still offers the original Nano Banana, Nano Banana 2, and Nano Banana Pro for users who need higher-end output; Lite fills the volume gap at the bottom.
-
-The release lands at an awkward moment for the category. Public frustration with "AI slop" is real, and creative communities are increasingly skeptical of generative tooling. Google has also drawn recent attention for a \$75M partnership with A24 — a deal that's drawn fan backlash but signals the studio's interest in tooling relationships. Lite's positioning — "cheap and fast iteration" rather than "best quality" — sidesteps the slop critique at least partially, because the use case is clearly iteration, not final output.`,
-    imageUrl: '/news/google-introduces-a-faster-cheaper-image-techcr.png?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/google-introduces-a-faster-cheaper-image-generator-with-nano-banana-2-lite/',
-    date: '2026-06-30',
-    category: 'regulation',
-    tags: ["google","image"],
-  },
-  {
-    slug: 'the-deepmind-trio-who-built-a-techcr',
-    title: "Ex-DeepMind poker-AI team is now trading stocks for quant funds",
-    summary: "EquiLibre Technologies — three former DeepMind researchers — has a $500M Series A and a \"perfect record of zero negative months\" trading billions in daily volume on the S&P 500 and Nasdaq.",
-    content: `Three former DeepMind researchers who built a poker AI that beat top human players have repurposed the same reinforcement-learning approach to trade stocks. Their Prague-based company, EquiLibre Technologies, has closed an undisclosed-size Series A at a \$500M valuation, led by Creandum.
-
-The connection between poker and markets is not as unusual as it sounds. Both environments reward the same kind of self-learning agent: clear scoring rules, high information density, and adversarial dynamics. "The nice thing about trading and markets is that the scoring is super simple: how much money did the agent make?" CEO Martin Schmid said.
-
-The market side of the story is what makes the company serious. EquiLibre's algorithms are trading with Tower Research Capital, a quant firm, and have been routing "billions in daily volume" across the S&P 500 and Nasdaq. The startup claims "a perfect record of zero negative months since inception" — both in crypto markets, where the agents first went live in 2025, and now in equities.
-
-For investors, the appeal is straightforward. Trading alpha is a market where improvements compound quickly into cash, and quant funds have generated "quantums of profit that make most venture-backed successes look small," as Creandum's Cameron Sellers put it. EquiLibre's positioning — "a lab first, not a finance firm" — is also strategic: it keeps the company out of the regulatory perimeter of a quant fund while giving it access to one of the highest-margin customer bases in the world.`,
-    imageUrl: '/news/the-deepmind-trio-who-built-a-techcr.jpeg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/the-deepmind-trio-who-built-a-poker-ai-are-now-making-money-for-quant-hedge-funds/',
-    date: '2026-06-30',
-    category: 'industry',
-    tags: ["ai"],
-  },
-  {
-    slug: 'openclaw-is-finally-available-on-android-techcr',
-    title: "OpenClaw lands on iOS and Android",
-    summary: "The free, open-source AI agent that went viral earlier this year now has a mobile app, paired through the OpenClaw Gateway to the same skills and tools as the desktop version.",
-    content: `OpenClaw — the free, open-source agentic platform that captured the internet earlier in 2026 — is now available as a mobile app on iOS and Android. The team announced the launch on X on Tuesday.
-
-The architecture is the same as on desktop: a phone running the OpenClaw app connects to the OpenClaw Gateway, which routes requests to AI agents and the tools and skills those agents use. The point is to make it possible to run the same agents from a phone that the user would have run on a laptop.
-
-OpenClaw's path to mobile is itself part of the story. Earlier in 2026, the project went viral around the launch of MoltBook, a social media platform purportedly populated entirely by agents. The viral moment — later revealed to have been partially human-impersonation theater — was effective marketing regardless. In February, OpenClaw's creator, Peter Steinberger, joined OpenAI, leaving the project's trajectory in the hands of its community.
-
-The mobile release is, in a sense, the natural conclusion of that arc. The agentic future OpenClaw was always pointing at — agents embedded across the AI landscape, showing up in more places by the day, including your phone — now includes OpenClaw itself. Whether the community-maintained version can keep up with the closed competitors is the open question.`,
-    imageUrl: '/news/openclaw-is-finally-available-on-android-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/30/openclaw-is-finally-available-on-android-and-ios/',
-    date: '2026-06-30',
-    category: 'industry',
-    tags: ["ai"],
-  },
-  {
-    slug: 'south-korean-tech-giants-commit-over-techcr',
-    title: "South Korea bets $900B on memory, AI data centers, and physical AI",
-    summary: "Samsung and SK Hynix will spend $518B on four new memory fabs as the country tries to make its semiconductor belt — currently concentrated around Seoul — a national strategic asset.",
-    content: `South Korea's two largest memory chip companies, Samsung and SK Hynix, will jointly invest \$518B (about 800 trillion won) in four new memory fabs in the country's southwest, a region that has historically attracted little semiconductor investment.
-
-The announcement is part of a broader \$900B national investment plan spanning semiconductors, AI data centers, and physical AI, unveiled at a presidential briefing on Monday with both companies' chairmen in attendance. The plan splits into three buckets: \$518B for the four new memory fabs in the southwest, \$52B for an HBM (high-bandwidth memory) packaging hub in the central region, and \$356B (550 trillion won) for AI data centers to be built by SK, GS, Naver, and other Korean tech and energy players through 2035.
-
-The strategic context is the global memory shortage driven by the AI buildout — "RAMageddon," in industry parlance. With Samsung, SK Hynix, and US-based Micron all running at full capacity, South Korea sees an opening to consolidate its position as an "irreplaceable" industrial power. The four fabs in the southwest are part of that bet; the existing chip facilities in Yongin and Pyeongtaek (the heart of the Korean semiconductor belt, just south of Seoul) "have already reached their limits," according to President Jae Myung Lee.
-
-The geographic spread also matters. Concentrating fabs near Seoul has worked historically, but the AI buildout has changed the math — power, water, and land constraints are tighter, and the government wants to spread the wealth and resilience beyond the capital. Whether the southwest fabs can come online on the implied timeline, and whether the demand assumption holds, is the open risk.`,
-    imageUrl: '/news/south-korean-tech-giants-commit-over-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/29/south-korean-tech-giants-commit-over-550b-to-ease-ramageddon/',
-    date: '2026-06-29',
-    category: 'industry',
-    tags: ["ai"],
-  },
-  {
-    slug: 'anthropic-and-gov-newsom-forge-deal-techcr',
-    title: "Anthropic signs California at half-price as it pivots to state governments",
-    summary: "Newsom's office will give every state agency and local government access to Claude at a discount — a strategic win for Anthropic as its federal relations deteriorate.",
-    content: `California governor Gavin Newsom and Anthropic have struck a deal that gives every state agency and local government in California access to Claude at a discounted price, plus training and support from Anthropic.
-
-The press release from the governor's office frames the deal as a way to use AI to "help state employees draft documents and analyze information" — drafting assistance rather than autonomous action, which is consistent with Newsom's March executive order on AI use in government. "AI should not replace the human work of government; it should help our workers move faster, solve problems more effectively, and deliver better results for Californians," Newsom said.
-
-The strategic context matters more than the deal size. Anthropic's federal relations have soured over the past year: in the dispute over the Department of Defense contract, the company sought to carve out explicit protections against using Claude for surveillance of Americans or for autonomous weapons without human oversight. Defense Secretary Pete Hegseth refused, the DoD signed with OpenAI instead, and the federal government went so far as to declare Anthropic a "supply-chain risk" — a designation that has kept the company out of any Pentagon contractor's supply chain.
-
-The California deal is, in that context, a useful counterweight. State governments collectively have substantial procurement budgets, and California specifically is a high-profile reference. Whether other states follow Newsom's lead, and whether the federal designation ever gets walked back, is the longer-run question.`,
-    imageUrl: '/news/anthropic-and-gov-newsom-forge-deal-techcr.jpeg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/29/anthropic-and-gov-newsom-forge-deal-allowing-california-government-to-use-claude-at-half-price/',
-    date: '2026-06-29',
-    category: 'industry',
-    tags: ["anthropic","claude"],
-  },
-  {
-    slug: 'geminis-personalized-ai-image-generation-is-techcr',
-    title: "Gemini's personal-context image generation is free in the US",
-    summary: "Google is opening the feature that lets Gemini draw on your Gmail, Photos, YouTube, and Search data to generate images based on your actual interests — previously Plus/Pro/Ultra only.",
-    content: `Google is opening up Gemini's personalized image generation to all eligible free users in the US, the company announced on Monday. The feature was previously limited to Plus, Pro, and Ultra subscribers.
-
-The capability, which uses Google's Nano Banana image model, lets Gemini generate images based on a real understanding of the user's interests. The model pulls from data across Google account connections — Gmail, Google Photos, YouTube, and Search — to figure out what "you" actually means, so a prompt like "create an illustration of me and my favorite things" can produce something meaningful without the user listing their favorites in the prompt.
-
-Gemini can also pull actual images of the user from Google Photos, removing the need to upload reference photos manually. The Personal Intelligence feature that powers this was first announced in April, broadly rolled out to US users in March, and has since expanded to India and Japan.
-
-The feature is opt-in. Users control which Google apps Gemini can access, and a Tools-menu toggle lets them disable Personal Intelligence per prompt if they want a generic result. The opt-in framing is significant for trust: giving Gemini broad access to Gmail, Photos, and YouTube history is a real privacy ask, and Google is keeping it explicitly consensual rather than default-on.`,
-    imageUrl: '/news/geminis-personalized-ai-image-generation-is-techcr.jpg?v=2',
-    source: 'TechCrunch AI',
-    sourceUrl: 'https://techcrunch.com/2026/06/29/geminis-personalized-ai-image-generation-is-now-free-for-u-s-users/',
-    date: '2026-06-29',
-    category: 'industry',
-    tags: ["gemini","image"],
+    tags: ["openai"],
   },
 ];
 
