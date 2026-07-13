@@ -44,6 +44,11 @@ export const blogPosts: BlogPost[] = [
 
 <p>Where <a href="/agent/claude-code">Claude Code</a> is weak: it's a pure-TTY CLI. No file tree, no inline preview, no GUI. If you want to see your changes visually before approving, you'll pipe to <code>git diff</code> or open another editor. The other soft spot is pricing — long sessions on large repos burn through Max tier quotas fast, and the Pro tier restrictions Anthropic introduced in April 2026 mean you should verify the current policy before subscribing.</p>
 
+<figure>
+  <img src="/blog/claude-code-vs-cursor-vs-cline-2026-diff.jpg" alt="A multi-file code diff in a terminal showing file paths, line numbers, and inline additions and removals" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Claude Code reports its diff inline so you can review every change before committing — the terminal-only constraint is also a feature.</figcaption>
+</figure>
+
 <p><strong>Pick <a href="/agent/claude-code">Claude Code</a> if</strong> you work across large repos, do many multi-file refactors, and can stomach a terminal-only workflow with the strongest reasoning model wired in. <strong>Skip it if</strong> you want a GUI, you're on a Pro-only budget, or you want an editor that "just works" without composing your own MCP server list — try <a href="/agent/cursor">Cursor</a> or <a href="/agent/cline">Cline</a> instead.</p>
 
 <h2><a href="/agent/cursor">Cursor</a>: the AI-first VS Code fork</h2>
@@ -60,6 +65,11 @@ export const blogPosts: BlogPost[] = [
 
 <p><a href="/agent/cline">Cline</a> is a VS Code extension that turns your existing editor into an autonomous coding agent. It can create and edit files, run terminal commands, browse the web, and chain many steps together — the same surface area as <a href="/agent/claude-code">Claude Code</a> or <a href="/agent/cursor">Cursor</a>'s Composer, but living inside the VS Code you already have. It is open-source (Apache-2.0) with 35,000+ GitHub stars, and it is <strong>bring-your-own-key</strong>: you paste an API key from OpenRouter, Anthropic, OpenAI, Bedrock, Azure, Vertex, Groq, or any of a dozen other providers, and <a href="/agent/cline">Cline</a> routes your prompts through that key.</p>
 
+<figure>
+  <img src="/blog/claude-code-vs-cursor-vs-cline-2026-editor.jpg" alt="A VS Code editor with Python code on the left and an AI assistant chat panel on the right showing code suggestions and a friendly robot icon" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Cline lives as a chat panel in the VS Code sidebar — same editor you already use, agent on the side.</figcaption>
+</figure>
+
 <p>The freedom is the point. You control which model runs (Claude 3.5/3.7 Sonnet, GPT-4o, Gemini 2.5, DeepSeek, even local models via Ollama), you control the cost (you pay the model provider directly, no markup), and you control the data flow. <a href="/agent/cline">Cline</a>'s <a href="https://github.com/cline/cline" target="_blank" rel="noopener">first-party MCP client</a> can create and install new MCP servers on the fly, so wiring up Puppeteer, a database, or a custom tool is a few clicks.</p>
 
 <p>The trade-off is setup. <a href="/agent/cline">Cline</a> asks you to pick a provider, paste a key, and decide on a model — every time. If you want zero-setup or a managed experience, <a href="/agent/cursor">Cursor</a> or <a href="/agent/copilot">Copilot</a> will get you running faster. The other soft spot is quality: <a href="/agent/cline">Cline</a>'s output is only as good as the model you route through it, and model choice has a much bigger effect on <a href="/agent/cline">Cline</a>'s results than on a managed product where the company has tuned the defaults.</p>
@@ -67,6 +77,11 @@ export const blogPosts: BlogPost[] = [
 <p><strong>Pick <a href="/agent/cline">Cline</a> if</strong> you want an open-source, BYOK autonomous agent living inside your existing VS Code — no new editor to learn, full control over which model and which costs. <strong>Skip it if</strong> you want zero setup or a managed experience; <a href="/agent/copilot">Copilot</a> or <a href="/agent/cursor">Cursor</a> with sensible defaults will get you running faster.</p>
 
 <h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/claude-code-vs-cursor-vs-cline-2026-comparison.jpg" alt="Side-by-side comparison of Claude Code, Cursor, and Cline showing their key features, interface, and pricing" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Claude Code vs Cursor vs Cline at a glance — same goal, three different trade-offs.</figcaption>
+</figure>
 
 <table>
 <thead><tr><th></th><th>Claude Code</th><th>Cursor</th><th>Cline</th></tr></thead>
