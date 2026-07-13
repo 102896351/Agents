@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
   schedule:
-    # 每天 UTC 06:00（北京时间 14:00）自动抓新闻 + 重新构建部署
+    # 每天 UTC 06:00（北京时�?14:00）重新构建部署一次，cron 仅触发构建，
+    # 不会抓任何外部内容。站点所有数据来自仓库本身。
     - cron: '0 6 * * *'
   workflow_dispatch: {}
 
@@ -28,23 +29,6 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm install
-      # 抓取最新 AI 新闻（失败不阻断构建，保留现有数据）
-      # IMPORTANT: only run on schedule, NOT on push. If we run on push, the
-      # verbatim content from RSS overwrites any [auto] entries a human has
-      # rewritten in news.ts between cron runs — which silently destroys
-      # original-content work and re-exposes the site to duplicate-content
-      # SEO risk. Push deploys should be deterministic: build whatever is
-      # already committed in news.ts.
-      - name: Fetch AI news
-        if: github.event_name == 'schedule'
-        run: node scripts/fetch-news.mjs
-        continue-on-error: true
-      # Cache-bust runs on the [auto] entries fetch-news just produced, so
-      # same gate applies — only run on schedule.
-      - name: Cache-bust local image URLs
-        if: github.event_name == 'schedule'
-        run: node scripts/cachebust-images.cjs --v=2
-        continue-on-error: true
       - run: npm run build
       # AdSense ads.txt must exist in the built artifact with the correct
       # publisher ID. Without this guard, an accidental removal or rename

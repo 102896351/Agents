@@ -1,0 +1,131 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getBlogSorted, type BlogPost } from '../../data/blog';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const posts = getBlogSorted();
+---
+
+<Base
+  title="Blog"
+  description="Long-form analysis of AI agents: comparison guides, decision frameworks, and how-to walkthroughs. Drawn from our 62-agent directory."
+>
+  <section class="blog-hero">
+    <div class="container">
+      <h1>The <span class="grad">Blog</span></h1>
+      <p>
+        Long-form analysis of AI agents — comparison guides, decision frameworks, and how-to walkthroughs.
+        Every post is drawn from the 62 detailed profiles in our <a href={base + '/'}>directory</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Latest</h2>
+        <span class="count">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</span>
+      </div>
+
+      <div class="blog-list">
+        {posts.map((post: BlogPost) => (
+          <a href={`${base}/blog/${post.slug}`} class="blog-row">
+            <div class="blog-row-meta">
+              <time datetime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              <span class="dot">·</span>
+              <span>{post.readingTime} min read</span>
+            </div>
+            <h3 class="blog-row-title">{post.title}</h3>
+            <p class="blog-row-excerpt">{post.excerpt}</p>
+            <div class="blog-row-tags">
+              {post.tags.slice(0, 4).map((t) => (
+                <span class="tag">{t}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .blog-hero {
+    padding: 80px 0 40px;
+    text-align: center;
+  }
+  .blog-hero h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+  .blog-hero p {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .grad {
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .blog-row {
+    display: block;
+    padding: 28px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .blog-row:hover {
+    border-color: var(--accent, #6366f1);
+    transform: translateY(-2px);
+  }
+  .blog-row-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .blog-row-meta .dot {
+    color: var(--border);
+  }
+  .blog-row-title {
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .blog-row-excerpt {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .blog-row-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    border-radius: 999px;
+  }
+</style>
