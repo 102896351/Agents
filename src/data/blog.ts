@@ -115,6 +115,217 @@ export const blogPosts: BlogPost[] = [
 <p>See the full profiles for all three — and 59 other AI agents — in our <a href="/">directory</a>.</p>
 `,
   },
+  {
+    slug: 'perplexity-vs-consensus-vs-elicit-2026',
+    title: 'Perplexity vs Consensus vs Elicit: Which AI Research Tool Should You Use in 2026?',
+    excerpt:
+      "Three AI research tools have carved out distinct lanes: Perplexity's cited web search, Consensus's science-of-everything meta-analysis, and Elicit's deep academic paper workflow. Here's the honest comparison.",
+    date: '2026-07-13',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 8,
+    tags: ['research', 'comparison', 'perplexity', 'consensus', 'elicit'],
+    relatedAgents: ['perplexity', 'consensus', 'elicit'],
+    coverThumb: '/blog/perplexity-vs-consensus-vs-elicit-2026-thumb.jpg',
+    content: `
+<p>If you search the web, summarize scientific papers, or read academic research, three AI tools have become the default starting points in 2026. <strong><a href="/agent/perplexity">Perplexity</a></strong> is the cited answer engine — ask a question, get a written answer with numbered citations to live web sources. <strong><a href="/agent/consensus">Consensus</a></strong> is the science meta-search — ask a yes/no question, get a count of how many peer-reviewed studies say yes, no, or are undecided. <strong><a href="/agent/elicit">Elicit</a></strong> is the academic research assistant — load a paper, extract the findings, build a citation graph.</p>
+
+<p>Each does one job exceptionally well. None of them is a substitute for the others. Picking the wrong one costs you hours of friction; picking the right one compounds. This post compares the three head-to-head using the profiles we maintain on <a href="/">our 62-agent directory</a>, then tells you which one to use for which kind of question.</p>
+
+<h2><a href="/agent/perplexity">Perplexity</a>: the cited answer engine</h2>
+
+<p><a href="/agent/perplexity">Perplexity</a> is the closest thing on the market to "Google + GPT + footnotes." You type a question — anything from "what changed in GPT-5.6's pricing" to "best 3-agent stack for code migration" — and Perplexity returns a written answer with numbered citations to the sources it pulled from. Click any number and you land on the source page. Every claim is traceable. Every claim is current. The free tier is enough for casual research; Pro ($20/month) unlocks the GPT-5.6-class models, file uploads, and a research mode that runs multiple searches and synthesises them.</p>
+
+<p>The killer feature is the citation model. Most AI tools will hallucinate a URL if you ask for one; Perplexity cannot, because every URL in the answer was actually visited to produce the citation. That single design choice is why Perplexity is the default for journalists, analysts, and anyone who needs an answer they can stand behind. The other under-appreciated strength is the breadth of sources — Perplexity indexes the live web (not a 2024 snapshot), so a question about last week's news returns last week's news.</p>
+
+<figure>
+  <img src="/blog/perplexity-vs-consensus-vs-elicit-2026-search.jpg" alt="An AI search interface showing a question at the top with multiple web source citation cards below, each with a small favicon, title, and excerpt" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Perplexity's UI: question at the top, answer in the middle, numbered citations to live sources at the bottom.</figcaption>
+</figure>
+
+<p>Where Perplexity is weak: it is not a science tool. If you ask it a question that requires reading 20 papers and synthesising a meta-analysis, it will search the web and return a blog-post-shaped answer, not a peer-reviewed-paper-shaped answer. For that you need the next two.</p>
+
+<p><strong>Pick <a href="/agent/perplexity">Perplexity</a> if</strong> you need a current, cited answer to any general question and trust matters more than depth. <strong>Skip it if</strong> your question is specifically about scientific evidence — the next two tools are better.</p>
+
+<h2><a href="/agent/consensus">Consensus</a>: the science of everything</h2>
+
+<p><a href="/agent/consensus">Consensus</a> does one thing the other AI tools cannot: it searches the peer-reviewed scientific literature and tells you what the evidence says. Type a yes/no question like "does creatine improve cognitive performance" or "is intermittent fasting effective for weight loss" and Consensus returns a meta-answer with a count of studies supporting each position, the sample sizes, and a confidence score. The Premium tier ($9/month) unlocks the full-text of papers, study-level detail, and a custom mode that filters by study type, sample size, and year.</p>
+
+<p>The use case is narrower than Perplexity, but the answers are more authoritative. If you need to know "is X scientifically supported", Consensus will give you a defensible yes/no/maybe with citations to actual papers — not blog posts or marketing copy. This is why it's the default tool for health journalists, medical writers, and researchers doing literature reviews on tight deadlines. The other under-appreciated strength is the consistency of the answer format: you always get the same yes/no/maybe/unknown structure, so it's easy to compare across questions.</p>
+
+<p>Where Consensus is weak: it only searches peer-reviewed papers. If the question is about something not yet studied (a new model, a new company, a new product), Consensus will return "not enough evidence" — even if there is plenty of useful information on blogs, X, or the company's docs. For that you need Perplexity. The other soft spot is that Consensus is optimised for natural-science questions; if you're in the humanities or social sciences, the paper coverage is thinner.</p>
+
+<p><strong>Pick <a href="/agent/consensus">Consensus</a> if</strong> you need a defensible, peer-reviewed-backed answer to a science question. <strong>Skip it if</strong> the topic hasn't been studied yet, or if you need to synthesise non-paper sources.</p>
+
+<h2><a href="/agent/elicit">Elicit</a>: the academic research assistant</h2>
+
+<p><a href="/agent/elicit">Elicit</a> is the most academic of the three. It is built for researchers, grad students, and anyone doing a serious literature review. You give Elicit a research question and it returns a table of relevant papers with the key findings extracted — sample size, methodology, outcome, significance. The Plus tier ($12/month) unlocks unlimited paper uploads, custom extraction templates, and the ability to ask Elicit to read a paper and answer specific questions about it.</p>
+
+<p>The strength is depth. Elicit is the only one of the three that can actually read a 30-page paper and answer "what was the sample size of the treatment group" or "did the authors find a statistically significant effect". It can also build a citation graph — given a seed paper, find the most-cited follow-ups. For a researcher writing a literature review, Elicit replaces 3-4 days of skimming PDFs with an afternoon of structured extraction. The other under-appreciated strength is the audit trail: every claim Elicit extracts from a paper is linked back to the exact page and sentence, so you can verify and cite correctly.</p>
+
+<figure>
+  <img src="/blog/perplexity-vs-consensus-vs-elicit-2026-papers.jpg" alt="A research paper analysis interface showing a paper PDF on the left and an extracted findings column with a data table on the right" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Elicit's UI: paper on the left, extracted findings and structured data on the right — every claim linked to source.</figcaption>
+</figure>
+
+<p>Where Elicit is weak: it is optimised for natural-science and biomedical research. If you ask it about a history question, a marketing question, or a question about a recent product launch, Elicit will not have good answers because its index is academic papers, not the web. The other soft spot is the learning curve — Elicit assumes you know what extraction columns you want, and the interface rewards a researcher mindset over a casual one.</p>
+
+<p><strong>Pick <a href="/agent/elicit">Elicit</a> if</strong> you are doing a real literature review and need to extract structured data from many papers. <strong>Skip it if</strong> you need a quick answer to a current question — <a href="/agent/perplexity">Perplexity</a> is faster.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/perplexity-vs-consensus-vs-elicit-2026-comparison.jpg" alt="Side-by-side 3-column comparison of Perplexity, Consensus, and Elicit showing their key features, source type, and ideal use case" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Perplexity vs Consensus vs Elicit — same goal (answer with evidence), three different depths of source.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Perplexity</th><th>Consensus</th><th>Elicit</th></tr></thead>
+<tbody>
+<tr><td><strong>Source</strong></td><td>Live web</td><td>Peer-reviewed papers</td><td>Peer-reviewed papers (deep)</td></tr>
+<tr><td><strong>Best for</strong></td><td>Current questions, any topic</td><td>Yes/no science questions</td><td>Literature reviews, structured extraction</td></tr>
+<tr><td><strong>Answer format</strong></td><td>Written + numbered citations</td><td>Yes/No/Unknown count</td><td>Structured table of findings</td></tr>
+<tr><td><strong>Citations</strong></td><td>Every claim, live URLs</td><td>Every study, paper-level</td><td>Every extraction, page-level</td></tr>
+<tr><td><strong>Free tier</strong></td><td>Yes, generous</td><td>Yes, limited</td><td>Yes, limited</td></tr>
+<tr><td><strong>Paid</strong></td><td>Pro $20/mo</td><td>Premium $9/mo</td><td>Plus $12/mo</td></tr>
+<tr><td><strong>Limitation</strong></td><td>Not a science tool</td><td>Only peer-reviewed sources</td><td>Slowest, most academic</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you need a quick, current, cited answer to any general question:</strong> <a href="/agent/perplexity">Perplexity</a>. The default starting point for journalists, analysts, and anyone who needs to be right and to be quick.</p>
+
+<p><strong>If you need to know what the scientific evidence says about a yes/no question:</strong> <a href="/agent/consensus">Consensus</a>. The right tool when the question is "is X effective / safe / correlated with Y" and the answer needs to be defensible against peer review.</p>
+
+<p><strong>If you are doing a real literature review and need to extract structured findings from many papers:</strong> <a href="/agent/elicit">Elicit</a>. The only one of the three that will replace 3-4 days of skimming PDFs with an afternoon of structured extraction.</p>
+
+<p><strong>For most research workflows, you end up using all three.</strong> Start with <a href="/agent/perplexity">Perplexity</a> to scope the question, move to <a href="/agent/consensus">Consensus</a> to validate with peer-reviewed evidence, and use <a href="/agent/elicit">Elicit</a> when you need to extract structured data from the specific papers that Consensus surfaces. The three compose well — they each do one job and they do not fight each other.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never used an AI research tool, start with the free tier of <strong><a href="/agent/perplexity">Perplexity</a></strong>. Ask it three questions you already know the answer to, and see if its citations check out. Once you trust it, upgrade to Pro for the GPT-5.6-class models. From there, add <strong><a href="/agent/consensus">Consensus</a></strong> the first time you have a yes/no science question, and <strong><a href="/agent/elicit">Elicit</a></strong> the first time you need to read 10+ papers in a sitting. The free tiers of each are good enough to evaluate; the paid tiers pay for themselves in saved hours.</p>
+
+<h2>Bottom line</h2>
+
+<p>Perplexity is the default for any current question, Consensus is the right tool for science yes/no questions, and Elicit is the right tool for serious literature reviews. None of them is a substitute for the others. The question is which one matches the question you actually have right now — and once you have all three in your workflow, you stop reaching for a single tool and start reaching for the right one.</p>
+
+<p>See the full profiles for all three — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
+  {
+    slug: 'mcp-explained-2026',
+    title: 'MCP Explained: What It Is and 6 AI Tools That Use It Well',
+    excerpt:
+      "The Model Context Protocol is the closest thing the AI agent ecosystem has to a standard plug. We explain what MCP actually does, why it matters, and profile 6 tools in our directory that ship with first-class MCP support.",
+    date: '2026-07-13',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 10,
+    tags: ['mcp', 'protocol', 'claude-code', 'cline', 'cursor', 'continue', 'cody', 'mastra'],
+    relatedAgents: ['claude-code', 'cline', 'cursor', 'continue', 'cody', 'mastra'],
+    coverThumb: '/blog/mcp-explained-2026-thumb.jpg',
+    content: `
+<p>For two years, every AI tool that needed to "do something" in the real world — read a file, query a database, hit an API — built the integration itself. The result was a thousand bespoke connectors, each slightly different, each maintained by a different team, each breaking when the underlying tool changed. The <strong>Model Context Protocol</strong> (MCP) is the closest thing the AI agent ecosystem has to a standard plug: a single protocol that any model can use to talk to any tool, with the tool author and the model author both writing to the same spec.</p>
+
+<p>Two years after Anthropic open-sourced the spec, MCP is the default way to extend a coding agent. If you have a tool that does something useful, the answer to "how does my AI agent use it" is "wrap it in an MCP server" — and the answer to "which AI agents can use it" is "any of them". This post explains what MCP actually does, why it matters more than it sounds, and walks through 6 tools in our directory that ship with first-class MCP support.</p>
+
+<h2>What MCP actually is</h2>
+
+<p>MCP is a protocol — a contract — between an AI model (or an agent that uses one) and a tool that the model wants to call. The protocol defines three things: how the model discovers what tools are available, how the model invokes a tool, and how the tool returns its result. The model speaks JSON-RPC; the tool registers itself as a server; the model acts as a client.</p>
+
+<figure>
+  <img src="/blog/mcp-explained-2026-architecture.jpg" alt="An MCP architecture diagram showing a model at the top, an MCP layer in the middle, and three tool blocks (Database, Filesystem, Browser) at the bottom with bidirectional arrows" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>MCP architecture: a model on top, an MCP layer in the middle, tools at the bottom — and the same protocol works for any tool.</figcaption>
+</figure>
+
+<p>The practical consequence: if you write an MCP server for your tool once, every MCP-compatible agent (and there are now many) can use it without you touching the agent's code. The reverse is also true — if you are building an agent, you ship MCP support once and your agent can use any MCP server in the ecosystem. This is the part that matters: it converts a million-point integration graph (every agent × every tool) into a 1+1+N graph (one protocol + the agent + the tools).</p>
+
+<p>You can think of MCP as the USB-C of AI agent integrations. Before USB-C, every device had its own connector. After USB-C, every device speaks the same protocol and the connector count collapses. The same thing is happening with MCP — the agent ecosystem is moving from "every agent integrates with every tool" to "every agent implements MCP, every tool ships an MCP server".</p>
+
+<h2>Why it matters more than it sounds</h2>
+
+<p>Three practical consequences of MCP that are easy to underestimate.</p>
+
+<p><strong>First, the build-vs-buy decision flips.</strong> Before MCP, if you needed an agent to read your database, you had to build that integration yourself, in the agent's specific API. With MCP, you either find an existing MCP server for your database (most major databases have one) or wrap your database in 100 lines of code that follow the MCP spec. The agent stays unchanged. This makes "use the agent I already have" the obvious choice in a lot of cases where "build a custom agent" used to be the only option.</p>
+
+<p><strong>Second, the agent lock-in weakens.</strong> If you standardise on MCP, switching agents becomes a configuration change, not a rewrite. The integrations live in MCP servers, not in the agent. This is good for users (less lock-in) and good for the ecosystem (agents compete on quality, not on which integrations they ship).</p>
+
+<p><strong>Third, the security story becomes tractable.</strong> Before MCP, every agent implemented its own permission system. After MCP, the permission system can live in the MCP server itself — a database MCP server knows what queries are read-only and which can mutate, and the agent doesn't need to encode that domain knowledge. The result is more granular, more auditable, and less error-prone than per-agent permission systems.</p>
+
+<h2>6 tools that use MCP well</h2>
+
+<p>Here are six tools in our directory that ship with first-class MCP support, in the rough order of how central MCP is to the product.</p>
+
+<h3>1. <a href="/agent/claude-code">Claude Code</a> — terminal-native agent with first-class MCP</h3>
+
+<p><a href="/agent/claude-code">Claude Code</a> ships with MCP as a core primitive, not an add-on. The <code>claude mcp add</code> command lets you wire up any MCP server in one line — filesystems, Puppeteer, databases, custom internal tools. The agent discovers available tools at session start, calls them via the standard protocol, and uses the results in the next reasoning step. If you are running Claude Code against a real codebase, you are almost certainly running it against at least one MCP server.</p>
+
+<figure>
+  <img src="/blog/mcp-explained-2026-claude-code.jpg" alt="A terminal window showing MCP tool calls in action with structured invocations and results" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Claude Code's MCP story: one command to register a server, then the agent uses it like any other tool.</figcaption>
+</figure>
+
+<h3>2. <a href="/agent/cline">Cline</a> — open-source agent that can create MCP servers on the fly</h3>
+
+<p><a href="/agent/cline">Cline</a> is the open-source alternative to Claude Code that pushes MCP one step further: it can <em>create and install</em> new MCP servers as part of its workflow. If you ask Cline to "add a tool that talks to my CRM", it can write the MCP server code, register it, and use it in the same session. This makes Cline the most MCP-extensible tool in the directory — the only limit is what its BYOK model can write.</p>
+
+<h3>3. <a href="/agent/cursor">Cursor</a> — AI-first editor with MCP via Composer</h3>
+
+<p><a href="/agent/cursor">Cursor</a>'s Composer (Agent mode, Cmd+I) supports MCP servers registered through the project's <code>.cursor/mcp.json</code> file. Once a server is registered, Composer can invoke its tools as part of any multi-step task. The setup is less interactive than Claude Code or Cline, but the same MCP servers work the same way — which is the whole point of the protocol.</p>
+
+<figure>
+  <img src="/blog/mcp-explained-2026-cursor.jpg" alt="A VS Code editor with a side panel showing MCP tool configuration with toggle switches and tool names" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Cursor's MCP story: register in .cursor/mcp.json, then Composer uses the tools as part of multi-step tasks.</figcaption>
+</figure>
+
+<h3>4. <a href="/agent/continue">Continue</a> — open-source VS Code AI extension</h3>
+
+<p><a href="/agent/continue">Continue</a> supports MCP through its <code>config.json</code> file. You register an MCP server, Continue discovers its tools, and your custom assistants and slash commands can call those tools. The use case is similar to Cline (open-source, BYOK) but the configuration is more "devs assemble their own stack" — you bring the model, the tools, and the integrations, Continue wires them together.</p>
+
+<h3>5. <a href="/agent/cody">Cody</a> — Sourcegraph's enterprise code AI</h3>
+
+<p><a href="/agent/cody">Cody</a> from Sourcegraph supports MCP through its enterprise configuration. The pitch is "Cody knows your entire codebase (because Sourcegraph indexes it), and with MCP it can also know your internal tools". For enterprise users, the combination of codebase context + MCP access to internal systems (Jira, Linear, custom APIs) is the most useful MCP workflow available today.</p>
+
+<h3>6. <a href="/agent/mastra">Mastra</a> — TypeScript framework for building MCP servers</h3>
+
+<p><a href="/agent/mastra">Mastra</a> is the framework side of MCP. If you want to <em>build</em> an MCP server (so other agents can use your tool), Mastra gives you a TypeScript-first framework with batteries-included primitives for tools, workflows, and integrations. Mastra is the most meta entry on this list — it is a tool for building the tools that the other tools consume.</p>
+
+<h2>Comparison at a glance</h2>
+
+<table>
+<thead><tr><th></th><th>MCP role</th><th>Setup</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td><a href="/agent/claude-code">Claude Code</a></td><td>Native client + server</td><td>CLI command</td><td>Terminal workflows, production use</td></tr>
+<tr><td><a href="/agent/cline">Cline</a></td><td>Native client + can create servers</td><td>VS Code extension + API key</td><td>Open-source flexibility, ad-hoc tools</td></tr>
+<tr><td><a href="/agent/cursor">Cursor</a></td><td>Native client</td><td>JSON config</td><td>Editor workflows, code-first teams</td></tr>
+<tr><td><a href="/agent/continue">Continue</a></td><td>Native client</td><td>JSON config</td><td>Assemble-your-own-stack</td></tr>
+<tr><td><a href="/agent/cody">Cody</a></td><td>Native client</td><td>Enterprise config</td><td>Codebase context + internal tools</td></tr>
+<tr><td><a href="/agent/mastra">Mastra</a></td><td>Server framework</td><td>TypeScript package</td><td>Building MCP servers</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict: which to pick</h2>
+
+<p><strong>If you want the deepest MCP story as a user of an agent:</strong> <a href="/agent/claude-code">Claude Code</a>. The protocol is a first-class primitive, the CLI is one line, and every tool you can think of has either an MCP server or a wrapper that ships with the agent.</p>
+
+<p><strong>If you want the most flexibility to invent new tools on the fly:</strong> <a href="/agent/cline">Cline</a>. The "create an MCP server as part of the workflow" pattern is unique to Cline, and for one-off internal tools it's the fastest way to go from "we need an agent that can do X" to "the agent can do X".</p>
+
+<p><strong>If you want the most polished editor experience with MCP:</strong> <a href="/agent/cursor">Cursor</a>. The integration is quieter than Claude Code or Cline, but if your team already lives in Cursor, the MCP support is there and it works.</p>
+
+<p><strong>If you want to build an MCP server:</strong> <a href="/agent/mastra">Mastra</a>. The framework is the most direct path from "TypeScript codebase" to "MCP server that any agent can use".</p>
+
+<p><strong>If you are an enterprise with a real codebase and real internal systems:</strong> <a href="/agent/cody">Cody</a>. The combination of Sourcegraph's codebase indexing + MCP access to internal tools is the strongest enterprise story in the directory.</p>
+
+<h2>What to try first</h2>
+
+<p>If you have never used MCP, the fastest on-ramp is to install <strong><a href="/agent/claude-code">Claude Code</a></strong> and add the filesystem MCP server with one command. You'll see the protocol in action — the model discovers the tool, calls it, and uses the result — in under five minutes. From there, the obvious next step is to find an MCP server for the tool you actually use most (a database, an API, a file system you don't normally access) and add that. Once you have two MCP servers running, you stop thinking of the agent as a "chat with a model" and start thinking of it as a "front-end to your tools" — which is the whole point.</p>
+
+<h2>Bottom line</h2>
+
+<p>MCP is the standard that makes the AI agent ecosystem possible. Six tools in our directory ship with first-class support today: <a href="/agent/claude-code">Claude Code</a>, <a href="/agent/cline">Cline</a>, <a href="/agent/cursor">Cursor</a>, <a href="/agent/continue">Continue</a>, <a href="/agent/cody">Cody</a>, and <a href="/agent/mastra">Mastra</a> as the build side. The protocol is still young, the ecosystem is still small, and the right time to standardise on it is now — before your integrations ossify around per-agent conventions.</p>
+
+<p>See the full profiles for all six — and 56 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
 ];
 
 export function getBlogSorted(): BlogPost[] {
