@@ -224,6 +224,25 @@ async function loadSeeds() {
   }
 }
 
+// ---------- 现有 auto 条目机制 ----------
+// 从 src/data/news.ts 读出现有 [auto] 条目（无 [seed] 标记的）—— 避免 cron 抓取时
+// 覆盖人工改写 / 重写的版本。新 RSS 条目通过 sourceUrl 去重后才会被添加。
+async function loadExistingAuto(seedSlugs) {
+  const newsPath = path.join(process.cwd(), 'src', 'data', 'news.ts');
+  try {
+    const newsSrc = await fs.readFile(newsPath, 'utf8');
+    // 注意：用 \b 锚定 news 后面必须是非单词字符（避免匹配到 newsCategories）。
+    // newsCategories 出现在 news 之前，非贪婪匹配会先抓到这个。
+    const match = newsSrc.match(/export\s+const\s+news\b[^=]*=\s*(\[[\s\S]*?\n\]);/);
+    if (!match) return [];
+    const allItems = new Function(`return (${match[1]});`)();
+    return allItems.filter((it) => !seedSlugs.has(it.slug));
+  } catch (e) {
+    if (e.code !== 'ENOENT') console.log(`  WARN: failed to load existing news.ts: ${e.message}`);
+    return [];
+  }
+}
+
 // ---------- 主流程 ----------
 async function main() {
   console.log('=== Fetching AI news from RSS sources ===');
@@ -262,8 +281,13 @@ async function main() {
   const seedSlugs = new Set(seeds.map((s) => s.slug));
   const seedLinks = new Set(seeds.map((s) => s.sourceUrl));
 
-  // 从候选里剔除已在种子里的（避免重复 + 保护手工）
-  picked = picked.filter((it) => !seedLinks.has(it.link));
+  // 加载现有 [auto] 条目（保护人工改写 / 重写，避免被 RSS 抓取覆盖）
+  const existingAuto = await loadExistingAuto(seedSlugs);
+  const existingAutoLinks = new Set(existingAuto.map((it) => it.sourceUrl));
+  console.log(`Loaded ${existingAuto.length} existing auto items (preserved from news.ts)`);
+
+  // 从候选里剔除已在种子里的、或者已经在现有 auto 里的（避免重复 + 保护手工）
+  picked = picked.filter((it) => !seedLinks.has(it.link) && !existingAutoLinks.has(it.link));
 
   // 对每个候选抓全文 + 下载图片
   const outDir = path.join(process.cwd(), 'public', 'news');
@@ -306,12 +330,14 @@ async function main() {
   }
 
   // 生成 news.ts：种子在前，自动抓的按时间倒序在后
+  // 注意：现有 auto 条目要原样保留，只追加 enriched 中的新条目
   const seedsSorted = [...seeds].sort((a, b) => (a.date < b.date ? 1 : -1));
-  const finalItems = [...seedsSorted, ...enriched];
+  const allAuto = [...existingAuto, ...enriched].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const finalItems = [...seedsSorted, ...allAuto];
   const output = generateNewsFile(finalItems, seedSlugs);
   const outPath = path.join(process.cwd(), 'src', 'data', 'news.ts');
   await fs.writeFile(outPath, output, 'utf8');
-  console.log(`\n=== Wrote ${finalItems.length} items (${seeds.length} seeds + ${enriched.length} fresh) to ${outPath} ===`);
+  console.log(`\n=== Wrote ${finalItems.length} items (${seeds.length} seeds + ${existingAuto.length} preserved + ${enriched.length} new) to ${outPath} ===`);
 }
 
 function tsEscape(s) {
