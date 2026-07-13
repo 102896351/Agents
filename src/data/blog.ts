@@ -418,6 +418,109 @@ export const blogPosts: BlogPost[] = [
 <p>See the full profiles for both — and 60 other AI agents — in our <a href="/">directory</a>.</p>
 `,
   },
+  {
+    slug: 'n8n-vs-make-vs-zapier-agents-2026',
+    title: 'n8n vs Make vs Zapier Agents: Which AI Workflow Tool Should You Use in 2026?',
+    excerpt:
+      "Three workflow automation tools have become the default for AI-powered tasks: n8n's open-source node editor, Make's visual scenarios, and Zapier's 7,000-app Agents. Different shapes for different jobs.",
+    date: '2026-07-13',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 9,
+    tags: ['automation', 'comparison', 'n8n', 'make', 'zapier-agents', 'workflows'],
+    relatedAgents: ['n8n', 'make', 'zapier-agents', 'lindy', 'agentforce'],
+    coverThumb: '/blog/n8n-vs-make-vs-zapier-agents-2026-thumb.jpg',
+    content: `
+<p>"I need to connect 5 SaaS tools and have an AI make a decision and route the result somewhere" used to be a custom engineering project. In 2026, it is a one-day setup with one of three tools. <strong><a href="/agent/n8n">n8n</a></strong> is the open-source, self-hostable node editor (186K+ GitHub stars). <strong><a href="/agent/make">Make</a></strong> is the visual cloud platform with the most powerful branching UI. <strong><a href="/agent/zapier-agents">Zapier Agents</a></strong> is the easiest on-ramp, with the largest integration ecosystem (7,000+ apps) and per-task pricing.</p>
+
+<p>All three do "AI-powered workflow automation." None of them is a substitute for the others. Picking the wrong one for your situation means either a 3-day setup that should have taken 3 hours, or a $200/month bill that should have been $0. This post compares the three using the profiles in <a href="/">our 62-agent directory</a>, and tells you which to pick for which kind of workflow.</p>
+
+<h2><a href="/agent/n8n">n8n</a>: the open-source node editor</h2>
+
+<p><a href="/agent/n8n">n8n</a> is the closest thing in the workflow-automation world to "Zapier, but you own it." It is a node-based visual editor where you drag trigger nodes (Webhook, Schedule, Email) and action nodes (HTTP, Slack, Database) onto a canvas, draw lines between them, and the workflow runs. It is open-source (with a "Sustainable Use" license — free self-host, with some restrictions on SaaS resale), ships with 400+ pre-built integrations, and now has first-class AI Agent nodes for building LLM-powered steps inside a workflow.</p>
+
+<p>The pitch is straightforward: self-hostable, so your data never leaves your server; cheaper than Zapier at scale (free self-host or $24/month cloud); powerful enough for complex, branching logic. The GitHub star count (186,000+) and the 900+ ready-made workflow templates are the proof that the community has stress-tested every use case. For a technical team with compliance or cost concerns, n8n is the obvious default.</p>
+
+<figure>
+  <img src="/blog/n8n-vs-make-vs-zapier-agents-2026-canvas.jpg" alt="A self-hosted workflow editor with a visual node-based canvas showing multiple nodes connected by lines in a complex multi-step workflow" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>n8n in action: node-based canvas, your data, your server, your custom code right inside the workflow.</figcaption>
+</figure>
+
+<p>Where n8n is weak: the license is "Sustainable Use" — not pure OSS — and the learning curve is steeper than Zapier or Make. The setup that takes 10 minutes on Make can take 45 minutes on n8n if you are not familiar with the model. The other soft spot is the ecosystem: Zapier has 7,000+ apps, Make has 1,500+, n8n has 400+. For the long-tail SaaS tool your team uses, you may need to build a custom HTTP node yourself.</p>
+
+<p><strong>Pick <a href="/agent/n8n">n8n</a> if</strong> you want to self-host for compliance or cost, your data cannot leave your server, and your team is technical enough to write JavaScript or Python in a Code node. <strong>Skip it if</strong> you want a managed cloud experience with the broadest catalog — <a href="/agent/zapier-agents">Zapier Agents</a> or <a href="/agent/make">Make</a> are friendlier.</p>
+
+<h2><a href="/agent/make">Make</a>: the visual cloud platform</h2>
+
+<p><a href="/agent/make">Make</a> (formerly Integromat) is the platform for complex, branching, multi-step workflows that would be hard to express in Zapier's linear step list. You build "scenarios" by dragging modules onto a visual canvas, drawing bubbles and lines between them. Branching, looping, error handling, aggregators, iterators, routers — all are first-class primitives in Make, not bolt-ons. With 1,500+ app integrations and a powerful HTTP module, Make can connect to anything with an API.</p>
+
+<p>The pitch: more powerful than Zapier for complex workflows, cheaper than Zapier for high-volume automation, no code required. The free tier gives 1,000 ops/month; Core is $9/month for 10,000 ops; Pro is $16 for 10,000+ ops; Teams is $29 for higher volumes and shared workspaces. For a 12-module scenario that runs monthly (Stripe-to-NetSuite close, say), Make is the right price. The visual canvas also makes scenarios easy to read and explain to non-developers — useful for cross-team buy-in.</p>
+
+<p>Where Make is weak: it is cloud-only, so no self-host. The visual editor, while powerful, can feel complex to first-time users — the learning curve is steeper than Zapier but easier than n8n. The other soft spot is the per-step cost model: a complex scenario uses 10+ ops per run, and high-volume workflows can outgrow the Pro tier. Make also does not have first-class AI nodes — you call an LLM via the HTTP module or the OpenAI module, which is fine but more setup than n8n's AI Agent node.</p>
+
+<p><strong>Pick <a href="/agent/make">Make</a> if</strong> you build complex multi-step automations with branching, loops, and error handling, and you prefer a visual canvas over linear Zaps. <strong>Skip it if</strong> your automations are simple one-shots (Zapier wins for non-technical setup), or you need self-hosting (n8n is the default).</p>
+
+<h2><a href="/agent/zapier-agents">Zapier Agents</a>: the easiest on-ramp with the largest ecosystem</h2>
+
+<p><a href="/agent/zapier-agents">Zapier Agents</a> is Zapier's take on AI agents. You describe a goal in plain English ("when a new lead is added to HubSpot, enrich with Clearbit, score by company size, send a personalized Slack DM"), connect the apps, and the agent uses Zapier's 7,000+ app integrations to do the work. It is the easiest on-ramp for non-developers who already have Zaps running — you add an agent on top of your existing Zaps, and the agent uses the same actions you already trust.</p>
+
+<figure>
+  <img src="/blog/n8n-vs-make-vs-zapier-agents-2026-ecosystem.jpg" alt="A 7,000+ app integration grid view showing many small app icons with a central app connected to dozens of others via dotted lines, with a small chat agent overlay" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Zapier Agents: 7,000+ apps, plain English goals, and an agent that decides which apps to call.</figcaption>
+</figure>
+
+<p>The pitch is the largest integration ecosystem in the industry and the lowest setup friction. If your team is already on Zapier (you have hundreds of Zaps), the agent reuses the same connectors, the same authentication, and the same task model — so the learning curve is "describe what you want in English", not "learn a new platform." Pricing: Free / Starter $20/month (750 tasks) / Professional $49/month (2k tasks) / Team $99/month (10k+ tasks and shared agents). The per-task model is the trade-off: easy budgeting for predictable workflows, but expensive at scale for AI-heavy agents.</p>
+
+<p>Where Zapier Agents is weak: no self-host (vendor lock-in), per-task pricing can get expensive for agents that run many times, and the AI decision-making is less transparent than n8n or Make (you can see the calls the agent made, but debugging complex agent logic is harder). The other soft spot is the lack of complex branching — Zapier's linear step model is its strength for one-shots, but a 12-step branching workflow is much easier to express in Make or n8n.</p>
+
+<p><strong>Pick <a href="/agent/zapier-agents">Zapier Agents</a> if</strong> your existing automation already runs on Zapier and you want to layer AI on top without learning a new platform. <strong>Skip it if</strong> you need complex branching or self-hosting (<a href="/agent/n8n">n8n</a> or <a href="/agent/make">Make</a> are stronger), or per-task pricing is too expensive for your volume.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/n8n-vs-make-vs-zapier-agents-2026-comparison.jpg" alt="Side-by-side 3-column comparison of n8n, Make, and Zapier Agents showing their key features, hosting model, and ideal use case" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>n8n vs Make vs Zapier Agents — three shapes for the same job: AI-powered workflow automation.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th><a href="/agent/n8n">n8n</a></th><th><a href="/agent/make">Make</a></th><th><a href="/agent/zapier-agents">Zapier Agents</a></th></tr></thead>
+<tbody>
+<tr><td><strong>Hosting</strong></td><td>Self-host or cloud</td><td>Cloud only</td><td>Cloud only</td></tr>
+<tr><td><strong>License</strong></td><td>Open-source (Sustainable Use)</td><td>Commercial</td><td>Commercial</td></tr>
+<tr><td><strong>Editor</strong></td><td>Node-based visual canvas</td><td>Visual scenarios (branching)</td><td>Plain English + Tools list</td></tr>
+<tr><td><strong>Integrations</strong></td><td>400+</td><td>1,500+</td><td>7,000+</td></tr>
+<tr><td><strong>AI support</strong></td><td>First-class AI Agent node</td><td>HTTP / OpenAI module</td><td>Built-in agent runtime</td></tr>
+<tr><td><strong>Free tier</strong></td><td>Self-host (unlimited)</td><td>1,000 ops/month</td><td>100 tasks/month</td></tr>
+<tr><td><strong>Paid</strong></td><td>Cloud $24/mo</td><td>Core $9/mo</td><td>Starter $20/mo</td></tr>
+<tr><td><strong>Best for</strong></td><td>Technical teams, compliance, custom code</td><td>Complex branching workflows, visual thinkers</td><td>Existing Zapier users, quick setup</td></tr>
+<tr><td><strong>Limit</strong></td><td>Steeper learning curve, smaller integration catalog</td><td>No self-host, per-op cost adds up</td><td>Vendor lock-in, per-task pricing</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you are a technical team with compliance, cost, or data-residency requirements:</strong> <a href="/agent/n8n">n8n</a>. Self-host on your own infrastructure, write JavaScript or Python in a Code node when the integration is custom, and you own every byte that flows through the system. The 186K GitHub stars and 900+ templates are evidence that the ecosystem has matured.</p>
+
+<p><strong>If you build complex, branching, multi-step workflows and prefer a visual canvas:</strong> <a href="/agent/make">Make</a>. The visual scenario editor is the most powerful of the three for non-linear logic. The 1,500+ integrations and the cheap paid tiers make it the right answer for high-volume visual workflows.</p>
+
+<p><strong>If you are already on Zapier and want to add AI to your existing Zaps:</strong> <a href="/agent/zapier-agents">Zapier Agents</a>. The 7,000+ app ecosystem and the plain-English setup mean the agent reuses everything you already have, and you are productive in an afternoon.</p>
+
+<p><strong>If you are a solo founder or non-developer who wants a personal AI employee for inbox and calendar:</strong> <a href="/agent/lindy">Lindy</a> is the friendlier pick — it is purpose-built for "describe a Lindy in English, give it Gmail and Calendar, watch it work." Lindy is not in this head-to-head because its scope is narrower (personal-assistant-first), but if you do not need a general automation platform, Lindy is faster to value.</p>
+
+<p><strong>If your data and workflows already live in Salesforce:</strong> <a href="/agent/agentforce">Agentforce</a>. The integration tax disappears, and you inherit Salesforce's security and audit story. Outside the Salesforce ecosystem, Agentforce is the wrong answer.</p>
+
+<p><strong>For most serious automation work, you end up using two of the three.</strong> <a href="/agent/n8n">n8n</a> for the workflows that need self-hosting or custom code, <a href="/agent/make">Make</a> for the visual branching workflows, and <a href="/agent/zapier-agents">Zapier Agents</a> for the long-tail SaaS apps. The three compose well — Zapier actions can call n8n webhooks, n8n can call Make webhooks, and Make can call Zapier webhooks. The tool that wins is the one that matches the workflow you are building today.</p>
+
+<h2>What to try first</h2>
+
+<p>If you have never used any of these, start with the free tier of <strong><a href="/agent/zapier-agents">Zapier Agents</a></strong>. The 100-task free tier is enough to evaluate the category, the setup is plain English, and you will have a working agent in under an hour. From there, add <strong><a href="/agent/make">Make</a></strong> the first time you need a branching workflow Zapier cannot express, and add <strong><a href="/agent/n8n">n8n</a></strong> the first time you hit a self-hosting, compliance, or custom-code requirement. The three are not mutually exclusive — most serious automation shops use all three.</p>
+
+<h2>Bottom line</h2>
+
+<p><a href="/agent/n8n">n8n</a> is the right answer if you need self-hosting, custom code, and the lowest cost. <a href="/agent/make">Make</a> is the right answer if you build complex branching workflows and prefer a visual canvas. <a href="/agent/zapier-agents">Zapier Agents</a> is the right answer if you are already on Zapier and want the easiest on-ramp. All three are excellent. The one to pick depends on whether your bottleneck is compliance (n8n), complexity (Make), or speed-of-setup (Zapier).</p>
+
+<p>See the full profiles for all three — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
 ];
 
 export function getBlogSorted(): BlogPost[] {
