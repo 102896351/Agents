@@ -14,7 +14,8 @@ export interface BlogPost {
   content: string;     // HTML
   tags: string[];
   relatedAgents: string[]; // slugs from agents.ts — 自动在详情页内链
-  coverImage?: string;
+  coverImage?: string;  // 详情页 hero 图 (建议 1200w, ≤100KB)
+  coverThumb?: string;  // 列表页缩略图 (建议 600w, ≤30KB)
 }
 
 export const blogPosts: BlogPost[] = [
@@ -28,6 +29,8 @@ export const blogPosts: BlogPost[] = [
     readingTime: 9,
     tags: ['coding', 'comparison', 'claude-code', 'cursor', 'cline', 'vscode'],
     relatedAgents: ['claude-code', 'cursor', 'cline'],
+    coverImage: '/blog/claude-code-vs-cursor-vs-cline-2026.jpg',
+    coverThumb: '/blog/claude-code-vs-cursor-vs-cline-2026-thumb.jpg',
     content: `
 <p>Three years into the "AI coding agent" era, three tools have separated themselves from the long tail. <strong><a href="/agent/claude-code">Claude Code</a></strong> is Anthropic's terminal-native agent built for engineers who live in the shell. <strong><a href="/agent/cursor">Cursor</a></strong> is the AI-first fork of VS Code, beloved by developers who want AI woven into a familiar editor. <strong><a href="/agent/cline">Cline</a></strong> is the open-source, bring-your-own-key alternative that 35,000+ developers have starred on GitHub.</p>
 

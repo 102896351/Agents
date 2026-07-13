@@ -30,17 +30,24 @@ const posts = getBlogSorted();
       <div class="blog-list">
         {posts.map((post: BlogPost) => (
           <a href={`${base}/blog/${post.slug}`} class="blog-row">
-            <div class="blog-row-meta">
-              <time datetime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-              <span class="dot">·</span>
-              <span>{post.readingTime} min read</span>
-            </div>
-            <h3 class="blog-row-title">{post.title}</h3>
-            <p class="blog-row-excerpt">{post.excerpt}</p>
-            <div class="blog-row-tags">
-              {post.tags.slice(0, 4).map((t) => (
-                <span class="tag">{t}</span>
-              ))}
+            {post.coverThumb && (
+              <div class="blog-row-cover">
+                <img src={post.coverThumb} alt="" loading="lazy" decoding="async" width="600" height="335" />
+              </div>
+            )}
+            <div class="blog-row-body">
+              <div class="blog-row-meta">
+                <time datetime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                <span class="dot">·</span>
+                <span>{post.readingTime} min read</span>
+              </div>
+              <h3 class="blog-row-title">{post.title}</h3>
+              <p class="blog-row-excerpt">{post.excerpt}</p>
+              <div class="blog-row-tags">
+                {post.tags.slice(0, 4).map((t) => (
+                  <span class="tag">{t}</span>
+                ))}
+              </div>
             </div>
           </a>
         ))}
@@ -79,8 +86,10 @@ const posts = getBlogSorted();
     margin-top: 24px;
   }
   .blog-row {
-    display: block;
-    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    padding: 20px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
@@ -91,6 +100,29 @@ const posts = getBlogSorted();
   .blog-row:hover {
     border-color: var(--accent, #6366f1);
     transform: translateY(-2px);
+  }
+  .blog-row-cover {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: var(--surface-2);
+  }
+  .blog-row-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .blog-row-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  @media (max-width: 720px) {
+    .blog-row {
+      grid-template-columns: 1fr;
+    }
   }
   .blog-row-meta {
     display: flex;
