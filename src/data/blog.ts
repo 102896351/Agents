@@ -875,6 +875,351 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <p>See the full profiles — benchmarks, pricing, and setup guides — for <a href="/agent/cline">Cline</a>, <a href="/agent/claude-code">Claude Code</a>, and <a href="/agent/langgraph">LangGraph</a> in our directory.</p>
 `,
+  },
+
+  {
+    slug: 'voice-ai-vapi-vs-retell-vs-elevenlabs-2026',
+    title: "Voice AI Platforms in 2026: VAPI vs Retell vs ElevenLabs",
+    excerpt: "Three voice AI infrastructure providers have taken different paths in 2026: VAPI gives developers full control, Retell owns the phone call use case, and ElevenLabs sets the voice quality standard. Here's how to pick.",
+    date: '2026-07-19',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 9,
+    tags: ['voice', 'ai', 'comparison', 'vapi', 'retell', 'elevenlabs'],
+    relatedAgents: ['vapi', 'retell', 'elevenlabs'],
+    coverThumb: '/blog/voice-ai-2026-thumb.jpg',
+    content: `
+<p>If you want to add a voice interface to an AI agent, a phone answering service, or a customer support workflow, three infrastructure providers have separated from the pack in 2026. <strong><a href="/agent/vapi">VAPI</a></strong> is the developer-first voice AI platform that gives you full control over the LLM, voice model, and call flow. <strong><a href="/agent/retell">Retell</a></strong> is the hosted voice AI optimized for phone calls — natural, latency-minimized, and purpose-built for inbound/outbound call centers. <strong><a href="/agent/elevenlabs">ElevenLabs</a></strong> is the AI voice synthesis powerhouse — the best text-to-speech quality in the industry, now adding real-time voice-to-voice conversation to its lineup.</p>
+
+<p>Each does one job exceptionally well. None of them is a complete solution on its own — you almost always combine a voice synthesis tool with a voice AI platform to get a full pipeline. This post compares the three head-to-head using the profiles in <a href="/">our 62-agent directory</a>, then tells you which to use for which job.</p>
+
+<h2>The voice AI stack: how these tools compose</h2>
+
+<p>Before comparing, it helps to understand the two layers in any voice AI system. The first layer is <strong>speech synthesis</strong> — converting text to a natural-sounding voice. The second layer is <strong>real-time conversation</strong> — hearing what a human says, transcribing it, routing it to an LLM, getting a response, and speaking it back with minimal latency.</p>
+
+<p><a href="/agent/elevenlabs">ElevenLabs</a> dominates layer one. <a href="/agent/vapi">VAPI</a> and <a href="/agent/retell">Retell</a> are both trying to own layer two — and they take different approaches to it.</p>
+
+<figure>
+  <img src="/blog/voice-ai-2026-stack.jpg" alt="A diagram showing the two-layer voice AI stack: speech synthesis (ElevenLabs) at the bottom, and real-time conversation platforms (VAPI and Retell) at the top, with arrows showing data flow between them" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>The voice AI stack: ElevenLabs handles speech synthesis (text-to-voice), VAPI and Retell handle real-time conversation (hearing + thinking + responding).</figcaption>
+</figure>
+
+<h2><a href="/agent/vapi">VAPI</a>: the developer-first voice AI platform</h2>
+
+<p><a href="/agent/vapi">VAPI</a> is the open-source voice AI infrastructure platform that gives you full control. It handles the entire call pipeline — WebRTC connection, speech-to-text, LLM routing, text-to-speech — and exposes each layer as a configuration option. You can swap in any LLM (OpenAI, Anthropic, Groq, etc.), any voice provider (ElevenLabs, Cartesia, Deepgram, etc.), and any use case (outbound sales, inbound support, AI companion, scheduling assistant).</p>
+
+<p>The pitch is control and flexibility. If you want to build a voice AI that speaks with a specific personality, handles specific domains, and integrates with your existing backend, <a href="/agent/vapi">VAPI</a> gives you the primitives without opinionating about the details. The open-source server means you can self-host if you need data residency or cost control, and the managed cloud tier means you can go live without infrastructure work.</p>
+
+<p>Where <a href="/agent/vapi">VAPI</a> is weak: the voice quality depends entirely on which voice provider you wire in. The default voices are functional but not best-in-class. For production outbound sales or phone support, you will want to pair VAPI with <a href="/agent/elevenlabs">ElevenLabs</a> voices — which means two subscriptions and more configuration complexity. The other soft spot is latency: VAPI's default configuration has a perceptible lag between human speech end and AI response start, which matters for natural conversation.</p>
+
+<figure>
+  <img src="/blog/voice-ai-2026-vapi.jpg" alt="A developer dashboard showing a VAPI call configuration with LLM selection, voice provider options, and a live call status panel" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>VAPI's configuration interface: wire in any LLM, any voice provider, any call flow — the developer owns the stack.</figcaption>
+</figure>
+
+<p><strong>Pick <a href="/agent/vapi">VAPI</a> if</strong> you are a developer building a custom voice AI application and you want full control over the model, voice, and conversation logic. <strong>Skip it if</strong> you want a turnkey phone solution with best-in-class voice quality out of the box — <a href="/agent/retell">Retell</a> or <a href="/agent/elevenlabs">ElevenLabs</a> are better starting points.</p>
+
+<h2><a href="/agent/retell">Retell</a>: the phone-native voice AI</h2>
+
+<p><a href="/agent/retell">Retell</a> is the hosted voice AI platform purpose-built for phone calls. It optimizes every layer for the specific constraints of a telephone conversation: ultra-low latency (humans expect phone AI to respond in under 300ms), natural voice quality that passes the "is this a robot?" test, and turnkey integration with phone carriers (Twilio, Telnyx, Aircall) and CRMs (Salesforce, HubSpot).</p>
+
+<p>The pitch is "production phone AI, end-to-end." You configure a voice agent (pick a voice, wire in an LLM, define the call flow), connect it to a phone number, and it handles inbound/outbound calls. Retell's own voice models are specifically tuned for phone conversations — they handle interruptions, overlapping speech, and the acoustic variability of phone lines better than generic TTS engines.</p>
+
+<p>The standout feature is the sub-300ms end-of-speech detection. In a phone call, latency is felt as awkwardness — a 1-second pause between a human finishing speaking and the AI starting to respond feels like a bad phone connection, not an AI. Retell's EOS detection minimizes this, making the conversations feel genuinely natural.</p>
+
+<figure>
+  <img src="/blog/voice-ai-2026-retell.jpg" alt="A call analytics dashboard showing an active inbound call with real-time transcription, sentiment analysis, and call outcome metrics" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Retell's call analytics: real-time transcription, sentiment, and outcome tracking for every phone interaction.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/retell">Retell</a> is weak: it is opinionated in ways that VAPI is not. You pick from Retell's voice library, you use Retell's call flow configuration, you integrate via Retell's API. If you want to use your own voice synthesis or custom call logic, <a href="/agent/vapi">VAPI</a> is more flexible. The other soft spot is pricing — Retell's managed platform has per-minute pricing that can add up for high-volume call centers, and self-hosting is not an option.</p>
+
+<p><strong>Pick <a href="/agent/retell">Retell</a> if</strong> you need a production voice AI for phone calls — inbound support, outbound sales, appointment scheduling — and you want it live in days, not weeks. <strong>Skip it if</strong> you need full customization of the voice, model, or call logic, or you are building a non-phone voice application (web, app, in-person kiosk).</p>
+
+<h2><a href="/agent/elevenlabs">ElevenLabs</a>: the voice synthesis powerhouse</h2>
+
+<p><a href="/agent/elevenlabs">ElevenLabs</a> is the industry-leading AI voice synthesis platform. Its text-to-speech quality is the closest thing to a professional voice actor that exists in software — the intonation, the pacing, the emotional range, and the naturalness are all best-in-class. If voice quality is the primary requirement, <a href="/agent/elevenlabs">ElevenLabs</a> is the right answer almost every time.</p>
+
+<p>In 2026, <a href="/agent/elevenlabs">ElevenLabs</a> has extended beyond pure TTS into real-time voice-to-voice conversation. Its Conversational AI product lets you build voice agents that use ElevenLabs voices and models — giving you the best voice quality in the market combined with the ability to handle live conversation. The latency is competitive with VAPI and Retell, and the voice quality is objectively better.</p>
+
+<p>The other under-appreciated capability is the Voice Library — thousands of pre-built voices across languages, accents, and styles. If you need a Spanish-speaking sales agent, a British-accented customer support bot, or a voice that matches your brand's personality, ElevenLabs has more options than anyone else in the market.</p>
+
+<figure>
+  <img src="/blog/voice-ai-2026-elevenlabs.jpg" alt="An ElevenLabs voice library interface showing dozens of voice cards with language flags, accent labels, and preview buttons in a browsable grid" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>ElevenLabs' Voice Library: thousands of voices across languages and styles — the largest voice selection in the industry.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/elevenlabs">ElevenLabs</a> is weak: as a standalone voice AI platform, it requires more assembly than VAPI or Retell. You bring your own LLM logic, your own call flow, your own telephony integration. For developers who want full control this is fine; for teams that want a turnkey phone solution, the assembly cost is real. The Conversational AI product is newer and less battle-tested than VAPI or Retell for high-volume production phone workloads.</p>
+
+<p><strong>Pick <a href="/agent/elevenlabs">ElevenLabs</a> if</strong> voice quality is your primary requirement and you have developers who can assemble the rest of the stack. Pair it with VAPI for the conversation layer, or use ElevenLabs' own Conversational AI if you want a more integrated experience. <strong>Skip it if</strong> you want turnkey phone AI without assembly work — Retell is faster to production.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/voice-ai-2026-comparison.jpg" alt="A 3-column comparison table showing VAPI, Retell, and ElevenLabs across dimensions: layer, voice quality, latency, use cases, and pricing model" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>VAPI vs Retell vs ElevenLabs — three tools covering different layers of the voice AI stack.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>VAPI</th><th>Retell</th><th>ElevenLabs</th></tr></thead>
+<tbody>
+<tr><td><strong>Layer</strong></td><td>Full pipeline (STT + LLM + TTS)</td><td>Full pipeline (optimized for phone)</td><td>TTS + Conversational AI</td></tr>
+<tr><td><strong>Voice quality</strong></td><td>Depends on voice provider</td><td>Very good (phone-optimized)</td><td>Best in class (TTS)</td></tr>
+<tr><td><strong>Latency</strong></td><td>Medium (customizable)</td><td>Ultra-low (&lt;300ms, phone-tuned)</td><td>Good (Conversational AI)</td></tr>
+<tr><td><strong>Phone integration</strong></td><td>Manual (Twilio, etc.)</td><td>Turnkey (Twilio, Telnyx, Aircall)</td><td>Manual / Conversational AI</td></tr>
+<tr><td><strong>Self-host option</strong></td><td>Yes (open-source server)</td><td>No</td><td>No</td></tr>
+<tr><td><strong>Best for</strong></td><td>Custom voice AI apps</td><td>Production phone calls</td><td>Voice quality first</td></tr>
+<tr><td><strong>Pricing</strong></td><td>Per-minute (cloud) / free (self-host)</td><td>Per-minute (managed)</td><td>Per-character (TTS) / per-minute (Conversational AI)</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you are building a custom voice AI application (web, app, robot, in-person kiosk):</strong> <a href="/agent/vapi">VAPI</a>. The full pipeline, the open-source option, and the flexibility to wire in any LLM and any voice provider make it the right foundation for custom builds.</p>
+
+<p><strong>If you need production phone AI in days:</strong> <a href="/agent/retell">Retell</a>. The turnkey phone carrier integration, the ultra-low latency, and the phone-optimized voice quality make it the fastest path from "we need an AI answering our phones" to live. Pair it with ElevenLabs voices if the default voices are not good enough for your brand.</p>
+
+<p><strong>If voice quality is the primary requirement:</strong> <a href="/agent/elevenlabs">ElevenLabs</a>. The TTS quality is best-in-class and the Voice Library is unmatched. Build on top of it with VAPI's conversation layer, or use ElevenLabs' own Conversational AI product for a more integrated experience.</p>
+
+<p><strong>For most production voice AI deployments, you end up using two of the three.</strong> VAPI + ElevenLabs for custom applications where voice quality matters. Retell + ElevenLabs voices for production phone deployments. The stack that wins is the one that matches the constraints you actually have — latency budget, voice quality bar, integration complexity, and cost.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never built with voice AI, start with <strong><a href="/agent/elevenlabs">ElevenLabs</a></strong> — the free tier is generous enough to evaluate the voice quality, and the Voice Library will give you an immediate sense of what "best in class" sounds like. From there, if you need to handle live conversation, add <strong><a href="/agent/vapi">VAPI</a></strong> for a custom build or <strong><a href="/agent/retell">Retell</a></strong> for a turnkey phone solution. The three are not mutually exclusive — VAPI and Retell both support ElevenLabs as a voice provider, which is the most common production combination.</p>
+
+<h2>Bottom line</h2>
+
+<p>VAPI, Retell, and ElevenLabs cover different layers of the voice AI stack and target different buyers. VAPI is the developer platform for custom builds. Retell is the production phone AI for call centers. ElevenLabs is the voice quality standard that everyone else measures against. Pick the one that matches your layer, your latency requirements, and your integration constraints — and remember that the best production stacks usually combine VAPI or Retell for the conversation layer with ElevenLabs for the voice quality.</p>
+
+<p>See the full profiles — benchmarks, pricing, and alternatives — for <a href="/agent/vapi">VAPI</a>, <a href="/agent/retell">Retell</a>, and <a href="/agent/elevenlabs">ElevenLabs</a> in our directory.</p>
+`,
+  },
+
+  {
+    slug: 'windsurf-vs-cursor-vs-cline-2026',
+    title: "Windsurf vs Cursor vs Cline: The VS Code AI Extension Battle in 2026",
+    excerpt: "Three AI coding tools live inside VS Code: Windsurf's Cascade context tracking, Cursor's best-in-class tab autocomplete, and Cline's open-source BYOK flexibility. Here's how to pick the right one.",
+    date: '2026-07-19',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 8,
+    tags: ['coding', 'comparison', 'windsurf', 'cursor', 'cline', 'vscode'],
+    relatedAgents: ['windsurf', 'cursor', 'cline'],
+    coverThumb: '/blog/windsurf-vs-cursor-vs-cline-2026-thumb.jpg',
+    content: `
+<p>Three AI coding tools live inside VS Code: <strong><a href="/agent/windsurf">Windsurf</a></strong> from Codeium, <strong><a href="/agent/cursor">Cursor</a></strong> (already covered in our <a href="/blog/claude-code-vs-cursor-vs-cline-2026">Claude Code vs Cursor vs Cline</a> comparison), and <strong><a href="/agent/cline">Cline</a></strong>. This post zooms into the VS Code-native category — what each tool does, where they diverge, and which one to pick for which kind of developer.</p>
+
+<p>We already covered the three-way comparison in depth — this post adds the specific detail that Windsurf deserves, and gives you a clearer decision framework for the VS Code-native segment specifically. If you are already committed to VS Code and want to pick one AI coding extension, this is the post that makes the decision concrete.</p>
+
+<h2>The VS Code AI market in 2026</h2>
+
+<p>VS Code has become the battleground for AI coding assistants. Four tools compete in the VS Code ecosystem: <a href="/agent/cursor">Cursor</a> (fork of VS Code), <a href="/agent/windsurf">Windsurf</a> (extension from Codeium), <a href="/agent/cline">Cline</a> (extension, open-source), and <a href="/agent/continue">Continue</a> (extension, open-source). <a href="/agent/cursor">Cursor</a> is a separate application; the other three are extensions you install into your existing VS Code.</p>
+
+<p>The practical consequence: if you already use VS Code and do not want to switch applications, you are choosing between Windsurf, Cline, and Continue. <a href="/agent/cursor">Cursor</a> requires switching to a Cursor-specific VS Code fork. This is a smaller decision than it sounds — the fork preserves your extensions, keybindings, and settings — but it is still a decision.</p>
+
+<figure>
+  <img src="/blog/windsurf-vs-cursor-vs-cline-2026-hero.jpg" alt="A split-screen showing three VS Code windows side by side: Windsurf with its Cascade AI panel, Cursor with its Composer view, and Cline with its chat interface, all open on the same Python file" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>Same codebase, three tools: Windsurf (left), Cursor (center), and Cline (right) — all running inside VS Code or a VS Code fork.</figcaption>
+</figure>
+
+<h2><a href="/agent/windsurf">Windsurf</a>: Codeium's AI-native VS Code extension</h2>
+
+<p><a href="/agent/windsurf">Windsurf</a> is Codeium's entry into the AI coding assistant market, released in late 2024 and rapidly gaining market share. It is a VS Code extension (not a fork) that layers an AI coding assistant on top of your existing VS Code setup. The standout feature is <strong>Cascade</strong> — a context-aware AI session that tracks your entire codebase context as you work, maintains a running understanding of your current file and project, and proactively suggests next steps.</p>
+
+<p>Where <a href="/agent/windsurf">Windsurf</a> differentiates from <a href="/agent/cursor">Cursor</a> and <a href="/agent/cline">Cline</a> is the <strong>contextual awareness model</strong>. Windsurf's Cascade maintains a persistent understanding of your project as you code — it knows which files you have open, which errors are in your terminal, and which files you recently changed. When you open a chat session, the context is already there. You do not start from scratch.</p>
+
+<p>The other differentiator is Codeium's own model. Unlike <a href="/agent/cline">Cline</a> (bring your own key) or <a href="/agent/cursor">Cursor</a> (managed), <a href="/agent/windsurf">Windsurf</a> uses Codeium's own models — which are free for individual use and priced aggressively for teams. The quality is competitive with GPT-4 class models on most coding tasks, and Codeium is investing heavily in closing the gap.</p>
+
+<figure>
+  <img src="/blog/windsurf-vs-cursor-vs-cline-2026-windsurf.jpg" alt="Windsurf's Cascade panel showing a persistent AI session with context from the current file, recent changes, and an active coding task in progress" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Windsurf's Cascade: a persistent AI session that tracks your project context across the entire coding session, not just the current prompt.</figcaption>
+</figure>
+
+<p><a href="/agent/windsurf">Windsurf</a> is free for individual developers (Codeium's model, no API key needed) with a Pro tier for teams. The extension install is frictionless — one click from the VS Code marketplace and you are running. For developers who want a zero-setup, free AI coding assistant inside VS Code, Windsurf is the lowest-friction entry point available today.</p>
+
+<p><strong>Pick <a href="/agent/windsurf">Windsurf</a> if</strong> you want a free, zero-setup AI coding assistant that lives inside your existing VS Code, maintains project context across sessions, and does not require an API key. <strong>Skip it if</strong> you want access to Claude-class models or the absolute best tab autocomplete available — <a href="/agent/cursor">Cursor</a> Pro with the strongest models is still ahead on quality.</p>
+
+<h2><a href="/agent/cursor">Cursor</a>: the AI-first VS Code fork</h2>
+
+<p><a href="/agent/cursor">Cursor</a> is the highest-quality option in the VS Code ecosystem, at the cost of being a fork rather than an extension. You install the Cursor application (a fork of VS Code), import your extensions and settings, and gain access to the strongest AI coding features available — including the best tab autocomplete in the market and a powerful Agent (Composer) mode for multi-file tasks.</p>
+
+<p>The quality gap between <a href="/agent/cursor">Cursor</a> and the extension-based alternatives has narrowed in 2026, but it has not closed. <a href="/agent/cursor">Cursor</a>'s tab autocomplete remains the most viscerally impressive AI coding feature in any editor — you press Tab and watch your cursor follow your intent across files. The Agent mode handles complex multi-file tasks with a sophistication that the extensions have not fully matched.</p>
+
+<p>The trade-off is the fork model. Your extensions mostly work — Cursor ships compatibility shims for the most popular ones — but edge cases exist. If your workflow depends on a specific extension that breaks in Cursor, you are stuck with either waiting for a fix or switching back to VS Code.</p>
+
+<figure>
+  <img src="/blog/windsurf-vs-cursor-vs-cline-2026-cursor.jpg" alt="Cursor's interface showing the tab autocomplete in action with inline AI suggestions highlighted, and the Composer panel open with a multi-file task in progress" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Cursor's tab autocomplete: the most viscerally "AI is here" moment in any editor — press Tab and the cursor follows your intent.</figcaption>
+</figure>
+
+<p><strong>Pick <a href="/agent/cursor">Cursor</a> if</strong> you want the strongest AI coding experience available and are willing to switch from VS Code to the Cursor fork. The tab autocomplete alone justifies the \$20 Pro tier for most working developers. <strong>Skip it if</strong> you depend on an extension that is not yet compatible with Cursor, or you want a free solution.</p>
+
+<h2><a href="/agent/cline">Cline</a>: the open-source BYOK extension</h2>
+
+<p><a href="/agent/cline">Cline</a> is the open-source, bring-your-own-key extension for VS Code. It gives you an autonomous coding agent that lives in your VS Code sidebar, with full control over which model runs, which tools are available, and which API keys are used. The model choice is the defining feature — you are not locked into Codeium, Anthropic, or OpenAI's defaults; you pick and switch freely.</p>
+
+<p>The open-source model means <a href="/agent/cline">Cline</a> can also create MCP servers on the fly. If you ask Cline to add a tool that connects to your CRM, it can write the MCP server code, register it, and use it — all in the same session. This makes Cline the most extensible tool in the VS Code ecosystem for developers who want to build custom tool integrations.</p>
+
+<p>The trade-off is setup complexity. <a href="/agent/cline">Cline</a> requires an API key, a provider choice, and a model choice — every time. The quality also depends entirely on the model you choose; there are no "sensible defaults" that Codeium or Anthropic have tuned for you. If you want a working AI coding assistant in 5 minutes, <a href="/agent/windsurf">Windsurf</a> or <a href="/agent/cursor">Cursor</a> is faster.</p>
+
+<figure>
+  <img src="/blog/windsurf-vs-cursor-vs-cline-2026-cline.jpg" alt="Cline's VS Code sidebar showing a chat panel with an autonomous agent running a multi-step task, tool call badges, and an MCP server configuration panel" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Cline's autonomous agent: full control over model, tools, and MCP servers — the most extensible VS Code AI extension for developers who want to build their own stack.</figcaption>
+</figure>
+
+<p><strong>Pick <a href="/agent/cline">Cline</a> if</strong> you want full control over your AI stack, are comfortable setting up an API key and model, and want the ability to create custom MCP tools as part of your workflow. <strong>Skip it if</strong> you want zero-setup, or you are not a developer who wants to configure your own model stack.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/windsurf-vs-cursor-vs-cline-2026-comparison.jpg" alt="A 3-column comparison table showing Windsurf, Cursor, and Cline across dimensions: model, cost, setup, tab autocomplete, and best use case" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Windsurf vs Cursor vs Cline — the VS Code AI extension battle in 2026.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Windsurf</th><th>Cursor</th><th>Cline</th></tr></thead>
+<tbody>
+<tr><td><strong>Type</strong></td><td>VS Code extension</td><td>VS Code fork (app)</td><td>VS Code extension</td></tr>
+<tr><td><strong>Model</strong></td><td>Codeium (free tier)</td><td>Best available (Pro)</td><td>Bring your own (any LLM)</td></tr>
+<tr><td><strong>Cost</strong></td><td>Free (individual)</td><td>\$20/month (Pro)</td><td>Free + API key cost</td></tr>
+<tr><td><strong>Tab autocomplete</strong></td><td>Good</td><td><strong>Best in class</strong></td><td>No</td></tr>
+<tr><td><strong>Setup friction</strong></td><td>Lowest (one-click)</td><td>Medium (fork install)</td><td>Medium-high (key + provider)</td></tr>
+<tr><td><strong>MCP support</strong></td><td>Basic</td><td>Via Composer</td><td><strong>Can create servers on the fly</strong></td></tr>
+<tr><td><strong>Best for</strong></td><td>Free, zero-setup AI coding</td><td>Best quality, worth \$20/mo</td><td>Full control, open-source stack</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you want the best quality and \$20/month is fine:</strong> <a href="/agent/cursor">Cursor</a>. The tab autocomplete alone is worth the price for any developer who spends significant time in an editor. The Agent (Composer) mode handles complex tasks with a sophistication that the extensions have not fully matched.</p>
+
+<p><strong>If you want a free, zero-setup AI coding assistant:</strong> <a href="/agent/windsurf">Windsurf</a>. Codeium's own model is competitive on most tasks, the Cascade context tracking is genuinely useful, and the one-click install makes it the fastest on-ramp available.</p>
+
+<p><strong>If you want full control over your AI stack and are comfortable configuring it:</strong> <a href="/agent/cline">Cline</a>. The open-source BYOK model, the ability to create MCP servers on the fly, and the model flexibility make it the most powerful option for developers who want to own their stack.</p>
+
+<p><strong>If you want all three:</strong> install <a href="/agent/windsurf">Windsurf</a> as your default free assistant, use <a href="/agent/cursor">Cursor</a> when you specifically want the tab autocomplete, and keep <a href="/agent/cline">Cline</a> around for tasks that need custom MCP tools or a specific model that Cursor does not support.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never used an AI coding tool in VS Code, start with <a href="/agent/windsurf">Windsurf</a> — one click, free, no API key, running in your existing VS Code. Once you've felt what AI completion looks like, upgrade to <a href="/agent/cursor">Cursor</a> Pro for the tab autocomplete quality improvement. Add <a href="/agent/cline">Cline</a> when you have a task that needs a specific model or a custom MCP tool.</p>
+
+<h2>Bottom line</h2>
+
+<p>Windsurf, Cursor, and Cline cover three different positions on the quality-control-friction spectrum. Windsurf is free and frictionless. Cursor is the best quality at \$20/month. Cline is full control and open-source. The one to pick depends on whether your bottleneck is money, quality, or control — and the honest answer for most developers is Cursor at \$20/month for the tab autocomplete alone.</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
+
+  {
+    slug: 'ai-productivity-tools-2026',
+    title: "The AI Productivity Stack in 2026: Meeting AI, Document AI, and Communication AI",
+    excerpt: "Three categories of AI productivity tools are earning permanent spots in knowledge worker workflows: Fireflies and Otter for meeting capture, Notion AI for document drafting, and Grammarly for communication polish. Here's how they compose.",
+    date: '2026-07-19',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 8,
+    tags: ['productivity', 'ai', 'meetings', 'notion', 'grammarly', 'comparison'],
+    relatedAgents: ['notion-ai', 'grammarly'],
+    coverThumb: '/blog/ai-productivity-tools-2026-thumb.jpg',
+    content: `
+<p>AI has moved into every corner of the modern knowledge worker's day — from the meeting you attend to the document you write to the Slack message you send. This post covers three categories of AI productivity tools that are earning permanent spots in workflows in 2026: <strong>AI meeting assistants</strong> (automating the capture, transcription, and summary of meetings), <strong>AI document tools</strong> (integrated into the documents you already write), and <strong>AI communication tools</strong> (catching grammar, tone, and clarity issues before they are sent). We pull from profiles in <a href="/">our 62-agent directory</a> to give you the honest comparison.</p>
+
+<h2>The AI productivity stack in 2026</h2>
+
+<p>The three categories are distinct but increasingly overlapping. Meeting assistants record and transcribe your calls. Document AI lives inside Google Docs, Notion, or Word and helps you write as you go. Communication AI (Grammarly, Jasper) reviews what you write before you send it. In 2026, all three are converging — meeting assistants generate documents from meetings, document AI summarizes meetings, and Grammarly reviews documents written by AI.</p>
+
+<p>The practical question is not "which category to use" but "which tool in each category earns a permanent spot in your workflow." We focus on the ones that have crossed the threshold from "novelty" to "I would notice if this were gone."</p>
+
+<figure>
+  <img src="/blog/ai-productivity-tools-2026-hero.jpg" alt="A unified productivity dashboard showing three panels: a meeting transcript with AI summary on the left, a document editor with inline AI suggestions in the center, and a communication review panel on the right, all updating in real time" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>The AI productivity stack: meeting AI captures context, document AI shapes the content, communication AI polishes the delivery.</figcaption>
+</figure>
+
+<h2>AI Meeting Assistants: Fireflies and Otter</h2>
+
+<p><strong>Fireflies.ai</strong> and <strong>Otter.ai</strong> are the two dominant meeting AI platforms. Both record your meetings, transcribe them in real time, and generate summaries and action items. Both integrate with Zoom, Google Meet, Teams, and the major calendar tools. The difference is in the depth of the AI layer.</p>
+
+<p><strong>Fireflies.ai</strong> has invested heavily in its AI summary layer. It can identify action items, questions asked, key metrics mentioned, and sentiment across a meeting — and it surfaces these as searchable, shareable snippets. The AskFred feature lets you query your entire meeting history in natural language: "what did the product team decide about the roadmap?" Fireflies retrieves the relevant snippets from every meeting where it came up.</p>
+
+<p><strong>Otter.ai</strong> has been in the market longer and has a stronger real-time transcription engine. Its Otter AI Chat feature adds a conversational layer on top of live meetings — you can ask Otter questions during a meeting you are attending, and it answers from the live transcript. This is the feature that differentiates Otter for live-meeting attendees; Fireflies is stronger for asynchronous review.</p>
+
+<figure>
+  <img src="/blog/ai-productivity-tools-2026-meetings.jpg" alt="Side-by-side screens of Fireflies and Otter showing meeting transcripts with AI-generated summaries, action items, and a searchable query interface" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Fireflies (left) and Otter (right): both transcribe and summarize meetings; Fireflies leads on async search, Otter leads on live meeting chat.</figcaption>
+</figure>
+
+<p><strong>Pick Fireflies.ai</strong> if your team does a lot of async review — people who could not attend the meeting, or who want to search through past meetings for specific decisions. The AskFred natural language query is genuinely useful for anyone who attends more than 5 meetings a week.</p>
+
+<p><strong>Pick Otter.ai</strong> if you attend live meetings and want a real-time transcription with an AI chat layer. The ability to ask questions during a meeting and get answers from the transcript is the most practical real-time AI feature in the meeting category.</p>
+
+<h2>AI Document Tools: Notion AI</h2>
+
+<p><a href="/agent/notion-ai">Notion AI</a> is the AI layer built into Notion, the document and wiki platform used by millions of teams. It is not a standalone AI tool — it is AI woven into the documents you already write. The integration is seamless: select any text in Notion, press Space, and Notion AI rewrites, summarizes, expands, or translates it. Start a new page with a prompt and Notion AI generates a first draft.</p>
+
+<p>The value of <a href="/agent/notion-ai">Notion AI</a> is not the AI quality (which is good but not frontier-class) — it is the workflow integration. You are already in Notion. The AI is right there, requiring no context switching, no new tool, no new tab. For teams that live in Notion, this frictionlessness is the entire value proposition.</p>
+
+<figure>
+  <img src="/blog/ai-productivity-tools-2026-notion.jpg" alt="A Notion document page with the AI panel open on the right side showing multiple AI actions: summarize, improve writing, translate, and generate draft from prompt" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Notion AI: the AI is right inside your Notion page — select text and AI rewrites it, or start a new page with a prompt and get a first draft.</figcaption>
+</figure>
+
+<p><strong>Pick <a href="/agent/notion-ai">Notion AI</a> if</strong> your team already lives in Notion and you want AI without the friction of a new tool. The \$10/user/month is easy to justify if it saves anyone on your team more than 10 minutes a week on writing tasks. <strong>Skip it if</strong> you do not use Notion — the AI is not good enough to justify switching from Confluence or Google Docs just for the AI.</p>
+
+<h2>AI Communication Tools: Grammarly and Jasper</h2>
+
+<p><a href="/agent/grammarly">Grammarly</a> and <a href="/agent/jasper">Jasper</a> serve the same goal (better writing) but take different shapes. <a href="/agent/grammarly">Grammarly</a> is the AI proofreader that lives in your browser, your email client, and your document editor — catching grammar, spelling, and clarity issues as you write. <a href="/agent/jasper">Jasper</a> is the AI content platform for marketing teams generating blog posts, ad copy, and social content at scale.</p>
+
+<p><a href="/agent/grammarly">Grammarly</a>'s AI has evolved significantly since the pure grammar-checker it started as. The 2026 version covers tone (adjusting a Slack message to be more diplomatic, or an email to be more direct), clarity (rewriting a dense paragraph into something scannable), and delivery (suggesting when to send based on the recipient's response patterns). The browser extension means it works everywhere you write — email, docs, chat, social.</p>
+
+<p><a href="/agent/jasper">Jasper</a> targets marketing teams that need to generate large volumes of on-brand content. Its Brand Voice feature learns your brand's tone, style, and vocabulary, and applies it consistently across every piece of content it generates. For teams that need 50 blog posts, 200 social updates, and 30 ad variants a month, Jasper is the production pipeline. For individual writers who want to write better, <a href="/agent/grammarly">Grammarly</a> is the right answer.</p>
+
+<figure>
+  <img src="/blog/ai-productivity-tools-2026-grammarly.jpg" alt="A split view showing Grammarly's browser extension analyzing a professional email on the left with tone and clarity suggestions highlighted, and Jasper's brand voice configuration panel on the right" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Grammarly (left) and Jasper (right): same goal (better writing), very different shapes — Grammarly for individual polish, Jasper for marketing production.</figcaption>
+</figure>
+
+<p><strong>Pick <a href="/agent/grammarly">Grammarly</a></strong> if you are an individual or team that wants AI to improve the quality of what you write, without changing your workflow. The free tier is generous enough to evaluate; the Premium tier at \$12/month is worth it for anyone who writes professionally.</p>
+
+<p><strong>Pick <a href="/agent/jasper">Jasper</a></strong> if you run a marketing team that needs to generate large volumes of on-brand content at scale. The Brand Voice and the content production workflow are purpose-built for this job. <strong>Skip it if</strong> you write mostly one-off pieces — the platform overhead is not worth it for occasional use.</p>
+
+<h2>How these tools compose in a workflow</h2>
+
+<p>The honest answer is that most knowledge workers end up using all three categories, often from different providers:</p>
+
+<ul>
+<li><strong>Fireflies.ai</strong> or <strong>Otter.ai</strong> for meeting capture and async search</li>
+<li><a href="/agent/notion-ai">Notion AI</a> for drafting and wiki management (if your team is in Notion)</li>
+<li><a href="/agent/grammarly">Grammarly</a> for polishing every piece of written communication</li>
+</ul>
+
+<p>The composition is not accidental — it reflects the fact that the three categories are genuinely separate jobs. Meeting AI captures what was said. Document AI shapes what you write. Communication AI polishes how it sounds. Using all three is not tool sprawl; it is coverage of a real workflow.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/ai-productivity-tools-2026-comparison.jpg" alt="A comparison grid showing the four tools across dimensions: category, price, workflow integration, key feature, and who it's best for" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>AI productivity tools at a glance: Fireflies, Otter, Notion AI, and Grammarly — three categories, one stack.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Fireflies.ai</th><th>Otter.ai</th><th>Notion AI</th><th>Grammarly</th></tr></thead>
+<tbody>
+<tr><td><strong>Category</strong></td><td>Meeting AI</td><td>Meeting AI</td><td>Document AI</td><td>Communication AI</td></tr>
+<tr><td><strong>Price</strong></td><td>Free / \$18/user/mo</td><td>Free / \$20/user/mo</td><td>\$10/user/mo</td><td>Free / \$12/user/mo</td></tr>
+<tr><td><strong>Key feature</strong></td><td>Async meeting search</td><td>Live meeting chat</td><td>In-document AI</td><td>Cross-platform polish</td></tr>
+<tr><td><strong>Workflow</strong></td><td>Browser + calendar + Zoom/Meet</td><td>Browser + calendar + Zoom/Meet</td><td>Notion</td><td>Browser + email + docs</td></tr>
+<tr><td><strong>Best for</strong></td><td>Teams with async culture</td><td>Live meeting attendees</td><td>Notion-based teams</td><td>Individual + team writers</td></tr>
+</tbody>
+</table>
+
+<h2>What to try first</h2>
+
+<p>If your team struggles with meeting notes and follow-up, start with <strong>Fireflies.ai</strong>'s free tier and run it on your next three meetings. The value of searchable, shareable meeting summaries is immediately obvious. If you attend a lot of live meetings and want real-time transcription with AI chat, try <strong>Otter.ai</strong>. If you are already in Notion, try <a href="/agent/notion-ai">Notion AI</a> for one document and decide from there. If you write professionally (emails, reports, proposals), try <a href="/agent/grammarly">Grammarly</a> — the free tier is enough to feel the difference, and the \$12 Premium is worth it for most writers.</p>
+
+<h2>Bottom line</h2>
+
+<p>AI productivity tools are not a category with one winner — they are three separate categories (meeting, document, communication) with different winners for different workflows. Fireflies wins for async meeting culture. Otter wins for live meeting attendees. Notion AI wins for Notion-based teams. Grammarly wins for individual writers. The best stack uses all three categories, and within each category, picks the tool that matches how your team actually works.</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
   }
 ];
 

@@ -10,37 +10,37 @@ if (endIdx === -1) { console.error('Could not find end marker'); process.exit(1)
 
 const newPosts = [
   {
-    slug: 'claude-code-2026-updates',
-    title: 'Claude Code 2026 Major Updates: What Actually Changed',
-    excerpt: "Claude Code had its most significant update in years at Code w/ Claude 2026. Artifacts, Advisor Tool, Managed Agents, rate limit doubles. Here's what actually matters for working developers.",
+    slug: 'voice-ai-vapi-vs-retell-vs-elevenlabs-2026',
+    title: "Voice AI Platforms in 2026: VAPI vs Retell vs ElevenLabs",
+    excerpt: "Three voice AI infrastructure providers have taken different paths in 2026: VAPI gives developers full control, Retell owns the phone call use case, and ElevenLabs sets the voice quality standard. Here's how to pick.",
     date: '2026-07-19',
-    tags: ['coding', 'news', 'claude-code', 'anthropic', 'agents'],
-    relatedAgents: ['claude-code', 'cursor', 'cline'],
-    coverThumb: '/blog/claude-code-2026-updates-thumb.jpg',
+    tags: ['voice', 'ai', 'comparison', 'vapi', 'retell', 'elevenlabs'],
+    relatedAgents: ['vapi', 'retell', 'elevenlabs'],
+    coverThumb: '/blog/voice-ai-2026-thumb.jpg',
     readingTime: 9,
-    file: 'temp-post1.md'
+    file: 'temp-post4.md'
   },
   {
-    slug: 'midjourney-vs-flux-vs-lovart-2026',
-    title: 'Midjourney vs Flux vs Lovart: Which AI Image Tool Should You Use in 2026?',
-    excerpt: 'Midjourney owns editorial photorealism. Flux is the open-source challenger. Lovart converts a brief into finished brand assets. Three tools, three very different shapes.',
+    slug: 'windsurf-vs-cursor-vs-cline-2026',
+    title: "Windsurf vs Cursor vs Cline: The VS Code AI Extension Battle in 2026",
+    excerpt: "Three AI coding tools live inside VS Code: Windsurf's Cascade context tracking, Cursor's best-in-class tab autocomplete, and Cline's open-source BYOK flexibility. Here's how to pick the right one.",
     date: '2026-07-19',
-    tags: ['creative', 'image', 'comparison', 'midjourney', 'flux', 'lovart'],
-    relatedAgents: ['midjourney', 'flux', 'lovart'],
-    coverThumb: '/blog/midjourney-vs-flux-vs-lovart-2026-thumb.jpg',
+    tags: ['coding', 'comparison', 'windsurf', 'cursor', 'cline', 'vscode'],
+    relatedAgents: ['windsurf', 'cursor', 'cline'],
+    coverThumb: '/blog/windsurf-vs-cursor-vs-cline-2026-thumb.jpg',
     readingTime: 8,
-    file: 'temp-post2.md'
+    file: 'temp-post5.md'
   },
   {
-    slug: 'build-first-ai-coding-agent-2026',
-    title: 'How to Build Your First AI Coding Agent in 2026',
-    excerpt: "A practical guide to building your first AI coding agent using Cline, Claude Code, and LangGraph. From zero to a working autonomous coding assistant in 30 minutes.",
+    slug: 'ai-productivity-tools-2026',
+    title: "The AI Productivity Stack in 2026: Meeting AI, Document AI, and Communication AI",
+    excerpt: "Three categories of AI productivity tools are earning permanent spots in knowledge worker workflows: Fireflies and Otter for meeting capture, Notion AI for document drafting, and Grammarly for communication polish. Here's how they compose.",
     date: '2026-07-19',
-    tags: ['coding', 'how-to', 'cline', 'claude-code', 'langgraph', 'agents'],
-    relatedAgents: ['cline', 'claude-code', 'langgraph', 'cursor'],
-    coverThumb: '/blog/build-first-ai-coding-agent-2026-thumb.jpg',
+    tags: ['productivity', 'ai', 'meetings', 'notion', 'grammarly', 'comparison'],
+    relatedAgents: ['notion-ai', 'grammarly'],
+    coverThumb: '/blog/ai-productivity-tools-2026-thumb.jpg',
     readingTime: 8,
-    file: 'temp-post3.md'
+    file: 'temp-post6.md'
   }
 ];
 
@@ -71,9 +71,8 @@ ${content}
   }`;
 }).join(',\n\n');
 
-// The old array closes with },\n];  — extract everything BEFORE the ];
-// so we add the new entries and re-close with ];\nconst oldClosing = '];\n\n' + blogTs.substring(endIdx).trimStart();
-const before = blogTs.substring(0, endIdx).trimEnd().replace(/\n];\s*$/, ''); // remove old ];
+// Remove old ]; and append new entries
+const before = blogTs.substring(0, endIdx).trimEnd().replace(/\n];\s*$/, '');
 const newBlogTs = before + ',\n\n' + entries + '\n];\n\n' + blogTs.substring(endIdx);
 
 fs.writeFileSync(path.join(base, 'src/data/blog.ts'), newBlogTs, 'utf-8');
