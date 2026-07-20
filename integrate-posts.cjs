@@ -10,37 +10,37 @@ if (endIdx === -1) { console.error('Could not find end marker'); process.exit(1)
 
 const newPosts = [
   {
-    slug: 'voice-ai-vapi-vs-retell-vs-elevenlabs-2026',
-    title: "Voice AI Platforms in 2026: VAPI vs Retell vs ElevenLabs",
-    excerpt: "Three voice AI infrastructure providers have taken different paths in 2026: VAPI gives developers full control, Retell owns the phone call use case, and ElevenLabs sets the voice quality standard. Here's how to pick.",
-    date: '2026-07-19',
-    tags: ['voice', 'ai', 'comparison', 'vapi', 'retell', 'elevenlabs'],
-    relatedAgents: ['vapi', 'retell', 'elevenlabs'],
-    coverThumb: '/blog/voice-ai-2026-thumb.jpg',
+    slug: 'ai-video-runway-vs-sora-vs-pika-2026',
+    title: "AI Video Generation in 2026: Runway vs Sora vs Pika",
+    excerpt: "Three AI video platforms have separated from the pack in 2026: Runway is the film industry standard, Sora set the new physics realism bar, and Pika is the creator-friendly speed platform. Here's how to pick.",
+    date: '2026-07-20',
+    tags: ['video', 'creative', 'comparison', 'runway', 'sora', 'pika'],
+    relatedAgents: ['runway', 'sora', 'pika'],
+    coverThumb: '/blog/ai-video-2026-thumb.jpg',
     readingTime: 9,
-    file: 'temp-post4.md'
+    file: 'temp-post7.md'
   },
   {
-    slug: 'windsurf-vs-cursor-vs-cline-2026',
-    title: "Windsurf vs Cursor vs Cline: The VS Code AI Extension Battle in 2026",
-    excerpt: "Three AI coding tools live inside VS Code: Windsurf's Cascade context tracking, Cursor's best-in-class tab autocomplete, and Cline's open-source BYOK flexibility. Here's how to pick the right one.",
-    date: '2026-07-19',
-    tags: ['coding', 'comparison', 'windsurf', 'cursor', 'cline', 'vscode'],
-    relatedAgents: ['windsurf', 'cursor', 'cline'],
-    coverThumb: '/blog/windsurf-vs-cursor-vs-cline-2026-thumb.jpg',
-    readingTime: 8,
-    file: 'temp-post5.md'
+    slug: 'autonomous-coding-devin-vs-manus-vs-replit-2026',
+    title: "Autonomous AI Coding Agents in 2026: Devin vs Manus vs Replit Agent",
+    excerpt: "Three AI products claim to do autonomous software engineering in 2026. Devin is the benchmarked leader for production teams, Manus is the general-purpose agent, and Replit Agent is the in-IDE full-stack builder. Here's how to pick.",
+    date: '2026-07-20',
+    tags: ['coding', 'agents', 'comparison', 'devin', 'manus', 'replit'],
+    relatedAgents: ['devin', 'manus', 'replit-agent'],
+    coverThumb: '/blog/autonomous-coding-2026-thumb.jpg',
+    readingTime: 10,
+    file: 'temp-post8.md'
   },
   {
-    slug: 'ai-productivity-tools-2026',
-    title: "The AI Productivity Stack in 2026: Meeting AI, Document AI, and Communication AI",
-    excerpt: "Three categories of AI productivity tools are earning permanent spots in knowledge worker workflows: Fireflies and Otter for meeting capture, Notion AI for document drafting, and Grammarly for communication polish. Here's how they compose.",
-    date: '2026-07-19',
-    tags: ['productivity', 'ai', 'meetings', 'notion', 'grammarly', 'comparison'],
-    relatedAgents: ['notion-ai', 'grammarly'],
-    coverThumb: '/blog/ai-productivity-tools-2026-thumb.jpg',
-    readingTime: 8,
-    file: 'temp-post6.md'
+    slug: 'agent-frameworks-langgraph-vs-crewai-vs-autogen-2026',
+    title: "AI Agent Frameworks in 2026: LangGraph vs CrewAI vs AutoGen",
+    excerpt: "Three open-source Python frameworks have become the default way to build production AI agent systems in 2026. LangGraph is graph-based, CrewAI is role-based, and AutoGen is conversation-based. Here's how to pick the right one.",
+    date: '2026-07-20',
+    tags: ['agents', 'frameworks', 'comparison', 'langgraph', 'crewai', 'autogen'],
+    relatedAgents: ['langgraph', 'autogen'],
+    coverThumb: '/blog/agent-frameworks-2026-thumb.jpg',
+    readingTime: 11,
+    file: 'temp-post9.md'
   }
 ];
 
@@ -71,7 +71,6 @@ ${content}
   }`;
 }).join(',\n\n');
 
-// Remove old ]; and append new entries
 const before = blogTs.substring(0, endIdx).trimEnd().replace(/\n];\s*$/, '');
 const newBlogTs = before + ',\n\n' + entries + '\n];\n\n' + blogTs.substring(endIdx);
 

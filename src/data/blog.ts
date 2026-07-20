@@ -1220,6 +1220,403 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
 `,
+  },
+
+  {
+    slug: 'ai-video-runway-vs-sora-vs-pika-2026',
+    title: "AI Video Generation in 2026: Runway vs Sora vs Pika",
+    excerpt: "Three AI video platforms have separated from the pack in 2026: Runway is the film industry standard, Sora set the new physics realism bar, and Pika is the creator-friendly speed platform. Here's how to pick.",
+    date: '2026-07-20',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 9,
+    tags: ['video', 'creative', 'comparison', 'runway', 'sora', 'pika'],
+    relatedAgents: ['runway', 'sora', 'pika'],
+    coverThumb: '/blog/ai-video-2026-thumb.jpg',
+    content: `
+<p>AI video generation moved from research demo to production product in 2025-2026, and three platforms have separated from the pack. <strong><a href="/agent/runway">Runway</a></strong> is the tool the film and advertising industry adopted first — the most mature, with the strongest editing and camera control features. <strong><a href="/agent/sora">Sora</a></strong> is OpenAI's text-to-video model that set the new quality bar for physical realism and long-form coherence. <strong><a href="/agent/pika">Pika</a></strong> is the creator-friendly platform that prioritizes speed, iteration, and ease of use over maximum fidelity. Same goal (AI-generated video), three very different answers.</p>
+
+<h2>How AI video generation works in 2026</h2>
+
+<p>Every text-to-video model shares the same core pattern: a transformer (or diffusion) model trained on millions of video clips learns to predict the next frame given text and previous frames. The differences between tools are in three areas: data scale (how many video clips the model trained on), architecture (transformer vs diffusion vs hybrid), and product features (UI, editing tools, post-processing).</p>
+
+<p>The 2026 generation of models — <a href="/agent/sora">Sora 2</a>, <a href="/agent/runway">Runway Gen-4</a>, and the latest <a href="/agent/pika">Pika 2.0</a> — all produce 5-30 second clips at 1080p+ resolution with reasonable physical coherence. The differences are in physics accuracy, camera control, character consistency, and how much post-processing the platform offers.</p>
+
+<figure>
+  <img src="/blog/ai-video-2026-hero.jpg" alt="A timeline showing AI video generation evolution from 2022 to 2026 with three product boxes: Runway (blue, mature film industry), Sora (orange, OpenAI's flagship), and Pika (pink, creator-focused speed)" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>The three leaders in 2026: Runway (mature film industry), Sora (OpenAI's flagship, physical realism), and Pika (creator-focused, fast iteration).</figcaption>
+</figure>
+
+<h2><a href="/agent/runway">Runway</a>: the film and advertising standard</h2>
+
+<p><a href="/agent/runway">Runway</a> is the most mature of the three. Founded in 2018, the company has been working on video models since before "AI video" was a category. The current generation, Gen-4, produces 5-10 second clips at 1080p+ resolution with strong camera control features — you can specify pan, tilt, zoom, and movement direction in the prompt, and the model respects them with high fidelity.</p>
+
+<p>The standout feature is the editing suite. <a href="/agent/runway">Runway</a> is not just a generation tool — it is a full video post-production platform. The Multi Motion Brush lets you paint motion onto specific regions of a still image. The Camera Control panel gives you cinematic moves that would require a Steadicam in real life. The Act-One feature transfers facial expressions from a reference video onto a generated character. For a working film editor or advertising creative, this is the platform that earns the daily rate.</p>
+
+<p>The pricing reflects the professional positioning. <a href="/agent/runway">Runway</a>'s Standard plan is \$15/month for 625 credits, the Pro plan is \$35/month for 2,250 credits, and the Unlimited plan is \$95/month. A 10-second 1080p clip costs ~50-100 credits. For occasional use, the Standard plan is enough to evaluate. For production use, Pro or Unlimited is required.</p>
+
+<figure>
+  <img src="/blog/ai-video-2026-runway.jpg" alt="Runway's Gen-4 interface showing a video generation panel with camera control options (pan, tilt, zoom), motion brush tools, and a 1080p clip preview" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Runway's Gen-4: camera control, motion brush, and a full editing suite — the platform that film and advertising teams adopted first.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/runway">Runway</a> is weak: it is the slowest of the three. Generating a 10-second clip takes 60-90 seconds on Standard, longer for higher resolution. The other soft spot is the learning curve — the editing features are powerful, but casual users find the interface dense. If you want a one-click text-to-video experience, <a href="/agent/pika">Pika</a> is friendlier.</p>
+
+<p><strong>Pick <a href="/agent/runway">Runway</a> if</strong> you are a creative professional (filmmaker, advertising creative, motion designer) who needs the strongest camera control and the most mature editing suite. <strong>Skip it if</strong> you are a casual user who wants quick clips for social — <a href="/agent/pika">Pika</a> or <a href="/agent/sora">Sora</a> are faster.</p>
+
+<h2><a href="/agent/sora">Sora</a>: OpenAI's physical realism flagship</h2>
+
+<p><a href="/agent/sora">Sora</a> is OpenAI's text-to-video model, and it set the new quality bar when the second generation launched. The standout feature is physical coherence — the model understands physics, gravity, momentum, and object permanence at a level that other models struggle to match. A person throwing a ball, water pouring into a glass, a dog running through water — the dynamics are visually correct in ways that prior models were not.</p>
+
+<p>The other under-appreciated feature is duration. <a href="/agent/sora">Sora 2</a> can produce 20-second clips in a single generation, longer than <a href="/agent/runway">Runway</a>'s 5-10 seconds and <a href="/agent/pika">Pika</a>'s 5 seconds. For storyboarding or concept videos, this length matters — you can show a continuous scene without cutting, which is the natural unit of video.</p>
+
+<p><a href="/agent/sora">Sora</a> is available through ChatGPT Plus (\$20/month) and ChatGPT Pro (\$200/month). Plus gives limited generations; Pro gives the unlimited Sora 2 access. The Pro tier is the right answer for serious video work; the Plus tier is enough to evaluate the quality. There is no standalone API as of 2026 — Sora lives inside the ChatGPT product.</p>
+
+<figure>
+  <img src="/blog/ai-video-2026-sora.jpg" alt="A photorealistic 20-second AI-generated video showing a person pouring water from a pitcher into a glass with physically accurate water dynamics, with Sora's generation panel in the background" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Sora 2's standout feature: physical realism that other models cannot match — gravity, momentum, and dynamics that look like real footage.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/sora">Sora</a> is weak: it is the most restrictive of the three. There is no API, no third-party integration, no fine-grained camera control (it is text-in, video-out only). The other soft spot is creative control — you can describe what you want, but you cannot paint motion onto specific regions, and you cannot chain clips together for longer sequences. For creative work that needs that control, <a href="/agent/runway">Runway</a> wins.</p>
+
+<p><strong>Pick <a href="/agent/sora">Sora</a> if</strong> physical realism is the primary requirement — cinematic shots, physics-based scenes, storyboards where coherence matters. Pair it with ChatGPT for prompt refinement. <strong>Skip it if</strong> you need API access, fine-grained camera control, or longer sequences built from chained clips.</p>
+
+<h2><a href="/agent/pika">Pika</a>: the creator-friendly speed platform</h2>
+
+<p><a href="/agent/pika">Pika</a> is the platform that prioritizes speed and iteration over maximum fidelity. The current generation, Pika 2.0, produces 5-second clips in under 30 seconds — the fastest generation time of the three. The interface is built for creators who want to try many prompts quickly, see what works, and iterate in real time.</p>
+
+<p>The standout feature is the "Pikaffects" — a library of one-click effects (melt, explode, inflate, squish) that transform any input image or video with a single button. For TikTok, Instagram Reels, and other short-form social content, this is the right tool. The other under-appreciated feature is the image-to-video flow — upload a still image, get a 5-second animated clip in 30 seconds. The use case is "I have a product photo, I need a video for Instagram" and the answer is Pika.</p>
+
+<p><a href="/agent/pika">Pika</a>'s pricing is the most accessible. Free tier gives 250 credits (enough to evaluate). Standard is \$10/month for 700 credits, Pro is \$35/month for 2,000 credits, and Fancy is \$95/month for 6,000 credits. For most creators, Standard is enough to produce several videos per week.</p>
+
+<figure>
+  <img src="/blog/ai-video-2026-pika.jpg" alt="Pika's interface showing an image-to-video flow with Pikaffects buttons (melt, explode, inflate) and a 5-second generated clip preview" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Pika 2.0's image-to-video flow: upload a still, pick a Pikaffect, get a 5-second animated clip in 30 seconds — built for social content creators.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/pika">Pika</a> is weak: the clip length is limited to 5 seconds, and the physical realism lags behind <a href="/agent/sora">Sora</a>. For a 30-second cinematic sequence or a physically accurate scene, you will not get the same quality. The other soft spot is the editing suite — Pika has fewer post-processing features than <a href="/agent/runway">Runway</a>, which matters if you need fine-grained control.</p>
+
+<p><strong>Pick <a href="/agent/pika">Pika</a> if</strong> you are a creator producing short-form social content (TikTok, Reels, YouTube Shorts) and want the fastest iteration cycle. <strong>Skip it if</strong> you need cinematic quality, long-form coherence, or fine-grained editing control — <a href="/agent/sora">Sora</a> or <a href="/agent/runway">Runway</a> are stronger.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/ai-video-2026-comparison.jpg" alt="A 3-column comparison table showing Runway, Sora, and Pika across dimensions: max clip length, generation time, physical realism, editing suite, pricing, and best for" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Runway vs Sora vs Pika — three platforms with different strengths in the 2026 AI video landscape.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Runway</th><th>Sora</th><th>Pika</th></tr></thead>
+<tbody>
+<tr><td><strong>Max clip length</strong></td><td>10s</td><td>20s</td><td>5s</td></tr>
+<tr><td><strong>Generation time</strong></td><td>60-90s</td><td>~60s</td><td>&lt;30s</td></tr>
+<tr><td><strong>Physical realism</strong></td><td>Good</td><td><strong>Best in class</strong></td><td>Good (improving)</td></tr>
+<tr><td><strong>Camera control</strong></td><td><strong>Best in class</strong></td><td>Limited (text only)</td><td>Basic</td></tr>
+<tr><td><strong>Editing suite</strong></td><td>Full post-production</td><td>Generation only</td><td>Pikaffects + basic</td></tr>
+<tr><td><strong>API access</strong></td><td>Yes</td><td>No (ChatGPT only)</td><td>Yes</td></tr>
+<tr><td><strong>Best for</strong></td><td>Film / advertising</td><td>Cinematic realism</td><td>Social content</td></tr>
+<tr><td><strong>Price</strong></td><td>\$15-95/mo</td><td>\$20-200/mo (ChatGPT)</td><td>\$10-95/mo</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you are a filmmaker or advertising creative:</strong> <a href="/agent/runway">Runway</a>. The camera control, the editing suite, and the post-production features are purpose-built for professional video work. Budget \$35-95/month for production use.</p>
+
+<p><strong>If physical realism is the primary requirement:</strong> <a href="/agent/sora">Sora</a>. The physics coherence, the 20-second clip length, and the quality bar set a new standard. Subscribe to ChatGPT Pro (\$200/month) for unlimited Sora 2 access.</p>
+
+<p><strong>If you are a creator producing short-form social content:</strong> <a href="/agent/pika">Pika</a>. The fast iteration, the image-to-video flow, and the Pikaffects are built for the TikTok/Reels use case. \$10-35/month is enough.</p>
+
+<p><strong>For most creative teams, the three are complementary.</strong> Use <a href="/agent/sora">Sora</a> for cinematic realism in concept videos. Use <a href="/agent/runway">Runway</a> for the final cut with camera control. Use <a href="/agent/pika">Pika</a> for the social content derived from both. The three compose well — they don't fight each other.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never used an AI video tool, start with <strong><a href="/agent/pika">Pika</a></strong>'s free tier — upload a photo, generate a 5-second clip, see what works. Once you've felt the category, move to <strong><a href="/agent/sora">Sora</a></strong> via ChatGPT Plus to see the quality bar. Add <strong><a href="/agent/runway">Runway</a></strong> when you need camera control or post-production features. The three are not mutually exclusive — the sequence above gets you to "useful output" fastest.</p>
+
+<h2>Bottom line</h2>
+
+<p>Runway, Sora, and Pika have found distinct positions in the 2026 AI video market. Runway is the professional film and advertising standard. Sora is OpenAI's physics-realism flagship. Pika is the creator-friendly speed platform. Pick the one that matches your use case — or use all three, since the workflow that gets the most out of AI video in 2026 is to use Sora for the best quality shots, Runway for the cinematic edits, and Pika for the social derivatives.</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
+
+  {
+    slug: 'autonomous-coding-devin-vs-manus-vs-replit-2026',
+    title: "Autonomous AI Coding Agents in 2026: Devin vs Manus vs Replit Agent",
+    excerpt: "Three AI products claim to do autonomous software engineering in 2026. Devin is the benchmarked leader for production teams, Manus is the general-purpose agent, and Replit Agent is the in-IDE full-stack builder. Here's how to pick.",
+    date: '2026-07-20',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 10,
+    tags: ['coding', 'agents', 'comparison', 'devin', 'manus', 'replit'],
+    relatedAgents: ['devin', 'manus', 'replit-agent'],
+    coverThumb: '/blog/autonomous-coding-2026-thumb.jpg',
+    content: `
+<p>Three AI products claim to do "autonomous software engineering" in 2026. <strong><a href="/agent/devin">Devin</a></strong> from Cognition is the first major product to market and the most benchmarked. <strong><a href="/agent/manus">Manus</a></strong> is the general-purpose AI agent that handles coding as one of many tasks. <strong><a href="/agent/replit-agent">Replit Agent</a></strong> is the in-IDE autonomous agent that builds and deploys full-stack apps in a browser sandbox. Same goal (an AI that builds software on its own), three very different products.</p>
+
+<p>This post is the deeper look at the "fully autonomous" tier of AI coding — the agents that go beyond tab autocomplete and chat-based editing to actually run for minutes or hours without supervision, producing complete features or applications. We compare the three head-to-head using the profiles in <a href="/">our 62-agent directory</a>.</p>
+
+<h2>What "autonomous" means in 2026</h2>
+
+<p>The AI coding agent landscape splits cleanly into three tiers. Tier 1 is <strong>completion</strong> (tab autocomplete — <a href="/agent/cursor">Cursor</a>, <a href="/agent/copilot">Copilot</a>). Tier 2 is <strong>agentic editing</strong> (multi-file edits in a session — <a href="/agent/claude-code">Claude Code</a>, <a href="/agent/cline">Cline</a>). Tier 3 is <strong>fully autonomous</strong> (the agent runs unattended, makes decisions, and ships a complete feature — the category this post covers).</p>
+
+<p>The three products in this post are the leading examples of Tier 3. Each one opens a long-running session, plans the work, executes the steps, tests the result, and reports back when done. The user is not in the loop on every step — they describe a goal and return later to a working result.</p>
+
+<figure>
+  <img src="/blog/autonomous-coding-2026-hero.jpg" alt="A timeline visualization showing three AI agents working in parallel: Devin (left, blue), Manus (center, orange), and Replit Agent (right, green), each with progress bars and a 'TIME ELAPSED' counter" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>The three autonomous coding agents of 2026: Devin, Manus, and Replit Agent — all running for minutes or hours without supervision.</figcaption>
+</figure>
+
+<h2><a href="/agent/devin">Devin</a>: the benchmarked leader</h2>
+
+<p><a href="/agent/devin">Devin</a> is the first product to market in the autonomous category, launched by Cognition Labs in early 2024. The pitch is "an AI software engineer" — you give Devin a Slack-style task ("fix the bug in the checkout flow", "add a new API endpoint for user preferences"), and Devin spins up an isolated environment, plans the work, writes the code, tests it, and reports back with a PR ready to merge.</p>
+
+<p>The standout feature is the SWE-bench performance. <a href="/agent/devin">Devin</a> was the first AI to score above 13% on the SWE-bench Verified benchmark (a set of real GitHub issues from popular open-source repos) in 2024. By 2026, the score has improved to ~25-30%, which is still below an experienced human developer but well above the previous generation. The benchmark is a useful proxy for "how well does this agent do on real, well-specified tasks in real codebases."</p>
+
+<p>The product is not cheap. <a href="/agent/devin">Devin</a> is \$500/month for the Team plan (with usage limits) and custom pricing for enterprise. The price reflects the compute cost — running a fully autonomous agent for hours is genuinely expensive. For a startup or team that can afford the price and has a real pipeline of "fix this bug / add this feature" tasks, the ROI can be positive. For an individual developer, the price is prohibitive.</p>
+
+<figure>
+  <img src="/blog/autonomous-coding-2026-devin.jpg" alt="Devin's interface showing a task description in a chat panel on the left, a code editor in the center with multi-file changes, and a terminal panel on the right showing test execution" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Devin's workspace: task description on the left, multi-file code changes in the center, terminal output on the right — all running in an isolated environment.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/devin">Devin</a> is weak: it is expensive, and the quality still depends heavily on the task clarity. Well-specified tasks ("fix the auth bug in /api/login") get high success rates. Vague tasks ("make the app better") waste time. The other soft spot is real-time collaboration — Devin is asynchronous, you do not sit next to it while it works. If you want a real-time pair-programming experience, the Tier 2 tools are better.</p>
+
+<p><strong>Pick <a href="/agent/devin">Devin</a> if</strong> you have a real pipeline of well-specified coding tasks, a budget that can absorb \$500/month, and a team that can review the work asynchronously. <strong>Skip it if</strong> the tasks are vague, the budget is constrained, or you need real-time collaboration.</p>
+
+<h2><a href="/agent/manus">Manus</a>: the general-purpose agent</h2>
+
+<p><a href="/agent/manus">Manus</a> is the most general-purpose of the three. Where <a href="/agent/devin">Devin</a> is focused on coding, <a href="/agent/manus">Manus</a> handles a wide range of tasks — coding, research, data analysis, web browsing, document creation. The product is positioned as a "general AI agent" rather than a "coding agent" specifically, and the autonomous coding is one of its many capabilities.</p>
+
+<p>The pitch is breadth. If you want an AI that can write code, then switch to researching a market, then build a presentation, all in one continuous session, <a href="/agent/manus">Manus</a> is the right tool. The user experience is a chat interface where you describe a task and watch the agent work through it across multiple steps and tools.</p>
+
+<p><a href="/agent/manus">Manus</a> has been the most rapidly improving product in this category. The GAIA benchmark (which tests general agent capabilities) was the first major benchmark where <a href="/agent/manus">Manus</a> reached a competitive score with closed-source alternatives. By 2026, the agent's coding capability has reached parity with Tier 2 tools on many tasks.</p>
+
+<figure>
+  <img src="/blog/autonomous-coding-2026-manus.jpg" alt="Manus's interface showing a multi-tool agent in action: a chat panel with a task description, a code editor with a Python script being written, a browser panel for web research, and a chart generation tool" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Manus's general-purpose agent: one continuous session that switches between code, research, browsing, and document creation as the task requires.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/manus">Manus</a> is weak: for pure coding tasks that need deep context and many hours of work, <a href="/agent/devin">Devin</a> still wins on the specific coding benchmarks. <a href="/agent/manus">Manus</a> is the better generalist, but if your only use case is coding, you are paying for capability you do not need. The other soft spot is the multi-tool approach — the agent does many things, so it is not as deeply optimized for any one of them as a focused tool is.</p>
+
+<p><strong>Pick <a href="/agent/manus">Manus</a> if</strong> you have a mix of tasks (coding, research, data analysis) and want one agent that handles all of them in continuous sessions. <strong>Skip it if</strong> your only use case is coding — <a href="/agent/devin">Devin</a> or <a href="/agent/replit-agent">Replit Agent</a> are more focused and (in the case of Replit) much cheaper.</p>
+
+<h2><a href="/agent/replit-agent">Replit Agent</a>: the in-IDE full-stack builder</h2>
+
+<p><a href="/agent/replit-agent">Replit Agent</a> is the most accessible of the three. It lives inside the Replit browser IDE, where you describe a full-stack application in plain English ("build a SaaS for tracking personal workouts with user auth, a PostgreSQL database, and a Stripe subscription"), and the agent builds the entire thing in a Replit sandbox — code, database schema, deployment, and a working URL — without leaving the browser.</p>
+
+<p>The pitch is "from idea to deployed app in one session." You are not in the loop on every step, but you are not separated from the work either — you watch the agent build, you can interrupt and redirect, and the final result is a deployed app on a real URL that you can share. The pricing is accessible: \$25/month for the Replit Core plan (with agent usage included).</p>
+
+<p><a href="/agent/replit-agent">Replit Agent</a> is the right tool for non-developers or developers who want to skip the "set up the environment, configure the database, deploy to Vercel" friction. The 2026 version handles complex multi-feature applications reliably — the success rate on a 10-feature app build is around 70-80% on the first try, with the rest requiring a single round of refinement.</p>
+
+<figure>
+  <img src="/blog/autonomous-coding-2026-replit.jpg" alt="Replit's browser IDE showing a deployed full-stack app on the left with a live URL preview, a code panel on the right with the generated files, and a chat panel at the bottom with the agent's task description and progress" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Replit Agent: from idea to deployed app in one session — the agent builds, deploys, and gives you a live URL, all in the browser.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/replit-agent">Replit Agent</a> is weak: it lives inside the Replit sandbox, so you cannot use it to work on your existing local codebase. If you have a real production app that needs an autonomous agent to add a feature, <a href="/agent/replit-agent">Replit Agent</a> is the wrong tool — <a href="/agent/devin">Devin</a> or <a href="/agent/claude-code">Claude Code</a> are the right ones. The other soft spot is the framework choices — the agent defaults to specific frameworks (Replit's database, Replit's auth), and you do not get as much control over the stack as you would with a local agent.</p>
+
+<p><strong>Pick <a href="/agent/replit-agent">Replit Agent</a> if</strong> you want to build a new app from scratch and get a deployed URL at the end of the session. The \$25/month is accessible and the workflow is the smoothest. <strong>Skip it if</strong> you need to work on an existing local codebase, or you need fine-grained control over the framework choices.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/autonomous-coding-2026-comparison.jpg" alt="A 3-column comparison table showing Devin, Manus, and Replit Agent across dimensions: use case focus, environment, price, success rate, and best for" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Devin vs Manus vs Replit Agent — three approaches to autonomous software engineering in 2026.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Devin</th><th>Manus</th><th>Replit Agent</th></tr></thead>
+<tbody>
+<tr><td><strong>Focus</strong></td><td>Coding specialist</td><td>General-purpose</td><td>Full-stack app builder</td></tr>
+<tr><td><strong>Environment</strong></td><td>Isolated sandbox</td><td>Multi-tool workspace</td><td>Replit browser IDE</td></tr>
+<tr><td><strong>Pricing</strong></td><td>\$500/mo (Team)</td><td>Varies (free tier available)</td><td>\$25/mo (Core)</td></tr>
+<tr><td><strong>Works on existing code</strong></td><td>Yes (GitHub integration)</td><td>Yes</td><td>No (Replit sandbox only)</td></tr>
+<tr><td><strong>Deploys to production</strong></td><td>PR ready to merge</td><td>Code, no deploy</td><td>Live URL in Replit</td></tr>
+<tr><td><strong>Best for</strong></td><td>Production team with budget</td><td>Multi-task workflows</td><td>New app from scratch</td></tr>
+<tr><td><strong>Weakness</strong></td><td>Expensive, task clarity matters</td><td>Not as focused on coding</td><td>Sandbox only, less framework control</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you are a production team with a real backlog:</strong> <a href="/agent/devin">Devin</a>. The benchmarks, the GitHub integration, and the PR-ready output are purpose-built for engineering teams with budgets. \$500/month is reasonable for a team that can keep it busy.</p>
+
+<p><strong>If you have a mix of coding and non-coding tasks:</strong> <a href="/agent/manus">Manus</a>. The general-purpose agent handles a session that crosses coding, research, and document creation in one continuous flow. The free tier is enough to evaluate.</p>
+
+<p><strong>If you want to build a new app from scratch:</strong> <a href="/agent/replit-agent">Replit Agent</a>. \$25/month, browser-only, and you get a deployed URL at the end. The smoothest on-ramp to "I have a working app" of the three.</p>
+
+<p><strong>For most developers, the three are not mutually exclusive.</strong> Use <a href="/agent/replit-agent">Replit Agent</a> for new app prototyping. Use <a href="/agent/devin">Devin</a> for the production backlog when you have the budget. Use <a href="/agent/manus">Manus</a> for the multi-tool workflows that mix coding with research.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never used an autonomous agent, start with <strong><a href="/agent/replit-agent">Replit Agent</a></strong> — the lowest friction, the lowest price, and the most immediate payoff. Build a small app, see what the agent gets right and where it needs your help. From there, try <strong><a href="/agent/manus">Manus</a></strong>'s free tier for a multi-tool workflow. Add <strong><a href="/agent/devin">Devin</a></strong> when you have a real backlog and a team that can absorb the \$500/month cost.</p>
+
+<h2>Bottom line</h2>
+
+<p>Devin, Manus, and Replit Agent cover three different positions in the autonomous coding market. Devin is the benchmarked leader for production teams. Manus is the generalist for multi-task workflows. Replit Agent is the accessible app builder for new projects. The three are not substitutes for each other — they answer different questions. The one to pick depends on whether your bottleneck is backlog throughput (Devin), breadth of task (Manus), or speed to a deployed app (Replit).</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
+
+  {
+    slug: 'agent-frameworks-langgraph-vs-crewai-vs-autogen-2026',
+    title: "AI Agent Frameworks in 2026: LangGraph vs CrewAI vs AutoGen",
+    excerpt: "Three open-source Python frameworks have become the default way to build production AI agent systems in 2026. LangGraph is graph-based, CrewAI is role-based, and AutoGen is conversation-based. Here's how to pick the right one.",
+    date: '2026-07-20',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 11,
+    tags: ['agents', 'frameworks', 'comparison', 'langgraph', 'crewai', 'autogen'],
+    relatedAgents: ['langgraph', 'autogen'],
+    coverThumb: '/blog/agent-frameworks-2026-thumb.jpg',
+    content: `
+<p>Three open-source Python frameworks have become the default way to build production AI agent systems in 2026. <strong><a href="/agent/langgraph">LangGraph</a></strong> from the LangChain team is the graph-based framework for stateful, multi-step agentic workflows. <strong>CrewAI</strong> is the role-based framework for multi-agent collaboration. <strong><a href="/agent/autogen">AutoGen</a></strong> from Microsoft is the conversation-based framework for building agents that talk to each other. Same goal (production-grade agent systems), three very different architectures.</p>
+
+<p>If you are a developer who wants to build AI agents — not just use them — these are the three frameworks you will encounter. This post compares them head-to-head using the profiles in <a href="/">our 62-agent directory</a>, then tells you which to pick for which kind of system.</p>
+
+<h2>Why framework choice matters</h2>
+
+<p>You can build an AI agent with a single LLM call and a loop. For a demo, that is enough. For production, you need more: state management across long-running tasks, tool integration, error recovery, observability, parallel execution, and the ability to compose multiple agents. The framework you choose determines how much of that you have to build yourself versus inherit from the framework.</p>
+
+<p>The three frameworks in this post all solve the production problem, but they take different approaches. <a href="/agent/langgraph">LangGraph</a> is graph-based (you define nodes and edges). CrewAI is role-based (you define agents with personas and tasks). AutoGen is conversation-based (you define agents that talk to each other in a group chat). Picking the wrong one for your use case means rewriting the system when you hit the framework's limits.</p>
+
+<figure>
+  <img src="/blog/agent-frameworks-2026-hero.jpg" alt="A diagram showing three different agent framework architectures side by side: LangGraph as a node graph with edges, CrewAI as role-based personas, AutoGen as a group chat with multiple speakers" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>The three framework architectures: LangGraph (graph), CrewAI (roles), AutoGen (conversations) — different metaphors for the same goal.</figcaption>
+</figure>
+
+<h2><a href="/agent/langgraph">LangGraph</a>: the graph-based framework</h2>
+
+<p><a href="/agent/langgraph">LangGraph</a> is the graph-based framework from the LangChain team. You define the workflow as a directed graph: nodes are functions (LLM calls, tool invocations, decision points), and edges are the transitions between them. The framework handles state management, persistence, streaming, and the ability to pause, resume, and inspect the workflow at any point.</p>
+
+<p>The pitch is control. <a href="/agent/langgraph">LangGraph</a> gives you the most explicit control over what your agent does at each step, with the least magic. For complex workflows where you need to know exactly what the agent is thinking and doing — and the ability to debug, modify, or interrupt the workflow mid-execution — this is the right framework.</p>
+
+<p>The standout feature is the persistence and human-in-the-loop story. <a href="/agent/langgraph">LangGraph</a> supports checkpointing, where the entire state of the workflow is saved after each step, and the ability to "time travel" — go back to any previous state, modify it, and continue. For production systems that need to handle errors, recover from crashes, or include human approval at specific steps, this is the strongest story.</p>
+
+<pre><code>from langgraph.graph import StateGraph
+from langchain_anthropic import ChatAnthropic
+
+llm = ChatAnthropic(model="claude-sonnet-4-5")
+
+def should_continue(state):
+    return "end" if state["iterations"] >= 5 else "continue"
+
+def call_model(state):
+    response = llm.invoke(state["messages"])
+    return {"messages": [response], "iterations": state["iterations"] + 1}
+
+graph = StateGraph()
+graph.add_node("agent", call_model)
+graph.add_conditional_edges("agent", should_continue, {"continue": "agent", "end": "END"})
+app = graph.compile()
+</code></pre>
+
+<figure>
+  <img src="/blog/agent-frameworks-2026-langgraph.jpg" alt="A LangGraph Studio interface showing a visual node graph with 'agent' and 'tools' nodes connected by conditional edges, a state inspector on the right showing message history, and a checkpoint timeline at the bottom" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>LangGraph Studio: visual debugging of the agent graph, with state inspection, checkpoint timeline, and the ability to time-travel through past states.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/langgraph">LangGraph</a> is weak: the explicit control means more code. For a simple "agent with one tool" use case, you write more lines in LangGraph than in CrewAI or AutoGen. The other soft spot is the learning curve — you need to understand graph concepts, state management, and conditional edges before you can be productive.</p>
+
+<p><strong>Pick <a href="/agent/langgraph">LangGraph</a> if</strong> you are building a complex, stateful production system that needs checkpointing, human-in-the-loop, and detailed observability. <strong>Skip it if</strong> your system is simple — the framework overhead is not justified.</p>
+
+<h2>CrewAI: the role-based framework</h2>
+
+<p>CrewAI is the role-based framework. You define agents with personas (a "researcher" with a backstory, a "writer" with a different backstory, a "reviewer" with yet another), give them tools, and tell them which tasks to accomplish. The framework manages the collaboration between agents — who talks to whom, who hands off to whom, and how the work gets done.</p>
+
+<p>The pitch is simplicity. CrewAI is the most accessible of the three — you can have a working multi-agent system in 50 lines of code. The role-based metaphor maps cleanly to how real teams work, which makes it easy to think about and debug. For a team that is new to agents and wants to get something working fast, CrewAI is the right entry point.</p>
+
+<p>The standout feature is the sequential and hierarchical process patterns. CrewAI ships with built-in patterns for "do task A, then B, then C in sequence" and "manager agent delegates to worker agents." These cover 80% of the use cases that people build with multi-agent systems, and the patterns are well-documented and battle-tested.</p>
+
+<pre><code>from crewai import Agent, Task, Crew
+
+researcher = Agent(
+    role="Senior Researcher",
+    goal="Find the latest research on AI agents",
+    backstory="You are an experienced researcher with deep knowledge of AI systems",
+    tools=[search_tool, arxiv_tool]
+)
+
+writer = Agent(
+    role="Tech Writer",
+    goal="Write a clear, accurate blog post based on research",
+    backstory="You are a skilled writer who can explain complex topics simply",
+    tools=[writing_tool]
+)
+
+task1 = Task(description="Research the latest AI agent papers", agent=researcher)
+task2 = Task(description="Write a blog post from the research", agent=writer)
+
+crew = Crew(agents=[researcher, writer], tasks=[task1, task2])
+result = crew.kickoff()
+</code></pre>
+
+<figure>
+  <img src="/blog/agent-frameworks-2026-crewai.jpg" alt="A CrewAI configuration interface showing two agent cards (Researcher and Writer) with their roles, backstories, and tools, connected by a sequential task pipeline" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>CrewAI's role-based configuration: define agents with personas, give them tools, and the framework handles the collaboration.</figcaption>
+</figure>
+
+<p>Where CrewAI is weak: the role-based metaphor can become a constraint when you need fine-grained control. If your workflow does not map cleanly to "agents with roles and tasks", you are fighting the framework. The other soft spot is the production story — the simple API is great for prototyping, but for complex production systems with custom state management, you may outgrow CrewAI and need to migrate to LangGraph or AutoGen.</p>
+
+<p><strong>Pick CrewAI if</strong> you are building a multi-agent system where the work naturally maps to "roles" and "tasks" (research, write, review, deploy). <strong>Skip it if</strong> your system is a single complex agent, or you need fine-grained control over the workflow structure.</p>
+
+<h2><a href="/agent/autogen">AutoGen</a>: the conversation-based framework</h2>
+
+<p><a href="/agent/autogen">AutoGen</a> is the conversation-based framework from Microsoft. You define agents that talk to each other in a group chat — the "user_proxy" represents the human, the "assistant" is the LLM, and you can add specialist agents that join the chat when needed. The framework manages the conversation, deciding who speaks next, and the work gets done through the exchange of messages.</p>
+
+<p>The pitch is flexibility. The conversation-based model is the most flexible of the three — you can build any system that can be expressed as "agents talking to each other." For research systems where the goal is to explore a problem interactively, the conversation model is a natural fit. For systems that need to scale to many agents with complex interaction patterns, the model also scales.</p>
+
+<p>The standout feature is the multi-agent conversation patterns. <a href="/agent/autogen">AutoGen</a> supports nested chats, where a group chat can spawn sub-conversations, and group chat managers that decide dynamically which agent speaks next. For research agents that need to debate, refine, and explore, the conversation model is the most natural representation.</p>
+
+<figure>
+  <img src="/blog/agent-frameworks-2026-autogen.jpg" alt="An AutoGen interface showing a multi-agent group chat in progress with three agents (User, Research Assistant, Code Executor) exchanging messages, and a conversation tree visualization on the right" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>AutoGen's conversation-based model: agents talk in a group chat, the framework decides who speaks next, and complex interaction patterns emerge from the conversation flow.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/autogen">AutoGen</a> is weak: the conversation model is the hardest to debug. When something goes wrong, you have to read through a long transcript of messages to understand why. The other soft spot is the state management — for workflows that need explicit state, persistence, or human-in-the-loop at specific points, you are working against the conversation model. LangGraph is better for those use cases.</p>
+
+<p><strong>Pick <a href="/agent/autogen">AutoGen</a> if</strong> you are building a research-oriented multi-agent system where the value comes from the agents debating and refining ideas. <strong>Skip it if</strong> you need explicit state management, or the work is more procedural than conversational.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/agent-frameworks-2026-comparison.jpg" alt="A 3-column comparison table showing LangGraph, CrewAI, and AutoGen across dimensions: mental model, learning curve, control, best for, and weakness" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>LangGraph vs CrewAI vs AutoGen — three mental models for the same goal.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>LangGraph</th><th>CrewAI</th><th>AutoGen</th></tr></thead>
+<tbody>
+<tr><td><strong>Mental model</strong></td><td>Graph (nodes + edges)</td><td>Roles + tasks</td><td>Group chat</td></tr>
+<tr><td><strong>Learning curve</strong></td><td>Steepest</td><td>Easiest</td><td>Medium</td></tr>
+<tr><td><strong>Control</strong></td><td><strong>Most explicit</strong></td><td>Limited to roles/tasks</td><td>Conversation-driven</td></tr>
+<tr><td><strong>State management</strong></td><td><strong>Best in class (checkpointing)</strong></td><td>Basic</td><td>Conversation-based</td></tr>
+<tr><td><strong>Production story</strong></td><td><strong>Best in class</strong></td><td>Good for prototypes</td><td>Good for research</td></tr>
+<tr><td><strong>Best for</strong></td><td>Complex production systems</td><td>Multi-agent prototyping</td><td>Research / exploration</td></tr>
+<tr><td><strong>Weakness</strong></td><td>More code</td><td>Less control</td><td>Harder to debug</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you are building a complex production agent system with state, persistence, and human-in-the-loop:</strong> <a href="/agent/langgraph">LangGraph</a>. The control, the checkpointing, and the production story are unmatched. The learning curve pays off when your system gets complex.</p>
+
+<p><strong>If you are prototyping a multi-agent system where work maps to roles (research, write, review):</strong> CrewAI. The simplest API, the fastest time-to-working-system, and the most natural mental model for role-based work.</p>
+
+<p><strong>If you are building a research system where agents debate and refine ideas:</strong> <a href="/agent/autogen">AutoGen</a>. The conversation model is the most natural fit for systems that value exploration over procedural correctness.</p>
+
+<p><strong>If you are not sure which to pick:</strong> start with CrewAI for the prototype, then migrate to <a href="/agent/langgraph">LangGraph</a> when you need the production features. The two are not mutually exclusive — many production systems use CrewAI for the high-level agent definitions and LangGraph for the underlying workflow orchestration.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never built an agent framework, start with <strong>CrewAI</strong> — the simplest API, the fastest "I have a working multi-agent system" moment, and the most accessible learning curve. From there, look at <strong><a href="/agent/langgraph">LangGraph</a></strong> if you need production features like checkpointing and human-in-the-loop. Add <strong><a href="/agent/autogen">AutoGen</a></strong> when you have a research workflow that benefits from agents debating ideas.</p>
+
+<h2>Bottom line</h2>
+
+<p>LangGraph, CrewAI, and AutoGen cover three different mental models for the same goal. LangGraph is the graph for explicit control. CrewAI is the role-based framework for simple multi-agent systems. AutoGen is the conversation framework for research and exploration. Pick the one that matches your use case — or use CrewAI for the prototype and LangGraph for the production version, since the two compose well. The framework that wins is the one that makes your system easy to build, easy to debug, and easy to maintain.</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
   }
 ];
 
