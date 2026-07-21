@@ -10,37 +10,37 @@ if (endIdx === -1) { console.error('Could not find end marker'); process.exit(1)
 
 const newPosts = [
   {
-    slug: 'ai-video-runway-vs-sora-vs-pika-2026',
-    title: "AI Video Generation in 2026: Runway vs Sora vs Pika",
-    excerpt: "Three AI video platforms have separated from the pack in 2026: Runway is the film industry standard, Sora set the new physics realism bar, and Pika is the creator-friendly speed platform. Here's how to pick.",
-    date: '2026-07-20',
-    tags: ['video', 'creative', 'comparison', 'runway', 'sora', 'pika'],
-    relatedAgents: ['runway', 'sora', 'pika'],
-    coverThumb: '/blog/ai-video-2026-thumb.jpg',
+    slug: 'ai-music-suno-vs-udio-2026',
+    title: "AI Music Generation in 2026: Suno vs Udio",
+    excerpt: "Two AI music platforms dominate in 2026. Suno is the accessible text-to-music platform that made AI music mainstream. Udio is the high-fidelity platform built for musicians and producers. Here's how to pick.",
+    date: '2026-07-21',
+    tags: ['music', 'creative', 'comparison', 'suno', 'udio'],
+    relatedAgents: ['suno', 'udio'],
+    coverThumb: '/blog/ai-music-2026-thumb.jpg',
     readingTime: 9,
-    file: 'temp-post7.md'
+    file: 'temp-post10.md'
   },
   {
-    slug: 'autonomous-coding-devin-vs-manus-vs-replit-2026',
-    title: "Autonomous AI Coding Agents in 2026: Devin vs Manus vs Replit Agent",
-    excerpt: "Three AI products claim to do autonomous software engineering in 2026. Devin is the benchmarked leader for production teams, Manus is the general-purpose agent, and Replit Agent is the in-IDE full-stack builder. Here's how to pick.",
-    date: '2026-07-20',
-    tags: ['coding', 'agents', 'comparison', 'devin', 'manus', 'replit'],
-    relatedAgents: ['devin', 'manus', 'replit-agent'],
-    coverThumb: '/blog/autonomous-coding-2026-thumb.jpg',
-    readingTime: 10,
-    file: 'temp-post8.md'
+    slug: 'ai-avatar-heygen-vs-synthesia-2026',
+    title: "AI Avatar Video in 2026: Heygen vs Synthesia",
+    excerpt: "Two AI avatar video platforms dominate the enterprise market. Heygen is the creator-friendly platform with 300+ avatars and 175+ languages. Synthesia is the enterprise compliance platform with deep governance. Here's how to pick.",
+    date: '2026-07-21',
+    tags: ['video', 'avatar', 'enterprise', 'comparison', 'heygen', 'synthesia'],
+    relatedAgents: ['heygen', 'synthesia'],
+    coverThumb: '/blog/ai-avatar-2026-thumb.jpg',
+    readingTime: 9,
+    file: 'temp-post11.md'
   },
   {
-    slug: 'agent-frameworks-langgraph-vs-crewai-vs-autogen-2026',
-    title: "AI Agent Frameworks in 2026: LangGraph vs CrewAI vs AutoGen",
-    excerpt: "Three open-source Python frameworks have become the default way to build production AI agent systems in 2026. LangGraph is graph-based, CrewAI is role-based, and AutoGen is conversation-based. Here's how to pick the right one.",
-    date: '2026-07-20',
-    tags: ['agents', 'frameworks', 'comparison', 'langgraph', 'crewai', 'autogen'],
-    relatedAgents: ['langgraph', 'autogen'],
-    coverThumb: '/blog/agent-frameworks-2026-thumb.jpg',
-    readingTime: 11,
-    file: 'temp-post9.md'
+    slug: 'ai-customer-service-sierra-vs-decagon-2026',
+    title: "AI Customer Service in 2026: Sierra vs Decagon",
+    excerpt: "Two AI customer service platforms dominate the enterprise market. Sierra is the brand-voice platform that prioritizes customer experience. Decagon is the resolution-efficiency platform built for high-volume support operations. Here's how to pick.",
+    date: '2026-07-21',
+    tags: ['customer-service', 'enterprise', 'comparison', 'sierra', 'decagon'],
+    relatedAgents: ['sierra', 'decagon'],
+    coverThumb: '/blog/ai-customer-service-2026-thumb.jpg',
+    readingTime: 9,
+    file: 'temp-post12.md'
   }
 ];
 
