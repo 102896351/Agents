@@ -27,6 +27,12 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
     <meta name="description" content={finalDesc} />
     <link rel="canonical" href={canonical} />
 
+    <!-- Hreflang: site content is English-only. Declare x-default + en.
+         Do NOT declare other languages until real translated content exists
+         (fake multilingual hreflang is a Google quality penalty). -->
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <link rel="alternate" hreflang="en" href={canonical} />
+
     <!-- SEO: explicit indexing directives -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="googlebot" content="index, follow" />
