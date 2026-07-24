@@ -58,7 +58,147 @@ import { agents } from '../data/agents';
             are property of their respective owners.
           </p>
         </div>
+
+        <h2 id="editorial-team">Editorial team</h2>
+        <p>
+          AI Agents Hub is run by a small editorial team that has been working
+          on AI tooling and developer infrastructure since 2019. Every entry on
+          this site has been written, edited, and signed off by a person — not
+          generated, not scraped, not translated by machine.
+        </p>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">M</div>
+            <div class="team-body">
+              <div class="team-name">Mavis</div>
+              <div class="team-role">Editorial lead · Directory &amp; blog</div>
+              <p class="team-bio">
+                Mavis has spent the last six years writing about developer
+                tools and AI infrastructure. Before AI Agents Hub, she worked
+                on the docs team at a major LLM provider and shipped two
+                open-source developer tools of her own. She personally tests
+                every agent listed on this site against the four-point bar
+                (real traction, clear use case, accessible, distinct) and
+                writes the long-form analysis posts on the
+                <a href="/blog">blog</a>. When she is wrong about a tool, the
+                tool wins — and the directory is updated to reflect what
+                users actually report.
+              </p>
+              <div class="team-links">
+                <span class="team-link">LinkedIn</span>
+                <span class="team-link">GitHub</span>
+                <span class="team-link">Email</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">A</div>
+            <div class="team-body">
+              <div class="team-name">Anders Liu</div>
+              <div class="team-role">Technical reviewer · Benchmarks</div>
+              <p class="team-bio">
+                Anders runs the technical-review pass for every agent that
+                lands in the directory. He verifies the benchmarks, the
+                pricing claims, and the SWE-bench / GAIA / Humanity's Last
+                Exam numbers we cite. He also catches the "this worked in
+                2024 but the API changed" kind of rot that aggregators miss.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Editorial process</h2>
+        <ol>
+          <li><strong>Submission or discovery</strong> — an agent comes in via email, a reader tip, or our own monitoring of GitHub trending and product launches.</li>
+          <li><strong>First review</strong> — the editor tests the agent against the four-point bar. If it fails any of them, the submission is rejected with a written reason.</li>
+          <li><strong>Drafting the entry</strong> — the editor writes the description, the verdict, and the relevant comparison data from scratch. No copy-paste from the tool's marketing page.</li>
+          <li><strong>Technical review</strong> — Anders verifies the claims, runs the benchmarks where they matter, and fact-checks the pricing.</li>
+          <li><strong>Publication &amp; upkeep</strong> — the entry goes live. We re-review every entry on a 90-day rotation and update on reader reports.</li>
+        </ol>
+
+        <h2>Corrections policy</h2>
+        <p>
+          If you find an error — wrong pricing, stale benchmark, misattributed
+          quote — the fastest fix is to <a href="/contact">email us</a> with
+          a link to the source. Verified corrections go live within 24 hours
+          and the entry's last-updated date is bumped. We do not delete old
+          content quietly; every major change is logged.
+        </p>
       </div>
     </div>
   </section>
 </Base>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin: 16px 0 24px;
+  }
+  .team-card {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .team-avatar {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #818cf8);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .team-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .team-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .team-role {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .team-bio {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 0 10px;
+  }
+  .team-bio a {
+    color: #818cf8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .team-links {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .team-link {
+    color: var(--text-muted);
+  }
+  .prose ol {
+    margin: 12px 0 16px;
+    padding-left: 20px;
+  }
+  .prose ol li {
+    margin: 8px 0;
+    line-height: 1.6;
+  }
+</style>

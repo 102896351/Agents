@@ -26,6 +26,34 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
+  <!-- Editor's intro: signals editorial content, not auto-aggregator -->
+  <section class="section section-editorial" aria-label="About this directory">
+    <div class="container">
+      <div class="editorial-intro">
+        <p class="editorial-lead">
+          <strong>AI Agents Hub is an independent editorial project.</strong>
+          We hand-pick every agent on this site, write the description ourselves,
+          and only list tools that have real users and a clear use case.
+          The directory is updated weekly; a new long-form analysis post goes
+          live every week or two.
+        </p>
+        <p class="editorial-detail">
+          No paid placements, no auto-generated listings, no SEO scraping. If a
+          tool is listed here, it cleared our four-point bar (real traction,
+          clear use case, accessible, distinct). If we get something wrong, the
+          tool wins — and we update the entry to reflect what users actually
+          report. The blog is where we publish deeper comparisons and how-tos
+          drawn from this directory.
+        </p>
+        <p class="editorial-meta">
+          Last directory update: 2026-07-21 · 62 agents across 9 categories ·
+          17 long-form analysis posts · Maintained by
+          <a href="/about#editorial-team">the editorial team</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Featured -->
   <section class="section" id="featured">
     <div class="container">
@@ -66,6 +94,43 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 </Base>
+
+<style>
+  .section-editorial {
+    padding: 40px 0 24px;
+  }
+  .editorial-intro {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: left;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+  }
+  .editorial-lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 0 12px;
+  }
+  .editorial-detail {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin: 0 0 12px;
+  }
+  .editorial-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .editorial-meta a {
+    color: #818cf8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
 
 <script is:inline>
   const pills = document.querySelectorAll('#filter-pills .pill');
