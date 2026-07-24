@@ -3,6 +3,9 @@
 
 User-agent: *
 Allow: /
+# Old /news/ URLs were deleted (the news module was replaced with /blog/ on
+# 2026-07-13). Block crawlers from re-indexing the 404 path.
+Disallow: /news/
 
 # Specifically welcome the major search engines (no special treatment needed,
 # but explicit Allow helps if any global Disallow is added later).
