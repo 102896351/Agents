@@ -1934,6 +1934,365 @@ result = crew.kickoff()
 
 <p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
 `,
+  },
+
+  {
+    slug: 'ai-chat-claude-vs-chatgpt-vs-deepseek-2026',
+    title: "AI Chat Models in 2026: Claude vs ChatGPT vs DeepSeek",
+    excerpt: "Three AI chat products dominate 2026. Claude leads on reasoning and safety. ChatGPT leads on ecosystem and multimodal. DeepSeek leads on cost and open weights. Here's how to pick the right one.",
+    date: '2026-07-24',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 10,
+    tags: ['chat', 'llm', 'comparison', 'claude', 'chatgpt', 'deepseek'],
+    relatedAgents: ['claude', 'chatgpt', 'deepseek'],
+    coverThumb: '/blog/ai-chat-2026-thumb.jpg',
+    content: `
+<p>Three AI chat products dominate the consumer and prosumer market in 2026. <strong><a href="/agent/claude">Claude</a></strong> (Anthropic) is the model that set the bar for long-context reasoning and safety-conscious deployment. <strong><a href="/agent/chatgpt">ChatGPT</a></strong> (OpenAI) is the product that brought AI chat to the mainstream — still the most-used AI assistant globally. <strong><a href="/agent/deepseek">DeepSeek</a></strong> is the Chinese open-weight model that has closed the quality gap with US frontier labs at a fraction of the inference cost. Same goal (frontier-quality AI chat), three very different bets on model architecture, pricing, and ecosystem.</p>
+
+<p>If you are picking an AI assistant for personal use, for your team, or as the backbone of a product, the three have converged in capability but diverged sharply in cost, openness, and integration. This post compares them head-to-head using the profiles in <a href="/">our 62-agent directory</a>.</p>
+
+<h2>The state of frontier AI chat in 2026</h2>
+
+<p>By 2026, the gap between the top three consumer-facing AI assistants has narrowed significantly. <a href="/agent/claude">Claude Opus 4.5</a>, <a href="/agent/chatgpt">ChatGPT-5.6</a>, and <a href="/agent/deepseek">DeepSeek-V4</a> all score within 5-10% of each other on most reasoning benchmarks, all support 100K+ token context windows, and all produce production-quality output for the common cases (writing, coding, analysis, brainstorming). The differences are in the cost, the openness, the safety stance, and the integration story — not the raw capability.</p>
+
+<p>This is a different market than 2024. Two years ago, the choice was "ChatGPT or Claude" and DeepSeek was a research curiosity. Today, the three are all credible options and the choice depends on your priorities more than the model's raw strength.</p>
+
+<figure>
+  <img src="/blog/ai-chat-2026-hero.jpg" alt="A comparison view of three AI chat interface mockups side by side: Claude (left, warm copper), ChatGPT (center, cool teal), DeepSeek (right, deep blue) — each showing a conversation thread with model selector and capabilities" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>The three AI chat leaders in 2026: Claude (reasoning + safety), ChatGPT (ecosystem + product integration), DeepSeek (open-weight + cost).</figcaption>
+</figure>
+
+<h2><a href="/agent/claude">Claude</a>: the reasoning and safety leader</h2>
+
+<p><a href="/agent/claude">Claude</a> is Anthropic's AI assistant, and the positioning in 2026 is "the most thoughtful, most carefully aligned, most reliable frontier model." The Opus 4.5 model handles long-context reasoning (200K tokens standard, 1M tokens for enterprise), nuanced instruction-following, and complex multi-step analysis with the same quality bar that made Claude a default for developers and analysts.</p>
+
+<p>The standout feature is the artifact-style interaction model. <a href="/agent/claude">Claude</a> chat is built around the idea that the model can produce runnable artifacts (code, documents, diagrams, simulations) that you can iterate on inside the conversation. The other frontier models have added similar features, but Anthropic's interpretation is the most polished — Claude is the model that turned "AI chat" from Q&A into a workspace.</p>
+
+<p>The pricing is premium. <a href="/agent/claude">Claude</a> Pro is \$20/month (similar to ChatGPT Plus), Max is \$100-200/month for higher usage. The API pricing is \$15-75 per million tokens depending on the model. For a power user who needs the best reasoning quality and values the safety/alignment stance, the price is justified. For a casual user, the free tier (with rate limits) is enough to evaluate.</p>
+
+<figure>
+  <img src="/blog/ai-chat-2026-claude.jpg" alt="Claude's interface showing an artifact-style conversation with a long-context document being analyzed, a side panel with extracted insights, and the model selector showing Opus 4.5" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Claude's workspace model: long documents, multi-step analysis, and runnable artifacts in a single conversation — the most polished reasoning UX in 2026.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/claude">Claude</a> is weak: the ecosystem is smaller than ChatGPT. There are fewer third-party plugins, fewer integrated products, and the developer tooling (while excellent for the API) does not have the same breadth as OpenAI's. The other soft spot is multimodality — Claude is strong on text and code, but image and voice generation are less mature than ChatGPT's. For a product that needs multimodal capabilities out of the box, ChatGPT is ahead.</p>
+
+<p><strong>Pick <a href="/agent/claude">Claude</a> if</strong> you need the best reasoning quality, you work with long documents, you value the safety/alignment stance, and the workspace-style interaction model fits how you work. <strong>Skip it if</strong> you need a deep ecosystem of plugins and integrated products, or you need strong multimodality.</p>
+
+<h2><a href="/agent/chatgpt">ChatGPT</a>: the ecosystem and product leader</h2>
+
+<p><a href="/agent/chatgpt">ChatGPT</a> is OpenAI's consumer product, and the positioning in 2026 is "the most complete AI assistant on the market." GPT-5.6 powers the chat, the multimodal inputs (text, image, voice, video), the tool integration (web browsing, code execution, DALL-E, custom GPTs), and the Operator browser agent we covered earlier. The breadth of the product is unmatched.</p>
+
+<p>The standout feature is the ecosystem. <a href="/agent/chatgpt">ChatGPT</a> has 1M+ custom GPTs built by the community, deep integration with the major productivity tools (Microsoft 365, Google Workspace, Zapier), and the strongest multimodal story (image understanding, image generation, voice conversation, video understanding). For a user who wants one AI product that does everything, ChatGPT is the default answer.</p>
+
+<p>The pricing is competitive. <a href="/agent/chatgpt">ChatGPT</a> Plus is \$20/month (the same as Claude Pro), Pro is \$200/month for unlimited access to the top models and the Operator agent, and the Team and Enterprise plans add collaboration features. The free tier (GPT-5 mini) is enough for casual use; the paid tiers are for power users.</p>
+
+<figure>
+  <img src="/blog/ai-chat-2026-chatgpt.jpg" alt="ChatGPT's interface showing a multimodal conversation with a custom GPT selected, a web browsing tool result in the side panel, and the model picker showing GPT-5.6 options" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>ChatGPT's product surface: multimodal input, custom GPTs, tool integration, and the strongest ecosystem of any consumer AI in 2026.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/chatgpt">ChatGPT</a> is weak: the raw reasoning quality has narrowed the gap with Claude, and on some benchmarks (long-context analysis, nuanced instruction-following) Claude is still ahead. The other soft spot is the safety stance — OpenAI's safety practices are less conservative than Anthropic's, which means <a href="/agent/chatgpt">ChatGPT</a> will sometimes produce content that Claude would refuse. For a user who values refusal behavior, Claude is the safer choice.</p>
+
+<p><strong>Pick <a href="/agent/chatgpt">ChatGPT</a> if</strong> you want the most complete AI assistant with the largest ecosystem, you need strong multimodal capabilities (image, voice, video), and the breadth of features (custom GPTs, web browsing, Operator) is more valuable than a single-feature edge. <strong>Skip it if</strong> you need the deepest reasoning quality, or you prefer the more conservative safety stance.</p>
+
+<h2><a href="/agent/deepseek">DeepSeek</a>: the open-weight challenger</h2>
+
+<p><a href="/agent/deepseek">DeepSeek</a> is the Chinese AI lab that has taken the open-weight model world by storm. The positioning in 2026 is "frontier-quality reasoning at 5-10% of the inference cost." The DeepSeek-V4 model matches GPT-5.6 and Claude Opus 4.5 on most reasoning benchmarks while being dramatically cheaper to run — which has made it the default for cost-sensitive applications and the foundation of countless open-source fine-tunes.</p>
+
+<p>The standout feature is the cost-quality ratio. <a href="/agent/deepseek">DeepSeek</a>-V4 API pricing is \$0.14-2.19 per million tokens, compared to \$15-75 for Claude and OpenAI. For a product that needs to process millions of tokens per day, the cost difference is not incremental — it is the difference between a viable business and an unviable one. The model is also fully open-weight, which means you can self-host, fine-tune, and inspect.</p>
+
+<p>The pricing for the consumer product is very accessible. <a href="/agent/deepseek">DeepSeek</a> chat is free or cheap (compared to Claude and ChatGPT Plus), the API is the cheapest among the frontier models, and the open-weight license allows self-hosting. For a developer building a product, this is the default starting point in 2026.</p>
+
+<figure>
+  <img src="/blog/ai-chat-2026-deepseek.jpg" alt="DeepSeek's interface showing a chat with a code reasoning task, an API pricing comparison table showing DeepSeek vs Claude vs OpenAI, and a model architecture diagram highlighting the open-weight license" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>DeepSeek's positioning: frontier-quality reasoning at 5-10% of the cost, with open weights for self-hosting and fine-tuning.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/deepseek">DeepSeek</a> is weak: the consumer product experience is less polished than Claude or ChatGPT. The chat interface is functional but not best-in-class. The other soft spot is the ecosystem — there are fewer integrations, fewer plugins, and the multimodal story is less developed. For a product that needs the polished UX of ChatGPT or the workspace model of Claude, <a href="/agent/deepseek">DeepSeek</a> requires more assembly.</p>
+
+<p><strong>Pick <a href="/agent/deepseek">DeepSeek</a> if</strong> you are building a product that needs to process a lot of tokens (the cost difference is decisive), you want to self-host or fine-tune, or you need the open-weight model for compliance reasons. <strong>Skip it if</strong> you want a polished consumer experience or a deep ecosystem.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/ai-chat-2026-comparison.jpg" alt="A 3-column comparison table showing Claude, ChatGPT, and DeepSeek across dimensions: model quality, ecosystem, multimodal, cost, open-weight, and best for" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Claude vs ChatGPT vs DeepSeek — three frontier models with different positions in 2026.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Claude</th><th>ChatGPT</th><th>DeepSeek</th></tr></thead>
+<tbody>
+<tr><td><strong>Best for</strong></td><td>Reasoning, long-context</td><td>Ecosystem, multimodal</td><td>Cost, open-weight</td></tr>
+<tr><td><strong>Top model</strong></td><td>Opus 4.5</td><td>GPT-5.6</td><td>DeepSeek-V4</td></tr>
+<tr><td><strong>Context window</strong></td><td>200K (1M enterprise)</td><td>128K (256K Pro)</td><td>128K</td></tr>
+<tr><td><strong>Multimodal</strong></td><td>Text, code, image (limited)</td><td><strong>Text, image, voice, video</strong></td><td>Text, code (limited)</td></tr>
+<tr><td><strong>Ecosystem</strong></td><td>API, Claude Code</td><td><strong>Largest</strong> (1M+ GPTs, plugins)</td><td>API, open-source community</td></tr>
+<tr><td><strong>API price (per 1M tokens)</strong></td><td>\$15-75</td><td>\$15-60</td><td><strong>\$0.14-2.19</strong></td></tr>
+<tr><td><strong>Open-weight</strong></td><td>No</td><td>No</td><td><strong>Yes (Apache 2.0-like)</strong></td></tr>
+<tr><td><strong>Consumer price</strong></td><td>Pro \$20, Max \$100-200</td><td>Plus \$20, Pro \$200</td><td>Free or very low</td></tr>
+<tr><td><strong>Safety stance</strong></td><td><strong>Most conservative</strong></td><td>Balanced</td><td>Open</td></tr>
+<tr><td><strong>Self-host</strong></td><td>No</td><td>No</td><td><strong>Yes</strong></td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you need the best reasoning quality and work with long documents:</strong> <a href="/agent/claude">Claude</a>. The Opus 4.5 model, the artifact workspace, and the safety stance are the right combination for analysts, writers, and developers who care about quality and reliability.</p>
+
+<p><strong>If you want the most complete AI product and need multimodal capabilities:</strong> <a href="/agent/chatgpt">ChatGPT</a>. The ecosystem, the multimodal story, the custom GPTs, and the Operator browser agent are the most complete package in the market.</p>
+
+<p><strong>If you are building a product that needs to process a lot of tokens:</strong> <a href="/agent/deepseek">DeepSeek</a>. The cost-quality ratio is decisive for token-heavy applications. Self-hosting is the answer for compliance-sensitive use cases.</p>
+
+<p><strong>If you are a researcher who needs the open weights:</strong> <a href="/agent/deepseek">DeepSeek</a>. The Apache 2.0-like license, the strong reasoning, and the active community make it the default starting point for fine-tuning and research.</p>
+
+<p><strong>For most power users, the three are not mutually exclusive.</strong> Use <a href="/agent/claude">Claude</a> for the long-form reasoning and writing tasks. Use <a href="/agent/chatgpt">ChatGPT</a> for multimodal tasks, custom GPTs, and product integrations. Use <a href="/agent/deepseek">DeepSeek</a> for the API-heavy, cost-sensitive parts of your workflow. The three compose well — they don't fight each other.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never used a frontier AI chat, start with the free tier of whichever your current preference is — Claude, ChatGPT, and DeepSeek all have free or low-cost entry points. Once you've felt the category, add a second product for the use case the first does poorly. The most common combo in 2026 is <a href="/agent/chatgpt">ChatGPT</a> for the ecosystem + <a href="/agent/claude">Claude</a> for the reasoning. Add <a href="/agent/deepseek">DeepSeek</a> when cost starts to matter or when you need open weights.</p>
+
+<h2>Bottom line</h2>
+
+<p>Claude, ChatGPT, and DeepSeek are the three credible frontier AI chat products in 2026. Claude is the reasoning and safety leader. ChatGPT is the ecosystem and product leader. DeepSeek is the cost and open-weight leader. The one to pick depends on whether your bottleneck is reasoning quality (Claude), breadth of features (ChatGPT), or cost and openness (DeepSeek) — and for most power users, the answer is to use two or all three for different parts of the workflow.</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
+
+  {
+    slug: 'ai-data-vanna-vs-notebooklm-2026',
+    title: "AI for Data Analysis in 2026: Vanna vs NotebookLM",
+    excerpt: "Two AI tools have become the default for working with data in 2026. Vanna is the AI SQL agent for structured data. NotebookLM is the AI research notebook for documents. They compose, not compete.",
+    date: '2026-07-24',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 9,
+    tags: ['data', 'analysis', 'sql', 'research', 'comparison', 'vanna', 'notebooklm'],
+    relatedAgents: ['notebooklm', 'vanna'],
+    coverThumb: '/blog/ai-data-2026-thumb.jpg',
+    content: `
+<p>Two AI tools have become the default for working with data in 2026. <strong>Vanna</strong> is the AI SQL agent that turns natural language questions into database queries — the fastest way to get answers from a SQL database without writing SQL. <strong><a href="/agent/notebooklm">NotebookLM</a></strong> is Google's AI research notebook that ingests documents and lets you query them in natural language — the fastest way to extract insights from a pile of PDFs, notes, and research papers. Same goal (AI for working with data), two very different shapes.</p>
+
+<p>This post is for analysts, researchers, and operators who need to extract value from data — whether that data is in a SQL database, in a pile of documents, or in a mix of both. We compare the two head-to-head using the profiles in <a href="/">our 62-agent directory</a>.</p>
+
+<h2>The two flavors of "data" in 2026</h2>
+
+<p>When people say "I need AI to help with my data", they usually mean one of two things. The first is <strong>structured data</strong> — tables in a database, rows and columns, joins and aggregations. The tool for this is Vanna. The second is <strong>unstructured data</strong> — PDFs, Word docs, research papers, notes. The tool for this is <a href="/agent/notebooklm">NotebookLM</a>. The two tools are not direct competitors; they cover different parts of the data workflow.</p>
+
+<p>The 2026 versions of both tools have crossed the threshold from "novelty" to "actually useful." <strong>Vanna</strong> produces SQL queries that work on the first try 70-80% of the time, with the rest requiring minor edits. <a href="/agent/notebooklm">NotebookLM</a> answers questions from a document corpus with citations to the exact passage, which is the key feature for any research or analysis workflow.</p>
+
+<figure>
+  <img src="/blog/ai-data-2026-hero.jpg" alt="A comparison view of two AI data tools: Vanna (left, showing a database schema and a generated SQL query) and NotebookLM (right, showing uploaded documents and a citation-rich answer)" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>Two tools, two data shapes: Vanna (left) for structured SQL data, NotebookLM (right) for unstructured documents. They compose, not compete.</figcaption>
+</figure>
+
+<h2>Vanna: the AI SQL agent</h2>
+
+<p>Vanna is the open-source AI agent that turns natural language questions into SQL queries. You give Vanna your database schema (and optionally some example queries), and Vanna generates the SQL for any question you ask. The pitch is "ask your database in English, get the answer without writing SQL."</p>
+
+<p>The standout feature is the accuracy. Vanna uses retrieval-augmented generation (RAG) to find the most relevant tables and columns for your question, then generates the SQL. The first-try accuracy is 70-80% on well-indexed databases, which is high enough to be useful in production. The other under-appreciated feature is the training workflow — you can approve generated queries, which improves the model over time. The more you use Vanna, the more accurate it gets on your specific database.</p>
+
+<p>The pricing is accessible. Vanna is open-source (MIT license), self-hostable, and the cloud version is \$100-500/month for team plans. For a startup or analyst team, the cloud version is enough; for a large enterprise with custom data infrastructure, the self-hosted version is the answer.</p>
+
+<figure>
+  <img src="/blog/ai-data-2026-vanna.jpg" alt="Vanna's interface showing a database schema diagram on the left, a natural language question in the center, a generated SQL query below it, and the query result table on the right with a confidence score" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Vanna's workflow: schema on the left, question in natural language, generated SQL with confidence score, and the result on the right — ask, get an answer, train the model on the result.</figcaption>
+</figure>
+
+<p>Where Vanna is weak: the SQL it generates is only as good as the schema it has. For a poorly documented database, Vanna will produce queries that miss the right tables or get the joins wrong. The other soft spot is the "last mile" — for complex multi-step analyses (where the question needs to be broken into 3-4 SQL queries), Vanna handles the first one well but the orchestration across queries is manual. For pure SQL generation, Vanna is the right tool; for the entire analytical workflow, you may need to add additional layers.</p>
+
+<p><strong>Pick Vanna if</strong> you need to query a SQL database in natural language, you want a tool that improves over time as you approve generated queries, and you have the data infrastructure to support the training workflow. <strong>Skip it if</strong> your data is in documents (not databases), or you need a tool that handles the full analytical workflow end-to-end.</p>
+
+<h2><a href="/agent/notebooklm">NotebookLM</a>: the AI research notebook</h2>
+
+<p><a href="/agent/notebooklm">NotebookLM</a> is Google's AI research notebook, and the pitch is "upload your sources, ask questions, get answers with citations." The tool ingests PDFs, Google Docs, websites, and pasted text, then lets you query the corpus in natural language. Every answer includes citations to the exact passage in the source document, which is the killer feature for any research or analysis workflow.</p>
+
+<p>The standout feature is the citation accuracy. <a href="/agent/notebooklm">NotebookLM</a> does not hallucinate URLs or invent facts — every claim in the answer is linked to a specific passage in one of your uploaded sources. For a researcher doing a literature review, this is the feature that makes the tool trustworthy. The other under-appreciated feature is the Audio Overview, which generates a podcast-style conversation between two AI hosts about your sources. For consuming long documents on the go, this is the most novel feature in the AI research space.</p>
+
+<p>The pricing is generous. <a href="/agent/notebooklm">NotebookLM</a> is free for individual use, with the NotebookLM Plus tier at \$20/month for higher limits (500 sources, 500 chat queries per day). For a researcher or analyst, the free tier is enough for most projects; the Plus tier is the right answer for high-volume work.</p>
+
+<figure>
+  <img src="/blog/ai-data-2026-notebooklm.jpg" alt="NotebookLM's interface showing a source panel on the left with 10 uploaded PDFs, a chat panel in the center with a natural language question and a citation-rich answer, and an Audio Overview button highlighted" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>NotebookLM's research workflow: upload sources, ask questions, get answers with citations — and the Audio Overview feature generates a podcast-style summary of the corpus.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/notebooklm">NotebookLM</a> is weak: the analysis is bounded by the documents you upload. If a question is not answered in the sources, the model will tell you it does not know — it will not pull from the open web or from general knowledge. The other soft spot is the multi-document synthesis — for questions that span 10+ documents, the answer can feel surface-level compared to a researcher who has read everything carefully. For deep cross-document analysis, you may need to do multiple rounds of queries.</p>
+
+<p><strong>Pick <a href="/agent/notebooklm">NotebookLM</a> if</strong> you need to extract insights from a corpus of documents, you value the citation accuracy, and the Audio Overview is useful for your workflow. <strong>Skip it if</strong> your data is in a SQL database, or you need analysis that pulls from sources you have not uploaded.</p>
+
+<h2>How Vanna and <a href="/agent/notebooklm">NotebookLM</a> compose</h2>
+
+<p>The two tools are not direct competitors — they cover different parts of the data workflow. The most common combined use case is: use <a href="/agent/notebooklm">NotebookLM</a> to extract the analytical question from a corpus of documents (research papers, internal reports, customer feedback), then use Vanna to query the structured database for the answer. The researcher reads the papers to understand the question, then asks the database for the data.</p>
+
+<p>The inverse is also common: use Vanna to identify interesting patterns in a database, then use <a href="/agent/notebooklm">NotebookLM</a> to research the context (what does the literature say about this pattern?). The data analyst finds a spike in churn, then asks the research corpus what the literature says about churn patterns in this segment.</p>
+
+<figure>
+  <img src="/blog/ai-data-2026-comparison.jpg" alt="A side-by-side 2-column comparison of Vanna and NotebookLM showing data type, use case, key feature, pricing, and best for" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Vanna vs NotebookLM — different data shapes, complementary use cases. The two are not competitors; they cover different parts of the data workflow.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Vanna</th><th>NotebookLM</th></tr></thead>
+<tbody>
+<tr><td><strong>Data type</strong></td><td>Structured (SQL database)</td><td>Unstructured (documents)</td></tr>
+<tr><td><strong>Use case</strong></td><td>Query database in English</td><td>Extract insights from corpus</td></tr>
+<tr><td><strong>Key feature</strong></td><td>Self-improving accuracy</td><td>Citation-rich answers</td></tr>
+<tr><td><strong>Unique feature</strong></td><td>Train on approved queries</td><td>Audio Overview (podcast)</td></tr>
+<tr><td><strong>Pricing</strong></td><td>Open-source + cloud \$100-500/mo</td><td>Free + Plus \$20/mo</td></tr>
+<tr><td><strong>Best for</strong></td><td>Analysts, BI teams</td><td>Researchers, content analysts</td></tr>
+<tr><td><strong>Weakness</strong></td><td>Schema-dependent</td><td>Bounded by uploaded sources</td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If your data is in a SQL database:</strong> Vanna. The natural language to SQL workflow, the self-improving accuracy, and the open-source availability make it the right answer.</p>
+
+<p><strong>If your data is in documents (PDFs, notes, papers):</strong> <a href="/agent/notebooklm">NotebookLM</a>. The citation accuracy, the Audio Overview, and the generous free tier make it the right answer.</p>
+
+<p><strong>If you have both:</strong> use both. <a href="/agent/notebooklm">NotebookLM</a> for the document research, Vanna for the database queries. The two compose well — most analytical workflows need both.</p>
+
+<p><strong>If you are a researcher doing a literature review:</strong> <a href="/agent/notebooklm">NotebookLM</a>. The citation accuracy is the killer feature for academic work. The Audio Overview is useful for getting familiar with a new corpus quickly.</p>
+
+<p><strong>If you are a data analyst querying a production database:</strong> Vanna. The self-improving accuracy and the natural language interface make it the right answer for repeated analytical queries.</p>
+
+<p><strong>For most serious analytical work, you end up using both.</strong> Vanna for the structured data, <a href="/agent/notebooklm">NotebookLM</a> for the unstructured data. The tools are not competitors — they cover different parts of the analytical workflow.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never used an AI data tool, start with <strong><a href="/agent/notebooklm">NotebookLM</a></strong> — the free tier is enough to feel the category. Upload 5-10 documents on a topic you care about, ask 5 questions, see how the citation-rich answers compare to your own reading. Once you've felt the workflow, add <strong>Vanna</strong> when you need to query a database. The free/open-source tier of Vanna is enough to evaluate.</p>
+
+<h2>Bottom line</h2>
+
+<p>Vanna and NotebookLM cover different shapes of data. Vanna is for structured data (SQL databases). NotebookLM is for unstructured data (documents). The two are not direct competitors; they cover different parts of the analytical workflow. For most serious analytical work, you end up using both — Vanna for the numbers, NotebookLM for the context. Pick the one that matches your data, and add the other when you need to cover the other half of the workflow.</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
+  },
+
+  {
+    slug: 'open-source-coding-aider-vs-cody-vs-continue-2026',
+    title: "Open-Source AI Coding in 2026: Aider vs Cody vs Continue",
+    excerpt: "Three open-source AI coding tools have carved out distinct positions in 2026. Aider is the terminal-native git-integrated pair programmer. Cody is the codebase-aware enterprise assistant. Continue is the assemble-your-own-stack extension.",
+    date: '2026-07-24',
+    author: 'Mavis · AI Agents Hub',
+    readingTime: 10,
+    tags: ['coding', 'open-source', 'comparison', 'aider', 'cody', 'continue'],
+    relatedAgents: ['cody', 'continue'],
+    coverThumb: '/blog/open-source-coding-2026-thumb.jpg',
+    content: `
+<p>Three open-source AI coding tools have carved out distinct positions in 2026. <strong>Aider</strong> is the terminal-native AI pair programmer that lives in your git workflow. <strong><a href="/agent/cody">Cody</a></strong> is Sourcegraph's enterprise code AI that knows your entire codebase. <strong><a href="/agent/continue">Continue</a></strong> is the open-source VS Code extension that lets you assemble your own AI coding stack. Same goal (open-source AI coding assistance), three different design philosophies.</p>
+
+<p>This post is for developers who want AI coding help but are uncomfortable with the closed-source, cloud-only nature of <a href="/agent/cursor">Cursor</a> and GitHub Copilot. The three tools in this post are all open-source, all BYOK (bring your own key), and all run in your environment. We compare them head-to-head using the profiles in <a href="/">our 62-agent directory</a>.</p>
+
+<h2>Why open-source AI coding in 2026</h2>
+
+<p>The closed-source AI coding tools (Cursor, Copilot) have set the bar for quality, but they have three structural limitations for some users. First, your code leaves your machine (or you pay for a Business tier that promises otherwise). Second, the model is locked in — you cannot use a different model if the default does not work for you. Third, the customization is limited — the tool decides what features to ship, and you wait.</p>
+
+<p>The open-source alternatives solve all three. Your code stays on your machine, you bring your own model (Claude, GPT, Gemini, DeepSeek, a local Ollama model), and you can fork and customize. The trade-off is setup complexity and quality variance across models. For a developer who values control and code privacy, the open-source path is the right answer.</p>
+
+<figure>
+  <img src="/blog/open-source-coding-2026-hero.jpg" alt="A comparison view of three open-source AI coding tools side by side: Aider (left, terminal with git integration), Cody (center, VS Code with codebase context), Continue (right, VS Code with model picker)" width="1200" height="630" loading="lazy" decoding="async" />
+  <figcaption>Three open-source AI coding tools: Aider (terminal), Cody (codebase-aware), Continue (assemble-your-own-stack). All BYOK, all on your machine.</figcaption>
+</figure>
+
+<h2>Aider: the terminal-native pair programmer</h2>
+
+<p>Aider is the open-source AI pair programmer that lives in your terminal and integrates with git. The pitch is "open-source, terminal-native, git-integrated AI pair programming." You give Aider a task, and it edits files, runs commands, and commits the changes with a meaningful commit message. The whole workflow feels like pair programming with a senior developer who types fast.</p>
+
+<p>The standout feature is the git integration. Every change Aider makes is committed with a descriptive message, so you can review the diff, revert if needed, and see the history of what the AI did. The other under-appreciated feature is the multi-file editing — Aider handles refactors across many files in one session, with the ability to undo and redo individual changes. For a developer who already lives in the terminal and the git workflow, Aider is the most natural fit.</p>
+
+<p>The pricing is just the API cost. Aider is open-source and free; you pay the model provider directly. Using Claude Sonnet 4.5, a typical 30-minute Aider session might cost \$2-5 of API usage. For a developer who is cost-conscious or who has access to a free model (DeepSeek, a local Ollama model), Aider can be effectively free.</p>
+
+<figure>
+  <img src="/blog/open-source-coding-2026-aider.jpg" alt="Aider's terminal interface showing a multi-file refactor task in progress, git diff output in the side panel, and a series of meaningful commit messages" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Aider's terminal workflow: pair-program with the AI, every change is a git commit, the diff is right there. The most git-native AI coding experience in 2026.</figcaption>
+</figure>
+
+<p>Where Aider is weak: it is terminal-only, so the visual feedback is limited. For a developer who wants inline autocomplete, a chat panel in the editor, or a rich UI, Aider is the wrong tool — the closed-source IDE-integrated tools are better. The other soft spot is the model quality — Aider is only as good as the model you bring. The default Claude Sonnet 4.5 is excellent, but if you are using a smaller model for cost reasons, the quality drops noticeably.</p>
+
+<p><strong>Pick Aider if</strong> you are a terminal-native developer, you already use git for version control, and you want an open-source BYOK tool that integrates with your existing workflow. <strong>Skip it if</strong> you need a rich IDE experience, or you are not comfortable with the terminal.</p>
+
+<h2><a href="/agent/cody">Cody</a>: the codebase-aware enterprise AI</h2>
+
+<p><a href="/agent/cody">Cody</a> is Sourcegraph's AI coding assistant, and the pitch is "the AI that knows your entire codebase." Cody uses Sourcegraph's code search to give the model context from your whole repository — every file, every commit, every symbol. For an enterprise codebase with millions of lines of code, this is the only tool that can answer "where is X used?" or "what calls this function?" with full coverage.</p>
+
+<p>The standout feature is the codebase context. <a href="/agent/cody">Cody</a>'s understanding of your codebase is unmatched — the model sees the imports, the call graph, the conventions, and the patterns from across the entire repo. The other under-appreciated feature is the enterprise story — SSO, audit logs, role-based access control, on-prem deployment. For a large enterprise that needs AI coding with proper governance, Cody is the right answer.</p>
+
+<p>The pricing is enterprise-focused. <a href="/agent/cody">Cody</a> Free is generous (individual use, limited model calls), Pro is \$9/month for individual developers, and Enterprise is custom-priced (typically \$20-50/developer/month with SSO, audit logs, and the on-prem option). For a startup, Pro is the right answer; for an enterprise, Enterprise is the only path.</p>
+
+<figure>
+  <img src="/blog/open-source-coding-2026-cody.jpg" alt="Cody's VS Code interface showing a chat panel asking about a function, the model retrieving relevant code from across the entire codebase via Sourcegraph search, and a multi-file edit suggestion" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Cody's codebase-aware workflow: ask about a function, the model retrieves relevant code from the entire repo via Sourcegraph, suggests a multi-file edit — the strongest codebase context in the market.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/cody">Cody</a> is weak: the quality on tasks that need deep codebase context is excellent, but on simple tab autocomplete, Cody is less impressive than Cursor or Copilot. The other soft spot is the model choice — Cody supports Claude, GPT, and others, but the default model and the optimization around it is less tuned than a focused product like Cursor.</p>
+
+<p><strong>Pick <a href="/agent/cody">Cody</a> if</strong> you work on a large enterprise codebase, you need the AI to understand the full context, and you need the enterprise governance features (SSO, audit, on-prem). <strong>Skip it if</strong> you are a solo developer on a small project, or you need the best tab autocomplete.</p>
+
+<h2><a href="/agent/continue">Continue</a>: the assemble-your-own-stack extension</h2>
+
+<p><a href="/agent/continue">Continue</a> is the open-source VS Code (and JetBrains) extension that lets you assemble your own AI coding stack. You bring the model (Claude, GPT, Gemini, DeepSeek, a local Ollama model), you bring the tools (slash commands, context providers, custom assistants), and Continue wires them together. The pitch is "the AI coding extension that does not lock you in."</p>
+
+<p>The standout feature is the flexibility. <a href="/agent/continue">Continue</a>'s config.json lets you define multiple models (a strong model for complex tasks, a fast model for autocomplete), multiple context providers (your codebase, your documentation, your internal APIs), and custom assistants (a "code reviewer" persona, a "test writer" persona). For a developer who wants to fine-tune their AI coding setup, Continue is the right tool.</p>
+
+<p>The other under-appreciated feature is the local model support. <a href="/agent/continue">Continue</a> is one of the few extensions that makes running a local model (via Ollama or LM Studio) as easy as a cloud model. For a developer with code privacy concerns, a local model + Continue is the only path that keeps the code on your machine with a rich VS Code experience.</p>
+
+<figure>
+  <img src="/blog/open-source-coding-2026-continue.jpg" alt="Continue's VS Code interface showing a custom assistant selected, a model picker with both cloud and local models, and a config.json view showing the model, context provider, and slash command definitions" width="1000" height="750" loading="lazy" decoding="async" />
+  <figcaption>Continue's config-driven workflow: pick the model, define the context providers, configure the slash commands — the most flexible open-source AI coding extension.</figcaption>
+</figure>
+
+<p>Where <a href="/agent/continue">Continue</a> is weak: the flexibility comes with a setup cost. <a href="/agent/cody">Cody</a> and Aider have opinionated defaults that work out of the box; Continue requires you to read the docs and configure the model, the context, and the assistants. For a developer who wants zero setup, Continue is the wrong tool. The other soft spot is the tab autocomplete — it is functional but not best-in-class (Cursor's tab autocomplete is still ahead).</p>
+
+<p><strong>Pick <a href="/agent/continue">Continue</a> if</strong> you want full control over your AI coding stack, you need to run a local model for code privacy, or you are a power user who likes to tune the tools. <strong>Skip it if</strong> you want zero setup, or you do not need the flexibility.</p>
+
+<h2>Comparison at a glance</h2>
+
+<figure>
+  <img src="/blog/open-source-coding-2026-comparison.jpg" alt="A 3-column comparison table showing Aider, Cody, and Continue across dimensions: interface, codebase context, BYOK, best for, and weakness" width="1200" height="670" loading="lazy" decoding="async" />
+  <figcaption>Aider vs Cody vs Continue — three open-source AI coding tools with different opinions on what "open-source AI coding" means.</figcaption>
+</figure>
+
+<table>
+<thead><tr><th></th><th>Aider</th><th>Cody</th><th>Continue</th></tr></thead>
+<tbody>
+<tr><td><strong>Interface</strong></td><td>Terminal (CLI)</td><td>VS Code / JetBrains</td><td>VS Code / JetBrains</td></tr>
+<tr><td><strong>Best for</strong></td><td>Terminal devs, git workflow</td><td>Enterprise, large codebases</td><td>Power users, local models</td></tr>
+<tr><td><strong>Codebase context</strong></td><td>Manual (file context)</td><td><strong>Full repo via Sourcegraph</strong></td><td>Configurable providers</td></tr>
+<tr><td><strong>Model</strong></td><td>BYOK (any)</td><td>BYOK + Sourcegraph models</td><td>BYOK (any, including local)</td></tr>
+<tr><td><strong>Git integration</strong></td><td><strong>Built-in commits</strong></td><td>External</td><td>External</td></tr>
+<tr><td><strong>Local model</strong></td><td>Yes (Ollama)</td><td>Limited</td><td><strong>Best in class</strong></td></tr>
+<tr><td><strong>Enterprise features</strong></td><td>None</td><td><strong>SSO, audit, on-prem</strong></td><td>None (BYO)</td></tr>
+<tr><td><strong>Pricing</strong></td><td>Free + API cost</td><td>Free / Pro \$9 / Enterprise custom</td><td>Free + API cost</td></tr>
+<tr><td><strong>Setup</strong></td><td>Low (pip install)</td><td>Low (extension install)</td><td><strong>Medium (config.json)</strong></td></tr>
+</tbody>
+</table>
+
+<h2>Verdict by use case</h2>
+
+<p><strong>If you are a terminal-native developer with a git workflow:</strong> Aider. The git integration, the terminal-native feel, and the BYOK flexibility make it the most natural fit for a developer who lives in the shell.</p>
+
+<p><strong>If you work on a large enterprise codebase and need the AI to know the full context:</strong> <a href="/agent/cody">Cody</a>. The Sourcegraph-powered codebase context, the enterprise governance, and the on-prem option make it the right answer for enterprise use cases.</p>
+
+<p><strong>If you want to run a local model and keep your code on your machine:</strong> <a href="/agent/continue">Continue</a>. The local model support is the best in class, and the config-driven approach lets you fine-tune every aspect of the AI coding experience.</p>
+
+<p><strong>If you are a power user who likes to assemble their own stack:</strong> <a href="/agent/continue">Continue</a>. The config.json approach is the most flexible. You can swap models, providers, and assistants without waiting for the tool to ship new features.</p>
+
+<p><strong>If you want the best out-of-the-box experience:</strong> <a href="/agent/cody">Cody</a>. For a developer who does not want to read docs, Cody's opinionated defaults work well. <a href="/agent/continue">Continue</a> requires more setup.</p>
+
+<p><strong>For most serious AI coding work, you end up using a mix.</strong> Aider for terminal-driven refactors, <a href="/agent/cody">Cody</a> for codebase-aware Q&A, <a href="/agent/continue">Continue</a> for the local-model case. The three are not mutually exclusive — they cover different parts of the AI coding workflow.</p>
+
+<h2>What to try first</h2>
+
+<p>If you've never used an open-source AI coding tool, start with <strong><a href="/agent/continue">Continue</a></strong> — the VS Code extension is the lowest friction, and the free tier is enough to feel the category. Once you've explored the model picker and the context providers, try <strong>Aider</strong> for the terminal-native experience. Add <strong><a href="/agent/cody">Cody</a></strong> when you work on a codebase large enough to benefit from full-repo context. The three are not mutually exclusive — install all three and use the one that fits the task.</p>
+
+<h2>Bottom line</h2>
+
+<p>Aider, Cody, and Continue cover three different opinions on what "open-source AI coding" means. Aider is the terminal-native git-integrated pair programmer. Cody is the codebase-aware enterprise assistant. Continue is the assemble-your-own-stack extension. Pick the one that matches your workflow — terminal (Aider), enterprise (Cody), or power user (Continue) — and add the others when you hit the limits of the first one.</p>
+
+<p>See the full profiles — and 59 other AI agents — in our <a href="/">directory</a>.</p>
+`,
   }
 ];
 

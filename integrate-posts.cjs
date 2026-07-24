@@ -10,37 +10,37 @@ if (endIdx === -1) { console.error('Could not find end marker'); process.exit(1)
 
 const newPosts = [
   {
-    slug: 'ai-music-suno-vs-udio-2026',
-    title: "AI Music Generation in 2026: Suno vs Udio",
-    excerpt: "Two AI music platforms dominate in 2026. Suno is the accessible text-to-music platform that made AI music mainstream. Udio is the high-fidelity platform built for musicians and producers. Here's how to pick.",
-    date: '2026-07-21',
-    tags: ['music', 'creative', 'comparison', 'suno', 'udio'],
-    relatedAgents: ['suno', 'udio'],
-    coverThumb: '/blog/ai-music-2026-thumb.jpg',
-    readingTime: 9,
-    file: 'temp-post10.md'
+    slug: 'ai-chat-claude-vs-chatgpt-vs-deepseek-2026',
+    title: "AI Chat Models in 2026: Claude vs ChatGPT vs DeepSeek",
+    excerpt: "Three AI chat products dominate 2026. Claude leads on reasoning and safety. ChatGPT leads on ecosystem and multimodal. DeepSeek leads on cost and open weights. Here's how to pick the right one.",
+    date: '2026-07-24',
+    tags: ['chat', 'llm', 'comparison', 'claude', 'chatgpt', 'deepseek'],
+    relatedAgents: ['claude', 'chatgpt', 'deepseek'],
+    coverThumb: '/blog/ai-chat-2026-thumb.jpg',
+    readingTime: 10,
+    file: 'temp-post13.md'
   },
   {
-    slug: 'ai-avatar-heygen-vs-synthesia-2026',
-    title: "AI Avatar Video in 2026: Heygen vs Synthesia",
-    excerpt: "Two AI avatar video platforms dominate the enterprise market. Heygen is the creator-friendly platform with 300+ avatars and 175+ languages. Synthesia is the enterprise compliance platform with deep governance. Here's how to pick.",
-    date: '2026-07-21',
-    tags: ['video', 'avatar', 'enterprise', 'comparison', 'heygen', 'synthesia'],
-    relatedAgents: ['heygen', 'synthesia'],
-    coverThumb: '/blog/ai-avatar-2026-thumb.jpg',
+    slug: 'ai-data-vanna-vs-notebooklm-2026',
+    title: "AI for Data Analysis in 2026: Vanna vs NotebookLM",
+    excerpt: "Two AI tools have become the default for working with data in 2026. Vanna is the AI SQL agent for structured data. NotebookLM is the AI research notebook for documents. They compose, not compete.",
+    date: '2026-07-24',
+    tags: ['data', 'analysis', 'sql', 'research', 'comparison', 'vanna', 'notebooklm'],
+    relatedAgents: ['notebooklm', 'vanna'],
+    coverThumb: '/blog/ai-data-2026-thumb.jpg',
     readingTime: 9,
-    file: 'temp-post11.md'
+    file: 'temp-post14.md'
   },
   {
-    slug: 'ai-customer-service-sierra-vs-decagon-2026',
-    title: "AI Customer Service in 2026: Sierra vs Decagon",
-    excerpt: "Two AI customer service platforms dominate the enterprise market. Sierra is the brand-voice platform that prioritizes customer experience. Decagon is the resolution-efficiency platform built for high-volume support operations. Here's how to pick.",
-    date: '2026-07-21',
-    tags: ['customer-service', 'enterprise', 'comparison', 'sierra', 'decagon'],
-    relatedAgents: ['sierra', 'decagon'],
-    coverThumb: '/blog/ai-customer-service-2026-thumb.jpg',
-    readingTime: 9,
-    file: 'temp-post12.md'
+    slug: 'open-source-coding-aider-vs-cody-vs-continue-2026',
+    title: "Open-Source AI Coding in 2026: Aider vs Cody vs Continue",
+    excerpt: "Three open-source AI coding tools have carved out distinct positions in 2026. Aider is the terminal-native git-integrated pair programmer. Cody is the codebase-aware enterprise assistant. Continue is the assemble-your-own-stack extension.",
+    date: '2026-07-24',
+    tags: ['coding', 'open-source', 'comparison', 'aider', 'cody', 'continue'],
+    relatedAgents: ['cody', 'continue'],
+    coverThumb: '/blog/open-source-coding-2026-thumb.jpg',
+    readingTime: 10,
+    file: 'temp-post15.md'
   }
 ];
 
