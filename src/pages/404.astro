@@ -1,16 +1,82 @@
 ---
 import Base from '../layouts/Base.astro';
+import { agents, getFeatured } from '../data/agents';
+import { getBlogSorted } from '../data/blog';
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const featured = getFeatured().slice(0, 6);
+const recentPosts = getBlogSorted().slice(0, 4);
 ---
 
-<Base title="Not found">
-  <section class="hero" style="padding-top: 120px; min-height: 50vh;">
+<Base title="Not found" noAds={true}>
+  <section class="hero" style="padding-top: 80px; padding-bottom: 24px;">
     <div class="container">
       <h1>404 — <span class="grad">agent not found</span></h1>
-      <p>This page doesn't exist. Maybe it shipped itself off to a new endpoint.</p>
-      <div class="detail-actions" style="justify-content: center;">
+      <p>
+        The page you were looking for doesn't exist. Maybe it shipped itself
+        off to a new endpoint, or the link is mistyped.
+      </p>
+      <div class="detail-actions" style="justify-content: center; margin-top: 20px;">
         <a href={`${base}/`} class="btn primary">← Back home</a>
-        <a href={`${base}/#categories`} class="btn">Browse agents</a>
+        <a href={`${base}/blog`} class="btn">Read the blog</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Popular agents</h2>
+        <a href={`${base}/#categories`} class="count">See all {agents.length} →</a>
+      </div>
+      <div class="grid">
+        {featured.map((agent) => (
+          <a href={`${base}/agent/${agent.slug}`} class="card-wrap">
+            <article class="card">
+              <div class="card-head">
+                <div class="card-name">{agent.name}</div>
+                <span class={`badge ${agent.license}`}>{agent.license}</span>
+              </div>
+              <p class="card-tagline">{agent.tagline}</p>
+              <div class="card-foot">
+                <span class="card-cat">{agent.category}</span>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 20px;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Latest from the blog</h2>
+        <a href={`${base}/blog`} class="count">All posts →</a>
+      </div>
+      <div class="related-grid">
+        {recentPosts.map((p) => (
+          <a href={`${base}/blog/${p.slug}`} class="related-card">
+            <div class="related-meta">
+              <time datetime={p.date}>{new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</time>
+              <span class="dot">·</span>
+              <span>{p.readingTime} min</span>
+            </div>
+            <h3>{p.title}</h3>
+            <p>{p.excerpt}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 8px; padding-bottom: 80px;">
+    <div class="container">
+      <div class="related-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <a href={`${base}/about`} class="related-card"><h3>About the directory</h3><p>How we pick agents and maintain the list.</p></a>
+        <a href={`${base}/contact`} class="related-card"><h3>Contact</h3><p>Missing an agent? Email us.</p></a>
+        <a href={`${base}/privacy`} class="related-card"><h3>Privacy</h3><p>How we handle your data.</p></a>
+        <a href={`${base}/disclaimer`} class="related-card"><h3>Disclaimer</h3><p>Editorial independence and product names.</p></a>
       </div>
     </div>
   </section>
