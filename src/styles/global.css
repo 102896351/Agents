@@ -531,6 +531,7 @@ a:hover { text-decoration: underline; }
   transition: color 0.15s;
 }
 .footer-nav a:hover { color: var(--accent-soft); text-decoration: none; }
+.footer-sites-label { color: var(--text-muted); font-size: 14px; font-weight: 500; }
 
 .footer-tagline {
   margin: 0 0 10px;
