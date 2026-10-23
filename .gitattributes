@@ -1,0 +1,11 @@
+# 图片是二进制文件，禁止 Git 参与文本转换/行尾规范化。
+# 历史上 public/ 下的 jpg 曾被按文本读写，导致 JPEG 头 (FFD8) 被替换成
+# UTF-8 替换字符 (EF BF BD)，导致线上所有博客图片无法解码。
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

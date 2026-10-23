@@ -29,7 +29,16 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm install
+      # Guard: images under public/ must stay valid binary. They were once
+      # committed after being read/written as text, which turned the JPEG
+      # header (FFD8) into UTF-8 replacement chars (EF BF BD) and left every
+      # blog image broken on the live site. Fail the build instead of shipping
+      # that again.
+      - name: Verify image binaries
+        run: node scripts/check-image-binary.cjs public
       - run: npm run build
+      - name: Verify image binaries in dist
+        run: node scripts/check-image-binary.cjs dist
       # AdSense ads.txt must exist in the built artifact with the correct
       # publisher ID. Without this guard, an accidental removal or rename
       # of public/ads.txt would silently ship a 404 at the live origin,
