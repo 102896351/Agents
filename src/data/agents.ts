@@ -26,6 +26,8 @@
 //      alternatives 替代品 slug 数组（指向同文件其他条目）
 // ============================================================
 
+import { extraAgents2026 } from './agents-extra-2026';
+
 export type License = 'open-source' | 'commercial' | 'freemium';
 
 export interface Benchmark {
@@ -3763,6 +3765,7 @@ export const agents: Agent[] = [
         'You only need inline code completion (Copilot / Cursor). For end-to-end coding agents that read and write code, Cursor / Windsurf / OpenCode.',
     },
   },
+  ...extraAgents2026,
 ];
 
 // 工具函数：按分类聚合
