@@ -1,0 +1,339 @@
+---
+import Base from '../../layouts/Base.astro';
+import AgentCard from '../../components/AgentCard.astro';
+import { categories, getAgentsByCategory, type Category } from '../../data/agents';
+import { getBlogSorted } from '../../data/blog';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// 每个类别的详细介绍 + 典型使用场景（站点英文内容，手写，非生成）
+const intros: Record<string, { intro: string; useCases: string[] }> = {
+  coding: {
+    intro:
+      "Coding agents read, write, and refactor real codebases. They turn a one-line spec into working changes — opening files, running tests, and iterating until the build is green. This page collects the coding agents we've vetted, from terminal-native tools like Claude Code and Aider to IDE-integrated assistants like Cursor and Windsurf.",
+    useCases: [
+      'Scaffold a new feature from a plain-language request',
+      'Fix a failing test or lint error across the whole repo',
+      'Self-review your own PR before a teammate sees it',
+    ],
+  },
+  research: {
+    intro:
+      "Research agents search, read, and synthesize information so you don't have to. They plan queries, crawl primary sources, and return a cited briefing instead of a list of blue links. Use them for market scans, literature reviews, and competitive teardowns.",
+    useCases: [
+      'Compile a cited briefing on any topic in minutes',
+      'Summarize dozens of PDFs into one memo',
+      'Track down primary sources with links you can verify',
+    ],
+  },
+  browsing: {
+    intro:
+      "Browsing agents navigate the live web and complete tasks online — filling forms, clicking through flows, and extracting what's behind a login or a JavaScript-heavy page. They're the difference between 'I have a URL' and 'the task is done'.",
+    useCases: [
+      'Compare options across several sites without doing it yourself',
+      "Pull data that's locked behind interactions, not static HTML",
+      'Run multi-step workflows end-to-end in a real browser',
+    ],
+  },
+  automation: {
+    intro:
+      "Automation agents run workflows and connect your tools. They watch triggers, call APIs, and chain steps so routine work happens without you. Think n8n flows, Zapier zaps, and agentic orchestration layers that tie an LLM to your stack.",
+    useCases: [
+      'Automate a daily report stitched from three SaaS tools',
+      'Connect an LLM to your calendar, CRM, and inbox',
+      'Trigger actions from a natural-language command',
+    ],
+  },
+  framework: {
+    intro:
+      "Frameworks are the building blocks for your own agents. They give you memory, tool-calling, retrieval, and orchestration so you can ship a custom agent without reinventing the loop. LlamaIndex, LangGraph, Agno, and CrewAI all live here.",
+    useCases: [
+      'Prototype a RAG agent over your own documents',
+      'Compose multi-agent workflows with explicit state',
+      'Add reliable tool-use to an existing LLM app',
+    ],
+  },
+  creative: {
+    intro:
+      "Creative agents generate text, images, audio, and video. They're the production layer — turning a prompt into a finished asset you can ship. We cover the models and tools worth your time, not the five hundred also-rans.",
+    useCases: [
+      'Generate on-brand images from a text prompt',
+      'Draft long-form content in your voice',
+      'Produce short video or audio assets at scale',
+    ],
+  },
+};
+
+export function getStaticPaths() {
+  return categories.map((c) => {
+    const catAgents = getAgentsByCategory(c.id);
+    const related = getBlogSorted()
+      .filter((p) => (p.tags || []).includes(c.id) || (p.tags || []).includes(c.id + 's'))
+      .slice(0, 6);
+    return {
+      params: { id: c.id },
+      props: { category: c, catAgents, related },
+    };
+  });
+}
+
+const { category, catAgents, related } = Astro.props as {
+  category: (typeof categories)[number];
+  catAgents: ReturnType<typeof getAgentsByCategory>;
+  related: ReturnType<typeof getBlogSorted>;
+};
+
+const info = intros[category.id];
+const title = `${category.label} AI Agents`;
+const description = `${category.description}. Browse ${catAgents.length} hand-picked ${category.label.toLowerCase()} AI agents and read related analysis on AI Agents Hub.`;
+const url = `https://gonglue.xyz/category/${category.id}`;
+---
+
+<Base title={title} description={description}>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: title,
+      description,
+      url,
+      numberOfItems: catAgents.length,
+      itemListElement: catAgents.map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: a.name,
+        url: `https://gonglue.xyz/agent/${a.slug}`,
+        description: a.tagline,
+      })),
+    })}
+  />
+
+  <section class="section cat-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href={`${base}/`}>Home</a><span>›</span>
+        <a href={`${base}/#categories`}>Categories</a><span>›</span>
+        <span class="current">{category.label}</span>
+      </nav>
+      <h1>{category.label} <span class="grad">AI Agents</span></h1>
+      <p class="lede">{category.description}.</p>
+      {
+        info && (
+          <>
+            <p class="intro">{info.intro}</p>
+            <ul class="usecases">
+              {info.useCases.map((u) => (
+                <li>{u}</li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>{category.label} agents</h2>
+        <span class="count">{catAgents.length} listed</span>
+      </div>
+      <div class="grid">
+        {catAgents.map((a) => <AgentCard agent={a} base={base} />)}
+      </div>
+    </div>
+  </section>
+
+  {
+    related.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Related reading</h2>
+            <span class="count">{related.length} posts</span>
+          </div>
+          <div class="blog-grid">
+            {related.map((p) => (
+              <a href={`${base}/blog/${p.slug}`} class="blog-card">
+                {p.coverThumb && (
+                  <div class="thumb">
+                    <img src={p.coverThumb} alt="" loading="lazy" decoding="async" width="600" height="335" />
+                  </div>
+                )}
+                <div class="blog-card-body">
+                  <h3>{p.title}</h3>
+                  <p class="excerpt">{p.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container">
+      <p class="all-cats">
+        <span class="all-cats-label">Browse all categories:</span>
+        {
+          categories.map((c) => (
+            <a href={`${base}/category/${c.id}`} class={c.id === category.id ? 'active' : ''}>
+              {c.label}
+            </a>
+          ))
+        }
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cat-hero {
+    padding-top: 40px;
+  }
+  .breadcrumb {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+  }
+  .breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .breadcrumb a:hover {
+    color: #818cf8;
+  }
+  .breadcrumb span {
+    margin: 0 8px;
+  }
+  .breadcrumb .current {
+    color: var(--text);
+  }
+  .cat-hero h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 0 0 12px;
+  }
+  .grad {
+    background: linear-gradient(90deg, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede {
+    font-size: 19px;
+    color: var(--text-muted);
+    margin: 0 0 20px;
+    max-width: 720px;
+  }
+  .intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 760px;
+    margin: 0 0 18px;
+  }
+  .usecases {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+    max-width: 760px;
+  }
+  .usecases li {
+    position: relative;
+    padding-left: 28px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+  .usecases li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #818cf8;
+    font-weight: 700;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .blog-card:hover {
+    transform: translateY(-3px);
+    border-color: #818cf8;
+  }
+  .blog-card .thumb {
+    aspect-ratio: 600 / 335;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .blog-card .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .blog-card-body {
+    padding: 16px 18px 18px;
+  }
+  .blog-card-body h3 {
+    font-size: 16px;
+    line-height: 1.35;
+    margin: 0 0 8px;
+  }
+  .blog-card-body .excerpt {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .all-cats {
+    font-size: 14px;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .all-cats-label {
+    margin-right: 4px;
+  }
+  .all-cats a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 14px;
+    transition: all 0.15s ease;
+  }
+  .all-cats a:hover {
+    color: var(--text);
+    border-color: #818cf8;
+  }
+  .all-cats a.active {
+    color: #fff;
+    background: #6366f1;
+    border-color: #6366f1;
+  }
+</style>

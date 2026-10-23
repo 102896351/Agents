@@ -46,7 +46,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           drawn from this directory.
         </p>
         <p class="editorial-meta">
-          Last directory update: 2026-07-21 · 62 agents across 9 categories ·
+          Last directory update: 2026-07-21 · 62 agents across 6 categories ·
           17 long-form analysis posts · Maintained by
           <a href="/about#editorial-team">the editorial team</a>
         </p>
@@ -91,6 +91,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <p class="empty hidden" id="empty-state">No agents match your search.</p>
+    </div>
+  </section>
+
+  <!-- Browse by category: internal links to per-category landing pages -->
+  <section class="section" id="browse-categories">
+    <div class="container">
+      <div class="section-head">
+        <h2>Browse by category</h2>
+        <span class="count">{categories.length} categories</span>
+      </div>
+      <div class="pills">
+        {categories.map((c) => (
+          <a class="pill" href={`${base}/category/${c.id}`}>{c.label}</a>
+        ))}
+      </div>
     </div>
   </section>
 </Base>
