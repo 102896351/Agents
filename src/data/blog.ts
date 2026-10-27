@@ -5,6 +5,7 @@
 // ============================================================
 
 import { newPosts2026 } from './blog-new-2026';
+import { comparePosts2026 } from './blog-compare-2026';
 
 export interface BlogPost {
   slug: string;
@@ -21,6 +22,7 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   ...newPosts2026,
+  ...comparePosts2026,
   {
     slug: 'claude-code-vs-cursor-vs-cline-2026',
     title: 'Claude Code vs Cursor vs Cline: Which AI Coding Agent Should You Use in 2026?',
