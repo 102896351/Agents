@@ -28,6 +28,7 @@
 
 import { extraAgents2026 } from './agents-extra-2026';
 import { extraAgents2026b } from './agents-extra2-2026';
+import { extraAgents2026c } from './agents-extra3-2026';
 
 export type License = 'open-source' | 'commercial' | 'freemium';
 
@@ -3768,6 +3769,7 @@ export const agents: Agent[] = [
   },
   ...extraAgents2026,
   ...extraAgents2026b,
+  ...extraAgents2026c,
 ];
 
 // 工具函数：按分类聚合
