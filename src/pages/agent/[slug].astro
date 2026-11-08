@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import AgentCard from '../../components/AgentCard.astro';
 import { agents, categories } from '../../data/agents';
+import { getGuidesForAgent } from '../../data/blog';
 import { licenseLabel, difficultyLabel } from '../../utils/labels';
 
 // 静态构建：getStaticPaths 把每个 agent 生成一个独立 HTML 页
@@ -26,6 +27,9 @@ const altAgents = (agent.alternatives ?? [])
   .map((slug) => agents.find((a) => a.slug === slug))
   .filter(Boolean)
   .slice(0, 4) as typeof agents;
+
+// Reverse internal links: long-form guides that discuss this agent.
+const guides = getGuidesForAgent(agent.slug, 4);
 ---
 
 <Base title={agent.name} description={agent.tagline}>
@@ -38,7 +42,7 @@ const altAgents = (agent.alternatives ?? [])
       '@type': 'SoftwareApplication',
       name: agent.name,
       description: agent.description || agent.tagline,
-      url: `https://gonglue.xyz/agent/${agent.slug}`,
+      url: `https://gonglue.xyz/agent/${agent.slug}/`,
       applicationCategory: cat.label,
       operatingSystem: 'Cross-platform',
       offers: {
@@ -60,7 +64,7 @@ const altAgents = (agent.alternatives ?? [])
         ← Back to all agents
       </a>
       <div style="margin: 18px 0 16px; display: flex; gap: 8px; flex-wrap: wrap;">
-        <span class="pill active">{cat.label}</span>
+        <a class="pill active" href={`${base}/category/${cat.id}/`} style="text-decoration: none; color: inherit;">{cat.label}</a>
         <span class={`badge ${agent.license}`}>{licenseLabel(agent.license)}</span>
       </div>
       <h1>{agent.name}</h1>
@@ -91,6 +95,11 @@ const altAgents = (agent.alternatives ?? [])
           {agent.description
             ? agent.description
             : `${agent.name} is a ${cat.label.toLowerCase()} agent. ${agent.tagline}`}
+        </p>
+        <p class="context-link">
+          {agent.name} belongs to our <a href={`${base}/category/${cat.id}/`}>{cat.label} agents</a> collection.
+          Compare it in the <a href={`${base}/blog/`}>agent comparison guides</a> or browse the
+          <a href={`${base}/`}>full directory</a> before choosing.
         </p>
 
         {agent.useCases && agent.useCases.length > 0 && (
@@ -234,7 +243,7 @@ const altAgents = (agent.alternatives ?? [])
           <div class="alts">
             <h3>Alternatives</h3>
             {altAgents.map((a) => (
-              <a href={`${base}/agent/${a.slug}`} class="alt-link">
+              <a href={`${base}/agent/${a.slug}/`} class="alt-link">
                 <span class="alt-name">{a.name}</span>
                 <span class="alt-arrow">→</span>
               </a>
@@ -254,5 +263,59 @@ const altAgents = (agent.alternatives ?? [])
         </div>
       </section>
     )}
+
+    {guides.length > 0 && (
+      <section class="section">
+        <div class="section-head">
+          <h2>Guides mentioning {agent.name}</h2>
+        </div>
+        <div class="guide-links">
+          {guides.map((g) => (
+            <a href={`${base}/blog/${g.slug}/`}>
+              <span>{g.title}</span>
+              <span class="guide-meta">{g.readingTime} min read →</span>
+            </a>
+          ))}
+        </div>
+        <p class="guide-more">
+          More comparisons in the <a href={`${base}/blog/`}>guide index</a> · all{' '}
+          <a href={`${base}/category/${cat.id}/`}>{cat.label} agents</a>
+        </p>
+      </section>
+    )}
   </div>
+
+  <style is:global>
+    .context-link {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .context-link a {
+      color: #818cf8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .guide-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 12px;
+    }
+    .guide-links a {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .guide-links a:hover { border-color: #818cf8; }
+    .guide-meta { font-size: 12px; color: var(--text-muted); }
+    .guide-more { font-size: 14px; color: var(--text-muted); margin-top: 16px; }
+    .guide-more a { color: #818cf8; }
+  </style>
 </Base>

@@ -1,0 +1,200 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getBlogSorted, type BlogPost } from '../../../data/blog';
+import { TOPIC_TAGS, topicTagsFor, type TopicTag } from '../../../data/taxonomy';
+import { agents, categories } from '../../../data/agents';
+
+// One page per controlled topic (see src/data/taxonomy.ts).
+export function getStaticPaths() {
+  const posts = getBlogSorted();
+  return TOPIC_TAGS.map((topic) => ({
+    params: { tag: topic.slug },
+    props: {
+      topic,
+      posts: posts.filter((p) => topicTagsFor(p.tags, 4).includes(topic.slug)),
+    },
+  }));
+}
+
+interface Props {
+  topic: TopicTag;
+  posts: BlogPost[];
+}
+
+const { topic, posts } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const canonical = new URL(`${base}/blog/tags/${topic.slug}/`, Astro.site ?? 'https://gonglue.xyz').toString();
+const description = `${posts.length} guides about ${topic.label.toLowerCase()} — comparisons, hands-on reviews and decision frameworks from the AI Agents Hub editorial team.`;
+
+// Agents repeatedly referenced by the guides in this topic: a second,
+// genuinely useful internal-link layer (and substance for thin topics).
+const mentioned = [...new Set(posts.flatMap((p) => p.relatedAgents))]
+  .map((slug) => agents.find((a) => a.slug === slug))
+  .filter(Boolean)
+  .slice(0, 8) as typeof agents;
+
+const fmt = (d: string) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<Base title={`#${topic.label} guides`} description={description}>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify([
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: `#${topic.label} guides`,
+        description,
+        url: canonical,
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: posts.length,
+          itemListElement: posts.map((p, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: p.title,
+            url: `https://gonglue.xyz/blog/${p.slug}/`,
+          })),
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://gonglue.xyz/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://gonglue.xyz/blog/' },
+          { '@type': 'ListItem', position: 3, name: topic.label, item: canonical },
+        ],
+      },
+    ])}
+  />
+
+  <div class="container topic-page">
+    <a class="back-link" href={`${base}/blog/`}>← All guides</a>
+    <span class="eyebrow">TOPIC</span>
+    <h1>#{topic.label}</h1>
+    <p class="lede">{topic.blurb}</p>
+    <p class="count">{posts.length} guides in this collection.</p>
+
+    <div class="topic-grid">
+      {posts.map((p) => (
+        <article class="topic-card">
+          <time datetime={p.date}>{fmt(p.date)}</time>
+          <h2><a href={`${base}/blog/${p.slug}/`}>{p.title}</a></h2>
+          <p>{p.excerpt}</p>
+          <div class="card-topics">
+            {topicTagsFor(p.tags, 4).map((t) => (
+              <a href={`${base}/blog/tags/${t}/`}>#{t}</a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {mentioned.length > 0 && (
+      <section class="topic-section">
+        <h2>Agents covered in these guides</h2>
+        <div class="chip-row">
+          {mentioned.map((a) => (
+            <a href={`${base}/agent/${a.slug}/`}>{a.name}</a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="topic-section">
+      <h2>Browse by category</h2>
+      <div class="chip-row">
+        {categories.map((c) => (
+          <a href={`${base}/category/${c.id}/`}>{c.label} agents</a>
+        ))}
+        <a href={`${base}/`}>Full directory</a>
+      </div>
+    </section>
+
+    <p class="topic-foot">
+      Choosing between tools? Start with the <a href={`${base}/blog/`}>complete guide index</a>
+      or the <a href={`${base}/#categories`}>agent directory by category</a>.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .topic-page {
+    padding: 48px 0 80px;
+    max-width: 900px;
+  }
+  .back-link {
+    display: inline-block;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 28px;
+  }
+  .back-link:hover { color: var(--text); }
+  .eyebrow {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 40px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+  .lede {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 0 8px;
+  }
+  .count { font-size: 14px; color: var(--text-muted); margin: 0 0 32px; }
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .topic-card {
+    padding: 20px 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .topic-card time { font-size: 12px; color: var(--text-muted); }
+  .topic-card h2 { font-size: 17px; line-height: 1.35; margin: 8px 0; }
+  .topic-card h2 a { color: var(--text); text-decoration: none; }
+  .topic-card h2 a:hover { color: #818cf8; }
+  .topic-card p { font-size: 13px; line-height: 1.55; color: var(--text-muted); margin: 0 0 12px; }
+  .card-topics { display: flex; flex-wrap: wrap; gap: 6px; }
+  .card-topics a {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .card-topics a:hover { color: #818cf8; }
+  .topic-section { margin-top: 44px; }
+  .topic-section h2 { font-size: 22px; margin: 0 0 14px; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip-row a {
+    display: inline-block;
+    font-size: 13px;
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--surface);
+  }
+  .chip-row a:hover { border-color: #818cf8; color: #818cf8; }
+  .topic-foot { margin-top: 40px; font-size: 14px; color: var(--text-muted); }
+  .topic-foot a { color: #818cf8; }
+</style>

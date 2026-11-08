@@ -9,7 +9,7 @@ interface Props {
 const { agent, base = import.meta.env.BASE_URL.replace(/\/$/, '') } = Astro.props;
 ---
 
-<a href={`${base}/agent/${agent.slug}`} class="card">
+<a href={`${base}/agent/${agent.slug}/`} class="card">
   <div class="card-top">
     <h3>{agent.name}</h3>
     {agent.stars && (

@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getBlogSorted, getRelatedPosts, type BlogPost } from '../../data/blog';
+import { agents, categories } from '../../data/agents';
+import { topicTagsFor } from '../../data/taxonomy';
 
 export async function getStaticPaths() {
   return getBlogSorted().map((post) => ({
@@ -13,7 +15,16 @@ interface Props { post: BlogPost }
 const { post } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const related = getRelatedPosts(post.slug, 3);
-const canonical = new URL(`/blog/${post.slug}`, Astro.site ?? 'https://gonglue.xyz').toString();
+const canonical = new URL(`${base}/blog/${post.slug}/`, Astro.site ?? 'https://gonglue.xyz').toString();
+
+// Controlled topic chips + the agent profiles this guide actually discusses.
+const topics = topicTagsFor(post.tags, 4);
+const linkedAgents = post.relatedAgents
+  .map((slug) => agents.find((a) => a.slug === slug))
+  .filter(Boolean)
+  .slice(0, 6) as typeof agents;
+const primaryCat =
+  categories.find((c) => linkedAgents.some((a) => a.category === c.id)) ?? categories[0];
 ---
 
 <Base title={post.title} description={post.excerpt}>
@@ -39,14 +50,14 @@ const canonical = new URL(`/blog/${post.slug}`, Astro.site ?? 'https://gonglue.x
       publisher: { '@type': 'Organization', name: 'AI Agents Hub', url: 'https://gonglue.xyz' },
       mainEntityOfPage: canonical,
       url: canonical,
-      keywords: post.tags.join(', '),
+      keywords: [...new Set([...topics, ...post.tags])].join(', '),
     })}
   />
 
   <article class="post">
     <div class="container">
       <header class="post-header">
-        <a href={`${base}/blog`} class="back-link">← Back to Blog</a>
+        <a href={`${base}/blog/`} class="back-link">← Back to Blog</a>
         <h1>{post.title}</h1>
         <p class="post-excerpt">{post.excerpt}</p>
         <div class="post-meta">
@@ -56,16 +67,35 @@ const canonical = new URL(`/blog/${post.slug}`, Astro.site ?? 'https://gonglue.x
           <span class="dot">·</span>
           <span>{post.readingTime} min read</span>
         </div>
+        <div class="post-topics" aria-label="Topics">
+          {topics.map((t) => (
+            <a href={`${base}/blog/tags/${t}/`}>#{t}</a>
+          ))}
+        </div>
+        <p class="post-context">
+          Part of our <a href={`${base}/blog/`}>agent guides</a> · Browse all{' '}
+          <a href={`${base}/category/${primaryCat.id}/`}>{primaryCat.label} agents</a> or the{' '}
+          <a href={`${base}/`}>full directory</a>.
+        </p>
       </header>
 
       <div class="post-content" set:html={post.content} />
 
       <footer class="post-footer">
-        <div class="post-tags">
-          {post.tags.map((t) => (
-            <span class="tag">{t}</span>
-          ))}
-        </div>
+        {linkedAgents.length > 0 && (
+          <nav class="inline-links" aria-label="Agents covered in this guide">
+            <h2>Agents covered in this guide</h2>
+            <div class="inline-link-row">
+              {linkedAgents.map((a) => (
+                <a href={`${base}/agent/${a.slug}/`}>{a.name}</a>
+              ))}
+            </div>
+            <p>
+              Compare every <a href={`${base}/category/${primaryCat.id}/`}>{primaryCat.label} agent</a>,
+              or read more <a href={`${base}/blog/tags/${topics[0]}/`}>#{topics[0]} guides</a>.
+            </p>
+          </nav>
+        )}
 
         <!-- Author bio (E-E-A-T signal: per-article attribution to a real person) -->
         <aside class="author-bio" aria-label="About the author">
@@ -76,14 +106,14 @@ const canonical = new URL(`/blog/${post.slug}`, Astro.site ?? 'https://gonglue.x
             <p class="author-text">
               Mavis has spent the last six years writing about developer tools and
               AI infrastructure. She personally tests every agent in our
-              <a href="/">62-agent directory</a> and writes the long-form analysis
+              <a href={`${base}/`}>119-agent directory</a> and writes the long-form analysis
               posts on this blog. This post is part of our
-              <a href="/blog">editorial series</a> — every entry is written, edited,
+              <a href={`${base}/blog/`}>editorial series</a> — every entry is written, edited,
               and fact-checked by a person, not auto-generated.
             </p>
             <p class="author-cta">
-              Spotted an error? <a href="/contact">Email us</a> · Read about our
-              <a href="/about#editorial-team">editorial process</a>.
+              Spotted an error? <a href={`${base}/contact/`}>Email us</a> · Read about our
+              <a href={`${base}/about/#editorial-team`}>editorial process</a>.
             </p>
           </div>
         </aside>
@@ -97,7 +127,7 @@ const canonical = new URL(`/blog/${post.slug}`, Astro.site ?? 'https://gonglue.x
         <h2>More from the blog</h2>
         <div class="related-grid">
           {related.map((p) => (
-            <a href={`${base}/blog/${p.slug}`} class="related-card">
+            <a href={`${base}/blog/${p.slug}/`} class="related-card">
               <div class="related-meta">
                 <time datetime={p.date}>{new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</time>
                 <span class="dot">·</span>
@@ -235,18 +265,66 @@ const canonical = new URL(`/blog/${post.slug}`, Astro.site ?? 'https://gonglue.x
     padding-top: 24px;
     border-top: 1px solid var(--border);
   }
-  .post-tags {
+  .post-topics {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    margin-top: 18px;
   }
-  .post-tags .tag {
+  .post-topics a {
     display: inline-block;
     padding: 4px 12px;
     font-size: 12px;
     color: var(--text-muted);
     background: var(--surface-2);
     border-radius: 999px;
+    text-decoration: none;
+  }
+  .post-topics a:hover {
+    color: #818cf8;
+  }
+  .post-context {
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .post-context a {
+    color: #818cf8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .inline-links {
+    margin-bottom: 32px;
+  }
+  .inline-links h2 {
+    font-size: 20px;
+    margin: 0 0 12px;
+  }
+  .inline-link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .inline-link-row a {
+    font-size: 13px;
+    padding: 6px 13px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .inline-link-row a:hover {
+    border-color: #818cf8;
+    color: #818cf8;
+  }
+  .inline-links p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .inline-links p a {
+    color: #818cf8;
   }
   .author-bio {
     display: flex;

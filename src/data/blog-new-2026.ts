@@ -19,9 +19,9 @@ export const newPosts2026: BlogPost[] = [
     relatedAgents: ['devin', 'replit-agent', 'claude-code', 'aider', 'cursor', 'cline', 'codex', 'opencode'],
     coverThumb: '/blog/openhands-2026-thumb.jpg',
     content: `
-<p>In early 2024 a screenshot of a startup demo went viral: an AI agent that could take a GitHub issue and open a pull request that actually closed it. The startup was <a href="/agent/devin">Devin</a>, the price was enterprise-only, and the open-source community's reaction was predictable — they built their own. That project became <strong>OpenHands</strong> (it started life as OpenDevin), and two years later it is one of the most-starred AI coding projects on GitHub with <strong>91,000+ stars</strong> and a contributor base that dwarfs most commercial tools.</p>
+<p>In early 2024 a screenshot of a startup demo went viral: an AI agent that could take a GitHub issue and open a pull request that actually closed it. The startup was <a href="/agent/devin/">Devin</a>, the price was enterprise-only, and the open-source community's reaction was predictable — they built their own. That project became <strong>OpenHands</strong> (it started life as OpenDevin), and two years later it is one of the most-starred AI coding projects on GitHub with <strong>91,000+ stars</strong> and a contributor base that dwarfs most commercial tools.</p>
 
-<p>This post is a hands-on look at what OpenHands is in 2026, how its agent actually operates, and how it compares to the managed coding agents already in our <a href="/">directory</a> — <a href="/agent/devin">Devin</a>, <a href="/agent/replit-agent">Replit Agent</a>, and the terminal-native <a href="/agent/claude-code">Claude Code</a>.</p>
+<p>This post is a hands-on look at what OpenHands is in 2026, how its agent actually operates, and how it compares to the managed coding agents already in our <a href="/">directory</a> — <a href="/agent/devin/">Devin</a>, <a href="/agent/replit-agent/">Replit Agent</a>, and the terminal-native <a href="/agent/claude-code/">Claude Code</a>.</p>
 
 <figure>
   <img src="/blog/openhands-2026-hero.jpg" alt="A glowing terminal window showing an autonomous coding agent assembling code modules" width="1000" height="667" loading="lazy" decoding="async" />
@@ -30,7 +30,7 @@ export const newPosts2026: BlogPost[] = [
 
 <h2>What OpenHands actually is</h2>
 
-<p>OpenHands is a <strong>platform for autonomous software engineering agents</strong>, not a single script. The headline capability is the same one that made <a href="/agent/devin">Devin</a> famous: give it a task — a bug, a feature, a refactor — and it plans, writes code, runs commands, browses the web, and opens a pull request. But the architecture is what separates it from a clever demo:</p>
+<p>OpenHands is a <strong>platform for autonomous software engineering agents</strong>, not a single script. The headline capability is the same one that made <a href="/agent/devin/">Devin</a> famous: give it a task — a bug, a feature, a refactor — and it plans, writes code, runs commands, browses the web, and opens a pull request. But the architecture is what separates it from a clever demo:</p>
 
 <ul>
   <li><strong>An event-driven agent loop.</strong> Every action (edit a file, run a test, call a tool) emits an event; the agent observes the result and decides the next step. You can watch this loop unfold in a web UI or stream it to a terminal.</li>
@@ -43,7 +43,7 @@ export const newPosts2026: BlogPost[] = [
 
 <p>A realistic flow looks like this: you paste an issue or a natural-language request, the agent reads the repository structure, proposes a plan (which you can approve or edit), then executes — editing files, running the build, fixing the errors it hits, and iterating until tests pass. The whole trajectory is visible and replayable, and the output is a real diff you review like any teammate's work.</p>
 
-<p>Where OpenHands is genuinely strong is <strong>long-horizon tasks on repositories it has been allowed to explore</strong>. A multi-file refactor, a dependency upgrade across a monorepo, or "make this service pass its flaky integration tests" are the kinds of jobs where the sandbox-and-loop design pays off. If you already use <a href="/agent/claude-code">Claude Code</a> or <a href="/agent/aider">Aider</a> for refactors, OpenHands feels like the same idea with more guardrails and a first-class UI.</p>
+<p>Where OpenHands is genuinely strong is <strong>long-horizon tasks on repositories it has been allowed to explore</strong>. A multi-file refactor, a dependency upgrade across a monorepo, or "make this service pass its flaky integration tests" are the kinds of jobs where the sandbox-and-loop design pays off. If you already use <a href="/agent/claude-code/">Claude Code</a> or <a href="/agent/aider/">Aider</a> for refactors, OpenHands feels like the same idea with more guardrails and a first-class UI.</p>
 
 <h2>Getting started</h2>
 
@@ -57,9 +57,9 @@ export const newPosts2026: BlogPost[] = [
 
 <h2>Who it is for — and who it isn't</h2>
 
-<p><strong>OpenHands is for</strong> engineers and teams who want <a href="/agent/devin">Devin</a>-style autonomy without the enterprise contract, and who are comfortable owning their own infrastructure, models, and API keys. If you run a fleet of internal repos and want an agent that proposes PRs on a schedule, this is one of the most mature options available.</p>
+<p><strong>OpenHands is for</strong> engineers and teams who want <a href="/agent/devin/">Devin</a>-style autonomy without the enterprise contract, and who are comfortable owning their own infrastructure, models, and API keys. If you run a fleet of internal repos and want an agent that proposes PRs on a schedule, this is one of the most mature options available.</p>
 
-<p><strong>It is not</strong> a zero-setup product. You choose a model and a runtime, you pay the model provider, and you own the failure modes. For a solo developer who just wants AI inside their editor, <a href="/agent/cursor">Cursor</a> or <a href="/agent/cline">Cline</a> will get you productive in minutes. And like every autonomous coding agent, it still needs a human reviewing the PR — the 91K stars are for the loop, not for firing your reviewers.</p>
+<p><strong>It is not</strong> a zero-setup product. You choose a model and a runtime, you pay the model provider, and you own the failure modes. For a solo developer who just wants AI inside their editor, <a href="/agent/cursor/">Cursor</a> or <a href="/agent/cline/">Cline</a> will get you productive in minutes. And like every autonomous coding agent, it still needs a human reviewing the PR — the 91K stars are for the loop, not for firing your reviewers.</p>
 
 <h2>OpenHands vs the managed crowd</h2>
 
@@ -76,7 +76,7 @@ export const newPosts2026: BlogPost[] = [
 
 <h2>Bottom line</h2>
 
-<p>OpenHands is the open-source answer to the autonomous-coding hype, and unlike most answers it is production-grade: 91K stars, an event-driven architecture, and a sandbox model that keeps the agent's mistakes contained. It will not replace your engineers, but it will happily open the first draft of the PR. If you want <a href="/agent/devin">Devin</a>'s ambition with your own keys and your own servers, this is the project to run.</p>
+<p>OpenHands is the open-source answer to the autonomous-coding hype, and unlike most answers it is production-grade: 91K stars, an event-driven architecture, and a sandbox model that keeps the agent's mistakes contained. It will not replace your engineers, but it will happily open the first draft of the PR. If you want <a href="/agent/devin/">Devin</a>'s ambition with your own keys and your own servers, this is the project to run.</p>
 
 <p>See how it stacks up against the rest of the field in our <a href="/">62-agent directory</a>.</p>
 `,
@@ -93,7 +93,7 @@ export const newPosts2026: BlogPost[] = [
     relatedAgents: ['langgraph', 'crewai', 'autogen', 'openai-agents-sdk', 'mastra', 'dify'],
     coverThumb: '/blog/agno-2026-thumb.jpg',
     content: `
-<p>If you browsed GitHub for an "AI agent framework" in 2024, you met Phidata. By 2026 the same repo had rebranded to <strong>Agno</strong> and the tagline had shifted from "build agents" to "build, run, and manage agent platforms." That is not marketing drift — it reflects a real architectural bet. Agno now powers <strong>43,000+ stars</strong> and positions itself less as a rival to <a href="/agent/langgraph">LangGraph</a> and more as the runtime underneath production agent fleets.</p>
+<p>If you browsed GitHub for an "AI agent framework" in 2024, you met Phidata. By 2026 the same repo had rebranded to <strong>Agno</strong> and the tagline had shifted from "build agents" to "build, run, and manage agent platforms." That is not marketing drift — it reflects a real architectural bet. Agno now powers <strong>43,000+ stars</strong> and positions itself less as a rival to <a href="/agent/langgraph/">LangGraph</a> and more as the runtime underneath production agent fleets.</p>
 
 <p>Here is what Agno is, how it differs from the frameworks already in our <a href="/">directory</a>, and when you should reach for it.</p>
 
@@ -127,7 +127,7 @@ agent.print_response("Summarise this repo's README in three bullets")</code></pr
 
 <h2>Agno vs LangGraph vs CrewAI</h2>
 
-<p>The honest answer is that <a href="/agent/langgraph">LangGraph</a> and <a href="/agent/crewai">CrewAI</a> are the closest neighbours, and they optimise for different things:</p>
+<p>The honest answer is that <a href="/agent/langgraph/">LangGraph</a> and <a href="/agent/crewai/">CrewAI</a> are the closest neighbours, and they optimise for different things:</p>
 
 <table>
 <thead><tr><th></th><th>Agno</th><th>LangGraph</th><th>CrewAI</th></tr></thead>
@@ -140,11 +140,11 @@ agent.print_response("Summarise this repo's README in three bullets")</code></pr
 </tbody>
 </table>
 
-<p>If you need a deterministic, inspectable graph with human-in-the-loop checkpoints, <a href="/agent/langgraph">LangGraph</a> is still the safer default. If you want role-based collaboration with the least ceremony, <a href="/agent/crewai">CrewAI</a> is friendlier. Agno wins when you want a high-throughput runtime with memory, knowledge, and monitoring wired in from line one.</p>
+<p>If you need a deterministic, inspectable graph with human-in-the-loop checkpoints, <a href="/agent/langgraph/">LangGraph</a> is still the safer default. If you want role-based collaboration with the least ceremony, <a href="/agent/crewai/">CrewAI</a> is friendlier. Agno wins when you want a high-throughput runtime with memory, knowledge, and monitoring wired in from line one.</p>
 
 <h2>Who should use it</h2>
 
-<p><strong>Pick Agno if</strong> you are building a product that spawns many agents per request, you want RAG and memory without gluing five libraries together, and you value built-in tracing. <strong>Skip it if</strong> you need the fine-grained control and ecosystem of <a href="/agent/langgraph">LangGraph</a> for a single complex workflow, or you want the collaborative-role ergonomics of <a href="/agent/crewai">CrewAI</a>.</p>
+<p><strong>Pick Agno if</strong> you are building a product that spawns many agents per request, you want RAG and memory without gluing five libraries together, and you value built-in tracing. <strong>Skip it if</strong> you need the fine-grained control and ecosystem of <a href="/agent/langgraph/">LangGraph</a> for a single complex workflow, or you want the collaborative-role ergonomics of <a href="/agent/crewai/">CrewAI</a>.</p>
 
 <h2>Bottom line</h2>
 
@@ -167,7 +167,7 @@ agent.print_response("Summarise this repo's README in three bullets")</code></pr
     content: `
 <p>The AI agent ecosystem has a bloat problem: most "minimal" frameworks still pull in a graph engine, a memory layer, a vector store, and a telemetry stack. <strong>smolagents</strong>, released by Hugging Face in late 2024, is the rebuttal. The entire library is a few hundred lines, it has <strong>30,000+ stars</strong>, and its central thesis is almost confrontational: agents should express their actions as <strong>Python code</strong>, not as JSON tool-call dictionaries.</p>
 
-<p>If you already use a heavier framework from our <a href="/">directory</a> like <a href="/agent/langgraph">LangGraph</a> or <a href="/agent/agno">Agno</a>, smolagents is worth understanding as the "what if we deleted everything optional" end of the spectrum.</p>
+<p>If you already use a heavier framework from our <a href="/">directory</a> like <a href="/agent/langgraph/">LangGraph</a> or <a href="/agent/agno/">Agno</a>, smolagents is worth understanding as the "what if we deleted everything optional" end of the spectrum.</p>
 
 <figure>
   <img src="/blog/smolagents-2026-hero.jpg" alt="A minimal glowing code bracket with a small bird representing a lightweight agent" width="1000" height="667" loading="lazy" decoding="async" />
@@ -207,7 +207,7 @@ agent.run("What is the latest stable version of PyTorch?")</code></pre>
 
 <h2>Who it is for</h2>
 
-<p><strong>smolagents is for</strong> developers who want to understand an agent from the inside out, who prefer reading source to reading docs, and who are happy composing their own memory/RAG on top. It is also the best teaching tool in the category — you can read the whole thing on a flight. <strong>It is not</strong> a turnkey platform; if you need tracing, hosted memory, and a control plane, <a href="/agent/agno">Agno</a> or <a href="/agent/langgraph">LangGraph</a> will save you weeks.</p>
+<p><strong>smolagents is for</strong> developers who want to understand an agent from the inside out, who prefer reading source to reading docs, and who are happy composing their own memory/RAG on top. It is also the best teaching tool in the category — you can read the whole thing on a flight. <strong>It is not</strong> a turnkey platform; if you need tracing, hosted memory, and a control plane, <a href="/agent/agno/">Agno</a> or <a href="/agent/langgraph/">LangGraph</a> will save you weeks.</p>
 
 <h2>Bottom line</h2>
 
@@ -258,7 +258,7 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
 
 <h2>Where it ends and a framework begins</h2>
 
-<p>The recurring question is whether LlamaIndex overlaps with <a href="/agent/langgraph">LangGraph</a> or <a href="/agent/crewai">CrewAI</a>. The clean way to think about it: LlamaIndex owns <strong>data in</strong>, frameworks own <strong>control flow</strong>. You typically use LlamaIndex to build the retriever and knowledge tools, then hand those tools to an agent orchestrator. Plenty of production systems do exactly that.</p>
+<p>The recurring question is whether LlamaIndex overlaps with <a href="/agent/langgraph/">LangGraph</a> or <a href="/agent/crewai/">CrewAI</a>. The clean way to think about it: LlamaIndex owns <strong>data in</strong>, frameworks own <strong>control flow</strong>. You typically use LlamaIndex to build the retriever and knowledge tools, then hand those tools to an agent orchestrator. Plenty of production systems do exactly that.</p>
 
 <table>
 <thead><tr><th></th><th>LlamaIndex</th><th>LangGraph</th><th>CrewAI</th></tr></thead>
@@ -272,7 +272,7 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
 
 <h2>Who should use it</h2>
 
-<p><strong>Use LlamaIndex if</strong> your problem is "my model needs to know about my documents, my database, my tickets" — i.e. almost every serious internal agent. <strong>Look elsewhere if</strong> you have no private data and just want to orchestrate calls between APIs; then <a href="/agent/langgraph">LangGraph</a> is a leaner fit. And if you want a hosted, no-infra RAG experience, compare it against <a href="/agent/notebooklm">NotebookLM</a> before you stand up your own pipeline.</p>
+<p><strong>Use LlamaIndex if</strong> your problem is "my model needs to know about my documents, my database, my tickets" — i.e. almost every serious internal agent. <strong>Look elsewhere if</strong> you have no private data and just want to orchestrate calls between APIs; then <a href="/agent/langgraph/">LangGraph</a> is a leaner fit. And if you want a hosted, no-infra RAG experience, compare it against <a href="/agent/notebooklm/">NotebookLM</a> before you stand up your own pipeline.</p>
 
 <h2>Bottom line</h2>
 
@@ -293,7 +293,7 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
     relatedAgents: ['langgraph', 'openai-agents-sdk', 'n8n', 'zapier-agents', 'make', 'manus'],
     coverThumb: '/blog/composio-2026-thumb.jpg',
     content: `
-<p>Most agent demos die at the same wall: the model can plan, but it cannot actually <em>do</em> anything. It cannot send the Slack message, create the Notion page, or query the production database, because each of those needs credentials, an API, and a hundred lines of glue. <strong>Composio</strong> is the company (and 30,000-star open-source project) that decided this glue should be a category. It is the "tool layer" sitting under frameworks in our <a href="/">directory</a> like <a href="/agent/langgraph">LangGraph</a> and the <a href="/agent/openai-agents-sdk">OpenAI Agents SDK</a>.</p>
+<p>Most agent demos die at the same wall: the model can plan, but it cannot actually <em>do</em> anything. It cannot send the Slack message, create the Notion page, or query the production database, because each of those needs credentials, an API, and a hundred lines of glue. <strong>Composio</strong> is the company (and 30,000-star open-source project) that decided this glue should be a category. It is the "tool layer" sitting under frameworks in our <a href="/">directory</a> like <a href="/agent/langgraph/">LangGraph</a> and the <a href="/agent/openai-agents-sdk/">OpenAI Agents SDK</a>.</p>
 
 <figure>
   <img src="/blog/composio-2026-hero.jpg" alt="Modular glowing interface blocks plugging into a central gear representing tool integration" width="1000" height="667" loading="lazy" decoding="async" />
@@ -318,7 +318,7 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
 toolset = ComposioToolSet(entity_id="user_123")
 tools = toolset.get_tools(apps=["github", "slack"])</code></pre>
 
-<p>That snippet gives a <a href="/agent/langgraph">LangGraph</a> or LangChain agent live, authenticated GitHub and Slack actions for a specific user. The auth tokens live in Composio, not in your code.</p>
+<p>That snippet gives a <a href="/agent/langgraph/">LangGraph</a> or LangChain agent live, authenticated GitHub and Slack actions for a specific user. The auth tokens live in Composio, not in your code.</p>
 
 <h2>Composio vs building it yourself vs Zapier</h2>
 
@@ -332,11 +332,11 @@ tools = toolset.get_tools(apps=["github", "slack"])</code></pre>
 </tbody>
 </table>
 
-<p>For a developer shipping an agent product, Composio beats rolling your own the moment you exceed a handful of integrations. For a non-developer automating across SaaS apps, <a href="/agent/zapier-agents">Zapier Agents</a> (or <a href="/agent/n8n">n8n</a> for the self-hosted crowd) stays the faster path.</p>
+<p>For a developer shipping an agent product, Composio beats rolling your own the moment you exceed a handful of integrations. For a non-developer automating across SaaS apps, <a href="/agent/zapier-agents/">Zapier Agents</a> (or <a href="/agent/n8n/">n8n</a> for the self-hosted crowd) stays the faster path.</p>
 
 <h2>Who should use it</h2>
 
-<p><strong>Use Composio if</strong> you are building an agent that must take real actions across many SaaS apps and you do not want to become an auth-infrastructure company. <strong>Skip it if</strong> you only need one or two integrations, or if your entire workflow is internal and better served by self-hosted automation like <a href="/agent/n8n">n8n</a>.</p>
+<p><strong>Use Composio if</strong> you are building an agent that must take real actions across many SaaS apps and you do not want to become an auth-infrastructure company. <strong>Skip it if</strong> you only need one or two integrations, or if your entire workflow is internal and better served by self-hosted automation like <a href="/agent/n8n/">n8n</a>.</p>
 
 <h2>Bottom line</h2>
 
@@ -357,7 +357,7 @@ tools = toolset.get_tools(apps=["github", "slack"])</code></pre>
     relatedAgents: ['perplexity', 'notebooklm', 'elicit', 'consensus', 'langgraph'],
     coverThumb: '/blog/gpt-researcher-2026-thumb.jpg',
     content: `
-<p>"Deep research" went from buzzword to product line in 2025, and every model vendor shipped one. But the open-source original is still one of the most-used: <strong>GPT Researcher</strong>, a 30,000-star project that runs the same loop — plan, search, read, synthesise, cite — entirely on infrastructure you control. If you use <a href="/agent/perplexity">Perplexity</a> for quick answers or <a href="/agent/notebooklm">NotebookLM</a> for document Q&amp;A, GPT Researcher is the self-hosted, source-crawling cousin in our <a href="/">directory</a> family.</p>
+<p>"Deep research" went from buzzword to product line in 2025, and every model vendor shipped one. But the open-source original is still one of the most-used: <strong>GPT Researcher</strong>, a 30,000-star project that runs the same loop — plan, search, read, synthesise, cite — entirely on infrastructure you control. If you use <a href="/agent/perplexity/">Perplexity</a> for quick answers or <a href="/agent/notebooklm/">NotebookLM</a> for document Q&amp;A, GPT Researcher is the self-hosted, source-crawling cousin in our <a href="/">directory</a> family.</p>
 
 <figure>
   <img src="/blog/gpt-researcher-2026-hero.jpg" alt="A glowing magnifying glass scanning documents that converge into a report" width="1000" height="667" loading="lazy" decoding="async" />
@@ -398,11 +398,11 @@ async def research(query):
 </tbody>
 </table>
 
-<p>The short version: <a href="/agent/perplexity">Perplexity</a> wins on latency and zero-setup for a one-off question. <a href="/agent/notebooklm">NotebookLM</a> wins when the corpus is yours and private. GPT Researcher wins when you want a thorough, cited, multi-section report generated on your own infrastructure and your own model keys — the same "own your stack" argument that drives the rest of the open-source agent world.</p>
+<p>The short version: <a href="/agent/perplexity/">Perplexity</a> wins on latency and zero-setup for a one-off question. <a href="/agent/notebooklm/">NotebookLM</a> wins when the corpus is yours and private. GPT Researcher wins when you want a thorough, cited, multi-section report generated on your own infrastructure and your own model keys — the same "own your stack" argument that drives the rest of the open-source agent world.</p>
 
 <h2>Who should use it</h2>
 
-<p><strong>Use GPT Researcher if</strong> you produce research reports regularly — market briefs, literature reviews, competitive teardowns — and you want them generated, cited, and reproducible without sending every query to a third party. <strong>Skip it if</strong> you just need a fast answer (use <a href="/agent/perplexity">Perplexity</a>) or you are working strictly inside a fixed set of documents (use <a href="/agent/notebooklm">NotebookLM</a>).</p>
+<p><strong>Use GPT Researcher if</strong> you produce research reports regularly — market briefs, literature reviews, competitive teardowns — and you want them generated, cited, and reproducible without sending every query to a third party. <strong>Skip it if</strong> you just need a fast answer (use <a href="/agent/perplexity/">Perplexity</a>) or you are working strictly inside a fixed set of documents (use <a href="/agent/notebooklm/">NotebookLM</a>).</p>
 
 <h2>Bottom line</h2>
 
