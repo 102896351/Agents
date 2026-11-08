@@ -29,7 +29,7 @@ const posts = getBlogSorted();
 
       <div class="blog-grid">
         {posts.map((post: BlogPost) => (
-          <a href={`${base}/blog/${post.slug}`} class="blog-card">
+          <a href={`${base}/blog/${post.slug}/`} class="blog-card">
             {post.coverThumb && (
               <div class="blog-card-cover">
                 <img src={post.coverThumb} alt="" loading="lazy" decoding="async" width="600" height="335" />

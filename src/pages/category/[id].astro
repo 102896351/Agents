@@ -156,7 +156,7 @@ const url = `https://gonglue.xyz/category/${category.id}`;
           </div>
           <div class="blog-grid">
             {related.map((p) => (
-              <a href={`${base}/blog/${p.slug}`} class="blog-card">
+              <a href={`${base}/blog/${p.slug}/`} class="blog-card">
                 {p.coverThumb && (
                   <div class="thumb">
                     <img src={p.coverThumb} alt="" loading="lazy" decoding="async" width="600" height="335" />
@@ -180,7 +180,7 @@ const url = `https://gonglue.xyz/category/${category.id}`;
         <span class="all-cats-label">Browse all categories:</span>
         {
           categories.map((c) => (
-            <a href={`${base}/category/${c.id}`} class={c.id === category.id ? 'active' : ''}>
+            <a href={`${base}/category/${c.id}/`} class={c.id === category.id ? 'active' : ''}>
               {c.label}
             </a>
           ))
