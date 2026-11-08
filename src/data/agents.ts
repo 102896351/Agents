@@ -32,6 +32,7 @@ import { extraAgents2026c } from './agents-extra3-2026';
 import { extraAgents2026d } from './agents-extra4-2026';
 import { extraAgents2026e } from './agents-extra5-2026';
 import { extraAgents2026f } from './agents-extra6-2026';
+import { agentImages } from './agent-images';
 
 export type License = 'open-source' | 'commercial' | 'freemium';
 
@@ -106,7 +107,7 @@ export const categories: { id: Category; label: string; description: string }[] 
   { id: 'creative', label: 'Creative', description: 'Generate text, images, and media' },
 ];
 
-export const agents: Agent[] = [
+const allAgents: Agent[] = [
   // ---------------- Coding ----------------
   {
     slug: 'claude-code',
@@ -3789,6 +3790,12 @@ export const agents: Agent[] = [
   ...extraAgents2026e,
   ...extraAgents2026f,
 ];
+
+// Backfilled official visuals live in a separate map so the 119 legacy entries
+// stay untouched. Entries that already declare their own image win.
+export const agents: Agent[] = allAgents.map((a) =>
+  a.image ? a : agentImages[a.slug] ? { ...a, image: agentImages[a.slug] } : a
+);
 
 // 工具函数：按分类聚合
 export function getAgentsByCategory(cat: Category): Agent[] {
