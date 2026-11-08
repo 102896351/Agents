@@ -2,7 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import AgentCard from '../../components/AgentCard.astro';
 import { agents, categories } from '../../data/agents';
-import { getGuidesForAgent } from '../../data/blog';
+import { getBlogSorted, getGuidesForAgent } from '../../data/blog';
+import { topicTagsFor, topicLabel, TOPIC_BY_SLUG } from '../../data/taxonomy';
 import { licenseLabel, difficultyLabel } from '../../utils/labels';
 
 // 静态构建：getStaticPaths 把每个 agent 生成一个独立 HTML 页
@@ -16,8 +17,10 @@ export function getStaticPaths() {
 const { agent } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const cat = categories.find((c) => c.id === agent.category)!;
+const site = (Astro.site ?? 'https://gonglue.xyz').toString().replace(/\/$/, '');
+const canonical = `${site}/agent/${agent.slug}/`;
 
-// 相关推荐：同分类的其他 agent，最多 3 个
+// 相关推荐：同分类的其他 agent，最多 3 个（卡片区）
 const related = agents
   .filter((a) => a.category === agent.category && a.slug !== agent.slug)
   .slice(0, 3);
@@ -29,11 +32,73 @@ const altAgents = (agent.alternatives ?? [])
   .slice(0, 4) as typeof agents;
 
 // Reverse internal links: long-form guides that discuss this agent.
-const guides = getGuidesForAgent(agent.slug, 4);
+const allPosts = getBlogSorted();
+const guides = getGuidesForAgent(agent.slug, 6);
+
+// Controlled topics: derive from the guides that mention this agent, then
+// fall back to the category so even rarely-mentioned profiles get topic links.
+const CATEGORY_TOPICS: Record<string, string[]> = {
+  coding: ['coding', 'comparison', 'open-source'],
+  research: ['research', 'ai-agents', 'data-rag'],
+  browsing: ['automation', 'research', 'mcp-tooling'],
+  automation: ['automation', 'mcp-tooling', 'business'],
+  framework: ['frameworks', 'open-source', 'mcp-tooling'],
+  creative: ['creative', 'business', 'ai-agents'],
+};
+const topics = [
+  ...new Set([
+    ...guides.flatMap((g) => topicTagsFor(g.tags, 4)),
+    ...CATEGORY_TOPICS[agent.category],
+  ]),
+]
+  .filter((t) => TOPIC_BY_SLUG[t])
+  .slice(0, 4);
+
+// Rotating peer window: every profile links to the 10 same-category agents
+// that follow it alphabetically (wrapping around). This spreads inbound links
+// evenly across all 119 profiles instead of funnelling everything to the
+// first three agents in each category.
+const catRoster = agents
+  .filter((a) => a.category === agent.category)
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+const selfIdx = catRoster.findIndex((a) => a.slug === agent.slug);
+const rotated = [...catRoster.slice(selfIdx + 1), ...catRoster.slice(0, selfIdx)];
+const peers = rotated.slice(0, 10);
+
+// Descriptive comparison links in the body copy (alternatives first, then peers).
+const compareSlugs = [
+  ...new Set([...altAgents.map((a) => a.slug), ...peers.slice(0, 4).map((a) => a.slug)]),
+];
+const compareTargets = compareSlugs
+  .map((slug) => agents.find((a) => a.slug === slug))
+  .filter(Boolean)
+  .slice(0, 5) as typeof agents;
+
+// Sidebar / footer navigation across the other five categories.
+const otherCats = categories.filter((c) => c.id !== agent.category);
+
+// Extra reading: guides on the same topics that were not already listed above.
+const guideSlugs = new Set(guides.map((g) => g.slug));
+const topicGuides = allPosts
+  .filter((p) => !guideSlugs.has(p.slug))
+  .map((p) => ({
+    post: p,
+    score: topicTagsFor(p.tags, 4).filter((t) => topics.includes(t)).length,
+  }))
+  .filter((x) => x.score > 0)
+  .sort((a, b) => b.score - a.score || (a.post.date < b.post.date ? 1 : -1))
+  .slice(0, 4)
+  .map((x) => x.post);
+
+const altNames = compareTargets.slice(0, 3).map((a) => a.name);
+const comparePhrase =
+  altNames.length > 1
+    ? `${altNames.slice(0, -1).join(', ')} and ${altNames[altNames.length - 1]}`
+    : altNames[0] ?? 'other agents in this category';
 ---
 
 <Base title={agent.name} description={agent.tagline}>
-  <!-- Per-page JSON-LD: SoftwareApplication schema for this agent -->
+  <!-- Per-page JSON-LD: SoftwareApplication + BreadcrumbList -->
   <script
     slot="head"
     type="application/ld+json"
@@ -42,7 +107,7 @@ const guides = getGuidesForAgent(agent.slug, 4);
       '@type': 'SoftwareApplication',
       name: agent.name,
       description: agent.description || agent.tagline,
-      url: `https://gonglue.xyz/agent/${agent.slug}/`,
+      url: canonical,
       applicationCategory: cat.label,
       operatingSystem: 'Cross-platform',
       offers: {
@@ -58,17 +123,39 @@ const guides = getGuidesForAgent(agent.slug, 4);
       } } : {}),
     })}
   />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+        { '@type': 'ListItem', position: 2, name: cat.label, item: `${site}/category/${cat.id}/` },
+        { '@type': 'ListItem', position: 3, name: agent.name, item: canonical },
+      ],
+    })}
+  />
   <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href={`${base}/`}>Home</a><span aria-hidden="true">›</span>
+      <a href={`${base}/category/${cat.id}/`}>{cat.label} agents</a><span aria-hidden="true">›</span>
+      <span aria-current="page">{agent.name}</span>
+    </nav>
+
     <div class="detail-head">
-      <a href={`${base}/#categories`} style="color: var(--text-muted); font-size: 14px;">
-        ← Back to all agents
-      </a>
       <div style="margin: 18px 0 16px; display: flex; gap: 8px; flex-wrap: wrap;">
         <a class="pill active" href={`${base}/category/${cat.id}/`} style="text-decoration: none; color: inherit;">{cat.label}</a>
         <span class={`badge ${agent.license}`}>{licenseLabel(agent.license)}</span>
       </div>
       <h1>{agent.name}</h1>
       <p class="tagline">{agent.tagline}</p>
+
+      <div class="agent-topics" aria-label="Topics">
+        {topics.map((t) => (
+          <a href={`${base}/blog/tags/${t}/`}>#{t}</a>
+        ))}
+      </div>
 
       <div class="detail-actions">
         <a href={agent.website} target="_blank" rel="noopener" class="btn primary">
@@ -98,7 +185,7 @@ const guides = getGuidesForAgent(agent.slug, 4);
         </p>
         <p class="context-link">
           {agent.name} belongs to our <a href={`${base}/category/${cat.id}/`}>{cat.label} agents</a> collection.
-          Compare it in the <a href={`${base}/blog/`}>agent comparison guides</a> or browse the
+          Compare it in the <a href={`${base}/blog/tags/comparison/`}>agent comparison guides</a> or browse the
           <a href={`${base}/`}>full directory</a> before choosing.
         </p>
 
@@ -108,6 +195,29 @@ const guides = getGuidesForAgent(agent.slug, 4);
             <ul class="usecase-list">
               {agent.useCases.map((uc) => <li>{uc}</li>)}
             </ul>
+          </>
+        )}
+
+        {compareTargets.length > 0 && (
+          <>
+            <h2>How {agent.name} compares</h2>
+            <p>
+              The shortlist most readers weigh against {agent.name} includes {comparePhrase}.
+              Profiles below cover setup, pricing and where each one breaks down:
+            </p>
+            <ul class="compare-list">
+              {compareTargets.map((a) => (
+                <li>
+                  <a href={`${base}/agent/${a.slug}/`}>{a.name} vs {agent.name}</a>
+                  <span> — {a.tagline}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="context-link">
+              See every <a href={`${base}/category/${cat.id}/`}>{cat.label} agent</a>, or read the{' '}
+              <a href={`${base}/blog/tags/comparison/`}>comparison guides</a> and{' '}
+              <a href={`${base}/blog/tags/${topics[0]}/`}>#{topics[0]} articles</a> for side-by-side verdicts.
+            </p>
           </>
         )}
 
@@ -194,7 +304,8 @@ const guides = getGuidesForAgent(agent.slug, 4);
             <p>
               Yes — {agent.name} can be self-hosted
               {agent.licenseName ? ` under the ${agent.licenseName} license` : ''}.
-              This gives you full control over data and deployment.
+              This gives you full control over data and deployment. More self-hostable
+              projects are collected under <a href={`${base}/blog/tags/open-source/`}>#open-source</a>.
             </p>
           </>
         )}
@@ -218,8 +329,18 @@ const guides = getGuidesForAgent(agent.slug, 4);
       <aside>
         <div class="specs">
           <h3>At a glance</h3>
-          <div class="spec-row"><span class="k">Category</span><span class="v">{cat.label}</span></div>
-          <div class="spec-row"><span class="k">License</span><span class="v">{licenseLabel(agent.license)}</span></div>
+          <div class="spec-row">
+            <span class="k">Category</span>
+            <span class="v"><a href={`${base}/category/${cat.id}/`}>{cat.label}</a></span>
+          </div>
+          <div class="spec-row">
+            <span class="k">License</span>
+            <span class="v">
+              {agent.license === 'open-source'
+                ? <a href={`${base}/blog/tags/open-source/`}>{licenseLabel(agent.license)}</a>
+                : licenseLabel(agent.license)}
+            </span>
+          </div>
           {agent.licenseName && (
             <div class="spec-row"><span class="k">License type</span><span class="v">{agent.licenseName}</span></div>
           )}
@@ -231,8 +352,11 @@ const guides = getGuidesForAgent(agent.slug, 4);
             <span class="k">Difficulty</span>
             <span class="v">{difficultyLabel(agent.difficulty)}</span>
           </div>
-          {agent.stars && (
-            <div class="spec-row"><span class="k">GitHub stars</span><span class="v">★ {agent.stars.toLocaleString()}</span></div>
+          {agent.stars && agent.github && (
+            <div class="spec-row">
+              <span class="k">GitHub stars</span>
+              <span class="v"><a href={agent.github} target="_blank" rel="noopener">★ {agent.stars.toLocaleString()}</a></span>
+            </div>
           )}
           {agent.updated && (
             <div class="spec-row"><span class="k">Last updated</span><span class="v">{agent.updated}</span></div>
@@ -248,8 +372,20 @@ const guides = getGuidesForAgent(agent.slug, 4);
                 <span class="alt-arrow">→</span>
               </a>
             ))}
+            <p class="side-note">
+              All <a href={`${base}/category/${cat.id}/`}>{cat.label} agents</a> ·{' '}
+              <a href={`${base}/blog/tags/comparison/`}>comparisons</a>
+            </p>
           </div>
         )}
+
+        <div class="side-cats">
+          <h3>Browse by category</h3>
+          {otherCats.map((c) => (
+            <a href={`${base}/category/${c.id}/`}>{c.label} agents <span aria-hidden="true">→</span></a>
+          ))}
+          <p class="side-note"><a href={`${base}/`}>Full 119-agent directory</a></p>
+        </div>
       </aside>
     </div>
 
@@ -261,6 +397,25 @@ const guides = getGuidesForAgent(agent.slug, 4);
         <div class="grid">
           {related.map((a) => <AgentCard agent={a} base={base} />)}
         </div>
+      </section>
+    )}
+
+    {peers.length > 0 && (
+      <section class="section">
+        <div class="section-head">
+          <h2>More {cat.label} agents</h2>
+          <p>
+            Other profiles in <a href={`${base}/category/${cat.id}/`}>{cat.label}</a>,
+            with pricing, setup notes and trade-offs for each.
+          </p>
+        </div>
+        <nav class="inline-links" aria-label={`More ${cat.label} agents`}>
+          <div class="inline-link-row">
+            {peers.map((a) => (
+              <a href={`${base}/agent/${a.slug}/`}>{a.name}</a>
+            ))}
+          </div>
+        </nav>
       </section>
     )}
 
@@ -283,9 +438,54 @@ const guides = getGuidesForAgent(agent.slug, 4);
         </p>
       </section>
     )}
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Keep exploring</h2>
+      </div>
+      <div class="explore-grid">
+        <div>
+          <h3>Related reading</h3>
+          <ul class="reading-list">
+            {topicGuides.map((p) => (
+              <li><a href={`${base}/blog/${p.slug}/`}>{p.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3>Topics</h3>
+          <div class="inline-link-row topic-row">
+            {topics.map((t) => (
+              <a href={`${base}/blog/tags/${t}/`}>{topicLabel(t)}</a>
+            ))}
+          </div>
+          <h3>Start here</h3>
+          <div class="inline-link-row topic-row">
+            <a href={`${base}/`}>All 119 agents</a>
+            <a href={`${base}/category/${cat.id}/`}>{cat.label} hub</a>
+            <a href={`${base}/blog/`}>All guides</a>
+          </div>
+          <p class="guide-more">
+            Looking for a different use case? Browse the other{' '}
+            <a href={`${base}/#categories`}>agent categories</a> on the home page.
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 
   <style is:global>
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 22px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumbs a { color: var(--text-muted); }
+    .breadcrumbs a:hover { color: #818cf8; }
     .context-link {
       font-size: 14px;
       color: var(--text-muted);
@@ -295,6 +495,68 @@ const guides = getGuidesForAgent(agent.slug, 4);
       text-decoration: underline;
       text-underline-offset: 2px;
     }
+    .agent-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 4px;
+    }
+    .agent-topics a {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #a5b4fc;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+    }
+    .agent-topics a:hover { border-color: #818cf8; }
+    .compare-list { padding-left: 20px; }
+    .compare-list li { margin: 8px 0; font-size: 15px; line-height: 1.5; }
+    .compare-list a { color: #818cf8; text-decoration: underline; text-underline-offset: 2px; }
+    .compare-list span { color: var(--text-muted); }
+    .specs .v a, .alts .side-note a, .side-cats a, .side-note a,
+    .section-head p a, .guide-more a {
+      color: #818cf8;
+    }
+    .side-cats {
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .side-cats h3 { margin: 0 0 12px; font-size: 15px; }
+    .side-cats > a {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .side-cats > a:last-of-type { border-bottom: none; }
+    .side-cats > a:hover { color: #818cf8; }
+    .side-note { margin: 12px 0 0; font-size: 12px; color: var(--text-muted); }
+    .inline-links { margin-top: 4px; }
+    .inline-link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .inline-link-row a {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+    }
+    .inline-link-row a:hover { border-color: #818cf8; color: #818cf8; }
     .guide-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -316,6 +578,16 @@ const guides = getGuidesForAgent(agent.slug, 4);
     .guide-links a:hover { border-color: #818cf8; }
     .guide-meta { font-size: 12px; color: var(--text-muted); }
     .guide-more { font-size: 14px; color: var(--text-muted); margin-top: 16px; }
-    .guide-more a { color: #818cf8; }
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .explore-grid h3 { font-size: 15px; margin: 0 0 12px; }
+    .explore-grid h3:not(:first-child) { margin-top: 22px; }
+    .reading-list { padding-left: 18px; margin: 0; }
+    .reading-list li { margin: 8px 0; font-size: 14px; line-height: 1.45; }
+    .reading-list a { color: #818cf8; }
+    .topic-row a { font-size: 12px; padding: 5px 11px; }
   </style>
 </Base>
