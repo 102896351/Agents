@@ -56,7 +56,7 @@ const topics = [
 
 // Rotating peer window: every profile links to the 10 same-category agents
 // that follow it alphabetically (wrapping around). This spreads inbound links
-// evenly across all 119 profiles instead of funnelling everything to the
+// evenly across all profiles instead of funnelling everything to the
 // first three agents in each category.
 const catRoster = agents
   .filter((a) => a.category === agent.category)
@@ -116,6 +116,7 @@ const comparePhrase =
         priceCurrency: 'USD',
       },
       ...(agent.github ? { codeRepository: agent.github } : {}),
+      ...(agent.image ? { screenshot: `${site}${agent.image.src}` } : {}),
       ...(agent.stars ? { interactionStatistic: {
         '@type': 'InteractionCounter',
         interactionType: 'https://schema.org/LikeAction',
@@ -168,6 +169,23 @@ const comparePhrase =
         )}
       </div>
     </div>
+
+    {agent.image && (
+      <figure class="agent-figure">
+        <img
+          src={`${base}${agent.image.src}`}
+          alt={agent.image.alt}
+          width={agent.image.width}
+          height={agent.image.height}
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          {agent.image.credit} ·{' '}
+          <a href={agent.image.sourceUrl} target="_blank" rel="noopener">View upstream source</a>
+        </figcaption>
+      </figure>
+    )}
 
     <div class="detail-grid">
       <!-- 主内容 -->
@@ -384,7 +402,7 @@ const comparePhrase =
           {otherCats.map((c) => (
             <a href={`${base}/category/${c.id}/`}>{c.label} agents <span aria-hidden="true">→</span></a>
           ))}
-          <p class="side-note"><a href={`${base}/`}>Full 119-agent directory</a></p>
+          <p class="side-note"><a href={`${base}/`}>Full {agents.length}-agent directory</a></p>
         </div>
       </aside>
     </div>
@@ -461,7 +479,7 @@ const comparePhrase =
           </div>
           <h3>Start here</h3>
           <div class="inline-link-row topic-row">
-            <a href={`${base}/`}>All 119 agents</a>
+            <a href={`${base}/`}>All {agents.length} agents</a>
             <a href={`${base}/category/${cat.id}/`}>{cat.label} hub</a>
             <a href={`${base}/blog/`}>All guides</a>
           </div>
@@ -475,6 +493,24 @@ const comparePhrase =
   </div>
 
   <style is:global>
+    .agent-figure {
+      margin: 24px 0 8px;
+      padding: 0;
+    }
+    .agent-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+    .agent-figure figcaption {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .agent-figure figcaption a { color: #818cf8; }
     .breadcrumbs {
       display: flex;
       align-items: center;

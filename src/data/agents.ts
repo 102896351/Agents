@@ -31,6 +31,7 @@ import { extraAgents2026b } from './agents-extra2-2026';
 import { extraAgents2026c } from './agents-extra3-2026';
 import { extraAgents2026d } from './agents-extra4-2026';
 import { extraAgents2026e } from './agents-extra5-2026';
+import { extraAgents2026f } from './agents-extra6-2026';
 
 export type License = 'open-source' | 'commercial' | 'freemium';
 
@@ -43,6 +44,17 @@ export interface Benchmark {
 export interface DecisionAid {
   pickIf: string;
   skipIf: string;
+}
+
+// Optional official screenshot, stored locally under public/agents/.
+// `credit` and `sourceUrl` make the upstream attribution visible on the page.
+export interface AgentImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  credit: string;
+  sourceUrl: string;
 }
 
 export interface Agent {
@@ -74,6 +86,7 @@ export interface Agent {
   sampleOutput?: string;             // 对应的真实输出（可截断）
   benchmarks?: Benchmark[];          // 量化指标，可带来源
   decisionAid?: DecisionAid;         // pickIf / skipIf 两句话
+  image?: AgentImage;                // 官方截图（本地 JPEG + 来源署名）
 }
 
 export type Category =
@@ -3774,6 +3787,7 @@ export const agents: Agent[] = [
   ...extraAgents2026c,
   ...extraAgents2026d,
   ...extraAgents2026e,
+  ...extraAgents2026f,
 ];
 
 // 工具函数：按分类聚合
