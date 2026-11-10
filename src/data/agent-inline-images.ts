@@ -16,6 +16,114 @@ export interface InlineImage extends AgentImage {
 }
 
 export const agentInlineImages: Record<string, InlineImage[]> = {
+  'orca': [
+    {
+      src: '/agents/orca-2.jpg',
+      alt: 'Orca diff review view with inline notes and feedback sent back to an agent',
+      width: 960,
+      height: 600,
+      credit: 'Official screenshot from the Orca project documentation',
+      note: 'The project\'s own diff-review screenshot belongs next to the quick-start step about reviewing agent work.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/stablyai/orca/main/docs/assets/readme-features/github-linear-tasks.poster.jpg',
+    },
+  ],
+  'open-code-review': [
+    {
+      src: '/agents/open-code-review-2.jpg',
+      alt: 'Open Code Review terminal showing the project\'s benchmark table output',
+      width: 1200,
+      height: 861,
+      credit: 'Official screenshot from the Open Code Review project documentation',
+      note: 'The upstream benchmark terminal output illustrates the review workflow described above; figures are published by the project.',
+      section: 'sample',
+      sourceUrl: 'https://raw.githubusercontent.com/alibaba/open-code-review/main/imgs/benchmark-en.png',
+    },
+  ],
+  'docsgpt': [
+    {
+      src: '/agents/docsgpt-2.jpg',
+      alt: 'DocsGPT visual workflow canvas with connected agent and condition nodes',
+      width: 1200,
+      height: 750,
+      credit: 'Official screenshot from the DocsGPT project documentation',
+      note: 'The official workflow-builder screenshot matches the quick-start step that chains agents and conditions.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/arc53/DocsGPT/main/docs/public/workflow-builder-poster.png',
+    },
+  ],
+  'browseros': [
+    {
+      src: '/agents/browseros-2.jpg',
+      alt: 'BrowserOS MCP connection settings panel for linking an external agent',
+      width: 1200,
+      height: 750,
+      credit: 'Official screenshot from the BrowserOS project documentation',
+      note: 'The official MCP settings screenshot sits beside the quick-start step that connects an existing coding agent.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/browseros-ai/BrowserOS/main/docs/images/browserclaw--mcp-install-board.png',
+    },
+  ],
+  'fastgpt': [
+    {
+      src: '/agents/fastgpt-2.jpg',
+      alt: 'FastGPT annotation and evaluation data panel',
+      width: 1200,
+      height: 787,
+      credit: 'Official screenshot from the FastGPT project documentation',
+      note: 'The upstream evaluation screen illustrates the platform\'s answer-testing workflow described above.',
+      section: 'sample',
+      sourceUrl: 'https://fastgpt.io/images/home/product/feature-new/producthighlights-Image4.jpg',
+    },
+  ],
+  'db-gpt': [
+    {
+      src: '/agents/db-gpt-2.jpg',
+      alt: 'DB-GPT SQL query result table inside the analysis workspace',
+      width: 1200,
+      height: 730,
+      credit: 'Official screenshot from the DB-GPT project documentation',
+      note: 'The project\'s own SQL-result screenshot illustrates the text-to-SQL example in this section.',
+      section: 'sample',
+      sourceUrl: 'https://github.com/user-attachments/assets/da45de20-3768-4f0d-ab20-e939ddf21361',
+    },
+  ],
+  'voltagent': [
+    {
+      src: '/agents/voltagent-2.jpg',
+      alt: 'VoltOps Traces view listing agent steps and their durations',
+      width: 1200,
+      height: 750,
+      credit: 'Official screenshot from the VoltAgent project documentation',
+      note: 'The official trace view shows what running the scaffolded agent produces, next to the quick-start steps.',
+      section: 'quickstart',
+      sourceUrl: 'https://cdn.voltagent.dev/console/traces.png',
+    },
+  ],
+  'open-design': [
+    {
+      src: '/agents/open-design-2.jpg',
+      alt: 'OpenDesign Studio prototype preview showing a Swiss-grid layout design',
+      width: 1200,
+      height: 675,
+      credit: 'Official screenshot from the OpenDesign project documentation',
+      note: 'An official Studio preview illustrates the kind of prototype produced by the brief-to-prototype workflow above.',
+      section: 'sample',
+      sourceUrl: 'https://raw.githubusercontent.com/nexu-io/open-design/main/docs/screenshots/product-tour/studio-slides-2026.png',
+    },
+  ],
+  'openmontage': [
+    {
+      src: '/agents/openmontage-2.jpg',
+      alt: 'OpenMontage production progress view with pipeline stages and generation status',
+      width: 1200,
+      height: 585,
+      credit: 'Official screenshot from the OpenMontage project documentation',
+      note: 'The upstream pipeline view shows the staged workflow the quick-start steps ask you not to improvise.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/OpenMontageInc/OpenMontage/main/docs/images/backlot/script-gate.png',
+    },
+  ],
   'aider': [
     {
       src: '/agents/aider-2.jpg',

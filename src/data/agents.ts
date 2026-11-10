@@ -32,6 +32,7 @@ import { extraAgents2026c } from './agents-extra3-2026';
 import { extraAgents2026d } from './agents-extra4-2026';
 import { extraAgents2026e } from './agents-extra5-2026';
 import { extraAgents2026f } from './agents-extra6-2026';
+import { extraAgents2026g } from './agents-extra7-2026';
 import { agentImages } from './agent-images';
 
 export type License = 'open-source' | 'commercial' | 'freemium';
@@ -3789,6 +3790,7 @@ const allAgents: Agent[] = [
   ...extraAgents2026d,
   ...extraAgents2026e,
   ...extraAgents2026f,
+  ...extraAgents2026g,
 ];
 
 // Backfilled official visuals live in a separate map so the legacy entries
