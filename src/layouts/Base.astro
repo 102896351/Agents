@@ -12,7 +12,7 @@ const siteName = 'AI Agents Hub';
 const finalTitle = title ? `${title} · ${siteName}` : `${siteName} — A curated directory of AI agents`;
 const finalDesc =
   description ||
-  'Discover, compare, and choose AI agents for coding, research, browsing, automation, and more. Hand-picked and updated regularly.';
+  'Discover, compare, and choose AI agents for coding, research, browsing, automation, and more. Structured profiles built from public sources, with pick-if / skip-if verdicts.';
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString();
 // 动态读取 base 路径，避免硬编码（适配自定义域名 vs github.io/仓库名）
 const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
@@ -164,12 +164,11 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
         <nav class="footer-nav footer-sites" aria-label="Related sites">
           <span class="footer-sites-label">Related sites:</span>
           <a href="https://toolbox168.xyz/">QR Code Generator</a>
-          <a href="https://aiartspell.art/">AI Art Prompts</a>
           <a href="https://toolbox168.com/">Image Tools</a>
+          <a href="https://aiartspell.art/">AI Art Prompts</a>
           <a href="https://image.aiartspell.art/">Free AI Photo Tools</a>
-
         </nav>
-        <p class="footer-tagline">For technical exchange only · Use within the bounds of the law</p>
+        <p class="footer-tagline">An independent open-source project · Data and corrections on <a href="https://github.com/102896351/Agents" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">GitHub</a></p>
       </div>
     </footer>
   </body>

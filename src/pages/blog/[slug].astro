@@ -40,14 +40,11 @@ const primaryCat =
       datePublished: post.date,
       dateModified: post.date,
       author: {
-        '@type': 'Person',
-        name: 'Mavis',
-        jobTitle: 'Editorial lead',
-        worksFor: { '@type': 'Organization', name: 'AI Agents Hub', url: 'https://gonglue.xyz' },
-        url: 'https://gonglue.xyz/about#editorial-team',
-        description: `Six years writing about developer tools and AI infrastructure. Personal reviewer of every agent in the ${agents.length}-agent directory.`,
+        '@type': 'Organization',
+        name: 'AI Agents Hub',
+        url: 'https://gonglue.xyz/about/',
       },
-      publisher: { '@type': 'Organization', name: 'AI Agents Hub', url: 'https://gonglue.xyz' },
+      publisher: { '@type': 'Organization', name: 'AI Agents Hub', url: 'https://gonglue.xyz/' },
       mainEntityOfPage: canonical,
       url: canonical,
       keywords: [...new Set([...topics, ...post.tags])].join(', '),
@@ -97,23 +94,24 @@ const primaryCat =
           </nav>
         )}
 
-        <!-- Author bio (E-E-A-T signal: per-article attribution to a real person) -->
-        <aside class="author-bio" aria-label="About the author">
-          <div class="author-avatar" aria-hidden="true">M</div>
+        <!-- Project bio: honest attribution, no invented editorial staff -->
+        <aside class="author-bio" aria-label="About this project">
+          <div class="author-avatar" aria-hidden="true">AH</div>
           <div class="author-body">
-            <div class="author-name">Mavis</div>
-            <div class="author-role">Editorial lead, AI Agents Hub</div>
+            <div class="author-name">AI Agents Hub</div>
+            <div class="author-role">Independent open-source directory</div>
             <p class="author-text">
-              Mavis has spent the last six years writing about developer tools and
-              AI infrastructure. She personally tests every agent in our
-              <a href={`${base}/`}>{agents.length}-agent directory</a> and writes the long-form analysis
-              posts on this blog. This post is part of our
-              <a href={`${base}/blog/`}>editorial series</a> — every entry is written, edited,
-              and fact-checked by a person, not auto-generated.
+              AI Agents Hub is a one-developer project. Profiles are compiled from
+              public sources into a consistent format, so the
+              <a href={`${base}/`}>{agents.length} agents in the directory</a> can be
+              compared side by side. Verdicts and pick-if / skip-if notes are editorial
+              judgement, not hands-on test results; sample inputs and outputs are
+              illustrative examples. All listing data lives in a
+              <a href="https://github.com/102896351/Agents" target="_blank" rel="noopener">public repository</a>.
             </p>
             <p class="author-cta">
-              Spotted an error? <a href={`${base}/contact/`}>Email us</a> · Read about our
-              <a href={`${base}/about/#editorial-team`}>editorial process</a>.
+              Spotted an error? <a href="https://github.com/102896351/Agents/issues" target="_blank" rel="noopener">Open an issue or send a PR</a> ·
+              Read <a href={`${base}/about/#how-profiles-are-written`}>how profiles are written</a>.
             </p>
           </div>
         </aside>

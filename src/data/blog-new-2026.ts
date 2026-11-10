@@ -13,7 +13,7 @@ export const newPosts2026: BlogPost[] = [
     excerpt:
       'OpenHands (formerly OpenDevin) is a 91K-star autonomous coding agent you can run on your own machine. We dug into how it works, where it beats the managed competition, and where it still needs a human at the wheel.',
     date: '2026-10-23',
-    author: 'Mavis · AI Agents Hub',
+    author: 'AI Agents Hub',
     readingTime: 10,
     tags: ['coding', 'open-source', 'autonomous', 'github', 'devin', 'ai-agents'],
     relatedAgents: ['devin', 'replit-agent', 'claude-code', 'aider', 'cursor', 'cline', 'codex', 'opencode'],
@@ -87,7 +87,7 @@ export const newPosts2026: BlogPost[] = [
     excerpt:
       'Agno (formerly Phidata) is a 43K-star Python library for building, running, and monitoring agent systems. We look at why "agent platform" is the more honest label and where it fits next to LangGraph and CrewAI.',
     date: '2026-10-23',
-    author: 'Mavis · AI Agents Hub',
+    author: 'AI Agents Hub',
     readingTime: 9,
     tags: ['framework', 'python', 'agents', 'agno', 'langgraph', 'crewai'],
     relatedAgents: ['langgraph', 'crewai', 'autogen', 'openai-agents-sdk', 'mastra', 'dify'],
@@ -159,7 +159,7 @@ agent.print_response("Summarise this repo's README in three bullets")</code></pr
     excerpt:
       'smolagents is Hugging Face\'s intentionally tiny library for agents that "think in code." Under 1,000 lines, 30K stars, and a sharp opinion: actions should be Python, not JSON tool calls.',
     date: '2026-10-23',
-    author: 'Mavis · AI Agents Hub',
+    author: 'AI Agents Hub',
     readingTime: 8,
     tags: ['framework', 'huggingface', 'python', 'code-agent', 'open-source'],
     relatedAgents: ['langgraph', 'crewai', 'autogen', 'agno', 'openai-agents-sdk'],
@@ -222,7 +222,7 @@ agent.run("What is the latest stable version of PyTorch?")</code></pre>
     excerpt:
       'LlamaIndex (52K stars) quietly became the default layer between your data and your LLM. We cover what it does in 2026, where it ends and an agent framework begins, and how it relates to the frameworks in our directory.',
     date: '2026-10-23',
-    author: 'Mavis · AI Agents Hub',
+    author: 'AI Agents Hub',
     readingTime: 9,
     tags: ['rag', 'data', 'framework', 'llamaindex', 'python', 'agents'],
     relatedAgents: ['langgraph', 'crewai', 'autogen', 'notebooklm', 'dify', 'perplexity'],
@@ -287,7 +287,7 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
     excerpt:
       'Composio (30K stars) is the integration layer most agent builders quietly depend on: 1000+ toolkits, auth, and a sandboxed workbench. Here is why "agent infrastructure" is its own category.',
     date: '2026-10-23',
-    author: 'Mavis · AI Agents Hub',
+    author: 'AI Agents Hub',
     readingTime: 9,
     tags: ['tooling', 'integrations', 'infrastructure', 'mcp', 'agents', 'auth'],
     relatedAgents: ['langgraph', 'openai-agents-sdk', 'n8n', 'zapier-agents', 'make', 'manus'],
@@ -351,7 +351,7 @@ tools = toolset.get_tools(apps=["github", "slack"])</code></pre>
     excerpt:
       'GPT Researcher (30K stars) autonomousally plans searches, reads sources, and writes cited reports. We compare it to Perplexity and NotebookLM, and show where it earns its keep.',
     date: '2026-10-23',
-    author: 'Mavis · AI Agents Hub',
+    author: 'AI Agents Hub',
     readingTime: 9,
     tags: ['research', 'agents', 'deep-research', 'open-source', 'rag'],
     relatedAgents: ['perplexity', 'notebooklm', 'elicit', 'consensus', 'langgraph'],

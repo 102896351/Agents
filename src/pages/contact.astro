@@ -1,35 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const REPO = 'https://github.com/102896351/Agents';
 ---
 
-<Base title="Contact">
+<Base title="Contact" description="Report an error, suggest an agent, or send a pull request. AI Agents Hub is a one-developer open-source project.">
   <section class="hero" style="padding-top: 80px; padding-bottom: 24px;">
     <div class="container">
       <h1>Contact</h1>
-      <p>Want to add an agent, report a bug, talk business, or just say hi — drop us an email.</p>
+      <p>Want to add an agent, report a bug, or fix a stale number? The quickest route is a GitHub issue or pull request — email works too.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container" style="max-width: 640px;">
       <div class="contact-simple">
+        <div class="contact-label">Contribute directly</div>
+        <a class="contact-mail" href={REPO} target="_blank" rel="noopener">github.com/102896351/Agents</a>
+        <p class="contact-hint">Every agent profile lives in <code>src/data/agents.ts</code> and the related data files. Fix a price, add a source link, or add a missing agent via an issue or pull request — the change history is public.</p>
+      </div>
+
+      <div class="contact-simple" style="margin-top: 24px;">
         <div class="contact-label">Email</div>
         <a class="contact-mail" href="mailto:andynaonao@gmail.com">andynaonao@gmail.com</a>
-        <p class="contact-hint">Usually a reply within 48 hours. Add <code>[urgent]</code> to the subject line for faster turnaround.</p>
+        <p class="contact-hint">This is a one-person project, so there is no guaranteed reply time. For anything data-related, a public issue or pull request is faster and stays visible.</p>
       </div>
 
       <div class="prose" style="margin-top: 48px;">
         <h2>When to reach out</h2>
         <ul>
-          <li><strong>Missing an agent?</strong> Send us the homepage / GitHub link; once reviewed, it usually goes live within 1–2 business days.</li>
-          <li><strong>Spotted stale info</strong> (star count, pricing, status, etc.)? Point it out and we'll verify and update.</li>
+          <li><strong>Missing an agent?</strong> Send the homepage / GitHub link, or open a pull request against the data file (usually faster).</li>
+          <li><strong>Spotted stale info</strong> (star count, pricing, status, etc.)? Point it out with a source link and it will be corrected.</li>
           <li><strong>Business / partnership</strong> (brand collaboration, content syndication, API data partnerships).</li>
           <li><strong>Found a bug on the site itself</strong> (not a problem with any listed agent).</li>
           <li><strong>Have something to say</strong> — any thoughts, suggestions, or honest criticism about the AI agent space are welcome.</li>
         </ul>
 
         <h2>Submission checklist (new agent)</h2>
-        <p>To help us process things quickly, please include the following in your email:</p>
+        <p>To make a listing easy to add, please include:</p>
         <ul>
           <li>Agent name + a one-line positioning</li>
           <li>Homepage / GitHub link</li>
@@ -37,12 +45,12 @@ import Base from '../layouts/Base.astro';
           <li>One sentence on why it deserves a spot</li>
         </ul>
         <p>
-          The more complete the information, the faster the review. A solid submission is usually
-          acknowledged within 1–3 business days, and you'll get an email once it's published.
+          Pull requests are reviewed in the open. There is no promised turnaround,
+          and this project does not guarantee that every suggestion will be published.
         </p>
 
         <h2>What we usually don't reply to</h2>
-        <p>To keep the inbox usable for everyone, we typically don't respond to:</p>
+        <p>To keep the inbox usable, these are typically skipped:</p>
         <ul>
           <li>SEO link exchanges / bulk backlink requests</li>
           <li>Unsolicited "exclusive interview" or guest invitations</li>
@@ -52,16 +60,18 @@ import Base from '../layouts/Base.astro';
 
         <h2>Privacy</h2>
         <p>
-          Your email is used only for this conversation. We will not add you to any mailing list or
-          share it with third parties. To delete our previous correspondence, simply reply with
-          "please delete my email." Full details are in the
-          <a href="/privacy">privacy policy</a>.
+          Your email is used only for this conversation. It will not be added to any
+          mailing list or shared with third parties. To delete previous correspondence,
+          simply reply with "please delete my email." Full details are in the
+          <a href="/privacy/">privacy policy</a>.
         </p>
 
         <div class="verdict-box" style="margin-top: 24px;">
-          <div class="label">Response time</div>
+          <div class="label">About response times</div>
           <p style="margin: 0; color: var(--text);">
-            Weekdays &lt; 24h · Weekends / holidays 24–48h · Add <code>[urgent]</code> to halve it
+            This is a one-person side project. No response time is promised; public
+            issues and pull requests on GitHub are the most reliable way to get a
+            data correction merged.
           </p>
         </div>
       </div>

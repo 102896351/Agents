@@ -13,7 +13,7 @@ export const comparePosts2026: BlogPost[] = [
     excerpt:
       'Six frameworks now dominate how teams actually build agents. We put LangChain, Agno, smolagents, LlamaIndex, Pydantic AI, and CrewAI head-to-head — what each is great at, where it gets in your way, and which to reach for first.',
     date: '2026-10-27',
-    author: 'Mavis · AI Agents Hub',
+    author: 'AI Agents Hub',
     readingTime: 11,
     tags: ['framework', 'comparison', 'langchain', 'agno', 'smolagents', 'llama-index', 'pydantic-ai', 'crewai'],
     relatedAgents: ['langchain', 'agno', 'smolagents', 'llama-index', 'pydantic-ai', 'crewai'],

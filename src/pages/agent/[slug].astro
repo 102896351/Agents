@@ -272,6 +272,7 @@ const comparePhrase =
         {(agent.sampleInput || agent.sampleOutput) && (
           <>
             <h2>Sample input / output</h2>
+            <p class="data-note">Illustrative example — not a measured run. Shown to explain the workflow, not to report a result.</p>
             <div class="sample-io">
               {agent.sampleInput && (
                 <div class="sample-block sample-in">
@@ -292,6 +293,7 @@ const comparePhrase =
         {agent.benchmarks && agent.benchmarks.length > 0 && (
           <>
             <h2>Benchmarks</h2>
+            <p class="data-note">Figures quoted from public sources; test conditions and dates vary. Verify against the original source before relying on a number.</p>
             <div class="bench-table">
               {agent.benchmarks.map((b) => (
                 <div class="bench-row">
@@ -493,6 +495,12 @@ const comparePhrase =
   </div>
 
   <style is:global>
+    .data-note {
+      margin: -4px 0 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
     .agent-figure {
       margin: 24px 0 8px;
       padding: 0;

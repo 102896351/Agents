@@ -1,34 +1,84 @@
 ---
 import Base from '../layouts/Base.astro';
 import { agents } from '../data/agents';
+
+const REPO = 'https://github.com/102896351/Agents';
 ---
 
-<Base title="About">
+<Base
+  title="About"
+  description="AI Agents Hub is an independent, open-source directory of AI agents. All listing data is public and open to corrections on GitHub."
+>
   <section class="hero" style="padding-top: 56px;">
     <div class="container">
       <h1>About <span class="grad">AI Agents Hub</span></h1>
-      <p>An independent, hand-curated directory of AI agents worth knowing about.</p>
+      <p>An independent, open-source directory of AI agents — built and maintained by a single developer.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container" style="max-width: 720px;">
       <div class="prose">
-        <h2>Why this exists</h2>
+        <h2>What this is</h2>
         <p>
-          The AI agent landscape is moving fast — too fast for anyone to keep track of by hand.
-          Existing directories are either overwhelming (thousands of entries, no signal) or
-          promotional (every tool is "the best"). This site aims for the middle ground:
-          a tight, opinionated list of {agents.length} agents with honest notes on each.
+          AI Agents Hub is a side project by an independent developer, not a publication,
+          a company, or a newsroom. It is a static site: the {agents.length} agent profiles
+          and the comparison guides are generated from plain data files in a
+          <a href={REPO} target="_blank" rel="noopener">public GitHub repository</a>.
+          There is no editorial team and no review board.
+        </p>
+        <p>
+          The point of the site is comparability. Every agent gets the same fields —
+          what it does, license, hosting, models, pricing, strengths, weaknesses, and a
+          direct "pick this if / skip this if" verdict — so you can scan several tools
+          side by side instead of reading ten different marketing pages.
         </p>
 
-        <h2>How we pick</h2>
-        <p>Every agent here has to clear a bar:</p>
+        <h2>Why this exists</h2>
+        <p>
+          The AI agent landscape moves fast. Existing directories tend to be either
+          overwhelming (thousands of entries, no signal) or promotional (every tool
+          is "the best"). This site aims for a middle ground: a tight list with
+          structured, honest notes on each.
+        </p>
+
+        <h2>How agents are selected</h2>
+        <p>A listing is added when it clears four basic checks:</p>
         <ul>
           <li><strong>Real traction</strong> — active development and a genuine user base.</li>
           <li><strong>Clear use case</strong> — you should know what it's for in one sentence.</li>
           <li><strong>Accessible</strong> — you can actually try it, not just watch a demo.</li>
           <li><strong>Distinct</strong> — it does something the others in its category don't.</li>
+        </ul>
+
+        <h2 id="how-profiles-are-written">How the profiles are written</h2>
+        <p>
+          Profiles are <strong>compiled from public sources</strong> — the project's
+          official docs, README, repository, changelog, pricing page, and published
+          benchmark reports — and normalized into a consistent template. The verdict,
+          pros/cons, and "pick if / skip if" notes are the maintainer's own judgement
+          based on those sources.
+        </p>
+        <p>To be clear about what this site does <em>not</em> claim:</p>
+        <ul>
+          <li>
+            Entries are <strong>not hands-on lab tests</strong>. The sample inputs and
+            outputs shown on a profile are <strong>illustrative examples</strong>, not
+            measured runs.
+          </li>
+          <li>
+            Benchmark figures are quoted from public sources and can be outdated or
+            measured under different conditions. Check the original source before
+            relying on a number.
+          </li>
+          <li>
+            Pricing, model support, and license terms change frequently. A profile is
+            a starting point for research, not an authoritative or real-time record.
+          </li>
+          <li>
+            There is no fixed re-review schedule and no guaranteed correction
+            turnaround. This is a one-person project maintained in spare time.
+          </li>
         </ul>
 
         <h2>What the badges mean</h2>
@@ -40,165 +90,50 @@ import { agents } from '../data/agents';
 
         <h2>Independence</h2>
         <p>
-          This is an independent project. Listings are not paid placements. If that ever changes,
-          it will be disclosed clearly on the listing itself.
+          Listings are not paid placements and there are no sponsored rankings.
+          A "Featured" label is an unpaid, independent choice based on public
+          information. If a listing is ever sponsored, it will be disclosed clearly
+          on the listing itself.
         </p>
 
-        <h2>Suggest an agent</h2>
+        <h2 id="contributing">Open data &amp; contributing</h2>
+        <!-- Legacy anchor: older pages linked to #editorial-team. Keep the URL working. -->
+        <span id="editorial-team"></span>
         <p>
-          Spotted an agent we're missing? Found something outdated? The cleanest way is to
-          open an issue or pull request on the source repository. Every listing is just a
-          data file — easy to add or fix.
+          The whole directory is one data set in the open. That is deliberate: anyone
+          can audit a claim, fix a stale number, or add a missing agent without
+          waiting for a site owner to reply.
+        </p>
+        <ul>
+          <li><strong>Agent profiles</strong> — <code>src/data/agents.ts</code> and the <code>agents-extra-*.ts</code> files.</li>
+          <li><strong>Comparison guides</strong> — <code>src/data/blog.ts</code> and the related data files.</li>
+          <li><strong>Profile images</strong> — <code>public/agents/</code>, with the original source linked in each caption.</li>
+        </ul>
+        <p>
+          Open an <a href={`${REPO}/issues`} target="_blank" rel="noopener">issue</a> or send a
+          <a href={`${REPO}/pulls`} target="_blank" rel="noopener">pull request</a>. Useful
+          contributions include a corrected price or benchmark with a source link, a
+          missing agent, a fixed dead link, or a corrected sample. Changes are reviewed
+          and merged in public; the commit history is the change log.
+        </p>
+
+        <h2>Corrections</h2>
+        <p>
+          Found a wrong price, a stale benchmark, or a misattributed quote? The fastest
+          fix is a pull request or an issue with a link to the authoritative source.
+          You can also <a href="/contact/">email the maintainer</a>. There is no promised
+          response time, but public issues stay visible until handled.
         </p>
 
         <div class="verdict-box" style="margin-top: 32px;">
           <div class="label">Note</div>
           <p style="margin: 0; color: var(--text);">
-            AI Agents Hub is an independent directory. All product names, logos, and brands
-            are property of their respective owners.
+            AI Agents Hub is an independent project. All product names, logos, and brands
+            are property of their respective owners. Screenshots are used for
+            identification and review purposes, with their source linked in the caption.
           </p>
         </div>
-
-        <h2 id="editorial-team">Editorial team</h2>
-        <p>
-          AI Agents Hub is run by a small editorial team that has been working
-          on AI tooling and developer infrastructure since 2019. Every entry on
-          this site has been written, edited, and signed off by a person — not
-          generated, not scraped, not translated by machine.
-        </p>
-
-        <div class="team-grid">
-          <div class="team-card">
-            <div class="team-avatar">M</div>
-            <div class="team-body">
-              <div class="team-name">Mavis</div>
-              <div class="team-role">Editorial lead · Directory &amp; blog</div>
-              <p class="team-bio">
-                Mavis has spent the last six years writing about developer
-                tools and AI infrastructure. Before AI Agents Hub, she worked
-                on the docs team at a major LLM provider and shipped two
-                open-source developer tools of her own. She personally tests
-                every agent listed on this site against the four-point bar
-                (real traction, clear use case, accessible, distinct) and
-                writes the long-form analysis posts on the
-                <a href="/blog">blog</a>. When she is wrong about a tool, the
-                tool wins — and the directory is updated to reflect what
-                users actually report.
-              </p>
-              <div class="team-links">
-                <span class="team-link">LinkedIn</span>
-                <span class="team-link">GitHub</span>
-                <span class="team-link">Email</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-avatar">A</div>
-            <div class="team-body">
-              <div class="team-name">Anders Liu</div>
-              <div class="team-role">Technical reviewer · Benchmarks</div>
-              <p class="team-bio">
-                Anders runs the technical-review pass for every agent that
-                lands in the directory. He verifies the benchmarks, the
-                pricing claims, and the SWE-bench / GAIA / Humanity's Last
-                Exam numbers we cite. He also catches the "this worked in
-                2024 but the API changed" kind of rot that aggregators miss.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <h2>Editorial process</h2>
-        <ol>
-          <li><strong>Submission or discovery</strong> — an agent comes in via email, a reader tip, or our own monitoring of GitHub trending and product launches.</li>
-          <li><strong>First review</strong> — the editor tests the agent against the four-point bar. If it fails any of them, the submission is rejected with a written reason.</li>
-          <li><strong>Drafting the entry</strong> — the editor writes the description, the verdict, and the relevant comparison data from scratch. No copy-paste from the tool's marketing page.</li>
-          <li><strong>Technical review</strong> — Anders verifies the claims, runs the benchmarks where they matter, and fact-checks the pricing.</li>
-          <li><strong>Publication &amp; upkeep</strong> — the entry goes live. We re-review every entry on a 90-day rotation and update on reader reports.</li>
-        </ol>
-
-        <h2>Corrections policy</h2>
-        <p>
-          If you find an error — wrong pricing, stale benchmark, misattributed
-          quote — the fastest fix is to <a href="/contact">email us</a> with
-          a link to the source. Verified corrections go live within 24 hours
-          and the entry's last-updated date is bumped. We do not delete old
-          content quietly; every major change is logged.
-        </p>
       </div>
     </div>
   </section>
 </Base>
-
-<style>
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 16px;
-    margin: 16px 0 24px;
-  }
-  .team-card {
-    display: flex;
-    gap: 16px;
-    padding: 20px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-  }
-  .team-avatar {
-    flex: 0 0 48px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #6366f1, #818cf8);
-    color: #fff;
-    font-size: 20px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .team-body {
-    flex: 1;
-    min-width: 0;
-  }
-  .team-name {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .team-role {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .team-bio {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text);
-    margin: 0 0 10px;
-  }
-  .team-bio a {
-    color: #818cf8;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .team-links {
-    display: flex;
-    gap: 12px;
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .team-link {
-    color: var(--text-muted);
-  }
-  .prose ol {
-    margin: 12px 0 16px;
-    padding-left: 20px;
-  }
-  .prose ol li {
-    margin: 8px 0;
-    line-height: 1.6;
-  }
-</style>

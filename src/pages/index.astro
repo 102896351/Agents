@@ -14,8 +14,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="container">
       <h1>Find the right <span class="grad">AI agent</span><br />for the job.</h1>
       <p>
-        A hand-picked directory of AI agents for coding, research, browsing, and automation.
-        No noise — just what's worth your time, with honest notes on each.
+        Structured profiles of AI agents for coding, research, browsing, and automation.
+        Compare features, pricing, and trade-offs side by side — no promotional fluff.
       </p>
       <div class="search-wrap">
         <input
@@ -28,29 +28,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
-  <!-- Editor's intro: signals editorial content, not auto-aggregator -->
+  <!-- About this directory: what the site is and how the data is maintained -->
   <section class="section section-editorial" aria-label="About this directory">
     <div class="container">
       <div class="editorial-intro">
         <p class="editorial-lead">
-          <strong>AI Agents Hub is an independent editorial project.</strong>
-          We hand-pick every agent on this site, write the description ourselves,
-          and only list tools that have real users and a clear use case.
-          The directory is updated weekly; a new long-form analysis post goes
-          live every week or two.
+          <strong>AI Agents Hub is an open-source directory built by an independent developer.</strong>
+          Every agent gets the same structured profile — what it does, license, pricing,
+          strengths, and a direct "pick this if / skip this if" verdict — so {agents.length}
+          tools can be compared side by side.
         </p>
         <p class="editorial-detail">
-          No paid placements, no auto-generated listings, no SEO scraping. If a
-          tool is listed here, it cleared our four-point bar (real traction,
-          clear use case, accessible, distinct). If we get something wrong, the
-          tool wins — and we update the entry to reflect what users actually
-          report. The blog is where we publish deeper comparisons and how-tos
-          drawn from this directory.
+          Profiles are compiled from public sources (official docs, GitHub repositories,
+          release notes and pricing pages) into a consistent set of fields. Verdicts are
+          the maintainer's judgement, not measured test results; sample inputs and outputs
+          are illustrative, and benchmark numbers should be checked against the original
+          source. No paid placements. The data is public — corrections and new entries
+          can be submitted as an issue or pull request on
+          <a href="https://github.com/102896351/Agents" target="_blank" rel="noopener">GitHub</a>.
         </p>
         <p class="editorial-meta">
-          Last directory update: 2026-11-08 · {agents.length} agents across {categories.length} categories ·
-          {postCount} long-form analysis posts · Maintained by
-          <a href="/about/#editorial-team">the editorial team</a>
+          {agents.length} agents across {categories.length} categories ·
+          {postCount} comparison guides · Open data on
+          <a href="https://github.com/102896351/Agents" target="_blank" rel="noopener">GitHub</a> ·
+          <a href="/about/">How this site is built</a>
         </p>
       </div>
     </div>
