@@ -183,16 +183,23 @@ const haystack = (a: (typeof agents)[number]) =>
     </div>
   </section>
 
-  <!-- Subscribe: RSS only. No fake email form. -->
+  <!-- Bookmark: browser-native save. No fake email form, no app, no backend. -->
   <section class="section" style="padding-top: 8px;">
     <div class="container">
       <div class="subscribe">
         <div>
-          <h3>Follow new agents and guide updates</h3>
-          <p>Subscribe with any RSS reader. There is no email list and no signup.</p>
+          <h3>Keep this directory handy</h3>
+          <p>Save this page in your browser bookmarks. No account, no email, no app needed.</p>
         </div>
         <div class="sub-actions">
-          <a class="btn primary" href={`${base}/rss.xml`}>Subscribe via RSS</a>
+          <details class="bookmark-tip">
+            <summary class="btn primary">Add to bookmarks</summary>
+            <div class="bookmark-tip-body">
+              <p>Your browser saves bookmarks itself, so just press:</p>
+              <p class="bookmark-keys"><kbd>Ctrl</kbd> + <kbd>D</kbd> on Windows &middot; <kbd>&#8984;</kbd> + <kbd>D</kbd> on Mac</p>
+              <p>Or click the star in the address bar, then choose a folder to save it in.</p>
+            </div>
+          </details>
           <a class="btn" href={`${base}/blog/`}>All guides</a>
         </div>
       </div>

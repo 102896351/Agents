@@ -1089,6 +1089,29 @@ a:hover { text-decoration: underline; }
 .subscribe p { margin: 0; color: var(--text-muted); font-size: 13.5px; }
 .subscribe .sub-actions { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
 
+.bookmark-tip { position: relative; }
+.bookmark-tip > summary { list-style: none; cursor: pointer; }
+.bookmark-tip > summary::-webkit-details-marker { display: none; }
+.bookmark-tip > summary::marker { content: ''; }
+.bookmark-tip-body {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 30;
+  width: 300px; max-width: calc(100vw - 48px);
+  padding: 16px 18px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 12px;
+  color: var(--text-muted); font-size: 13px; line-height: 1.6;
+}
+.bookmark-tip-body p { margin: 0 0 8px; font-size: 13px; }
+.bookmark-tip-body p:last-child { margin-bottom: 0; }
+.bookmark-tip-body .bookmark-keys { color: var(--text); font-size: 13.5px; }
+.bookmark-tip-body kbd {
+  display: inline-block; padding: 2px 7px; margin: 0 1px;
+  border: 1px solid var(--border); border-radius: 5px;
+  background: var(--bg-soft, var(--bg-card)); font-family: inherit; font-size: 12px;
+}
+@media (max-width: 560px) {
+  .bookmark-tip-body { right: auto; left: 0; }
+}
+
 .footer-cols {
   display: grid;
   grid-template-columns: 1.5fr repeat(3, 1fr);
