@@ -17,8 +17,8 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
-      // 排除 404 页面（如果有的话）
-      filter: (page) => !page.includes('/404'),
+      // 排除 404 与 RSS（RSS 是订阅源，不是需要收录的着陆页）
+      filter: (page) => !page.includes('/404') && !page.includes('/rss.xml'),
     }),
   ],
 });

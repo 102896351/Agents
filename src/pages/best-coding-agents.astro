@@ -1,0 +1,217 @@
+---
+import Base from '../layouts/Base.astro';
+import { agents } from '../data/agents';
+import { getBlogSorted } from '../data/blog';
+import { licenseLabel, difficultyLabel } from '../utils/labels';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const site = (Astro.site ?? 'https://gonglue.xyz').toString().replace(/\/$/, '');
+const canonical = `${site}/best-coding-agents/`;
+
+const SLUGS = ['claude-code', 'cursor', 'aider', 'cline', 'gemini-cli', 'opencode'];
+const picks = SLUGS.map((s) => agents.find((a) => a.slug === s)).filter(Boolean) as typeof agents;
+
+// Shape is a descriptive label, not a test result.
+const SHAPE: Record<string, string> = {
+  'claude-code': 'Terminal agent',
+  cursor: 'AI-first IDE',
+  aider: 'CLI pair programmer',
+  cline: 'VS Code extension',
+  'gemini-cli': 'Terminal agent',
+  opencode: 'Terminal agent',
+};
+
+const short = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s);
+const freeNames = picks.filter((a) => a.license === 'open-source').map((a) => a.name);
+const selfHostNames = picks.filter((a) => a.selfHost).map((a) => a.name);
+
+const codingCount = agents.filter((a) => a.category === 'coding').length;
+const guides = getBlogSorted()
+  .filter((p) => p.tags.includes('coding') || p.tags.includes('comparison'))
+  .slice(0, 4);
+
+const faq = [
+  {
+    q: 'Which of these AI coding agents are free?',
+    a: `${freeNames.join(', ')} are listed as open source. Free does not always mean zero cost — bring-your-own-key tools still bill model API calls, and free tiers change. Check the official pricing page linked from each profile.`,
+  },
+  {
+    q: 'Cursor or Claude Code — which one should I pick?',
+    a: 'They solve different jobs: Cursor is an editor you work inside, while Claude Code is a terminal agent you delegate tasks to. Many developers use both. Compare the full profiles for setup, pricing and trade-offs before deciding.',
+  },
+  {
+    q: 'Can I self-host any of these coding agents?',
+    a: `${selfHostNames.length ? selfHostNames.join(', ') + ' are listed as self-hostable.' : 'None of the six are listed as self-hostable.'} Self-hosting usually means managing your own model keys, updates and infrastructure.`,
+  },
+  {
+    q: 'Where do the figures in this comparison come from?',
+    a: 'Every field comes from public sources — official documentation, repositories, release notes and pricing pages — normalised into one format. These are structured profiles, not hands-on test results. Verify anything that affects a purchase against the official source.',
+  },
+];
+---
+
+<Base
+  title="Best AI Coding Agents"
+  description="Compare six AI coding agents side by side — terminal tools, AI-first IDEs and VS Code extensions. License, pricing, setup difficulty and who each one is for."
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+        { '@type': 'ListItem', position: 2, name: 'Coding agents', item: `${site}/category/coding/` },
+        { '@type': 'ListItem', position: 3, name: 'Best coding agents', item: canonical },
+      ],
+    })}
+  />
+
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href={`${base}/`}>Home</a><span aria-hidden="true">›</span>
+      <a href={`${base}/category/coding/`}>Coding agents</a><span aria-hidden="true">›</span>
+      <span aria-current="page">Best coding agents</span>
+    </nav>
+
+    <div class="detail-head">
+      <h1>Six AI coding agents, compared side by side</h1>
+      <p class="tagline">
+        Terminal tools, AI-first editors and VS Code extensions — the same fields for each,
+        so you can shortlist before you install anything.
+      </p>
+      <div class="detail-actions">
+        <a class="btn primary" href={`${base}/category/coding/`}>Browse all {codingCount} coding agents →</a>
+        <a class="btn" href={`${base}/blog/tags/comparison/`}>Read comparison guides</a>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <h2>How this comparison works</h2>
+      This table is built from the same public data as the rest of the directory: official
+      docs, repositories, release notes and pricing pages. It is a structured shortlist,
+      not a hands-on benchmark run. Pricing, free tiers and model support change often —
+      follow the links to each profile and verify against the official source before
+      committing.
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Tool</th><th>Shape</th><th>License</th><th>Pricing</th><th>Setup</th><th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((a) => (
+            <tr>
+              <td class="tool"><a href={`${base}/agent/${a.slug}/`}>{a.name}</a></td>
+              <td>{SHAPE[a.slug] ?? '—'}</td>
+              <td>{licenseLabel(a.license)}</td>
+              <td title={a.pricing}>{short(a.pricing, 42)}</td>
+              <td>{difficultyLabel(a.difficulty)}</td>
+              <td title={a.decisionAid?.pickIf ?? a.useCases?.[0] ?? ''}>
+                {short(a.decisionAid?.pickIf ?? a.useCases?.[0] ?? a.tagline, 72)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">
+      Every tool name links to a full profile with pros, cons, quick start, pricing and
+      alternatives.
+    </p>
+
+    <section class="section">
+      <div class="section-head"><h2>Start from how you work</h2></div>
+      <div class="scenes">
+        <a class="scene" href={`${base}/agent/claude-code/`}>
+          <span class="em">⌘</span>
+          <div><b>Terminal-first</b><span>Claude Code · OpenCode · Gemini CLI</span></div>
+        </a>
+        <a class="scene" href={`${base}/agent/cursor/`}>
+          <span class="em">◇</span>
+          <div><b>AI-first editor</b><span>Cursor and other IDE-native tools</span></div>
+        </a>
+        <a class="scene" href={`${base}/agent/cline/`}>
+          <span class="em">⌁</span>
+          <div><b>Inside VS Code</b><span>Cline as an editor extension</span></div>
+        </a>
+        <a class="scene" href={`${base}/agent/aider/`}>
+          <span class="em">⇄</span>
+          <div><b>Git-native CLI</b><span>Aider for commit-ready edits</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Frequently asked questions</h2></div>
+      <div class="faq">
+        {faq.map((f, i) => (
+          <details open={i === 0}>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    {guides.length > 0 && (
+      <section class="section">
+        <div class="section-head">
+          <h2>Related comparison guides</h2>
+          <a class="section-more" href={`${base}/blog/`}>All guides →</a>
+        </div>
+        <div class="guide-links">
+          {guides.map((g) => (
+            <a href={`${base}/blog/${g.slug}/`}>
+              <span>{g.title}</span>
+              <span class="guide-meta">{g.readingTime} min read →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="section">
+      <div class="note-box">
+        <h2>Looking for something else?</h2>
+        See all <a href={`${base}/category/coding/`}>{codingCount} coding agents</a>,
+        browse the <a href={`${base}/`}>full {agents.length}-agent directory</a>, or read
+        <a href={`${base}/about/#how-profiles-are-written`}> how these profiles are written</a>.
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style is:global>
+  .breadcrumbs {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+    padding-top: 22px; font-size: 13px; color: var(--text-muted);
+  }
+  .breadcrumbs a { color: var(--text-muted); }
+  .breadcrumbs a:hover { color: var(--accent-soft); }
+  .guide-links { display: grid; gap: 10px; }
+  .guide-links a {
+    display: flex; justify-content: space-between; gap: 16px; align-items: center;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px; color: var(--text);
+  }
+  .guide-links a:hover { border-color: var(--accent); text-decoration: none; }
+  .guide-meta { color: var(--text-muted); font-size: 12.5px; white-space: nowrap; }
+</style>

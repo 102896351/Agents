@@ -95,6 +95,33 @@ const comparePhrase =
   altNames.length > 1
     ? `${altNames.slice(0, -1).join(', ')} and ${altNames[altNames.length - 1]}`
     : altNames[0] ?? 'other agents in this category';
+
+// FAQ derived only from fields this profile already has. No invented test
+// results, no made-up recommendations.
+const faqItems: { q: string; a: string }[] = [
+  {
+    q: `Is ${agent.name} free to use?`,
+    a: `${agent.name} is listed as ${licenseLabel(agent.license).toLowerCase()}${agent.licenseName ? ` (${agent.licenseName})` : ''}. Pricing: ${agent.pricing} Plans, free tiers and model API costs change — check the official site linked above for current terms.`,
+  },
+];
+if (agent.decisionAid?.pickIf) {
+  faqItems.push({ q: `What is ${agent.name} best for?`, a: agent.decisionAid.pickIf });
+}
+if (agent.decisionAid?.skipIf) {
+  faqItems.push({ q: `When should I skip ${agent.name}?`, a: agent.decisionAid.skipIf });
+}
+faqItems.push({
+  q: `Can I self-host ${agent.name}?`,
+  a: agent.selfHost
+    ? `Yes — ${agent.name} is listed as self-hostable${agent.licenseName ? ` under ${agent.licenseName}` : ''}. Self-hosting means managing your own deployment, updates and model credentials.`
+    : `No — ${agent.name} is currently listed as a hosted product with no self-hosting option. Check the official documentation in case that has changed.`,
+});
+if (compareTargets.length > 0) {
+  faqItems.push({
+    q: `What are the alternatives to ${agent.name}?`,
+    a: `Other profiles on the same shortlist: ${compareTargets.map((a) => a.name).join(', ')}. The ${cat.label} category page lists every related agent with the same fields for comparison.`,
+  });
+}
 ---
 
 <Base title={agent.name} description={agent.tagline}>
@@ -135,6 +162,19 @@ const comparePhrase =
         { '@type': 'ListItem', position: 2, name: cat.label, item: `${site}/category/${cat.id}/` },
         { '@type': 'ListItem', position: 3, name: agent.name, item: canonical },
       ],
+    })}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
     })}
   />
   <div class="container">
@@ -343,6 +383,16 @@ const comparePhrase =
             </div>
           </div>
         )}
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          {faqItems.map((f, i) => (
+            <details open={i === 0}>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
 
       <!-- 侧边栏：结构化规格 -->

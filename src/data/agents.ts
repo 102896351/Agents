@@ -3791,7 +3791,7 @@ const allAgents: Agent[] = [
   ...extraAgents2026f,
 ];
 
-// Backfilled official visuals live in a separate map so the 119 legacy entries
+// Backfilled official visuals live in a separate map so the legacy entries
 // stay untouched. Entries that already declare their own image win.
 export const agents: Agent[] = allAgents.map((a) =>
   a.image ? a : agentImages[a.slug] ? { ...a, image: agentImages[a.slug] } : a
@@ -3805,8 +3805,9 @@ export function getAgentsByCategory(cat: Category): Agent[] {
 }
 
 export function getFeatured(): Agent[] {
-  // 首页推荐：每个分类里取 star 最高的或最具代表性的
-  return ['gemini-cli', 'aider', 'firecrawl', 'browser-use', 'n8n', 'autogpt']
+  // Homepage spotlight follows the site's coding-first focus: six coding
+  // agents with full profiles, ordered terminal → IDE → extension.
+  return ['claude-code', 'cursor', 'aider', 'cline', 'gemini-cli', 'opencode']
     .map((slug) => agents.find((a) => a.slug === slug))
     .filter(Boolean) as Agent[];
 }

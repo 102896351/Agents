@@ -1,21 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import AgentCard from '../components/AgentCard.astro';
-import { agents, categories, getFeatured, type Category } from '../data/agents';
+import { agents, categories, getFeatured } from '../data/agents';
 import { getBlogSorted } from '../data/blog';
 
 const featured = getFeatured();
 const postCount = getBlogSorted().length;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const codingCount = agents.filter((a) => a.category === 'coding').length;
+const frameworkCount = agents.filter((a) => a.category === 'framework').length;
+const catCounts: Record<string, number> = Object.fromEntries(
+  categories.map((c) => [c.id, agents.filter((a) => a.category === c.id).length])
+);
+// The data files are appended in batches, so the tail really is "recently added".
+const latest = agents.slice(-3).reverse();
 ---
 
 <Base>
   <section class="hero">
     <div class="container">
-      <h1>Find the right <span class="grad">AI agent</span><br />for the job.</h1>
+      <h1>Find the right <span class="grad">AI coding agent</span><br />for the job.</h1>
       <p>
-        Structured profiles of AI agents for coding, research, browsing, and automation.
-        Compare features, pricing, and trade-offs side by side — no promotional fluff.
+        Structured, side-by-side profiles of {agents.length} AI agents — with coding tools up front.
+        Compare pricing, license, setup and trade-offs without the marketing copy.
       </p>
       <div class="search-wrap">
         <input
@@ -25,10 +32,130 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           autocomplete="off"
         />
       </div>
+      <div class="hero-ctas">
+        <a class="btn primary" href={`${base}/best-coding-agents/`}>Compare the 6 best coding agents →</a>
+        <a class="btn" href="#categories">Browse all agents</a>
+      </div>
+      <div class="hero-meta">
+        <span><b>{agents.length}</b> agents</span>
+        <span><b>{codingCount}</b> coding agents</span>
+        <span><b>{postCount}</b> comparison guides</span>
+        <span>No paid placements</span>
+      </div>
     </div>
   </section>
 
-  <!-- About this directory: what the site is and how the data is maintained -->
+  <!-- Coding-first spotlight -->
+  <section class="section" id="featured">
+    <div class="container">
+      <div class="section-head">
+        <h2>Top coding agents</h2>
+        <a class="section-more" href={`${base}/best-coding-agents/`}>Full comparison →</a>
+      </div>
+      <p class="section-sub">
+        Six coding agents worth shortlisting — terminal tools, AI-first editors and VS Code
+        extensions. Each has a full profile with pricing, setup notes and trade-offs.
+      </p>
+      <div class="spot-grid" id="featured-grid">
+        {featured.map((agent) => <AgentCard agent={agent} base={base} />)}
+      </div>
+      <div class="scenes">
+        <a class="scene" href={`${base}/category/coding/`}>
+          <span class="em">⌘</span>
+          <div><b>All coding agents</b><span>{codingCount} profiles compared</span></div>
+        </a>
+        <a class="scene" href={`${base}/blog/tags/open-source/`}>
+          <span class="em">◇</span>
+          <div><b>Open source &amp; self-host</b><span>Guides and tagged profiles</span></div>
+        </a>
+        <a class="scene" href={`${base}/category/framework/`}>
+          <span class="em">⌁</span>
+          <div><b>Build your own agent</b><span>{frameworkCount} frameworks</span></div>
+        </a>
+        <a class="scene" href={`${base}/blog/tags/comparison/`}>
+          <span class="em">⇄</span>
+          <div><b>Head-to-head comparisons</b><span>Decision guides</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- A second rhythm break: recently added, no invented "trending" numbers -->
+  <section class="section" style="padding-top: 12px;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Recently added</h2>
+        <a class="section-more" href="#categories">See all {agents.length} →</a>
+      </div>
+      <div class="trend-list">
+        {latest.map((a, i) => (
+          <a class="trend-item" href={`${base}/agent/${a.slug}/`}>
+            <span class="rank">{i + 1}</span>
+            <div><b>{a.name}</b><span>{a.tagline}</span></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- All agents, filterable; the filter bar sticks while scrolling -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <h2>Browse all agents</h2>
+        <span class="count" id="result-count">{agents.length} agents</span>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <div class="container filter-in">
+        <div class="pills" id="filter-pills">
+          <button class="pill active" data-cat="all">All <span class="chip-count">{agents.length}</span></button>
+          {categories.map((c) => (
+            <button class="pill" data-cat={c.id}>{c.label} <span class="chip-count">{catCounts[c.id]}</span></button>
+          ))}
+        </div>
+        <select id="sort" aria-label="Sort agents">
+          <option value="default">Sort: directory order</option>
+          <option value="stars">Sort: GitHub stars</option>
+          <option value="az">Sort: A → Z</option>
+          <option value="cat">Sort: category</option>
+        </select>
+      </div>
+    </div>
+    <div class="container">
+      <div class="grid" id="agent-grid">
+        {agents.map((agent, i) => (
+          <div class="card-wrap"
+               data-name={agent.name.toLowerCase()}
+               data-cat={agent.category}
+               data-tags={agent.tags.join(' ')}
+               data-stars={agent.stars ?? 0}
+               data-order={i}>
+            <AgentCard agent={agent} base={base} />
+          </div>
+        ))}
+      </div>
+      <p class="empty hidden" id="empty-state">No agents match your search.</p>
+    </div>
+  </section>
+
+  <!-- Subscribe: RSS only. No fake email form. -->
+  <section class="section" style="padding-top: 8px;">
+    <div class="container">
+      <div class="subscribe">
+        <div>
+          <h3>Follow new agents and guide updates</h3>
+          <p>Subscribe with any RSS reader. There is no email list and no signup.</p>
+        </div>
+        <div class="sub-actions">
+          <a class="btn primary" href={`${base}/rss.xml`}>Subscribe via RSS</a>
+          <a class="btn" href={`${base}/blog/`}>All guides</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest project framing, kept but moved below the directory -->
   <section class="section section-editorial" aria-label="About this directory">
     <div class="container">
       <div class="editorial-intro">
@@ -57,46 +184,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
-  <!-- Featured -->
-  <section class="section" id="featured">
-    <div class="container">
-      <div class="section-head">
-        <h2>Featured</h2>
-        <span class="count">{featured.length} picks</span>
-      </div>
-      <div class="grid" id="featured-grid">
-        {featured.map((agent) => <AgentCard agent={agent} base={base} />)}
-      </div>
-    </div>
-  </section>
-
-  <!-- All agents, filterable -->
-  <section class="section" id="categories">
-    <div class="container">
-      <div class="section-head">
-        <h2>Browse all</h2>
-        <span class="count" id="result-count">{agents.length} agents</span>
-      </div>
-
-      <div class="pills" id="filter-pills">
-        <button class="pill active" data-cat="all">All</button>
-        {categories.map((c) => (
-          <button class="pill" data-cat={c.id}>{c.label}</button>
-        ))}
-      </div>
-
-      <div class="grid" id="agent-grid">
-        {agents.map((agent) => (
-          <div class="card-wrap" data-name={agent.name.toLowerCase()} data-cat={agent.category} data-tags={agent.tags.join(' ')}>
-            <AgentCard agent={agent} base={base} />
-          </div>
-        ))}
-      </div>
-
-      <p class="empty hidden" id="empty-state">No agents match your search.</p>
-    </div>
-  </section>
-
   <!-- Browse by category: internal links to per-category landing pages -->
   <section class="section" id="browse-categories">
     <div class="container">
@@ -106,7 +193,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
       <div class="pills">
         {categories.map((c) => (
-          <a class="pill" href={`${base}/category/${c.id}/`}>{c.label}</a>
+          <a class="pill" href={`${base}/category/${c.id}/`}>{c.label} <span class="chip-count">{catCounts[c.id]}</span></a>
         ))}
       </div>
     </div>
@@ -114,9 +201,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </Base>
 
 <style>
-  .section-editorial {
-    padding: 40px 0 24px;
-  }
+  .section-editorial { padding: 16px 0 24px; }
   .editorial-intro {
     max-width: 760px;
     margin: 0 auto;
@@ -126,28 +211,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     border-radius: 14px;
     padding: 28px 32px;
   }
-  .editorial-lead {
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--text);
-    margin: 0 0 12px;
-  }
-  .editorial-detail {
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--text-muted);
-    margin: 0 0 12px;
-  }
-  .editorial-meta {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin: 0;
-  }
-  .editorial-meta a {
-    color: #818cf8;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
+  .editorial-lead { font-size: 18px; line-height: 1.6; color: var(--text); margin: 0 0 12px; }
+  .editorial-detail { font-size: 15px; line-height: 1.65; color: var(--text-muted); margin: 0 0 12px; }
+  .editorial-meta { font-size: 13px; color: var(--text-muted); margin: 0; }
+  .editorial-meta a { color: #818cf8; text-decoration: underline; text-underline-offset: 2px; }
 </style>
 
 <script is:inline>
@@ -156,7 +223,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const search = document.getElementById('search');
   const empty = document.getElementById('empty-state');
   const count = document.getElementById('result-count');
-  const total = cards.length;
+  const sortSel = document.getElementById('sort');
+  const grid = document.getElementById('agent-grid');
 
   let currentCat = 'all';
   let currentQuery = '';
@@ -191,6 +259,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     search.addEventListener('input', (e) => {
       currentQuery = e.target.value.toLowerCase().trim();
       apply();
+    });
+  }
+
+  if (sortSel && grid) {
+    sortSel.addEventListener('change', () => {
+      const mode = sortSel.value;
+      const ordered = Array.from(cards).sort((a, b) => {
+        if (mode === 'stars') return (Number(b.dataset.stars) || 0) - (Number(a.dataset.stars) || 0);
+        if (mode === 'az') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+        if (mode === 'cat') return (a.dataset.cat || '').localeCompare(b.dataset.cat || '') || (a.dataset.name || '').localeCompare(b.dataset.name || '');
+        return (Number(a.dataset.order) || 0) - (Number(b.dataset.order) || 0);
+      });
+      ordered.forEach((el) => grid.appendChild(el));
     });
   }
 </script>
