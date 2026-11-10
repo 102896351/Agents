@@ -25,6 +25,16 @@ const spotlightNotes: Record<string, { bestFor: string; price: string }> = {
 };
 // The data files are appended in batches, so the tail really is "recently added".
 const latest = agents.slice(-3).reverse();
+const catLabel = (id: string) => categories.find((c) => c.id === id)?.label ?? id;
+// One normalised haystack per card: name, tagline, tags, category and license.
+// Hyphens become spaces so "open source" matches the "open-source" license.
+const haystack = (a: (typeof agents)[number]) =>
+  [a.name, a.tagline, a.tags.join(' '), catLabel(a.category), a.license]
+    .join(' ')
+    .toLowerCase()
+    .replace(/[-_/]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 ---
 
 <Base>
@@ -35,13 +45,26 @@ const latest = agents.slice(-3).reverse();
         Structured, side-by-side profiles of {agents.length} AI agents — with coding tools up front.
         Compare pricing, license, setup and trade-offs without the marketing copy.
       </p>
-      <div class="search-wrap">
-        <input
-          type="text"
-          id="search"
-          placeholder="Search agents, e.g. “coding”, “open source”, “browser”…"
-          autocomplete="off"
-        />
+      <div class="search-wrap" id="search-wrap">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+            <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M13.5 13.5 18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <input
+            type="text"
+            id="search"
+            placeholder={`Search ${agents.length} agents — try "terminal", "VS Code", "open source"…`}
+            autocomplete="off"
+            aria-label="Search agents"
+            aria-controls="search-suggest"
+            aria-expanded="false"
+          />
+          <button type="button" class="search-clear" id="search-clear" aria-label="Clear search" hidden>×</button>
+          <kbd class="search-kbd" id="search-kbd" aria-hidden="true">/</kbd>
+        </div>
+        <p class="search-status" id="search-status" aria-live="polite"></p>
+        <div class="search-suggest" id="search-suggest" role="listbox" aria-label="Matching agents" hidden></div>
       </div>
       <div class="hero-ctas">
         <a class="btn primary" href={`${base}/best-coding-agents/`}>Compare the 6 best coding agents →</a>
@@ -147,6 +170,9 @@ const latest = agents.slice(-3).reverse();
                data-name={agent.name.toLowerCase()}
                data-cat={agent.category}
                data-tags={agent.tags.join(' ')}
+               data-slug={agent.slug}
+               data-tagline={agent.tagline}
+               data-haystack={haystack(agent)}
                data-stars={agent.stars ?? 0}
                data-order={i}>
             <AgentCard agent={agent} base={base} />
@@ -236,60 +262,211 @@ const latest = agents.slice(-3).reverse();
 </style>
 
 <script is:inline>
-  const pills = document.querySelectorAll('#filter-pills .pill');
-  const cards = document.querySelectorAll('#agent-grid .card-wrap');
-  const search = document.getElementById('search');
-  const empty = document.getElementById('empty-state');
-  const count = document.getElementById('result-count');
-  const sortSel = document.getElementById('sort');
-  const grid = document.getElementById('agent-grid');
+  (function () {
+    const pills = document.querySelectorAll('#filter-pills .pill');
+    const cardEls = Array.from(document.querySelectorAll('#agent-grid .card-wrap'));
+    const search = document.getElementById('search');
+    const searchWrap = document.getElementById('search-wrap');
+    const clearBtn = document.getElementById('search-clear');
+    const kbd = document.getElementById('search-kbd');
+    const status = document.getElementById('search-status');
+    const suggest = document.getElementById('search-suggest');
+    const empty = document.getElementById('empty-state');
+    const count = document.getElementById('result-count');
+    const sortSel = document.getElementById('sort');
+    const grid = document.getElementById('agent-grid');
 
-  let currentCat = 'all';
-  let currentQuery = '';
+    const norm = (s) => (s || '').toLowerCase().replace(/[-_/]+/g, ' ').replace(/\s+/g, ' ').trim();
+    const tokensOf = (q) => norm(q).split(' ').filter(Boolean);
 
-  function apply() {
-    let visible = 0;
-    cards.forEach((card) => {
-      const el = card;
-      const matchCat = currentCat === 'all' || el.dataset.cat === currentCat;
-      const matchQ =
-        currentQuery === '' ||
-        el.dataset.name.includes(currentQuery) ||
-        (el.dataset.tags || '').includes(currentQuery);
-      const show = matchCat && matchQ;
-      el.classList.toggle('hidden', !show);
-      if (show) visible++;
+    // Read the search index straight from the rendered cards — no duplicate data.
+    const records = cardEls.map((el) => {
+      const link = el.querySelector('a.card');
+      const title = el.querySelector('h3');
+      return {
+        el,
+        name: title ? title.textContent.trim() : (el.dataset.name || ''),
+        cat: el.dataset.cat || '',
+        tagline: el.dataset.tagline || '',
+        hay: el.dataset.haystack || norm(el.dataset.name || ''),
+        href: link ? link.getAttribute('href') : '#',
+      };
     });
-    if (count) count.textContent = `${visible} ${visible === 1 ? 'agent' : 'agents'}`;
-    if (empty) empty.classList.toggle('hidden', visible !== 0);
-  }
 
-  pills.forEach((pill) => {
-    pill.addEventListener('click', () => {
-      pills.forEach((p) => p.classList.remove('active'));
-      pill.classList.add('active');
-      currentCat = pill.dataset.cat || 'all';
-      apply();
-    });
-  });
+    let currentCat = 'all';
+    let currentQuery = '';
+    let activeIndex = -1;
 
-  if (search) {
-    search.addEventListener('input', (e) => {
-      currentQuery = e.target.value.toLowerCase().trim();
-      apply();
-    });
-  }
-
-  if (sortSel && grid) {
-    sortSel.addEventListener('change', () => {
-      const mode = sortSel.value;
-      const ordered = Array.from(cards).sort((a, b) => {
-        if (mode === 'stars') return (Number(b.dataset.stars) || 0) - (Number(a.dataset.stars) || 0);
-        if (mode === 'az') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
-        if (mode === 'cat') return (a.dataset.cat || '').localeCompare(b.dataset.cat || '') || (a.dataset.name || '').localeCompare(b.dataset.name || '');
-        return (Number(a.dataset.order) || 0) - (Number(b.dataset.order) || 0);
+    function apply() {
+      const tokens = tokensOf(currentQuery);
+      let visible = 0;
+      const found = [];
+      records.forEach((rec) => {
+        const matchCat = currentCat === 'all' || rec.cat === currentCat;
+        const matchQ = tokens.length === 0 || tokens.every((t) => rec.hay.includes(t));
+        const show = matchCat && matchQ;
+        rec.el.classList.toggle('hidden', !show);
+        if (show) {
+          visible++;
+          if (tokens.length) found.push(rec);
+        }
       });
-      ordered.forEach((el) => grid.appendChild(el));
+      if (count) count.textContent = `${visible} ${visible === 1 ? 'agent' : 'agents'}`;
+      if (empty) empty.classList.toggle('hidden', visible !== 0);
+      return { visible, found, tokens };
+    }
+
+    function jumpToResults() {
+      suggest.hidden = true;
+      search.setAttribute('aria-expanded', 'false');
+      const target = document.getElementById('categories');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderStatus(visible, tokens) {
+      status.replaceChildren();
+      if (!tokens.length) {
+        status.classList.remove('on');
+        clearBtn.hidden = true;
+        kbd.hidden = false;
+        return;
+      }
+      status.classList.add('on');
+      clearBtn.hidden = false;
+      kbd.hidden = true;
+      status.appendChild(document.createTextNode(visible + ' of ' + records.length + ' agents match · '));
+      const a = document.createElement('a');
+      a.href = '#categories';
+      a.textContent = 'Jump to results ↓';
+      a.addEventListener('click', (e) => { e.preventDefault(); jumpToResults(); });
+      status.appendChild(a);
+    }
+
+    function renderSuggest(found, tokens) {
+      suggest.replaceChildren();
+      activeIndex = -1;
+      if (!tokens.length) {
+        suggest.hidden = true;
+        search.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      const top = found.slice(0, 6);
+      if (!top.length) {
+        const d = document.createElement('div');
+        d.className = 'suggest-empty';
+        d.textContent = 'No agent matches that keyword. Try a shorter word.';
+        suggest.appendChild(d);
+      } else {
+        top.forEach((rec) => {
+          const a = document.createElement('a');
+          a.className = 'suggest-item';
+          a.href = rec.href;
+          const b = document.createElement('b');
+          b.textContent = rec.name;
+          const s = document.createElement('span');
+          s.textContent = rec.tagline;
+          a.appendChild(b);
+          a.appendChild(s);
+          suggest.appendChild(a);
+        });
+      }
+      if (found.length) {
+        const more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'suggest-all';
+        more.textContent = 'View all ' + found.length + ' matching agents ↓';
+        more.addEventListener('click', jumpToResults);
+        suggest.appendChild(more);
+      }
+      suggest.hidden = false;
+      search.setAttribute('aria-expanded', 'true');
+    }
+
+    function refresh() {
+      const r = apply();
+      renderStatus(r.visible, r.tokens);
+      renderSuggest(r.found, r.tokens);
+    }
+
+    function clearSearch(keepFocus) {
+      search.value = '';
+      currentQuery = '';
+      refresh();
+      if (keepFocus !== false) search.focus();
+    }
+
+    const items = () => Array.from(suggest.querySelectorAll('.suggest-item'));
+    function setActive(i) {
+      const list = items();
+      if (!list.length) return;
+      activeIndex = (i + list.length) % list.length;
+      list.forEach((el, j) => el.classList.toggle('active', j === activeIndex));
+    }
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentCat = pill.dataset.cat || 'all';
+        refresh();
+      });
     });
-  }
+
+    search.addEventListener('input', () => { currentQuery = search.value; refresh(); });
+    search.addEventListener('focus', () => { if (tokensOf(search.value).length) refresh(); });
+    search.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (suggest.hidden) refresh();
+        setActive(activeIndex + 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActive(activeIndex - 1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const list = items();
+        if (!suggest.hidden && activeIndex >= 0 && list[activeIndex]) {
+          window.location.href = list[activeIndex].href;
+        } else {
+          jumpToResults();
+        }
+      } else if (e.key === 'Escape') {
+        clearSearch(false);
+        search.blur();
+      }
+    });
+
+    clearBtn.addEventListener('click', () => clearSearch(true));
+
+    document.addEventListener('keydown', (e) => {
+      const tag = (document.activeElement || {}).tagName;
+      if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+        e.preventDefault();
+        search.focus();
+        search.select();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!searchWrap.contains(e.target)) {
+        suggest.hidden = true;
+        search.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    if (sortSel && grid) {
+      sortSel.addEventListener('change', () => {
+        const mode = sortSel.value;
+        const ordered = Array.from(cardEls).sort((a, b) => {
+          if (mode === 'stars') return (Number(b.dataset.stars) || 0) - (Number(a.dataset.stars) || 0);
+          if (mode === 'az') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+          if (mode === 'cat') return (a.dataset.cat || '').localeCompare(b.dataset.cat || '') || (a.dataset.name || '').localeCompare(b.dataset.name || '');
+          return (Number(a.dataset.order) || 0) - (Number(b.dataset.order) || 0);
+        });
+        ordered.forEach((el) => grid.appendChild(el));
+      });
+    }
+
+    refresh();
+  })();
 </script>
