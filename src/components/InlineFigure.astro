@@ -1,0 +1,29 @@
+---
+// An official upstream screenshot placed inside the article body, next to the
+// section it illustrates. `note` explains the connection; `sourceUrl` links
+// back to the exact upstream file so readers can verify the image.
+import type { InlineImage } from '../data/agent-inline-images';
+
+interface Props {
+  image: InlineImage;
+  base: string;
+}
+
+const { image, base } = Astro.props;
+---
+
+<figure class="agent-figure agent-figure--inline">
+  <p class="figure-note">{image.note}</p>
+  <img
+    src={`${base}${image.src}`}
+    alt={image.alt}
+    width={image.width}
+    height={image.height}
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>
+    {image.credit} ·{' '}
+    <a href={image.sourceUrl} target="_blank" rel="noopener">View upstream source</a>
+  </figcaption>
+</figure>

@@ -1,7 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import AgentCard from '../../components/AgentCard.astro';
+import InlineFigure from '../../components/InlineFigure.astro';
 import { agents, categories } from '../../data/agents';
+import { agentInlineImages } from '../../data/agent-inline-images';
 import { getBlogSorted, getGuidesForAgent } from '../../data/blog';
 import { topicTagsFor, topicLabel, TOPIC_BY_SLUG } from '../../data/taxonomy';
 import { licenseLabel, difficultyLabel } from '../../utils/labels';
@@ -19,6 +21,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const cat = categories.find((c) => c.id === agent.category)!;
 const site = (Astro.site ?? 'https://gonglue.xyz').toString().replace(/\/$/, '');
 const canonical = `${site}/agent/${agent.slug}/`;
+
+// Official screenshots that sit INSIDE the body copy, next to the section
+// they illustrate. Profiles without a Sample section fall back to the
+// Benchmarks or Pricing slot so no image is silently dropped.
+const inlineImages = agentInlineImages[agent.slug] ?? [];
+const quickFigures = inlineImages.filter((i) => i.section === 'quickstart');
+const sampleFigures = inlineImages.filter((i) => i.section === 'sample');
+const hasSampleSection = !!(agent.sampleInput || agent.sampleOutput);
+const hasBenchSection = !!(agent.benchmarks && agent.benchmarks.length);
+const hasQuickSection = !!(agent.quickStart && agent.quickStart.length);
+const sampleSlot = hasSampleSection ? 'sample' : hasBenchSection ? 'benchmarks' : 'pricing';
+const quickSlotFigures = hasQuickSection ? quickFigures : [];
+const tailFigures = [
+  ...(hasQuickSection ? [] : quickFigures),
+  ...sampleFigures,
+];
+const allScreenshots = [
+  ...(agent.image ? [agent.image.src] : []),
+  ...inlineImages.map((i) => i.src),
+];
 
 // 相关推荐：同分类的其他 agent，最多 3 个（卡片区）
 const related = agents
@@ -143,7 +165,7 @@ if (compareTargets.length > 0) {
         priceCurrency: 'USD',
       },
       ...(agent.github ? { codeRepository: agent.github } : {}),
-      ...(agent.image ? { screenshot: `${site}${agent.image.src}` } : {}),
+      ...(allScreenshots.length ? { screenshot: allScreenshots.map((s) => `${site}${s}`) } : {}),
       ...(agent.stars ? { interactionStatistic: {
         '@type': 'InteractionCounter',
         interactionType: 'https://schema.org/LikeAction',
@@ -210,23 +232,6 @@ if (compareTargets.length > 0) {
       </div>
     </div>
 
-    {agent.image && (
-      <figure class="agent-figure">
-        <img
-          src={`${base}${agent.image.src}`}
-          alt={agent.image.alt}
-          width={agent.image.width}
-          height={agent.image.height}
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption>
-          {agent.image.credit} ·{' '}
-          <a href={agent.image.sourceUrl} target="_blank" rel="noopener">View upstream source</a>
-        </figcaption>
-      </figure>
-    )}
-
     <div class="detail-grid">
       <!-- 主内容 -->
       <div class="prose">
@@ -246,6 +251,24 @@ if (compareTargets.length > 0) {
           Compare it in the <a href={`${base}/blog/tags/comparison/`}>agent comparison guides</a> or browse the
           <a href={`${base}/`}>full directory</a> before choosing.
         </p>
+
+        {agent.image && (
+          <figure class="agent-figure agent-figure--inline">
+            <p class="figure-note">What {agent.name} looks like in use — an official image from the project's own documentation.</p>
+            <img
+              src={`${base}${agent.image.src}`}
+              alt={agent.image.alt}
+              width={agent.image.width}
+              height={agent.image.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              {agent.image.credit} ·{' '}
+              <a href={agent.image.sourceUrl} target="_blank" rel="noopener">View upstream source</a>
+            </figcaption>
+          </figure>
+        )}
 
         {agent.useCases && agent.useCases.length > 0 && (
           <>
@@ -306,6 +329,7 @@ if (compareTargets.length > 0) {
             <ol class="quickstart-list">
               {agent.quickStart.map((step) => <li>{step}</li>)}
             </ol>
+            {quickSlotFigures.map((img) => <InlineFigure image={img} base={base} />)}
           </>
         )}
 
@@ -327,6 +351,7 @@ if (compareTargets.length > 0) {
                 </div>
               )}
             </div>
+            {sampleSlot === 'sample' && tailFigures.map((img) => <InlineFigure image={img} base={base} />)}
           </>
         )}
 
@@ -343,11 +368,13 @@ if (compareTargets.length > 0) {
                 </div>
               ))}
             </div>
+            {sampleSlot === 'benchmarks' && tailFigures.map((img) => <InlineFigure image={img} base={base} />)}
           </>
         )}
 
         <h2>Pricing</h2>
         <p>{agent.pricing}</p>
+        {sampleSlot === 'pricing' && tailFigures.map((img) => <InlineFigure image={img} base={base} />)}
 
         {agent.models && agent.models.length > 0 && (
           <>
@@ -569,6 +596,13 @@ if (compareTargets.length > 0) {
       color: var(--text-muted);
     }
     .agent-figure figcaption a { color: #818cf8; }
+    .agent-figure--inline { margin: 22px 0 26px; }
+    .figure-note {
+      margin: 0 0 10px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
     .breadcrumbs {
       display: flex;
       align-items: center;
