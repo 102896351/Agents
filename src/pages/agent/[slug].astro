@@ -4,6 +4,7 @@ import AgentCard from '../../components/AgentCard.astro';
 import InlineFigure from '../../components/InlineFigure.astro';
 import { agents, categories } from '../../data/agents';
 import { agentInlineImages } from '../../data/agent-inline-images';
+import { agentVersions, VERSION_CHECKED, type AgentVersion } from '../../data/agent-versions';
 import { getBlogSorted, getGuidesForAgent } from '../../data/blog';
 import { topicTagsFor, topicLabel, TOPIC_BY_SLUG } from '../../data/taxonomy';
 import { licenseLabel, difficultyLabel } from '../../utils/labels';
@@ -25,6 +26,31 @@ const canonical = `${site}/agent/${agent.slug}/`;
 // Official screenshots that sit INSIDE the body copy, next to the section
 // they illustrate. Profiles without a Sample section fall back to the
 // Benchmarks or Pricing slot so no image is silently dropped.
+// Real version snapshots from the GitHub API. Nothing here is invented:
+// projects without a public release are labelled rolling / not published.
+const ver: AgentVersion = agentVersions[agent.slug] ?? { kind: 'closed' };
+const versionLabel = ver.version ?? (
+  ver.kind === 'rolling' ? 'Rolling release'
+  : ver.kind === 'unknown' ? 'Not verified'
+  : 'Not published'
+);
+const releaseModelLabel =
+  ver.kind === 'release' ? 'Versioned releases on GitHub'
+  : ver.kind === 'tag' ? 'Git tags, no formal release notes'
+  : ver.kind === 'rolling' ? 'Continuous / rolling main branch'
+  : ver.kind === 'unknown' ? 'Upstream repository not reachable at check time'
+  : 'Hosted product, no public version number';
+const versionSentence =
+  ver.kind === 'release' && ver.version
+    ? `The latest published release we found is ${ver.version}${ver.released ? ` (${ver.released})` : ''}.`
+    : ver.kind === 'tag' && ver.version
+      ? `The latest git tag we found is ${ver.version}; this project does not publish formal release notes.`
+      : ver.kind === 'rolling'
+        ? 'We found no numbered release: this repository ships continuously from its main branch.'
+        : ver.kind === 'unknown'
+          ? 'We could not verify the public repository when we checked, so no version number is listed here.'
+          : 'This product does not publish a public version number; it is distributed through its official site.';
+
 const inlineImages = agentInlineImages[agent.slug] ?? [];
 const quickFigures = inlineImages.filter((i) => i.section === 'quickstart');
 const sampleFigures = inlineImages.filter((i) => i.section === 'sample');
@@ -144,6 +170,10 @@ if (compareTargets.length > 0) {
     a: `Other profiles on the same shortlist: ${compareTargets.map((a) => a.name).join(', ')}. The ${cat.label} category page lists every related agent with the same fields for comparison.`,
   });
 }
+faqItems.push({
+  q: `Which version of ${agent.name} does this profile cover?`,
+  a: `Version data for this profile was checked on ${VERSION_CHECKED}. ${versionSentence} Agent projects change quickly, so check the official repository or website linked at the top of this page for the current release before installing anything.`,
+});
 ---
 
 <Base title={agent.name} description={agent.tagline}>
@@ -157,6 +187,8 @@ if (compareTargets.length > 0) {
       name: agent.name,
       description: agent.description || agent.tagline,
       url: canonical,
+      dateModified: VERSION_CHECKED,
+      ...(ver.version ? { softwareVersion: ver.version } : {}),
       applicationCategory: cat.label,
       operatingSystem: 'Cross-platform',
       offers: {
@@ -376,6 +408,32 @@ if (compareTargets.length > 0) {
         <p>{agent.pricing}</p>
         {sampleSlot === 'pricing' && tailFigures.map((img) => <InlineFigure image={img} base={base} />)}
 
+        <h2>Version and release status</h2>
+        <p>
+          This profile was compiled from public sources{ver.reviewed ? ` and its content was last reviewed in ${ver.reviewed}` : ''}.
+          The version data below was checked on <strong>{VERSION_CHECKED}</strong>. Setup steps, pricing
+          and screenshots above may describe an earlier release.
+        </p>
+        <div class="specs version-box">
+          <div class="spec-row">
+            <span class="k">Latest version</span>
+            <span class="v">
+              {ver.version && ver.source
+                ? <><a href={ver.source} target="_blank" rel="noopener">{ver.version}</a>{ver.released ? ` · published ${ver.released}` : ''}</>
+                : versionLabel}
+            </span>
+          </div>
+          <div class="spec-row"><span class="k">Release model</span><span class="v">{releaseModelLabel}</span></div>
+          {ver.pushed && (
+            <div class="spec-row"><span class="k">Latest code activity</span><span class="v">{ver.pushed}</span></div>
+          )}
+          <div class="spec-row"><span class="k">Version data checked</span><span class="v">{VERSION_CHECKED}</span></div>
+        </div>
+        <p>
+          {versionSentence} These projects ship frequently — use the official links at the top of
+          this page to confirm the current release before installing.
+        </p>
+
         {agent.models && agent.models.length > 0 && (
           <>
             <h2>Underlying models</h2>
@@ -458,6 +516,14 @@ if (compareTargets.length > 0) {
           {agent.updated && (
             <div class="spec-row"><span class="k">Last updated</span><span class="v">{agent.updated}</span></div>
           )}
+          <div class="spec-row">
+            <span class="k">Version</span>
+            <span class="v">
+              {ver.version && ver.source
+                ? <a href={ver.source} target="_blank" rel="noopener">{ver.version}</a>
+                : versionLabel}
+            </span>
+          </div>
         </div>
 
         {altAgents.length > 0 && (

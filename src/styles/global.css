@@ -403,6 +403,15 @@ a:hover { text-decoration: underline; }
 .spec-row:last-child { border-bottom: none; }
 .spec-row .k { color: var(--text-muted); }
 .spec-row .v { color: var(--text); font-weight: 500; text-align: right; }
+.version-box { margin: 6px 0 18px; }
+.version-box .spec-row { align-items: baseline; gap: 20px; }
+.version-box .spec-row .k { flex: 0 0 175px; }
+.version-box .spec-row .v { flex: 1; text-align: left; font-weight: 400; }
+@media (max-width: 620px) {
+  .version-box .spec-row { flex-direction: column; gap: 2px; }
+  .version-box .spec-row .k { flex: none; }
+  .version-box .spec-row .v { text-align: left; }
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
