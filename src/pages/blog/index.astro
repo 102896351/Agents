@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getBlogSorted, type BlogPost } from '../../data/blog';
+import { AGENT_COUNT } from '../../data/site-stats';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const posts = getBlogSorted();
@@ -8,14 +9,14 @@ const posts = getBlogSorted();
 
 <Base
   title="Blog"
-  description="Long-form analysis of AI agents: comparison guides, decision frameworks, and how-to walkthroughs. Drawn from our 62-agent directory."
+  description={`Long-form analysis of AI agents: comparison guides, decision frameworks, and how-to walkthroughs. Drawn from our ${AGENT_COUNT}-agent directory.`}
 >
   <section class="blog-hero">
     <div class="container">
       <h1>The <span class="grad">Blog</span></h1>
       <p>
         Long-form analysis of AI agents — comparison guides, decision frameworks, and how-to walkthroughs.
-        Every post is drawn from the 62 detailed profiles in our <a href={base + '/'}>directory</a>.
+        Every post is drawn from the {AGENT_COUNT} detailed profiles in our <a href={base + '/'}>directory</a>.
       </p>
     </div>
   </section>

@@ -2,8 +2,10 @@
 import Base from '../layouts/Base.astro';
 import AgentCard from '../components/AgentCard.astro';
 import { agents, categories, getFeatured, type Category } from '../data/agents';
+import { getBlogSorted } from '../data/blog';
 
 const featured = getFeatured();
+const postCount = getBlogSorted().length;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -46,8 +48,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           drawn from this directory.
         </p>
         <p class="editorial-meta">
-          Last directory update: 2026-11-08 · {agents.length} agents across 6 categories ·
-          27 long-form analysis posts · Maintained by
+          Last directory update: 2026-11-08 · {agents.length} agents across {categories.length} categories ·
+          {postCount} long-form analysis posts · Maintained by
           <a href="/about/#editorial-team">the editorial team</a>
         </p>
       </div>

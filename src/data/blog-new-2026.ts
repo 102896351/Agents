@@ -1,6 +1,6 @@
 // ============================================================
 //  New blog posts — single-project deep dives (2026-10-23)
-//  6 trending GitHub AI-agent projects not yet in the 62-agent directory.
+//  6 trending GitHub AI-agent projects added to the directory.
 //  Imported and spread into blogPosts in blog.ts.
 // ============================================================
 
@@ -78,7 +78,7 @@ export const newPosts2026: BlogPost[] = [
 
 <p>OpenHands is the open-source answer to the autonomous-coding hype, and unlike most answers it is production-grade: 91K stars, an event-driven architecture, and a sandbox model that keeps the agent's mistakes contained. It will not replace your engineers, but it will happily open the first draft of the PR. If you want <a href="/agent/devin/">Devin</a>'s ambition with your own keys and your own servers, this is the project to run.</p>
 
-<p>See how it stacks up against the rest of the field in our <a href="/">62-agent directory</a>.</p>
+<p>See how it stacks up against the rest of the field in our <a href="/">{{AGENT_COUNT}}-agent directory</a>.</p>
 `,
   },
   {
