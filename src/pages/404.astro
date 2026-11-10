@@ -8,7 +8,7 @@ const featured = getFeatured().slice(0, 6);
 const recentPosts = getBlogSorted().slice(0, 4);
 ---
 
-<Base title="Not found" noAds={true}>
+<Base title="Not found" noAds={true} noIndex={true}>
   <section class="hero" style="padding-top: 80px; padding-bottom: 24px;">
     <div class="container">
       <h1>404 — <span class="grad">agent not found</span></h1>
