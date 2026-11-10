@@ -5,8 +5,19 @@ import { licenseLabel, difficultyLabel } from '../utils/labels';
 interface Props {
   agent: Agent;
   base?: string; // URL 前缀，用于 GitHub Pages 子路径
+  /** Only the six homepage spotlight cards get the extra short "Best for" line,
+   *  price badge and category dot. All other cards stay compact. */
+  spotlight?: boolean;
+  bestFor?: string;
+  price?: string;
 }
-const { agent, base = import.meta.env.BASE_URL.replace(/\/$/, '') } = Astro.props;
+const {
+  agent,
+  base = import.meta.env.BASE_URL.replace(/\/$/, ''),
+  spotlight = false,
+  bestFor = '',
+  price = '',
+} = Astro.props;
 
 // Small category dots use colours that already exist in this site's palette
 // (header gradient, accent, status badges). No new theme colour is introduced.
@@ -19,14 +30,11 @@ const CAT_COLOR: Record<string, string> = {
   creative: '#f59e0b',
 };
 const catColor = CAT_COLOR[agent.category] ?? '#818cf8';
-
-const bestFor = agent.decisionAid?.pickIf ?? agent.useCases?.[0] ?? '';
-const short = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s);
 ---
 
-<a href={`${base}/agent/${agent.slug}/`} class="card">
+<a href={`${base}/agent/${agent.slug}/`} class={spotlight ? 'card card-spot' : 'card'}>
   <div class="card-top">
-    <h3><span class="cat-dot" style={`background:${catColor}`} aria-hidden="true"></span>{agent.name}</h3>
+    <h3>{spotlight && <span class="cat-dot" style={`background:${catColor}`} aria-hidden="true"></span>}{agent.name}</h3>
     {agent.stars && (
       <span class="stars-badge" title={`${agent.stars.toLocaleString()} GitHub stars`}>
         <svg class="stars-icon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
@@ -35,10 +43,10 @@ const short = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1).trimEn
     )}
   </div>
   <p class="tagline">{agent.tagline}</p>
-  {bestFor && <p class="card-best"><b>Best for</b> {short(bestFor, 96)}</p>}
+  {spotlight && bestFor && <p class="card-best"><b>Best for</b> {bestFor}</p>}
   <div class="card-meta">
     <span class={`badge ${agent.license}`}>{licenseLabel(agent.license)}</span>
-    {agent.pricing && <span class="badge price" title={agent.pricing}>{short(agent.pricing, 44)}</span>}
+    {spotlight && price && <span class="badge price">{price}</span>}
     {agent.selfHost && <span class="badge host">Self-host</span>}
     <span class="badge host">{difficultyLabel(agent.difficulty)}</span>
   </div>

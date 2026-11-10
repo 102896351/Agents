@@ -12,6 +12,17 @@ const frameworkCount = agents.filter((a) => a.category === 'framework').length;
 const catCounts: Record<string, number> = Object.fromEntries(
   categories.map((c) => [c.id, agents.filter((a) => a.category === c.id).length])
 );
+// Short, hand-written labels for the six spotlight cards only. These are
+// deliberately two-to-three words, and the prices are condensed from the
+// same pricing strings used on the full profile pages.
+const spotlightNotes: Record<string, { bestFor: string; price: string }> = {
+  'claude-code': { bestFor: 'Real-repo editing', price: 'Max $100+/mo' },
+  cursor: { bestFor: 'Out-of-the-box IDE', price: 'Free · Pro $20/mo' },
+  aider: { bestFor: 'Tidy git history', price: 'Free · BYO key' },
+  cline: { bestFor: 'VS Code users', price: 'Free · BYO key' },
+  'gemini-cli': { bestFor: 'Zero-cost start', price: 'Free tier' },
+  opencode: { bestFor: 'Free & community', price: 'Free · BYO key' },
+};
 // The data files are appended in batches, so the tail really is "recently added".
 const latest = agents.slice(-3).reverse();
 ---
@@ -53,11 +64,18 @@ const latest = agents.slice(-3).reverse();
         <a class="section-more" href={`${base}/best-coding-agents/`}>Full comparison →</a>
       </div>
       <p class="section-sub">
-        Six coding agents worth shortlisting — terminal tools, AI-first editors and VS Code
-        extensions. Each has a full profile with pricing, setup notes and trade-offs.
+        Six coding tools worth shortlisting. The short line tells you who each one is for.
       </p>
       <div class="spot-grid" id="featured-grid">
-        {featured.map((agent) => <AgentCard agent={agent} base={base} />)}
+        {featured.map((agent) => (
+          <AgentCard
+            agent={agent}
+            base={base}
+            spotlight={true}
+            bestFor={spotlightNotes[agent.slug]?.bestFor}
+            price={spotlightNotes[agent.slug]?.price}
+          />
+        ))}
       </div>
       <div class="scenes">
         <a class="scene" href={`${base}/category/coding/`}>

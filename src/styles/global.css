@@ -914,7 +914,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* ---------- Directory refresh: cards, filters, sections, footer ---------- */
-.card h3 { display: flex; align-items: center; gap: 8px; }
+.card-spot h3 { display: flex; align-items: center; gap: 8px; }
 .cat-dot {
   width: 8px; height: 8px; border-radius: 50%;
   flex: 0 0 8px; display: inline-block;
@@ -923,7 +923,7 @@ a:hover { text-decoration: underline; }
   margin: -8px 0 12px;
   font-size: 12.5px;
   line-height: 1.5;
-  color: var(--text-muted);
+  color: var(--accent-soft);
 }
 .card-best b { color: var(--accent-soft); font-weight: 600; }
 .badge.price {
