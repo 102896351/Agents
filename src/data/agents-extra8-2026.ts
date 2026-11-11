@@ -606,6 +606,14 @@ export const extraAgents2026h: Agent[] = [
       pickIf: 'You want a private, self-hosted knowledge base that AI agents can read and write.',
       skipIf: 'You only need a simple note app and not block-level structure.',
     },
+    image: {
+      src: '/agents/siyuan.jpg',
+      alt: 'SiYuan note-taking app interface: document tree, rich-text editor, graph view and backlinks panels',
+      width: 1200,
+      height: 698,
+      credit: 'Official screenshot from the SiYuan project documentation',
+      sourceUrl: 'https://raw.githubusercontent.com/siyuan-note/siyuan/master/screenshots/feature0.png',
+    },
   },
 
   {
