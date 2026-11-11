@@ -190,6 +190,9 @@ export const extraAgents2026d: Agent[] = [
       skipIf:
         'You are building a bespoke retrieval pipeline with custom ranking and evaluation — start from a framework like Haystack or LlamaIndex instead.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/f95rGD9trL0", kind: "youtube", title: "AnythingLLM — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://youtu.be/f95rGD9trL0" },
+    ],
   },
 
   {
@@ -374,6 +377,10 @@ export const extraAgents2026d: Agent[] = [
       skipIf:
         'Your task is entirely in a browser, or you are on macOS/Linux — a browser agent will be simpler and more reliable.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/NGrVWGcJL8o", kind: "youtube", title: "UFO — official demo 1", caption: "Demo video published by the UFO project.", sourceUrl: "https://www.youtube.com/watch?v=NGrVWGcJL8o" },
+      { src: "https://www.youtube.com/embed/QT_OhygMVXU", kind: "youtube", title: "UFO — official demo 2", caption: "Demo video published by the UFO project.", sourceUrl: "https://www.youtube.com/watch?v=QT_OhygMVXU" },
+    ],
   },
 
   // ---------------- Automation ----------------
@@ -743,5 +750,8 @@ export const extraAgents2026d: Agent[] = [
       skipIf:
         'You only need text chat, or you want a turnkey hosted service with no infrastructure work — a hosted character platform is simpler.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/8Giv5mupJNE", kind: "youtube", title: "AIRI — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://www.youtube.com/watch?v=8Giv5mupJNE" },
+    ],
   },
 ];

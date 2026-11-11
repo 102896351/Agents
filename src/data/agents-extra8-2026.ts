@@ -234,6 +234,10 @@ export const extraAgents2026h: Agent[] = [
       pickIf: 'You run many coding agents at once and care about memory and startup speed.',
       skipIf: 'You want the largest plugin ecosystem and a polished managed experience.',
     },
+    videos: [
+      { src: "https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-performance-demo-2026-10.mp4", kind: "mp4", title: "jcode — official demo 1", caption: "Demo video published by the jcode project.", sourceUrl: "https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-performance-demo-2026-10.mp4" },
+      { src: "https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-yc-launch.mp4", kind: "mp4", title: "jcode — official demo 2", caption: "Demo video published by the jcode project.", sourceUrl: "https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-yc-launch.mp4" },
+    ],
   },
 
   {
@@ -1779,6 +1783,9 @@ export const extraAgents2026h: Agent[] = [
       pickIf: 'You want a tiny, dependency-free framework to learn or keep lean.',
       skipIf: 'You need a full-featured platform with managed integrations.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/0Zr3NwcvpA0", kind: "youtube", title: "PocketFlow — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://youtu.be/0Zr3NwcvpA0" },
+    ],
   },
 
   {
@@ -2151,6 +2158,10 @@ export const extraAgents2026h: Agent[] = [
       pickIf: 'You want design deliverables straight from your coding agent without Figma.',
       skipIf: 'You need a full design app with a GUI and team libraries.',
     },
+    videos: [
+      { src: "https://github.com/alchaincyf/huashu-design/releases/download/v3.0.0/launch-3.0.mp4", kind: "mp4", title: "Huashu Design — official demo 1", caption: "Demo video published by the Huashu Design project.", sourceUrl: "https://github.com/alchaincyf/huashu-design/releases/download/v3.0.0/launch-3.0.mp4" },
+      { src: "https://www.youtube.com/embed/m-_BlUdcIvw", kind: "youtube", title: "Huashu Design — official demo 2", caption: "Demo video published by the Huashu Design project.", sourceUrl: "https://www.youtube.com/watch?v=m-_BlUdcIvw" },
+    ],
   },
 
   {
@@ -2224,6 +2235,9 @@ export const extraAgents2026h: Agent[] = [
       pickIf: 'You want a visual editor that edits your real Next.js/Tailwind code, open source.',
       skipIf: 'You use a non-Next.js stack or want a fully managed no-code product.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/RSX_3EaO5eU", kind: "youtube", title: "Onlook — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://youtu.be/RSX_3EaO5eU" },
+    ],
   },
 
 ];

@@ -60,6 +60,19 @@ export interface AgentImage {
   sourceUrl: string;
 }
 
+// An official demo / showcase video embedded by URL only. We never download or
+// re-host the file — `src` points straight at the upstream source (a direct
+// .mp4 link, or a YouTube / Bilibili / generic iframe embed URL). This is how
+// non-coding and creative products show what they actually produce.
+export interface AgentVideo {
+  src: string; // direct mp4 URL, or a YouTube/Bilibili/iframe embed URL
+  kind: 'mp4' | 'youtube' | 'bilibili' | 'iframe';
+  title?: string; // short label shown above the player
+  caption?: string; // one-line description of what the clip shows
+  sourceUrl?: string; // upstream page (README / official channel) to verify
+  poster?: string; // optional remote poster image URL (not downloaded)
+}
+
 export interface Agent {
   slug: string;
   name: string;
@@ -90,6 +103,7 @@ export interface Agent {
   benchmarks?: Benchmark[];          // 量化指标，可带来源
   decisionAid?: DecisionAid;         // pickIf / skipIf 两句话
   image?: AgentImage;                // 官方截图（本地 JPEG + 来源署名）
+  videos?: AgentVideo[];             // 官方演示/展示视频（仅存 URL，不下载本地）
 }
 
 export type Category =
@@ -344,6 +358,10 @@ const allAgents: Agent[] = [
       skipIf:
         'You want a GUI chat or inline editor experience — for that, pair Aider with Continue (editable view) or just use Cline / Cursor.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/df8afeb1FY8", kind: "youtube", title: "Aider — official demo 1", caption: "Demo video published by the Aider project.", sourceUrl: "https://www.youtube.com/watch?v=df8afeb1FY8" },
+      { src: "https://www.youtube.com/embed/MPYFPvxfGZs", kind: "youtube", title: "Aider — official demo 2", caption: "Demo video published by the Aider project.", sourceUrl: "https://www.youtube.com/watch?v=MPYFPvxfGZs" },
+    ],
   },
 
   // ---------------- Research ----------------
@@ -1720,6 +1738,9 @@ const allAgents: Agent[] = [
       skipIf:
         'You want a turnkey SaaS for end users, or you\'re put off by Polyform Shield on the autogpt_platform/ folder (restricts competitive SaaS). For SaaS-style multi-agent orchestration, try CrewAI or LangGraph.',
     },
+    videos: [
+      { src: "https://agpt.co/videos/otto-team-demo-v1-1080.mp4", kind: "mp4", title: "AutoGPT — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://agpt.co/videos/otto-team-demo-v1-1080.mp4" },
+    ],
   },
 
   // ============= 新增 2026-06 第三批 =============
@@ -2504,6 +2525,10 @@ const allAgents: Agent[] = [
       skipIf:
         'You\'re learning pentesting from zero — start with TryHackMe / HTB, not an AI agent. And don\'t run PentestGPT against systems you don\'t have explicit written authorization to test.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/RUNmoXqBwVg", kind: "youtube", title: "PentestGPT — official demo 1", caption: "Demo video published by the PentestGPT project.", sourceUrl: "https://www.youtube.com/watch?v=RUNmoXqBwVg" },
+      { src: "https://www.youtube.com/embed/cWi3Yb7RmZA", kind: "youtube", title: "PentestGPT — official demo 2", caption: "Demo video published by the PentestGPT project.", sourceUrl: "https://www.youtube.com/watch?v=cWi3Yb7RmZA" },
+    ],
   },
 
   // ============= 新增 2026-06 第五批（数据/编码补充/图像/营销）=============

@@ -430,6 +430,9 @@ export const extraAgents2026: Agent[] = [
       skipIf:
         'You need a reliable, production coding agent for real repos — OpenHands or Claude Code.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/uT75J_KG_aY", kind: "youtube", title: "MetaGPT — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://youtu.be/uT75J_KG_aY" },
+    ],
   },
   {
     slug: 'babyagi',
@@ -612,5 +615,9 @@ export const extraAgents2026: Agent[] = [
       skipIf:
         'You just want a fast conversational answer — Perplexity or a chat model is lighter.',
     },
+    videos: [
+      { src: "https://www.loom.com/embed/04ebffb6ed2a4520a27c3e3addcdde20", kind: "iframe", title: "GPT Researcher — official demo 1", caption: "Demo video published by the GPT Researcher project.", sourceUrl: "https://www.loom.com/share/04ebffb6ed2a4520a27c3e3addcdde20" },
+      { src: "https://www.loom.com/embed/6a3385db4e8747a1913dd85a7834846f", kind: "iframe", title: "GPT Researcher — official demo 2", caption: "Demo video published by the GPT Researcher project.", sourceUrl: "https://www.loom.com/share/6a3385db4e8747a1913dd85a7834846f" },
+    ],
   },
 ];

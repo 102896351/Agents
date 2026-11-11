@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import AgentCard from '../../components/AgentCard.astro';
 import InlineFigure from '../../components/InlineFigure.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
 import { agents, categories } from '../../data/agents';
 import { agentInlineImages } from '../../data/agent-inline-images';
 import { agentVersions, VERSION_CHECKED, type AgentVersion } from '../../data/agent-versions';
@@ -300,6 +301,19 @@ faqItems.push({
               <a href={agent.image.sourceUrl} target="_blank" rel="noopener">View upstream source</a>
             </figcaption>
           </figure>
+        )}
+
+        {agent.videos && agent.videos.length > 0 && (
+          <section class="demo-section">
+            <h2>See it in action</h2>
+            <p class="figure-note">
+              Demo clips pulled from the project's own documentation or official channel.
+              We don't host these files — they play straight from the source.
+            </p>
+            <div class="video-grid">
+              {agent.videos.map((v) => <VideoEmbed video={v} base={base} />)}
+            </div>
+          </section>
         )}
 
         {agent.useCases && agent.useCases.length > 0 && (
@@ -669,6 +683,48 @@ faqItems.push({
       line-height: 1.55;
       color: var(--text-muted);
     }
+    .demo-section { margin: 4px 0 8px; }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 6px;
+    }
+    .video-embed { margin: 0; }
+    .video-title {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .video-frame {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .video-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+    }
+    .video-frame--iframe {
+      aspect-ratio: 16 / 9;
+    }
+    .video-frame--iframe iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-embed figcaption {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .video-embed figcaption a { color: #818cf8; }
     .breadcrumbs {
       display: flex;
       align-items: center;

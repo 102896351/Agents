@@ -253,6 +253,9 @@ export const extraAgents2026g: Agent[] = [
       pickIf: 'You already use a terminal or IDE agent and want it to stop doing fragile text surgery on a large codebase.',
       skipIf: 'You want a complete agent out of the box, or your client cannot speak MCP and you do not want to run a separate server.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/5QN7gN1KYLA", kind: "youtube", title: "Serena — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://www.youtube.com/watch?v=5QN7gN1KYLA" },
+    ],
   },
 
   {
@@ -565,6 +568,10 @@ export const extraAgents2026g: Agent[] = [
       pickIf: 'Your coding agent keeps producing outdated or hallucinated library APIs and you want a low-effort fix that works with the client you already have.',
       skipIf: 'You need a fully self-hosted docs index, or the libraries you care about are private or too new to be in the hosted catalog.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/G7gK8H6u7Rs", kind: "youtube", title: "Context7 — official demo 1", caption: "Demo video published by the Context7 project.", sourceUrl: "https://www.youtube.com/watch?v=G7gK8H6u7Rs" },
+      { src: "https://www.youtube.com/embed/-ggvzyLpK6o", kind: "youtube", title: "Context7 — official demo 2", caption: "Demo video published by the Context7 project.", sourceUrl: "https://www.youtube.com/watch?v=-ggvzyLpK6o" },
+    ],
   },
 
   {
@@ -1426,6 +1433,9 @@ export const extraAgents2026g: Agent[] = [
       pickIf: 'Your agent workflows are long-running, business-critical and need persistence, approvals, replay and retry guarantees.',
       skipIf: 'You want a lightweight in-process agent loop, or you do not want to operate a JVM server with a persistence backend.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/4azDdDlx27M", kind: "youtube", title: "Conductor — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://youtu.be/4azDdDlx27M" },
+    ],
   },
 
   {
@@ -1828,6 +1838,10 @@ export const extraAgents2026g: Agent[] = [
       pickIf: 'You are building agents that must be operated, observed and approved in a Python or .NET production environment.',
       skipIf: 'You want a tiny framework-free example, or you want to avoid any dependence on Microsoft hosting options.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/AAgdMhftj8w", kind: "youtube", title: "Microsoft Agent Framework — official demo 1", caption: "Demo video published by the Microsoft Agent Framework project.", sourceUrl: "https://www.youtube.com/watch?v=AAgdMhftj8w" },
+      { src: "https://www.youtube.com/embed/mOAaGY4WPvc", kind: "youtube", title: "Microsoft Agent Framework — official demo 2", caption: "Demo video published by the Microsoft Agent Framework project.", sourceUrl: "https://www.youtube.com/watch?v=mOAaGY4WPvc" },
+    ],
   },
 
   {
@@ -1913,6 +1927,10 @@ export const extraAgents2026g: Agent[] = [
       credit: 'Official screenshot from the VoltAgent project documentation',
       sourceUrl: 'https://cdn.voltagent.dev/console/logs.png',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/KjV1c6AhlfY", kind: "youtube", title: "VoltAgent — official demo 1", caption: "Demo video published by the VoltAgent project.", sourceUrl: "https://youtu.be/KjV1c6AhlfY" },
+      { src: "https://www.youtube.com/embed/j6KAUaoZMy4", kind: "youtube", title: "VoltAgent — official demo 2", caption: "Demo video published by the VoltAgent project.", sourceUrl: "https://youtu.be/j6KAUaoZMy4" },
+    ],
   },
 
   {

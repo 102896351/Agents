@@ -1,0 +1,56 @@
+---
+// Embeds an official demo / showcase video by URL only. We never download or
+// re-host the file. `kind` decides how it is rendered:
+//   mp4      -> native <video> (direct file URL, optional remote poster)
+//   youtube  -> YouTube iframe embed
+//   bilibili -> Bilibili iframe embed
+//   iframe   -> any other embeddable URL
+import type { AgentVideo } from '../data/agents';
+
+interface Props {
+  video: AgentVideo;
+}
+
+const { video } = Astro.props;
+const title = video.title ?? 'Demo video';
+---
+
+{video.kind === 'mp4' ? (
+  <figure class="video-embed">
+    {video.title && <p class="video-title">{title}</p>}
+    <div class="video-frame">
+      <video controls preload="metadata" src={video.src} poster={video.poster}>
+        <a href={video.src} target="_blank" rel="noopener">Watch the demo video ↗</a>
+      </video>
+    </div>
+    {(video.caption || video.sourceUrl) && (
+      <figcaption>
+        {video.caption ? `${video.caption} · ` : ''}
+        {video.sourceUrl && (
+          <a href={video.sourceUrl} target="_blank" rel="noopener">View upstream source ↗</a>
+        )}
+      </figcaption>
+    )}
+  </figure>
+) : (
+  <figure class="video-embed">
+    {video.title && <p class="video-title">{title}</p>}
+    <div class="video-frame video-frame--iframe">
+      <iframe
+        src={video.src}
+        title={title}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        allowfullscreen
+      ></iframe>
+    </div>
+    {(video.caption || video.sourceUrl) && (
+      <figcaption>
+        {video.caption ? `${video.caption} · ` : ''}
+        {video.sourceUrl && (
+          <a href={video.sourceUrl} target="_blank" rel="noopener">View upstream source ↗</a>
+        )}
+      </figcaption>
+    )}
+  </figure>
+)}

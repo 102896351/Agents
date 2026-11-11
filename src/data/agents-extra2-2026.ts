@@ -67,6 +67,9 @@ export const extraAgents2026b: Agent[] = [
       skipIf:
         'You are committed to another cloud or want the largest third-party plugin ecosystem — LangChain is a safer default there.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/TEjqk0eeNy8", kind: "youtube", title: "Google ADK — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://youtu.be/TEjqk0eeNy8" },
+    ],
   },
 
   {
@@ -369,6 +372,10 @@ export const extraAgents2026b: Agent[] = [
       skipIf:
         'You need a full agent orchestration framework — LlamaIndex or a framework is the better base.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/g21royNJ4fw", kind: "youtube", title: "LightRAG — official demo 1", caption: "Demo video published by the LightRAG project.", sourceUrl: "https://www.youtube.com/watch?v=g21royNJ4fw" },
+      { src: "https://www.youtube.com/embed/oageL-1I0GE", kind: "youtube", title: "LightRAG — official demo 2", caption: "Demo video published by the LightRAG project.", sourceUrl: "https://youtu.be/oageL-1I0GE" },
+    ],
   },
 
   {

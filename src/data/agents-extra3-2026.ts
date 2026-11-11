@@ -189,6 +189,9 @@ export const extraAgents2026c: Agent[] = [
       skipIf:
         'You just want a colleague-like agent to help ship features today — aider, Cursor, or Claude Code have far less friction.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/fcr8WzeEXyk", kind: "youtube", title: "SWE-agent — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://www.youtube.com/watch?v=fcr8WzeEXyk" },
+    ],
   },
 
   // ---------------- Research ----------------
@@ -373,6 +376,9 @@ export const extraAgents2026c: Agent[] = [
       skipIf:
         'You want a production execution system or a signal to trade on — this is a research framework and should stay in the lab.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/90gr5lwjIho", kind: "youtube", title: "TradingAgents — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://www.youtube.com/watch?v=90gr5lwjIho" },
+    ],
   },
 
   // ---------------- Browsing ----------------
@@ -742,5 +748,8 @@ export const extraAgents2026c: Agent[] = [
       skipIf:
         'You only need simple similarity search over a few static documents — a plain vector store is cheaper and easier to operate.',
     },
+    videos: [
+      { src: "https://www.youtube.com/embed/8hmqS2Y5RVQ", kind: "youtube", title: "Cognee — official demo", caption: "Official demo video published by the project.", sourceUrl: "https://www.youtube.com/watch?v=8hmqS2Y5RVQ" },
+    ],
   },
 ];
