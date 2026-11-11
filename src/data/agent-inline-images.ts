@@ -2,8 +2,10 @@
 //  Additional official screenshots placed INSIDE the article body.
 //  Every image was taken from the upstream project's own GitHub
 //  repository (README / docs / assets) or official website, and
-//  hand-reviewed: real terminal, IDE or product UI screenshots and
-//  official code examples only. No logos, diagrams or charts.
+//  hand-reviewed: real terminal / IDE / product UI screenshots, real
+//  output examples, and official architecture / flow / system diagrams
+//  (technical explainer images count as valid since 2026-11-11).
+//  Still excluded: marketing banners, logos, plain data charts.
 //  `section` decides which body section the figure sits next to;
 //  `note` explains why the image belongs there; `sourceUrl` links
 //  back to the exact upstream file.
@@ -16,6 +18,460 @@ export interface InlineImage extends AgentImage {
 }
 
 export const agentInlineImages: Record<string, InlineImage[]> = {
+  'agent-desktop': [
+    {
+      src: '/agents/agent-desktop-2.jpg',
+      alt: 'Architecture diagram of Agent Desktop showing worker nodes, memory and a task queue in a dark theme',
+      width: 1071,
+      height: 1000,
+      credit: 'Official architecture / technical diagram from the agent-desktop project documentation',
+      note: 'The upstream architecture diagram maps the components the quick-start steps configure.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/vercel-labs/agent-desktop/main/assets/architecture-dark.png',
+    },
+  ],
+  'agent-s': [
+    {
+      src: '/agents/agent-s-2.jpg',
+      alt: 'Agent-S architecture diagram linking proactive planning, grounding, knowledge, memory and experience',
+      width: 1200,
+      height: 762,
+      credit: 'Official architecture / technical diagram from the Agent S project documentation',
+      note: 'The project\'s own architecture diagram explains how the planning and memory modules fit together.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/simular-ai/Agent-S/main/images/agent_s2_architecture.png',
+    },
+  ],
+  'agent-lightning': [
+    {
+      src: '/agents/agent-lightning-2.jpg',
+      alt: 'Agent Lightning architecture diagram showing the agent layer, algorithm library and tracing engine',
+      width: 1200,
+      height: 407,
+      credit: 'Official architecture / technical diagram from the Agent Lightning project documentation',
+      note: 'The upstream architecture diagram shows how the training and tracing components connect.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/microsoft/agent-lightning/main/docs/images/architecture.jpg',
+    },
+  ],
+  'agentic-seek': [
+    {
+      src: '/agents/agentic-seek-2.jpg',
+      alt: 'Agentic Seek technical diagram of the routing and tool-execution pipeline',
+      width: 1200,
+      height: 603,
+      credit: 'Official architecture / technical diagram from the AgenticSeek project documentation',
+      note: 'The upstream technical diagram illustrates the request flow described in the setup steps.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/Fosowl/agenticSeek/main/docs/technical/diagram_overall.png',
+    },
+  ],
+  'agno': [
+    {
+      src: '/agents/agno-2.jpg',
+      alt: 'Agno workflow diagram showing plan, tool call, cache and agent response steps',
+      width: 924,
+      height: 376,
+      credit: 'Official architecture / technical diagram from the Agno project documentation',
+      note: 'The official cookbook diagram shows the execution flow an agent follows at runtime.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/agno-agi/agno/main/cookbook/01_demo/evals/assets/sample-diagram.png',
+    },
+  ],
+  'autoclip': [
+    {
+      src: '/agents/autoclip-2.jpg',
+      alt: 'AutoClip analytics screen with configuration fields and dark-theme controls',
+      width: 1200,
+      height: 920,
+      credit: 'Official screenshot from the AutoClip project documentation',
+      note: 'The upstream analytics screenshot shows the interface used to configure a run.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/zhouxiaoka/autoclip/main/docs/analytics/screenshots/import-flag-on-dark.png',
+    },
+  ],
+  'bolt-diy': [
+    {
+      src: '/agents/bolt-diy-2.jpg',
+      alt: 'bolt.diy settings panel with a model provider dropdown and API key field',
+      width: 741,
+      height: 428,
+      credit: 'Official screenshot from the Bolt.diy project documentation',
+      note: 'The upstream settings screenshot corresponds to the API-key step in the quick start.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/stackblitz-labs/bolt.diy/main/docs/images/api-key-ui-section.png',
+    },
+  ],
+  'composio': [
+    {
+      src: '/agents/composio-2.jpg',
+      alt: 'Composio authorization screen showing an account connection dialog',
+      width: 1200,
+      height: 932,
+      credit: 'Official screenshot from the Composio project documentation',
+      note: 'The upstream screenshot shows the authorization step described in the quick start.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/ComposioHQ/composio/next/docs/public/images/auth-screen-theme-editor.png',
+    },
+  ],
+  'cline': [
+    {
+      src: '/agents/cline-2.jpg',
+      alt: 'Cline in-editor panel with settings and menu items in a dark theme',
+      width: 1066,
+      height: 600,
+      credit: 'Official screenshot from the Cline project documentation',
+      note: 'The upstream screenshot shows the product interface inside the editor.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/cline/cline/main/apps/examples/menubar/assets/hub-monitor-preview.jpg',
+    },
+  ],
+  'cognee': [
+    {
+      src: '/agents/cognee-2.jpg',
+      alt: 'Cognee knowledge graph view with connected nodes and a detail panel',
+      width: 1200,
+      height: 646,
+      credit: 'Official screenshot from the Cognee project documentation',
+      note: 'The upstream interface screenshot shows the graph view produced after ingestion.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/topoteretes/cognee/main/assets/cognee-ui-2.webp',
+    },
+  ],
+  'conductor': [
+    {
+      src: '/agents/conductor-2.jpg',
+      alt: 'Conductor sequence diagram showing task generation, service configuration and worker calls',
+      width: 551,
+      height: 560,
+      credit: 'Official architecture / technical diagram from the Conductor project documentation',
+      note: 'The upstream sequence diagram shows how a task flows between the conductor and its workers.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/conductor-oss/conductor/main/docs/devguide/architecture/TimeoutSeconds.png',
+    },
+  ],
+  'ego-lite': [
+    {
+      src: '/agents/ego-lite-2.jpg',
+      alt: 'Ego-Lite architecture diagram of modules, memory and external tool connections',
+      width: 1200,
+      height: 650,
+      credit: 'Official architecture / technical diagram from the ego lite project documentation',
+      note: 'The upstream architecture diagram shows how the agent\'s modules connect.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/citrolabs/ego-lite/main/docs/assets/ego-lite-architecture.png',
+    },
+  ],
+  'chatdev': [
+    {
+      src: '/agents/chatdev-2.jpg',
+      alt: 'ChatDev interface screenshots showing agent conversation and document panels',
+      width: 1200,
+      height: 503,
+      credit: 'Official screenshot from the ChatDev project documentation',
+      note: 'The upstream screenshot set shows the product interface in use.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/OpenBMB/ChatDev/main/assets/ebook.png',
+    },
+  ],
+  'deepagents': [
+    {
+      src: '/agents/deepagents-2.jpg',
+      alt: 'Deep Agents terminal output showing a debug trace of an agent run',
+      width: 1120,
+      height: 760,
+      credit: 'Official screenshot from the Deep Agents project documentation',
+      note: 'The upstream terminal screenshot shows the actual output of a run.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/langchain-ai/deepagents/main/libs/code/images/debug-console-cost-breakdown.png',
+    },
+  ],
+  'gemini-cli': [
+    {
+      src: '/agents/gemini-cli-2.jpg',
+      alt: 'Gemini CLI terminal screen with command output and menu options',
+      width: 1200,
+      height: 597,
+      credit: 'Official screenshot from the Gemini CLI project documentation',
+      note: 'The upstream terminal screenshot shows the product as it appears after launch.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/assets/release_patch.png',
+    },
+  ],
+  'flowise': [
+    {
+      src: '/agents/flowise-2.jpg',
+      alt: 'Flowise workflow editor canvas with a node palette and trigger configuration',
+      width: 1200,
+      height: 884,
+      credit: 'Official screenshot from the Flowise project documentation',
+      note: 'The upstream editor screenshot shows the canvas used to assemble a flow.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/FlowiseAI/Flowise/main/assets/Demo.png',
+    },
+  ],
+  'gpt-researcher': [
+    {
+      src: '/agents/gpt-researcher-2.jpg',
+      alt: 'GPT Researcher flow diagram from research question through sub-agents to the final report',
+      width: 1167,
+      height: 1000,
+      credit: 'Official architecture / technical diagram from the GPT Researcher project documentation',
+      note: 'The upstream flow diagram maps the research pipeline described above.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/assafelovic/gpt-researcher/main/docs/blog/2024-05-19-gptr-langgraph/architecture.jpeg',
+    },
+  ],
+  'google-adk': [
+    {
+      src: '/agents/google-adk-2.jpg',
+      alt: 'Google ADK web interface showing a connected agent workflow canvas',
+      width: 897,
+      height: 401,
+      credit: 'Official screenshot from the Google ADK project documentation',
+      note: 'The upstream screenshot shows the workflow canvas in the web UI.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/google/adk-python/main/contributing/samples/integrations/jira_agent/image-app-intg-editor.png',
+    },
+  ],
+  'huashu-design': [
+    {
+      src: '/agents/huashu-design-2.jpg',
+      alt: 'Huashu Design generated mobile UI mockup with a list and summary cards',
+      width: 562,
+      height: 1000,
+      credit: 'Official output example from the Huashu Design project documentation',
+      note: 'An official output example showing the kind of interface the tool generates.',
+      section: 'sample',
+      sourceUrl: 'https://raw.githubusercontent.com/alchaincyf/huashu-design/master/assets/showcases/infographic/infographic-build.png',
+    },
+    {
+      src: '/agents/huashu-design-3.jpg',
+      alt: 'Huashu Design generated mobile dashboard mockup with metrics and chart cards',
+      width: 562,
+      height: 1000,
+      credit: 'Official output example from the Huashu Design project documentation',
+      note: 'A second official output example showing a different generated layout.',
+      section: 'sample',
+      sourceUrl: 'https://raw.githubusercontent.com/alchaincyf/huashu-design/master/assets/showcases/infographic/infographic-pentagram.png',
+    },
+  ],
+  'kestra': [
+    {
+      src: '/agents/kestra-2.jpg',
+      alt: 'Kestra workflow editor showing a flow graph in a dark theme',
+      width: 744,
+      height: 1000,
+      credit: 'Official screenshot from the Kestra project documentation',
+      note: 'The upstream screenshot shows the workflow editor interface.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/kestra-io/kestra/develop/ui/packages/plumage/screenshots/languages-2.webp',
+    },
+  ],
+  'khoj': [
+    {
+      src: '/agents/khoj-2.jpg',
+      alt: 'Khoj chat model settings panel with model and API options',
+      width: 512,
+      height: 446,
+      credit: 'Official screenshot from the Khoj project documentation',
+      note: 'The upstream screenshot shows the configuration screen referenced in the setup steps.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/khoj-ai/khoj/master/documentation/assets/img/example_chatmodel_option.png',
+    },
+  ],
+  'langbot': [
+    {
+      src: '/agents/langbot-2.jpg',
+      alt: 'LangBot chat interface showing a message panel and response',
+      width: 800,
+      height: 600,
+      credit: 'Official screenshot from the LangBot project documentation',
+      note: 'The upstream screenshot shows the bot\'s messaging interface.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/langbot-app/LangBot/master/docs/QChatGPT-0516.png',
+    },
+  ],
+  'jcode': [
+    {
+      src: '/agents/jcode-2.jpg',
+      alt: 'JCode memory architecture diagram showing how context is stored and retrieved',
+      width: 1200,
+      height: 361,
+      credit: 'Official architecture / technical diagram from the jcode project documentation',
+      note: 'The upstream architecture diagram explains the memory subsystem.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/1jehuang/jcode/master/docs/images/memory-arch.png',
+    },
+  ],
+  'metagpt': [
+    {
+      src: '/agents/metagpt-2.jpg',
+      alt: 'MetaGPT AFlow diagram showing search space, Monte Carlo tree search and result evaluation',
+      width: 1200,
+      height: 744,
+      credit: 'Official architecture / technical diagram from the MetaGPT project documentation',
+      note: 'The upstream workflow diagram shows the search process used by AFlow.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/geekan/MetaGPT/main/docs/resources/aflow/AFLOW-method.jpg',
+    },
+  ],
+  'moneyprinterturbo': [
+    {
+      src: '/agents/moneyprinterturbo-2.jpg',
+      alt: 'MoneyPrinterTurbo web interface with video configuration fields',
+      width: 1200,
+      height: 836,
+      credit: 'Official screenshot from the MoneyPrinterTurbo project documentation',
+      note: 'The upstream screenshot shows the web UI used to configure a video.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/harry0703/MoneyPrinterTurbo/main/docs/webui-en.jpg',
+    },
+  ],
+  'omnigent': [
+    {
+      src: '/agents/omnigent-2.jpg',
+      alt: 'Omnigent mobile app screen with a prompt field and status bar',
+      width: 450,
+      height: 1000,
+      credit: 'Official screenshot from the Omnigent project documentation',
+      note: 'The upstream screenshot shows the mobile interface in use.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/omnigent-ai/omnigent/main/docs/demo/status-bar-fixed.png',
+    },
+  ],
+  'open-interpreter': [
+    {
+      src: '/agents/open-interpreter-2.jpg',
+      alt: 'Open Interpreter terminal screen showing a command splash and output',
+      width: 1200,
+      height: 752,
+      credit: 'Official screenshot from the Open Interpreter project documentation',
+      note: 'The upstream terminal screenshot shows the product after launch.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/openinterpreter/openinterpreter/main/.github/codex-cli-splash.png',
+    },
+  ],
+  'opencode': [
+    {
+      src: '/agents/opencode-2.jpg',
+      alt: 'OpenCode dark-theme interface with a session panel and settings',
+      width: 1200,
+      height: 765,
+      credit: 'Official screenshot from the OpenCode project documentation',
+      note: 'The upstream screenshot shows the product interface.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/anomalyco/opencode/dev/screenshot-uk.png',
+    },
+  ],
+  'pydantic-ai': [
+    {
+      src: '/agents/pydantic-ai-2.jpg',
+      alt: 'Pydantic AI sample chat application interface with a message thread',
+      width: 1200,
+      height: 590,
+      credit: 'Official screenshot from the Pydantic AI project documentation',
+      note: 'The upstream sample screenshot shows a chat app built with the framework.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/pydantic/pydantic-ai/main/docs/img/chat-app-example.png',
+    },
+  ],
+  'semantic-kernel': [
+    {
+      src: '/agents/semantic-kernel-2.jpg',
+      alt: 'Semantic Kernel decision diagram showing design options and outcomes',
+      width: 1200,
+      height: 921,
+      credit: 'Official architecture / technical diagram from the Microsoft Semantic Kernel project documentation',
+      note: 'The upstream decision diagram documents an architectural choice in the project.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/microsoft/semantic-kernel/main/docs/decisions/diagrams/agent-chatcompletion.png',
+    },
+  ],
+  'presenton': [
+    {
+      src: '/agents/presenton-2.jpg',
+      alt: 'Presenton dark-theme interface showing presentation generation controls',
+      width: 923,
+      height: 1000,
+      credit: 'Official screenshot from the Presenton project documentation',
+      note: 'The upstream screenshot set shows the product interface.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/presenton/presenton/main/readme_assets/images/features-1.png',
+    },
+  ],
+  'ragflow': [
+    {
+      src: '/agents/ragflow-2.jpg',
+      alt: 'RAGFlow interface showing a citation and validation panel',
+      width: 890,
+      height: 520,
+      credit: 'Official screenshot from the RAGFlow project documentation',
+      note: 'The upstream screenshot shows the citation view in the product.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/infiniflow/ragflow/main/web/src/stories/assets/accessibility.png',
+    },
+  ],
+  'stagehand': [
+    {
+      src: '/agents/stagehand-2.jpg',
+      alt: 'Stagehand guide screenshot showing a browser view with annotation arrows',
+      width: 1200,
+      height: 847,
+      credit: 'Official screenshot from the Stagehand project documentation',
+      note: 'The upstream annotated screenshot illustrates a browser automation step.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/browserbase/stagehand/main/packages/cli/guides/anthropic-managed-agents/CleanShot_2026-06-05_at_13.17.012x.png',
+    },
+  ],
+  'vanna': [
+    {
+      src: '/agents/vanna-2.jpg',
+      alt: 'Vanna architecture diagram comparing the training and query paths',
+      width: 1200,
+      height: 630,
+      credit: 'Official architecture / technical diagram from the Vanna project documentation',
+      note: 'The upstream architecture diagram explains how the two workflows differ.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/vanna-ai/vanna/main/img/architecture.png',
+    },
+  ],
+  'toonflow': [
+    {
+      src: '/agents/toonflow-2.jpg',
+      alt: 'Toonflow interface showing a storyboard canvas and media panels',
+      width: 1200,
+      height: 642,
+      credit: 'Official screenshot from the Toonflow project documentation',
+      note: 'The upstream screenshot shows the product\'s main workspace.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/HBAI-Ltd/Toonflow-app/master/docs/images/screenshots/assetCanvas.png',
+    },
+  ],
+  'weknora': [
+    {
+      src: '/agents/weknora-2.jpg',
+      alt: 'WeKnora interface showing a document processing list with progress bars',
+      width: 1200,
+      height: 771,
+      credit: 'Official screenshot from the WeKnora project documentation',
+      note: 'The upstream screenshot shows the processing view in the product.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/Tencent/WeKnora/main/docs/assets/postprocess-inclusive-duration.png',
+    },
+  ],
+  'wren-ai': [
+    {
+      src: '/agents/wren-ai-2.jpg',
+      alt: 'WrenAI architecture diagram showing semantic layer, LLM and data source connections',
+      width: 1200,
+      height: 938,
+      credit: 'Official architecture / technical diagram from the WrenAI project documentation',
+      note: 'The upstream architecture diagram explains how the text-to-SQL components connect.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/Canner/WrenAI/main/misc/wren-ai-architecture-dark.png',
+    },
+  ],
   'orca': [
     {
       src: '/agents/orca-2.jpg',
