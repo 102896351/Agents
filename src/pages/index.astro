@@ -6,6 +6,9 @@ import { getBlogSorted } from '../data/blog';
 
 const featured = getFeatured();
 const postCount = getBlogSorted().length;
+// The homepage is the only entry point visitors actually use, so give the
+// guides a real distribution slot here instead of a single buried button.
+const latestPosts = getBlogSorted().slice(0, 3);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const codingCount = agents.filter((a) => a.category === 'coding').length;
 const frameworkCount = agents.filter((a) => a.category === 'framework').length;
@@ -139,6 +142,36 @@ const haystack = (a: (typeof agents)[number]) =>
     </div>
   </section>
 
+  <!-- Latest guides: real entry points into long-form content -->
+  <section class="section guide-section" id="latest-guides">
+    <div class="container">
+      <div class="section-head">
+        <h2>Latest guides</h2>
+        <a class="section-more" href={`${base}/blog/`}>All {postCount} guides →</a>
+      </div>
+      <div class="guide-grid">
+        {latestPosts.map((p) => (
+          <a class="guide-card" href={`${base}/blog/${p.slug}/`}>
+            {p.coverThumb && (
+              <img src={p.coverThumb} alt="" width="600" height="335" loading="lazy" decoding="async" />
+            )}
+            <div class="guide-card-body">
+              <time datetime={p.date}>
+                {new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </time>
+              <h3>{p.title}</h3>
+              <p>{p.excerpt}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="guide-footnote">
+        Prefer to watch first?{' '}
+        <a href={`${base}/blog/official-agent-demo-videos-2026/`}>See the agents with official demo videos →</a>
+      </p>
+    </div>
+  </section>
+
   <!-- All agents, filterable; the filter bar sticks while scrolling -->
   <section class="section" id="categories">
     <div class="container">
@@ -252,6 +285,51 @@ const haystack = (a: (typeof agents)[number]) =>
 </Base>
 
 <style>
+  .guide-section { padding-top: 12px; }
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .guide-card {
+    display: block;
+    overflow: hidden;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .guide-card:hover { border-color: #818cf8; transform: translateY(-2px); }
+  .guide-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 600 / 335;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .guide-card-body { padding: 16px 18px 20px; }
+  .guide-card-body time { font-size: 12px; color: var(--text-muted); }
+  .guide-card-body h3 {
+    margin: 8px 0 8px;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .guide-card-body p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+  .guide-footnote {
+    margin: 16px 0 0;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+  .guide-footnote a { color: #818cf8; }
   .section-editorial { padding: 16px 0 24px; }
   .editorial-intro {
     max-width: 760px;

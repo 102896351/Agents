@@ -6,7 +6,9 @@
 
 import { newPosts2026 } from './blog-new-2026';
 import { comparePosts2026 } from './blog-compare-2026';
+import { guidePosts2026 } from './blog-guides-2026';
 import { withLiveCounts } from './site-stats';
+import type { AgentVideo } from './agents';
 
 export interface BlogPost {
   slug: string;
@@ -19,9 +21,16 @@ export interface BlogPost {
   tags: string[];
   relatedAgents: string[]; // slugs from agents.ts — 自动在详情页内链
   coverThumb?: string;  // 列表页缩略图 (建议 600w, ≤30KB)
+  // 官方真图的署名与上游来源：只用真实界面 / 产出 / 架构技术图，不用画出来的示意图。
+  coverThumbAlt?: string;
+  coverThumbCredit?: string;
+  coverThumbSource?: string;
+  // 官方演示视频，只存 URL，不下载、不转存本地。
+  videos?: AgentVideo[];
 }
 
 const rawBlogPosts: BlogPost[] = [
+  ...guidePosts2026,
   ...newPosts2026,
   ...comparePosts2026,
   {
