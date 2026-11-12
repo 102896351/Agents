@@ -12,12 +12,11 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // 把所有静态页面（首页、4 个信息页、28 个 agent 详情页）都加入 sitemap
-      // changefreq / priority 让 Google 知道哪些页面更新更频繁
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date(),
-      // 排除 404 与 RSS（RSS 是订阅源，不是需要收录的着陆页）
+      // Google Search Central：sitemap 只是「提示」，不保证抓取或收录；
+      // 官方会忽略 priority / changefreq；lastmod 只有在持续准确时才有用。
+      // 之前把全站 lastmod 统一写成构建时刻，等于所有 URL 都「刚刚改过」，
+      // 属于刷 lastmod，Google 发现日期不可信可能整份忽略 —— 因此一律不写。
+      // 只放规范、可索引、返回 200 的 URL；排除 404 与 RSS（订阅源，非着陆页）。
       filter: (page) => !page.includes('/404') && !page.includes('/rss.xml'),
     }),
   ],
