@@ -7,6 +7,7 @@
 import { newPosts2026 } from './blog-new-2026';
 import { comparePosts2026 } from './blog-compare-2026';
 import { guidePosts2026 } from './blog-guides-2026';
+import { guidePosts2026B2 } from './blog-guides-batch2-2026';
 import { withLiveCounts } from './site-stats';
 import type { AgentVideo } from './agents';
 
@@ -31,6 +32,7 @@ export interface BlogPost {
 
 const rawBlogPosts: BlogPost[] = [
   ...guidePosts2026,
+  ...guidePosts2026B2,
   ...newPosts2026,
   ...comparePosts2026,
   {
