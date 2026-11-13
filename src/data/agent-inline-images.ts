@@ -18,6 +18,90 @@ export interface InlineImage extends AgentImage {
 }
 
 export const agentInlineImages: Record<string, InlineImage[]> = {
+  'deepcode': [
+    {
+      src: '/agents/deepcode-2.jpg',
+      alt: 'DeepCode settings screen listing configured model providers and model selection controls',
+      width: 1200,
+      height: 750,
+      credit: 'Official screenshot from the DeepCode project documentation',
+      note: 'The settings screen shows the model provider configuration that the quick start asks readers to complete before the first run.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/HKUDS/DeepCode/main/assets/readme/settings-models.png',
+    },
+  ],
+  'gptme': [
+    {
+      src: '/agents/gptme-2.jpg',
+      alt: 'gptme web UI showing a demo conversation with tool calls and generated code',
+      width: 1200,
+      height: 750,
+      credit: 'Official screenshot from the gptme project documentation',
+      note: 'The web UI screenshot shows the same conversation flow rendered in the browser, which is the alternative to the terminal interface in the sample.',
+      section: 'sample',
+      sourceUrl: 'https://gptme.org/media/screenshots/webui.png',
+    },
+  ],
+  'inkos': [
+    {
+      src: '/agents/inkos-2.jpg',
+      alt: 'Inkos end-to-end interactive film flow showing script generation, branching scenes and playback panels',
+      width: 1200,
+      height: 750,
+      credit: 'Official screenshot from the Inkos project documentation',
+      note: 'The end-to-end flow screenshot illustrates the generated interactive film output discussed in the sample section.',
+      section: 'sample',
+      sourceUrl: 'https://raw.githubusercontent.com/Narcooo/inkos/master/assets/interactive-film-e2e.png',
+    },
+  ],
+  'microsoft-fara': [
+    {
+      src: '/agents/microsoft-fara-2.jpg',
+      alt: 'Fara SFT training setup diagram showing trajectory collection, filtering and supervised fine-tuning stages',
+      width: 1200,
+      height: 289,
+      credit: 'Official technical diagram from the Microsoft Fara project documentation',
+      note: 'The training setup diagram explains where the model\'s browser trajectories come from, which is the context for the quick start\'s model choice.',
+      section: 'quickstart',
+      sourceUrl: 'https://www.microsoft.com/en-us/research/wp-content/uploads/2026/05/fig3_sft_training_setup.png',
+    },
+  ],
+  'mika-android': [
+    {
+      src: '/agents/mika-android-2.jpg',
+      alt: 'Mika Android phone screenshot showing a food-ordering task with app screens and agent steps',
+      width: 453,
+      height: 1000,
+      credit: 'Official screenshot from the Mika project documentation',
+      note: 'The second phone capture shows a different real device task, illustrating the kind of multi-step output described in the sample.',
+      section: 'sample',
+      sourceUrl: 'https://raw.githubusercontent.com/wangzan101/Mika/master/docs/media/food-order.jpg',
+    },
+  ],
+  'open-science': [
+    {
+      src: '/agents/open-science-2.jpg',
+      alt: 'Open Science onboarding screen for selecting the execution environment',
+      width: 1024,
+      height: 768,
+      credit: 'Official screenshot from the Open Science project documentation',
+      note: 'The onboarding environment screen is the first configuration step readers complete in the quick start.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/aipoch/open-science/master/docs/images/readme/onboarding-environment.jpg',
+    },
+  ],
+  'spring-ai-alibaba': [
+    {
+      src: '/agents/spring-ai-alibaba-2.jpg',
+      alt: 'Spring AI Alibaba admin console showing registered agents, workflow lists and monitoring panels',
+      width: 1200,
+      height: 405,
+      credit: 'Official screenshot from the Spring AI Alibaba project documentation',
+      note: 'The admin console screenshot shows the management UI available after starting the stack in the quick start.',
+      section: 'quickstart',
+      sourceUrl: 'https://raw.githubusercontent.com/alibaba/spring-ai-alibaba/master/docs/imgs/saa-admin.png',
+    },
+  ],
   'agent-desktop': [
     {
       src: '/agents/agent-desktop-2.jpg',
