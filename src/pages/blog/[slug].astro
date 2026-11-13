@@ -4,6 +4,7 @@ import VideoEmbed from '../../components/VideoEmbed.astro';
 import { getBlogSorted, getRelatedPosts, type BlogPost } from '../../data/blog';
 import { agents, categories } from '../../data/agents';
 import { topicTagsFor } from '../../data/taxonomy';
+import { VERSION_CHECKED } from '../../data/agent-versions';
 
 export async function getStaticPaths() {
   return getBlogSorted().map((post) => ({
@@ -114,6 +115,18 @@ const primaryCat =
       )}
 
       <footer class="post-footer">
+        <aside class="post-sources" aria-label="Sources and freshness" style="margin: 0 0 24px; padding: 16px 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-2);">
+          <h2 style="font-size: 16px; margin: 0 0 8px;">Where this guide's data comes from</h2>
+          <p style="margin: 0; font-size: 14px; line-height: 1.7; color: var(--text-muted);">
+            The profiles linked above are compiled from each project's official README,
+            documentation, release notes and pricing page. Version numbers shown on those profiles
+            come from a GitHub REST API snapshot checked on <strong>{VERSION_CHECKED}</strong>;
+            they are not a live feed. All listing data is public in the
+            <a href="https://github.com/102896351/Agents" target="_blank" rel="noopener">repository</a>.
+            Verdicts here are editorial judgement based on public information, not measured test results.
+          </p>
+        </aside>
+
         {linkedAgents.length > 0 && (
           <nav class="inline-links" aria-label="Agents covered in this guide">
             <h2>Agents covered in this guide</h2>

@@ -79,6 +79,17 @@ export const newPosts2026: BlogPost[] = [
 <p>OpenHands is the open-source answer to the autonomous-coding hype, and unlike most answers it is production-grade: 91K stars, an event-driven architecture, and a sandbox model that keeps the agent's mistakes contained. It will not replace your engineers, but it will happily open the first draft of the PR. If you want <a href="/agent/devin/">Devin</a>'s ambition with your own keys and your own servers, this is the project to run.</p>
 
 <p>See how it stacks up against the rest of the field in our <a href="/">{{AGENT_COUNT}}-agent directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is OpenHands the same project as Devin?</h3>
+<p>No. It is an independent open-source project; the guide describes it as the community answer to the same idea.</p>
+
+<h3>Can I self-host it?</h3>
+<p>The linked profile lists license and setup notes, and the official repository has the deployment instructions.</p>
+
+<h3>Is the version number on the profile current?</h3>
+<p>It is a GitHub REST API snapshot with an explicit checked date. Check the upstream releases before installing.</p>
 `,
   },
   {
@@ -151,6 +162,17 @@ agent.print_response("Summarise this repo's README in three bullets")</code></pr
 <p>Agno's rebrand from Phidata to a "platform" is the right call: under the hood it is less a framework you compile and more a runtime you operate. For teams shipping agent features at scale, that distinction is exactly the point.</p>
 
 <p>Compare it against every other framework in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Was Agno previously called Phidata?</h3>
+<p>Yes. The guide opens with that rename and what it signalled about the project direction.</p>
+
+<h3>Is it a library or a hosted platform?</h3>
+<p>The project repositioned toward building, running and managing agent platforms. Check the repository for what is actually shipped today.</p>
+
+<h3>Do you benchmark its throughput or latency?</h3>
+<p>No. This is an editorial profile based on public sources, not a performance test.</p>
 `,
   },
   {
@@ -214,6 +236,17 @@ agent.run("What is the latest stable version of PyTorch?")</code></pre>
 <p>smolagents is a deliberate provocation: most of your agent framework is optional. For a surprising number of use cases, a loop that writes and runs Python is all you need — and you can read every line of it.</p>
 
 <p>See how it compares in our <a href="/">agent directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>What does small mean for this library?</h3>
+<p>The guide describes a deliberately minimal, code-oriented agent library from Hugging Face. Check the repository for the current dependency list.</p>
+
+<h3>Does it require a vector store to run?</h3>
+<p>Not as a prerequisite in the design described here. Verify current requirements in the official documentation.</p>
+
+<h3>Is it maintained by Hugging Face?</h3>
+<p>Yes, it is released by Hugging Face; the linked repository is the authoritative source for its status.</p>
 `,
   },
   {
@@ -279,6 +312,17 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
 <p>LlamaIndex is no longer "just RAG." It is the data substrate of the agent world — the part that decides whether your agent is grounded in reality or hallucinating. Pick it when context is the hard part, which it usually is.</p>
 
 <p>Explore the rest of the data and agent landscape in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is LlamaIndex still just a RAG library?</h3>
+<p>The guide argues that description now undersells it, covering its move toward document processing. See the linked profile for the current framing.</p>
+
+<h3>Are star counts quoted as of today?</h3>
+<p>Any figures are from public sources at writing time, not a live counter.</p>
+
+<h3>Where do version numbers on the profile come from?</h3>
+<p>From a GitHub REST API snapshot with an explicit checked date; they are not a live feed.</p>
 `,
   },
   {
@@ -343,6 +387,17 @@ tools = toolset.get_tools(apps=["github", "slack"])</code></pre>
 <p>Agents that only think are a novelty; agents that act are a product. Composio is the layer that makes "act" practical, and it is one of the clearest examples of agent infrastructure becoming a standalone category.</p>
 
 <p>See the frameworks and tools it plugs into across our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is Composio an agent framework?</h3>
+<p>No. It is described as the tool and integration layer that lets an agent act on external services, not an orchestration framework.</p>
+
+<h3>Does it handle credentials for those services?</h3>
+<p>That is the problem it addresses. Check the official documentation for the current auth model and supported providers.</p>
+
+<h3>Are connector counts quoted as verified figures?</h3>
+<p>No. We do not publish a measured connector count; treat any such number as a claim from the provider.</p>
 `,
   },
   {
@@ -409,6 +464,17 @@ async def research(query):
 <p>GPT Researcher is the open-source proof that "deep research" is a solvable agent pattern, not a vendor lock-in. For teams that live on written reports, it turns a day of analyst time into a prompt and a coffee break.</p>
 
 <p>Compare it with the rest of the research and agent tools in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is this the same as a vendor deep-research feature?</h3>
+<p>No. It is an open-source project whose plan-search-read-synthesise loop the guide describes; it is not a hosted vendor feature.</p>
+
+<h3>Do I need my own API keys?</h3>
+<p>Typically yes for model and search access, but check the repository current setup instructions rather than assuming.</p>
+
+<h3>Does this guide reproduce its research outputs?</h3>
+<p>No. It links to official sources and describes the published workflow; there are no reproduced reports here.</p>
 `,
   },
 ];

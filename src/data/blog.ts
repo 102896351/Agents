@@ -128,6 +128,17 @@ const rawBlogPosts: BlogPost[] = [
 <p>All three are excellent. The one you should pick depends less on benchmarks and more on whether your bottleneck is the model (Claude Code), the editor integration (Cursor), or the cost/data relationship (Cline). Don't pick based on Twitter hype. Pick based on which trade-off you can actually live with — and switch when the trade-off changes.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is this comparison based on hands-on benchmarks?</h3>
+<p>No. It is compiled from official documentation, repositories and pricing pages. The pick-if and skip-if notes are editorial judgement, not measured test results.</p>
+
+<h3>Which of the three can I run without a paid subscription?</h3>
+<p>Cline is the open-source, bring-your-own-key option; the other two have paid tiers. Check each profile for current pricing, since plans change.</p>
+
+<h3>Do I need to be comfortable in a terminal?</h3>
+<p>Claude Code is terminal-only, while Cursor and Cline work inside an editor. That workflow difference is usually the deciding factor.</p>
 `,
   },
   {
@@ -225,6 +236,17 @@ const rawBlogPosts: BlogPost[] = [
 <p>Perplexity is the default for any current question, Consensus is the right tool for science yes/no questions, and Elicit is the right tool for serious literature reviews. None of them is a substitute for the others. The question is which one matches the question you actually have right now — and once you have all three in your workflow, you stop reaching for a single tool and start reaching for the right one.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Which one is built for academic papers rather than general web search?</h3>
+<p>Consensus and Elicit focus on the research literature; Perplexity answers questions against live web sources with citations. The guide separates those two jobs.</p>
+
+<h3>Do these tools replace reading the original papers?</h3>
+<p>No. Use them to find and triage sources, then verify any claim you rely on against the full text.</p>
+
+<h3>Are the citations in this guide independently verified?</h3>
+<p>Links point to official product and documentation pages. We do not reproduce paywalled results or claim to have replicated published findings.</p>
 `,
   },
   {
@@ -339,6 +361,17 @@ const rawBlogPosts: BlogPost[] = [
 <p>MCP is the standard that makes the AI agent ecosystem possible. Six tools in our directory ship with first-class support today: <a href="/agent/claude-code/">Claude Code</a>, <a href="/agent/cline/">Cline</a>, <a href="/agent/cursor/">Cursor</a>, <a href="/agent/continue/">Continue</a>, <a href="/agent/cody/">Cody</a>, and <a href="/agent/mastra/">Mastra</a> as the build side. The protocol is still young, the ecosystem is still small, and the right time to standardise on it is now — before your integrations ossify around per-agent conventions.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is MCP a model or a product I can buy?</h3>
+<p>Neither. It is an interface specification that lets a client expose tools and data to a model; the six tools in this guide implement or consume it.</p>
+
+<h3>Do I need to run a server to use it?</h3>
+<p>It depends on the client. Some bundle servers, others expect you to configure one. Each linked profile describes its own setup.</p>
+
+<h3>Are the six tools ranked by benchmark?</h3>
+<p>No. They are grouped by how they expose MCP support, not by a measured performance score.</p>
 `,
   },
   {
@@ -431,6 +464,17 @@ const rawBlogPosts: BlogPost[] = [
 <p><a href="/agent/operator/">Operator</a> is the right answer if you want a no-code, hosted, hands-off browser agent and you already pay for ChatGPT Pro. <a href="/agent/browser-use/">Browser-Use</a> is the right answer if you want full control, self-hosting, programmatic workflows, and a lower cost-per-task. The two don't fight each other — most people who use Operator seriously end up with Browser-Use in their stack for the workflows that need code. Pick the one that matches the question you actually have right now, and remember the two are not mutually exclusive.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is Operator still a standalone product?</h3>
+<p>The guide describes it as folded into ChatGPT Agent, a hosted service. Check the official announcements linked in the article for the current packaging.</p>
+
+<h3>Can I self-host either option?</h3>
+<p>browser-use is a library you run yourself; the hosted service is not self-hostable. That distinction drives most of the comparison.</p>
+
+<h3>Should I point a browser agent at accounts holding real data?</h3>
+<p>Start with a throwaway session and review what it can access. The guide discusses the safety trade-off; we do not assume any tool is safe by default.</p>
 `,
   },
   {
@@ -534,6 +578,17 @@ const rawBlogPosts: BlogPost[] = [
 <p><a href="/agent/n8n/">n8n</a> is the right answer if you need self-hosting, custom code, and the lowest cost. <a href="/agent/make/">Make</a> is the right answer if you build complex branching workflows and prefer a visual canvas. <a href="/agent/zapier-agents/">Zapier Agents</a> is the right answer if you are already on Zapier and want the easiest on-ramp. All three are excellent. The one to pick depends on whether your bottleneck is compliance (n8n), complexity (Make), or speed-of-setup (Zapier).</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Which of the three can I self-host?</h3>
+<p>n8n is the open-source, self-hostable option; the others are hosted services. Confirm current licensing on each profile.</p>
+
+<h3>Do I need to write code to build a workflow?</h3>
+<p>All three offer visual builders, and n8n also allows code steps. How much code you need depends on the integrations.</p>
+
+<h3>Are these the same thing as autonomous agents?</h3>
+<p>No. They are workflow automation platforms that can include agent steps; they are not general-purpose autonomous agents.</p>
 `,
   },
 ,
@@ -546,7 +601,7 @@ const rawBlogPosts: BlogPost[] = [
     author: 'AI Agents Hub',
     readingTime: 9,
     tags: ['coding', 'news', 'claude-code', 'anthropic', 'agents'],
-    relatedAgents: ['claude-code', 'cursor', 'cline'],
+    relatedAgents: ['claude-code'],
     coverThumb: '/blog/claude-code-2026-updates-thumb.jpg',
     content: `
 <p>Claude Code shipped its most significant update in years at the <strong>Code w/ Claude 2026</strong> conference on May 6 — and the headline is that the tool is no longer just a smart CLI. It is becoming a full development operating system. Here's what actually matters for working developers in 2026, drawn from our profiles in <a href="/">the {{AGENT_COUNT}}-agent directory</a>.</p>
@@ -626,6 +681,17 @@ const rawBlogPosts: BlogPost[] = [
 <p>The most honest summary: Claude Code started 2026 as a good CLI coding tool. It ends the first half as a development operating system. The CLI is still there, but around it is a growing set of capabilities that change what "working with an AI" means in practice.</p>
 
 <p>See the full profile — including benchmarks, pricing, and alternatives — for <a href="/agent/claude-code/">Claude Code</a> and <a href="/agent/cursor/">Cursor</a> and <a href="/agent/cline/">Cline</a> in our directory.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Which release does this article describe?</h3>
+<p>It covers the announcements made at Code w/ Claude 2026 on May 6. For the current build, see the version snapshot on the Claude Code profile.</p>
+
+<h3>Is the version number in this article a live feed?</h3>
+<p>No. Version data on this site is a GitHub REST API snapshot with an explicit checked date, not a real-time lookup.</p>
+
+<h3>Does this replace the three-way coding agent comparison?</h3>
+<p>No. That guide compares three products; this one follows a single product release announcements in depth.</p>
 `,
   },
 
@@ -722,6 +788,17 @@ const rawBlogPosts: BlogPost[] = [
 <p>Midjourney, Flux, and Lovart have found three distinct niches in 2026. Midjourney is the editorial standard — best for photorealism and community-shared knowledge. Flux is the open-source challenger — best for self-hosting and product integration. Lovart is the design agent — best for on-brand marketing assets without a prompt engineering tax. Pick the one that matches who you are and what you are trying to produce. They do not replace each other; they cover different creative jobs.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Which of the three is open source?</h3>
+<p>Flux is the open-source option described here. Check the linked repository for its current license terms before commercial use.</p>
+
+<h3>Are the images on this page real tool output?</h3>
+<p>Where a figure appears, it is an official screenshot or published output with an upstream source link. We do not substitute generated mockups.</p>
+
+<h3>Do you rank image quality?</h3>
+<p>No. The comparison covers workflow, access and licensing; there are no measured quality scores in this guide.</p>
 `,
   },
 
@@ -889,6 +966,17 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 <p>You can have a working AI coding agent in VS Code in 5 minutes. <a href="/agent/cline/">Cline</a> with an OpenRouter key is the fastest path. <a href="/agent/claude-code/">Claude Code</a> is the upgrade when you need more power. <a href="/agent/langgraph/">LangGraph</a> is for understanding the architecture and building custom workflows. The observe-think-act loop that powers all of them is the same — once you see it, you will recognize it everywhere in the agent ecosystem.</p>
 
 <p>See the full profiles — benchmarks, pricing, and setup guides — for <a href="/agent/cline/">Cline</a>, <a href="/agent/claude-code/">Claude Code</a>, and <a href="/agent/langgraph/">LangGraph</a> in our directory.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is the 30-minute setup a timed test?</h3>
+<p>No. It is an editorial estimate for a first working setup, not a measured benchmark. Your time will depend on your environment and model access.</p>
+
+<h3>Do I need a GPU or a hosted model?</h3>
+<p>That depends on which tool and model you choose. Bring-your-own-key options and hosted options are both covered in the linked profiles.</p>
+
+<h3>Which tools does the walkthrough use?</h3>
+<p>They are named in the guide and linked to their directory profiles, so you can check license, pricing and current version before starting.</p>
 `,
   }
 ,
@@ -1007,6 +1095,17 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 <p>VAPI, Retell, and ElevenLabs cover different layers of the voice AI stack and target different buyers. VAPI is the developer platform for custom builds. Retell is the production phone AI for call centers. ElevenLabs is the voice quality standard that everyone else measures against. Pick the one that matches your layer, your latency requirements, and your integration constraints — and remember that the best production stacks usually combine VAPI or Retell for the conversation layer with ElevenLabs for the voice quality.</p>
 
 <p>See the full profiles — benchmarks, pricing, and alternatives — for <a href="/agent/vapi/">VAPI</a>, <a href="/agent/retell/">Retell</a>, and <a href="/agent/elevenlabs/">ElevenLabs</a> in our directory.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Do these three cover the same layer of the stack?</h3>
+<p>Not exactly. The guide describes different layers of voice infrastructure; check each profile for its actual scope rather than assuming feature parity.</p>
+
+<h3>Can I bring my own telephony provider?</h3>
+<p>That is a per-provider integration question. We do not assert it here; check the official documentation for the platform you are considering.</p>
+
+<h3>Are latency or call-quality numbers compared?</h3>
+<p>No. There are no measured latency figures in this guide; it compares positioning, developer experience and integration approach.</p>
 `,
   },
 
@@ -1122,6 +1221,17 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 <p>Windsurf, Cursor, and Cline cover three different positions on the quality-control-friction spectrum. Windsurf is free and frictionless. Cursor is the best quality at \$20/month. Cline is full control and open-source. The one to pick depends on whether your bottleneck is money, quality, or control — and the honest answer for most developers is Cursor at \$20/month for the tab autocomplete alone.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>How is this different from the Claude Code vs Cursor vs Cline comparison?</h3>
+<p>This one zooms into VS Code-native tools only. The other guide includes a terminal-first option, so the decision frame is different.</p>
+
+<h3>Is Cursor covered in both guides?</h3>
+<p>Yes, intentionally. It appears in two comparison sets with different alternatives; both articles link to the same directory profile.</p>
+
+<h3>Which of these is open source?</h3>
+<p>Cline is the open-source option in this set. Check the license field on each profile before relying on it.</p>
 `,
   },
 
@@ -1235,6 +1345,17 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 <p>AI productivity tools are not a category with one winner — they are three separate categories (meeting, document, communication) with different winners for different workflows. Fireflies wins for async meeting culture. Otter wins for live meeting attendees. Notion AI wins for Notion-based teams. Grammarly wins for individual writers. The best stack uses all three categories, and within each category, picks the tool that matches how your team actually works.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Does this cover every AI productivity app?</h3>
+<p>No. It highlights three categories that keep coming up; the directory covers agent-style tools more broadly.</p>
+
+<h3>Are these autonomous agents?</h3>
+<p>Most are assistant features embedded in existing products, not standalone agents that plan and act on their own.</p>
+
+<h3>Are the pricing tiers stated here current?</h3>
+<p>Treat them as a snapshot from public pages at writing time and verify on the official site before subscribing.</p>
 `,
   },
 
@@ -1353,6 +1474,17 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 <p>Runway, Sora, and Pika have found distinct positions in the 2026 AI video market. Runway is the professional film and advertising standard. Sora is OpenAI's physics-realism flagship. Pika is the creator-friendly speed platform. Pick the one that matches your use case — or use all three, since the workflow that gets the most out of AI video in 2026 is to use Sora for the best quality shots, Runway for the cinematic edits, and Pika for the social derivatives.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Can I use the generated clips commercially?</h3>
+<p>Licensing differs by platform and plan. Check each platform terms; this guide does not make a legal determination for your use case.</p>
+
+<h3>Do you compare output quality with sample clips?</h3>
+<p>No benchmark comparison is made. Where official demos exist, the guide links to them rather than re-hosting files.</p>
+
+<h3>Which one exposes an API?</h3>
+<p>API availability changes; check each linked profile or the official documentation instead of assuming parity.</p>
 `,
   },
 
@@ -1472,6 +1604,17 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 <p>Devin, Manus, and Replit Agent cover three different positions in the autonomous coding market. Devin is the benchmarked leader for production teams. Manus is the generalist for multi-task workflows. Replit Agent is the accessible app builder for new projects. The three are not substitutes for each other — they answer different questions. The one to pick depends on whether your bottleneck is backlog throughput (Devin), breadth of task (Manus), or speed to a deployed app (Replit).</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Are these three the same kind of product?</h3>
+<p>No. Devin and Replit Agent are coding-focused, while Manus is a general-purpose agent that handles coding as one of several tasks.</p>
+
+<h3>Do the benchmark claims come from your own tests?</h3>
+<p>No. Any figures quoted are attributed to public sources; we have not independently reproduced them.</p>
+
+<h3>Should an agent be allowed to merge code unsupervised?</h3>
+<p>The guide recommends human review of generated changes. Nothing here is a claim that autonomous merging is safe for your repository.</p>
 `,
   },
 
@@ -1632,6 +1775,17 @@ result = crew.kickoff()
 <p>LangGraph, CrewAI, and AutoGen cover three different mental models for the same goal. LangGraph is the graph for explicit control. CrewAI is the role-based framework for simple multi-agent systems. AutoGen is the conversation framework for research and exploration. Pick the one that matches your use case — or use CrewAI for the prototype and LangGraph for the production version, since the two compose well. The framework that wins is the one that makes your system easy to build, easy to debug, and easy to maintain.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Which framework is designed around stateful workflows?</h3>
+<p>LangGraph is the graph-based, stateful option in this set. The comparison table lays out where the other two differ.</p>
+
+<h3>Are all three Python frameworks?</h3>
+<p>Yes, the three compared here are open-source Python projects. Check each repository for current language and runtime support.</p>
+
+<h3>Do you include version numbers?</h3>
+<p>The linked profiles show version numbers from a GitHub REST API snapshot with a checked date, not a live feed.</p>
 `,
   },
 
@@ -1738,6 +1892,17 @@ result = crew.kickoff()
 <p>Suno and Udio cover two different positions in the AI music market. Suno is the accessible, fast, lyrics-first platform for content creators. Udio is the high-fidelity, stem-export platform for musicians and producers. The one to pick depends on whether your bottleneck is volume (Suno) or quality (Udio) — and for most serious music work, the answer is to use both. Suno for ideation, Udio for the final output.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Who owns the audio I generate?</h3>
+<p>That depends on each platform terms and your plan. Read the licensing terms directly before any commercial release.</p>
+
+<h3>Are sample tracks re-hosted on this site?</h3>
+<p>No. We link to official sources and do not download or re-upload generated audio.</p>
+
+<h3>Is there a quality ranking between the two?</h3>
+<p>No measured ranking. The guide compares accessibility, workflow and licensing.</p>
 `,
   },
 
@@ -1847,6 +2012,17 @@ result = crew.kickoff()
 <p>Heygen and Synthesia cover two different positions in the AI avatar market. Heygen is the creator-friendly platform with the broadest avatar library and language support. Synthesia is the enterprise compliance platform with the strongest governance and training template story. The one to pick depends on whether your bottleneck is volume and variety (Heygen) or compliance and governance (Synthesia) — and for most production organizations, the answer is to use both for different use cases.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Do I need consent to make an avatar of a real person?</h3>
+<p>Yes. Follow each platform consent policy and the law that applies to you; this guide is not legal advice.</p>
+
+<h3>Are these tools enterprise-only?</h3>
+<p>The guide describes their enterprise positioning. Plan availability changes, so check the official pricing page.</p>
+
+<h3>Did you test lip-sync or rendering quality?</h3>
+<p>No. This is a comparison of public information, not a hands-on rendering test.</p>
 `,
   },
 
@@ -1949,6 +2125,17 @@ result = crew.kickoff()
 <p>Sierra and Decagon cover two different positions in the AI customer service market. Sierra is the customer experience platform that prioritizes brand voice. Decagon is the operational efficiency platform that prioritizes resolution speed. The one to pick depends on whether your primary KPI is customer experience (Sierra) or operational efficiency (Decagon) — and for most large companies, the right answer is to use both for different ticket types.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Do these replace a help center?</h3>
+<p>No. They handle conversations; you still need the underlying content and escalation paths.</p>
+
+<h3>Where can I find integration details?</h3>
+<p>On the official documentation and the linked profiles. We do not assert a connector list here.</p>
+
+<h3>Are ROI or resolution-rate figures quoted as measured results?</h3>
+<p>No. Any such claims are attributed to public sources and are not independently verified by this site.</p>
 `,
   },
 
@@ -2073,6 +2260,17 @@ result = crew.kickoff()
 <p>Claude, ChatGPT, and DeepSeek are the three credible frontier AI chat products in 2026. Claude is the reasoning and safety leader. ChatGPT is the ecosystem and product leader. DeepSeek is the cost and open-weight leader. The one to pick depends on whether your bottleneck is reasoning quality (Claude), breadth of features (ChatGPT), or cost and openness (DeepSeek) — and for most power users, the answer is to use two or all three for different parts of the workflow.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Are these agents or chat assistants?</h3>
+<p>They are chat products. Autonomous coding and browsing agents are catalogued separately in the directory.</p>
+
+<h3>Is one declared the winner on benchmarks?</h3>
+<p>No. The guide compares access, context handling and ecosystem; it does not publish a measured ranking.</p>
+
+<h3>Do you list current free tiers?</h3>
+<p>Only where publicly documented at writing time. Verify on the official page before signing up.</p>
 `,
   },
 
@@ -2183,6 +2381,17 @@ result = crew.kickoff()
 <p>Vanna and NotebookLM cover different shapes of data. Vanna is for structured data (SQL databases). NotebookLM is for unstructured data (documents). The two are not direct competitors; they cover different parts of the analytical workflow. For most serious analytical work, you end up using both — Vanna for the numbers, NotebookLM for the context. Pick the one that matches your data, and add the other when you need to cover the other half of the workflow.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Do both tools work with a live production database?</h3>
+<p>They address different inputs: one works with SQL databases, the other with documents you supply. See each profile for scope.</p>
+
+<h3>Should an AI tool get write access to my database?</h3>
+<p>Use read-only credentials and review generated queries before running them. That is general advice, not a product claim.</p>
+
+<h3>Are query-accuracy numbers measured here?</h3>
+<p>No. The guide contains no measured accuracy or latency results.</p>
 `,
   },
 
@@ -2308,6 +2517,17 @@ result = crew.kickoff()
 <p>Aider, Cody, and Continue cover three different opinions on what "open-source AI coding" means. Aider is the terminal-native git-integrated pair programmer. Cody is the codebase-aware enterprise assistant. Continue is the assemble-your-own-stack extension. Pick the one that matches your workflow — terminal (Aider), enterprise (Cody), or power user (Continue) — and add the others when you hit the limits of the first one.</p>
 
 <p>See all {{AGENT_COUNT}} agent profiles in our <a href="/">directory</a>.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Are all three fully open source?</h3>
+<p>Not necessarily; licensing differs. Check the license field on each linked profile rather than assuming the label applies to all three.</p>
+
+<h3>Which one lives in the terminal?</h3>
+<p>Aider is the terminal-native option; the others are editor- and codebase-oriented. The guide explains the workflow difference.</p>
+
+<h3>Do I need my own model key?</h3>
+<p>It varies by tool and plan. The profiles list pricing and setup notes; verify against current official docs.</p>
 `,
   }
 ];

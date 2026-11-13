@@ -95,6 +95,17 @@ export const comparePosts2026: BlogPost[] = [
 <p>If you are unsure and want the safest bet, start with <a href="/agent/langchain/">LangChain</a> — its ecosystem means every problem has a wrapper and every error has a Stack Overflow answer. If you want something that feels managed without leaving open source, <a href="/agent/agno/">Agno</a> gives you memory, RAG, and monitoring in one box. If your product is fundamentally "answer from my documents," <a href="/agent/llama-index/">LlamaIndex</a> is the specialist. If you are a Python shop that lives in types, <a href="/agent/pydantic-ai/">Pydantic AI</a> will feel like home. If you want to learn agents from the smallest possible surface, <a href="/agent/smolagents/">smolagents</a> is the clearest ~thousand-line sketch. And if your task is inherently multi-agent role-play, <a href="/agent/crewai/">CrewAI</a> is purpose-built for it.</p>
 
 <p>The honest take: in 2026 these frameworks are converging. LangChain absorbed LangGraph, Agno added monitoring, Pydantic AI added agents, and smolagents proved you can do a lot with very little. Pick the one that matches your stack and your tolerance for abstraction — and switch later, because the cost of switching keeps dropping.</p>
+
+<h2>FAQ (frequently asked questions)</h2>
+
+<h3>Is this a ranked top-six list?</h3>
+<p>No. It is an editorial shortlist of frameworks worth shortlisting, not a benchmark ranking.</p>
+
+<h3>How does it relate to the LangGraph vs CrewAI vs AutoGen comparison?</h3>
+<p>This is the broader overview with more candidates; that guide goes deeper on three of them.</p>
+
+<h3>Are version numbers on those profiles verified?</h3>
+<p>They come from a GitHub REST API snapshot with a checked date shown on each profile, not from a live feed.</p>
 `,
   },
 ];

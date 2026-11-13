@@ -424,8 +424,10 @@ faqItems.push({
 
         <h2>Version and release status</h2>
         <p>
-          This profile was compiled from public sources{ver.reviewed ? ` and its content was last reviewed in ${ver.reviewed}` : ''}.
-          The version data below was checked on <strong>{VERSION_CHECKED}</strong>. Setup steps, pricing
+          This profile was compiled from the project's official README, documentation, release notes
+          and pricing page{ver.reviewed ? `, and its content was last reviewed in ${ver.reviewed}` : ''}.
+          Version numbers below come from a GitHub REST API snapshot checked on
+          <strong>{VERSION_CHECKED}</strong> &mdash; they are not a live feed. Setup steps, pricing
           and screenshots above may describe an earlier release.
         </p>
         <div class="specs version-box">
