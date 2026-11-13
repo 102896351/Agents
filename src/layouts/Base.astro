@@ -2,11 +2,12 @@
 import '../styles/global.css';
 import { agents, categories } from '../data/agents';
 
-const { title, description, noAds = false, noIndex = false } = Astro.props as {
+const { title, description, noAds = false, noIndex = false, preloadImage } = Astro.props as {
   title?: string;
   description?: string;
   noAds?: boolean; // 404 / error pages: skip AdSense to comply with "no ads on screens without publisher content"
   noIndex?: boolean; // 404 / error pages: never let a missing URL be indexed as a page
+  preloadImage?: string; // above-the-fold LCP image: fetch it earlier instead of waiting for the parser
 };
 
 const siteName = 'AI Agents Hub';
@@ -37,6 +38,10 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
 
     <!-- RSS: guides and directory updates -->
     <link rel="alternate" type="application/rss+xml" title="AI Agents Hub guides" href={`${B}rss.xml`} />
+
+    <!-- Preload the above-the-fold LCP image (blog cover) so the browser fetches it
+         while still parsing CSS/JS instead of discovering it below the header. -->
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <!-- SEO: explicit indexing directives -->
     <meta name="robots" content={noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />

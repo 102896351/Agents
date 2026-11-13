@@ -29,7 +29,7 @@ const primaryCat =
   categories.find((c) => linkedAgents.some((a) => a.category === c.id)) ?? categories[0];
 ---
 
-<Base title={post.title} description={post.excerpt}>
+<Base title={post.title} description={post.excerpt} preloadImage={post.coverThumb}>
   <!-- SEO: BlogPosting JSON-LD -->
   <script
     slot="head"
@@ -85,6 +85,8 @@ const primaryCat =
             alt={post.coverThumbAlt ?? post.title}
             width="600"
             height="335"
+            fetchpriority="high"
+            loading="eager"
             decoding="async"
           />
           <figcaption>
