@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="hero" style="padding-top: 80px; padding-bottom: 32px;">
     <div class="container">
       <h1>Privacy Policy</h1>
-      <p>Last updated: November 13, 2026 · How we collect, use, and protect your information.</p>
+      <p>Last updated: November 14, 2026 · How we collect, use, and protect your information.</p>
     </div>
   </section>
 
@@ -16,10 +16,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="prose">
         <h2>1. What we collect</h2>
         <p>
-          <strong>AI Agents Hub is a static-only site</strong> (deployed on GitHub Pages). It runs no
-          backend, offers no user accounts, and maintains no database of reader profiles. We do not
-          ask you for a name, email address, phone number, government ID, or any other personal
-          information in order to browse the site.
+          <strong>AI Agents Hub publishes static pages</strong> (deployed on GitHub Pages). The pages
+          themselves run no application backend, and we offer no user accounts. We do not ask you for
+          a name, email address, phone number, government ID, or any other personal information in
+          order to browse the site. We do operate a small, separate first-party metrics endpoint
+          described in section 2. It stores only anonymous interaction events and
+          <strong>maintains no database of reader profiles</strong>.
         </p>
         <p>
           We do load third-party measurement and advertising services (described in section 2),
@@ -43,15 +45,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </p>
         <p>
           Alongside aggregate page views, this site records a small set of
-          <strong>anonymous interaction events</strong>: clicks on an agent's official
-          website or GitHub repository, clicks on image source links, expanded FAQ
-          entries, scroll depth, and whether the on-site search box was used. These
-          events contain only the page path, the page type and (for outbound links) the
-          destination host — <strong>never</strong> search terms, URL query strings, your
-          name, email address, IP address, or any identifier that could be tied to you as
-          an individual. Search box usage is counted without recording what was typed.
-          We use these events only in aggregate, and we do not build reader profiles from
-          them.
+          <strong>anonymous interaction events</strong>: clicks on an agent's official website or
+          GitHub repository, clicks on image source links, expanded FAQ entries, scroll depth,
+          whether the on-site search box was used, and an approximate time spent on the page.
+          These events are sent to a <strong>metrics endpoint operated by us on a separate domain
+          we own</strong> (<code>toolbox168.com</code>) and stored in a private database readable
+          only by the site owner. They are <strong>not</strong> sent to Google Analytics or any
+          other analytics vendor, and are used only to produce aggregate reports and anonymous
+          per-visit summaries for the site owner.
+        </p>
+        <p>
+          Each event contains only the page path, page type, event name, an optional destination
+          host, and a random per-page-load identifier that exists in your browser's memory only.
+          That identifier is <strong>never stored on your device, never reused on another visit,
+          and cannot be linked to you</strong>. We never record search terms, URL query strings,
+          your name, email address, IP address, User-Agent, Referer or cookie IDs in this database.
+          Search box usage is counted without recording what was typed. We do not build reader
+          profiles from these events, and they are automatically deleted after 90 days.
         </p>
         <p>
           The only thing this site itself writes to your browser's <code>localStorage</code> is your
@@ -62,7 +72,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
         <h2>3. Third-party services and links</h2>
         <p>
-          In addition to Google Analytics 4, Google AdSense and Cloudflare named above, this site
+          In addition to Google Analytics 4, Google AdSense, Cloudflare and our own first-party
+          metrics endpoint named above, this site
           contains many links to third-party websites (agent homepages, GitHub repositories,
           sign-up pages, etc.). Once you click through and leave this site, <strong>we have no control
           over what those third parties collect</strong> or what cookies they set. Please review each
@@ -84,7 +95,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           open a GitHub issue, the personal data involved is limited to what you choose to send. You
           can request access, correction, or deletion of that correspondence at any time via the
           <a href={`${base}/contact`}>contact page</a>; replying "please delete my email" to an
-          existing thread is enough. Analytics data is aggregate and cannot be tied back to you by us.
+          existing thread is enough. Analytics data is aggregate and cannot be tied back to you by
+          us. The anonymous interaction events described in section 2 carry no identifier that can
+          be matched to a person, so there is nothing in that database to access, correct or delete
+          by request; they expire automatically after 90 days.
         </p>
 
         <h2>6. Minors</h2>
@@ -105,7 +119,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="verdict-box" style="margin-top: 32px;">
           <div class="label">TL;DR</div>
           <p style="margin: 0; color: var(--text);">
-            Static-only site · no accounts · no reader profiles · aggregate analytics and ads via
+            Static pages · no accounts · no reader profiles · anonymous interaction events stored on
+            our own private metrics endpoint (90-day retention) · aggregate page views and ads via
             Google · only your theme preference in local storage · corrections welcome via GitHub issues.
           </p>
         </div>

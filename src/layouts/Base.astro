@@ -204,11 +204,13 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
       </div>
     </footer>
 
-    <!-- Anonymous, aggregate interaction events.
-         No personal data, no search terms, no query strings, no new vendor,
-         no localStorage / user IDs. See /privacy/ section 2. -->
+    <!-- Anonymous first-party interaction metrics.
+         Events go to the site owner's own metrics endpoint (see /privacy/ section 2),
+         not to an analytics vendor. No personal data, no search terms, no query
+         strings, no cookies, no localStorage, no cross-visit identifiers. -->
     <script is:inline>
       (function () {
+        var EP = 'https://toolbox168.com/gsm/e';
         var fired = {};
         var path = location.pathname.replace(/\/+$/, '') || '/';
         var group = path.indexOf('/agent/') === 0 ? 'agent'
@@ -216,21 +218,45 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
                   : path === '/' ? 'home' : 'other';
         var m = path.match(/^\/(?:agent|blog)\/([^/]+)\/?$/);
         var slug = m ? m[1] : '';
+        var vid = '';
+        try {
+          var bytes = new Uint8Array(8);
+          window.crypto.getRandomValues(bytes);
+          for (var i = 0; i < bytes.length; i++) vid += ('0' + bytes[i].toString(16)).slice(-2);
+        } catch (e) {
+          vid = Math.random().toString(16).slice(2, 10) + Math.random().toString(16).slice(2, 10);
+        }
+        var t0 = Date.now();
+        var queue = [], timer = null, hid = false;
 
-        function base(extra) {
-          var p = { content_group: group, page_path: path };
-          if (slug) p.content_slug = slug;
-          if (extra) { for (var k in extra) p[k] = extra[k]; }
-          return p;
+        function flush() {
+          if (timer) { clearTimeout(timer); timer = null; }
+          if (!queue.length) return;
+          var batch = queue.splice(0, 25);
+          var payload = JSON.stringify({ v: vid, p: path, g: group, c: slug, events: batch });
+          var blob;
+          try { blob = new Blob([payload], { type: 'text/plain' }); } catch (e) { return; }
+          var ok = false;
+          try { ok = navigator.sendBeacon && navigator.sendBeacon(EP, blob); } catch (e) {}
+          if (!ok) {
+            try { fetch(EP, { method: 'POST', body: blob, keepalive: true, mode: 'cors' }); } catch (e) {}
+          }
+        }
+        function push(name, extra) {
+          var e = { n: name };
+          if (extra) { for (var k in extra) e[k] = extra[k]; }
+          queue.push(e);
+          if (queue.length >= 20) flush();
+          else if (!timer) timer = setTimeout(function () { timer = null; flush(); }, 200);
         }
         function send(name, key, extra) {
           if (fired[key]) return;
           fired[key] = 1;
-          try { window.gtag('event', name, base(extra)); } catch (e) {}
+          push(name, extra);
         }
         function markHuman(source) {
           if (document.visibilityState && document.visibilityState !== 'visible') return;
-          send('real_reader', 'real_reader', { signal: source });
+          send('real_reader', 'real_reader', { s: source });
         }
 
         document.addEventListener('click', function (ev) {
@@ -247,7 +273,7 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
           else if (/Visit website/i.test(txt) || a.classList.contains('primary')) name = 'click_official_site';
           else if (/View upstream source/i.test(txt)) name = 'click_source';
           if (!name) return;
-          send(name, name + ':' + href, { link_host: host });
+          send(name, name + ':' + href, { h: host });
         }, false);
 
         document.addEventListener('toggle', function (ev) {
@@ -265,10 +291,10 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
           var y = window.scrollY || window.pageYOffset || 0;
           var seen = y + window.innerHeight;
           if (h > 0 && seen >= h * 0.5) {
-            send('scroll_50', 'scroll_50', { depth: 50 });
+            send('scroll_50', 'scroll_50', { d: 50 });
             markHuman('scroll');
           }
-          if (h > 0 && seen >= h * 0.9) send('read_to_bottom', 'read_to_bottom', { depth: 100 });
+          if (h > 0 && seen >= h * 0.9) send('read_to_bottom', 'read_to_bottom', { d: 100 });
         }
         window.addEventListener('scroll', function () {
           if (ticking) return;
@@ -285,6 +311,18 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
             }
           });
         }
+
+        function leave() {
+          if (hid) return;
+          hid = true;
+          var w = Math.max(0, Math.min(86400, Math.round((Date.now() - t0) / 1000)));
+          push('page_hide', { w: w });
+          flush();
+        }
+        document.addEventListener('visibilitychange', function () {
+          if (document.visibilityState === 'hidden') leave();
+        });
+        window.addEventListener('pagehide', leave);
       })();
     </script>
   </body>
