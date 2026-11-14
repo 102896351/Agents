@@ -42,6 +42,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           tracking protection or a content-blocking extension.
         </p>
         <p>
+          Alongside aggregate page views, this site records a small set of
+          <strong>anonymous interaction events</strong>: clicks on an agent's official
+          website or GitHub repository, clicks on image source links, expanded FAQ
+          entries, scroll depth, and whether the on-site search box was used. These
+          events contain only the page path, the page type and (for outbound links) the
+          destination host — <strong>never</strong> search terms, URL query strings, your
+          name, email address, IP address, or any identifier that could be tied to you as
+          an individual. Search box usage is counted without recording what was typed.
+          We use these events only in aggregate, and we do not build reader profiles from
+          them.
+        </p>
+        <p>
           The only thing this site itself writes to your browser's <code>localStorage</code> is your
           <strong>theme preference</strong> (light / dark / system), used solely to restore your display
           choice on the next visit. This data <strong>stays on your device</strong> and is never uploaded

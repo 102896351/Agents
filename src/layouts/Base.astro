@@ -84,11 +84,11 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-GEVLL2XDFD"
     ></script>
-    <script is:inline define:vars={{ GA_ID: 'G-GEVLL2XDFD' }}>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', GA_ID);
+      window.gtag = function gtag() { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-GEVLL2XDFD');
     </script>
 
     <!-- JSON-LD: 让搜索引擎把列表理解成目录结构 -->
@@ -203,5 +203,89 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
         </nav>
       </div>
     </footer>
+
+    <!-- Anonymous, aggregate interaction events.
+         No personal data, no search terms, no query strings, no new vendor,
+         no localStorage / user IDs. See /privacy/ section 2. -->
+    <script is:inline>
+      (function () {
+        var fired = {};
+        var path = location.pathname.replace(/\/+$/, '') || '/';
+        var group = path.indexOf('/agent/') === 0 ? 'agent'
+                  : path.indexOf('/blog/') === 0 ? 'blog'
+                  : path === '/' ? 'home' : 'other';
+        var m = path.match(/^\/(?:agent|blog)\/([^/]+)\/?$/);
+        var slug = m ? m[1] : '';
+
+        function base(extra) {
+          var p = { content_group: group, page_path: path };
+          if (slug) p.content_slug = slug;
+          if (extra) { for (var k in extra) p[k] = extra[k]; }
+          return p;
+        }
+        function send(name, key, extra) {
+          if (fired[key]) return;
+          fired[key] = 1;
+          try { window.gtag('event', name, base(extra)); } catch (e) {}
+        }
+        function markHuman(source) {
+          if (document.visibilityState && document.visibilityState !== 'visible') return;
+          send('real_reader', 'real_reader', { signal: source });
+        }
+
+        document.addEventListener('click', function (ev) {
+          markHuman('click');
+          var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          if (!/^https?:\/\//i.test(href)) return;
+          var host = '';
+          try { host = new URL(href).hostname.replace(/^www\./, ''); } catch (e) { return; }
+          var txt = (a.textContent || '').trim();
+          var name = '';
+          if (/github\.com$/i.test(host)) name = 'click_github';
+          else if (/Visit website/i.test(txt) || a.classList.contains('primary')) name = 'click_official_site';
+          else if (/View upstream source/i.test(txt)) name = 'click_source';
+          if (!name) return;
+          send(name, name + ':' + href, { link_host: host });
+        }, false);
+
+        document.addEventListener('toggle', function (ev) {
+          var d = ev.target;
+          if (d && d.tagName === 'DETAILS' && d.open) {
+            send('faq_open', 'faq_open');
+            markHuman('faq');
+          }
+        }, true);
+
+        var ticking = false;
+        function checkDepth() {
+          ticking = false;
+          var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+          var y = window.scrollY || window.pageYOffset || 0;
+          var seen = y + window.innerHeight;
+          if (h > 0 && seen >= h * 0.5) {
+            send('scroll_50', 'scroll_50', { depth: 50 });
+            markHuman('scroll');
+          }
+          if (h > 0 && seen >= h * 0.9) send('read_to_bottom', 'read_to_bottom', { depth: 100 });
+        }
+        window.addEventListener('scroll', function () {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(checkDepth);
+        }, { passive: true });
+
+        var searchInput = document.getElementById('search');
+        if (searchInput) {
+          searchInput.addEventListener('input', function () {
+            if ((this.value || '').trim().length >= 2) {
+              send('site_search', 'site_search');
+              markHuman('search');
+            }
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
