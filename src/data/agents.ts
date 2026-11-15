@@ -3836,9 +3836,10 @@ export function getAgentsByCategory(cat: Category): Agent[] {
 }
 
 export function getFeatured(): Agent[] {
-  // Homepage spotlight follows the site's coding-first focus: six coding
-  // agents with full profiles, ordered terminal → IDE → extension.
-  return ['claude-code', 'cursor', 'aider', 'cline', 'gemini-cli', 'opencode']
+  // Homepage spotlight follows the site's coding-first focus: eight coding
+  // agents with full profiles, ordered terminal → IDE → extension, then the
+  // two mainstream commercial picks (Windsurf, GitHub Copilot).
+  return ['claude-code', 'cursor', 'aider', 'cline', 'gemini-cli', 'opencode', 'windsurf', 'copilot']
     .map((slug) => agents.find((a) => a.slug === slug))
     .filter(Boolean) as Agent[];
 }

@@ -8,7 +8,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const site = (Astro.site ?? 'https://gonglue.xyz').toString().replace(/\/$/, '');
 const canonical = `${site}/best-coding-agents/`;
 
-const SLUGS = ['claude-code', 'cursor', 'aider', 'cline', 'gemini-cli', 'opencode'];
+const SLUGS = ['claude-code', 'cursor', 'aider', 'cline', 'gemini-cli', 'opencode', 'windsurf', 'copilot'];
 const picks = SLUGS.map((s) => agents.find((a) => a.slug === s)).filter(Boolean) as typeof agents;
 
 // Shape is a descriptive label, not a test result.
@@ -19,6 +19,8 @@ const SHAPE: Record<string, string> = {
   cline: 'VS Code extension',
   'gemini-cli': 'Terminal agent',
   opencode: 'Terminal agent',
+  windsurf: 'AI-first IDE',
+  copilot: 'Editor & GitHub extension',
 };
 
 const short = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s);
@@ -41,7 +43,7 @@ const faq = [
   },
   {
     q: 'Can I self-host any of these coding agents?',
-    a: `${selfHostNames.length ? selfHostNames.join(', ') + ' are listed as self-hostable.' : 'None of the six are listed as self-hostable.'} Self-hosting usually means managing your own model keys, updates and infrastructure.`,
+    a: `${selfHostNames.length ? selfHostNames.join(', ') + ' are listed as self-hostable.' : 'None of the eight are listed as self-hostable.'} Self-hosting usually means managing your own model keys, updates and infrastructure.`,
   },
   {
     q: 'Where do the figures in this comparison come from?',
@@ -52,7 +54,7 @@ const faq = [
 
 <Base
   title="Best AI Coding Agents"
-  description="Compare six AI coding agents side by side — terminal tools, AI-first IDEs and VS Code extensions. License, pricing, setup difficulty and who each one is for."
+  description="Compare eight AI coding agents side by side — terminal tools, AI-first IDEs and editor extensions. License, pricing, setup difficulty and who each one is for."
 >
   <script
     slot="head"
@@ -89,9 +91,9 @@ const faq = [
     </nav>
 
     <div class="detail-head">
-      <h1>Six AI coding agents, compared side by side</h1>
+      <h1>Eight AI coding agents, compared side by side</h1>
       <p class="tagline">
-        Terminal tools, AI-first editors and VS Code extensions — the same fields for each,
+        Terminal tools, AI-first editors and IDE extensions — the same fields for each,
         so you can shortlist before you install anything.
       </p>
       <div class="detail-actions">
@@ -146,11 +148,11 @@ const faq = [
         </a>
         <a class="scene" href={`${base}/agent/cursor/`}>
           <span class="em">◇</span>
-          <div><b>AI-first editor</b><span>Cursor and other IDE-native tools</span></div>
+          <div><b>AI-first editor</b><span>Cursor · Windsurf</span></div>
         </a>
         <a class="scene" href={`${base}/agent/cline/`}>
           <span class="em">⌁</span>
-          <div><b>Inside VS Code</b><span>Cline as an editor extension</span></div>
+          <div><b>Editor extensions</b><span>Cline · GitHub Copilot</span></div>
         </a>
         <a class="scene" href={`${base}/agent/aider/`}>
           <span class="em">⇄</span>
