@@ -57,8 +57,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'ADK agent parsed the question, called a BigQuery tool with a generated SQL query, rendered the result as a chart, and wrote a one-paragraph summary. The eval harness scored the SQL correctness at 0.94 across the test set.',
     benchmarks: [
-      { label: 'GitHub stars', value: '22,000+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/google/adk-python' },
       { label: 'Primary runtime', value: 'Python → Vertex AI', source: 'Google ADK docs' },
     ],
     decisionAid: {
@@ -120,8 +118,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'The user agent proposed features; the assistant agent pushed back on scope and proposed a minimal spec; after 12 turns they converged on a 5-command CLI design with a data model. Transcript saved for review.',
     benchmarks: [
-      { label: 'GitHub stars', value: '18,000+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/camel-ai/camel' },
       { label: 'Focus', value: 'Multi-agent role-play', source: 'CAMEL docs' },
     ],
     decisionAid: {
@@ -180,8 +176,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'ChatDev produced a multi-file Python project: a CLI entry point, a deck loader/saver, and a quiz loop. The tester agent ran it and confirmed no import errors. Delivered under WareHouse/FlashcardApp.',
     benchmarks: [
-      { label: 'GitHub stars', value: '34,600+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/OpenBMB/ChatDev' },
       { label: 'Style', value: 'Phase-based multi-agent', source: 'ChatDev 2.0' },
     ],
     decisionAid: {
@@ -240,8 +234,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'Semantic Kernel routed the request through a planner that called `CheckBalance`, `CreateEvent`, and `SendNotification` in order, returning a confirmation. All calls were logged via the app telemetry.',
     benchmarks: [
-      { label: 'GitHub stars', value: '28,700+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/microsoft/semantic-kernel' },
       { label: 'Languages', value: 'C#, Python, Java', source: 'Semantic Kernel docs' },
     ],
     decisionAid: {
@@ -301,8 +293,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'E2B spun a sandbox, installed pandas, ran the analysis, saved a PNG to the sandbox FS, and returned the figure bytes to the agent. Host machine was untouched; sandbox destroyed on exit.',
     benchmarks: [
-      { label: 'GitHub stars', value: '14,600+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/e2b-dev/e2b' },
       { label: 'Isolation', value: 'Firecracker microVM', source: 'E2B docs' },
     ],
     decisionAid: {
@@ -362,8 +352,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'LightRAG used global-mode retrieval over its entity graph, returned the top recurring risk themes with citations to specific reports, and answered in one call without re-reading every document.',
     benchmarks: [
-      { label: 'GitHub stars', value: '40,400+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/HKUDS/LightRAG' },
       { label: 'Retrieval', value: 'Graph + local/global modes', source: 'LightRAG paper' },
     ],
     decisionAid: {
@@ -424,10 +412,8 @@ export const extraAgents2026b: Agent[] = [
     sampleInput:
       'Write a citation-backed overview of solid-state batteries: status, key players, and remaining challenges.',
     sampleOutput:
-      'STORM surfaced perspectives (materials, manufacturing,商业化), drafted an outline, retrieved sources for each section, and produced a multi-section article with numbered citations to papers and news. Hallucinated claims were minimal because every sentence traced to a source.',
+      'STORM surfaced perspectives (materials, manufacturing, commercialisation), drafted an outline, retrieved sources for each section, and produced a multi-section article with numbered citations to papers and news. Hallucinated claims were minimal because every sentence traced to a source.',
     benchmarks: [
-      { label: 'GitHub stars', value: '31,700+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/stanford-oval/storm' },
       { label: 'Output', value: 'Cited long-form article', source: 'STORM paper' },
     ],
     decisionAid: {
@@ -487,8 +473,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'Mem0 stored the preference, updated it on any later contradiction, and on the recipe question surfaced "vegetarian + nut allergy" to the LLM — without re-sending the whole chat. Token usage dropped versus full-history context.',
     benchmarks: [
-      { label: 'GitHub stars', value: '68,000+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/mem0ai/mem0' },
       { label: 'Claimed', value: 'Up to 26x fewer tokens vs full context', source: 'Mem0 benchmarks' },
     ],
     decisionAid: {
@@ -547,8 +531,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'On the canvas: a URL loader → summarizer LLM → a branching prompt that emits three tweets. The marketer ran it live, tweaked the prompt box, and exported it as an API without writing code.',
     benchmarks: [
-      { label: 'GitHub stars', value: '156,000+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/langflow-ai/langflow' },
       { label: 'Backend', value: 'LangChain + FastAPI', source: 'Langflow docs' },
     ],
     decisionAid: {
@@ -607,8 +589,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'RAGFlow parsed the scanned pages (including tables), answered with per-segment revenue and pulled the relevant risk footnotes as citations, rather than guessing from a broken text extraction.',
     benchmarks: [
-      { label: 'GitHub stars', value: '93,000+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/infiniflow/ragflow' },
       { label: 'Strength', value: 'Deep document understanding', source: 'RAGFlow docs' },
     ],
     decisionAid: {
@@ -667,8 +647,6 @@ export const extraAgents2026b: Agent[] = [
     sampleOutput:
       'Letta recalled the migration context from its archival memory block, acknowledged the progress since last time, and tailored suggestions to GCP — without the user restating anything. The memory block was visible and editable in the UI.',
     benchmarks: [
-      { label: 'GitHub stars', value: '25,300+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/letta-ai/letta' },
       { label: 'Origin', value: 'MemGPT research', source: 'Letta docs' },
     ],
     decisionAid: {

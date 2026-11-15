@@ -57,8 +57,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'Archon split the request into 6 tasks (schema, parser, validation rules, duplicate keys, dry-run flag, tests), attached the team rule "no ORM migrations without review", and indexed the project docs. The connected coding agent picked task 1, read the rules and docs through MCP, and produced a diff matching the repo conventions without being re-briefed.',
     benchmarks: [
-      { label: 'GitHub stars', value: '23,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/coleam00/Archon' },
       { label: 'Integration surface', value: 'MCP server + web UI + Docker', source: 'Archon docs' },
     ],
     decisionAid: {
@@ -118,8 +116,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The agent reproduced the timeout against a seeded fixture, traced it to an unbounded in-memory list, replaced it with a generator-based streaming response, and added a test covering 25k rows. It paused at the configured approval checkpoint before pushing; a reviewer approved and the PR was opened with a summary of the three changed files.',
     benchmarks: [
-      { label: 'GitHub stars', value: '11,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/langchain-ai/open-swe' },
       { label: 'Orchestration runtime', value: 'LangGraph (durable, async)', source: 'LangChain Open SWE announcement' },
     ],
     decisionAid: {
@@ -180,8 +176,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The assistant cited 6 contracts with auto-renew clauses ranging from 15 to 30 days, quoted the relevant clause text for each, and summed the annual value. Two documents were flagged as having no explicit notice period so the total was presented as a lower bound with a note to review them manually.',
     benchmarks: [
-      { label: 'GitHub stars', value: '67,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/Mintplex-Labs/anything-llm' },
       { label: 'Deployment modes', value: 'Desktop app + Docker server + API', source: 'AnythingLLM docs' },
     ],
     decisionAid: {
@@ -244,8 +238,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The fundamentals agent returned bullish with revenue-growth citations, the valuation agent flagged a stretched multiple and voted bearish, the sentiment agent was neutral, and the technicals agent was mildly bullish. The portfolio manager aggregated to a small long with a reduced position size after the risk manager capped exposure. Every signal carried a written rationale and a confidence score.',
     benchmarks: [
-      { label: 'GitHub stars', value: '64,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/virattt/ai-hedge-fund' },
       { label: 'Stated purpose', value: 'Educational / research only', source: 'Project README' },
     ],
     decisionAid: {
@@ -306,8 +298,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'Stagehand observed the search form, generated an action for the query, cached it, then extracted 10 typed objects matching the supplied schema. On the second run the navigation and search steps replayed deterministically and only the extraction touched the model, cutting the run from 14 model calls to 1.',
     benchmarks: [
-      { label: 'GitHub stars', value: '25,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/browserbase/stagehand' },
       { label: 'Core API', value: 'act / extract / observe + action caching', source: 'Stagehand docs' },
     ],
     decisionAid: {
@@ -367,8 +357,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'UFO identified the Excel window, read the target cell through the native API, switched to Outlook, created a draft with the value in the subject line, and paused before sending. The trace recorded 7 steps with a screenshot per step; the two GUI-only steps were flagged as lower confidence.',
     benchmarks: [
-      { label: 'GitHub stars', value: '10,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/microsoft/UFO' },
       { label: 'Target platform', value: 'Windows desktop, GUI + native APIs', source: 'Microsoft UFO documentation' },
     ],
     decisionAid: {
@@ -433,8 +421,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The flow ingested the PDF into a vector store, retrieved the top 4 chunks per question, and answered with citations to the policy sections. A condition node detected chargeback-related queries and returned a fixed escalation message instead of generating an answer. The whole flow was exported as a REST endpoint.',
     benchmarks: [
-      { label: 'GitHub stars', value: '55,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0 core (enterprise modules commercial)', source: 'github.com/FlowiseAI/Flowise LICENSE' },
       { label: 'Output surface', value: 'Canvas chatflow + REST API + embed widget', source: 'Flowise docs' },
     ],
     decisionAid: {
@@ -494,8 +480,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The scheduled workflow fetched 23 new tickets, classified 4 as urgent, produced a short digest, and delivered it to Slack. The trace showed each block with its token count and latency; one ticket failed schema validation and was logged with its raw payload rather than silently dropped.',
     benchmarks: [
-      { label: 'GitHub stars', value: '29,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/simstudioai/sim' },
       { label: 'Reported builders', value: '100,000+', source: 'Project README / sim.ai' },
     ],
     decisionAid: {
@@ -556,8 +540,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The agent decomposed the task into 9 steps, browsed 11 pages, wrote a comparison table to comparison.md, and printed a summary of the sources used. Two pages were blocked and were skipped with a warning in the log rather than causing the run to fail.',
     benchmarks: [
-      { label: 'GitHub stars', value: '58,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/FoundationAgents/OpenManus' },
       { label: 'Built-in tools', value: 'Browser, file I/O, code execution, web search', source: 'OpenManus docs' },
     ],
     decisionAid: {
@@ -617,8 +599,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The agent received the readable dashboard state, called the registered `renderTasks` action with a filter for overdue items, and CopilotKit streamed it into the registered table component. The user could sort and click rows, and a change made in the table was reflected back into the shared state on the next agent turn.',
     benchmarks: [
-      { label: 'GitHub stars', value: '38,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/CopilotKit/CopilotKit' },
       { label: 'Protocol', value: 'AG-UI (agent–user interaction protocol)', source: 'CopilotKit docs' },
     ],
     decisionAid: {
@@ -679,8 +659,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The pipeline produced a 46-second script split into 7 scenes, selected 7 matching stock clips, generated a narration track, burned in timed subtitles, and rendered a 1080x1920 MP4 with background music at -18 dB. The web UI showed per-stage timings; the script was editable before the final render.',
     benchmarks: [
-      { label: 'GitHub stars', value: '138,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/harry0703/MoneyPrinterTurbo' },
       { label: 'Output', value: 'Rendered MP4 (vertical/horizontal) via Web UI or API', source: 'Project README' },
     ],
     decisionAid: {
@@ -740,8 +718,6 @@ export const extraAgents2026d: Agent[] = [
     sampleOutput:
       'The avatar loaded and lip-synced to a synthesised greeting, recognised a spoken question through the microphone, answered in the configured voice, and recalled a detail from the previous session. The character config, voice settings, and memory store all remained in local files.',
     benchmarks: [
-      { label: 'GitHub stars', value: '51,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/moeru-ai/airi' },
       { label: 'Avatar formats', value: 'Live2D / VRM with voice and memory', source: 'AIRI docs' },
     ],
     decisionAid: {

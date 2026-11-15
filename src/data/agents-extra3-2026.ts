@@ -57,8 +57,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'The agent listed the files, sampled their headers, generated a pandas script, printed a preview of the merged frame for approval, then wrote clean.csv with 48,210 rows and reported that 311 duplicate order IDs were removed. No file left the machine.',
     benchmarks: [
-      { label: 'GitHub stars', value: '68,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/openinterpreter/openinterpreter' },
       { label: 'Execution target', value: 'Local host (no sandbox by default)', source: 'Open Interpreter docs' },
     ],
     decisionAid: {
@@ -118,8 +116,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'Goose ran pytest, isolated 6 failures to a shared helper using naive datetimes, replaced them with timezone-aware UTC values in 3 files, re-ran the suite (214 passed), and printed the diff for review.',
     benchmarks: [
-      { label: 'GitHub stars', value: '56,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/aaif-goose/goose' },
       { label: 'Extension model', value: 'MCP-native', source: 'Goose docs' },
     ],
     decisionAid: {
@@ -179,8 +175,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'The agent located the writer in 4 search steps, reproduced the fault with a new test, changed the quoting branch in 2 files, ran the suite, and emitted a 19-line patch with a passing test in 11 tool calls.',
     benchmarks: [
-      { label: 'GitHub stars', value: '20,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/SWE-agent/SWE-agent' },
       { label: 'Origin', value: 'Princeton / SWE-bench research', source: 'swe-agent.com' },
     ],
     decisionAid: {
@@ -244,8 +238,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'DeerFlow produced a 12-section report with a comparison table built from live GitHub data, a Python-generated chart of star growth, and a one-page recommendation. The plan was revised once by the user to add licensing, which the researcher agent picked up without restarting.',
     benchmarks: [
-      { label: 'GitHub stars', value: '84,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/bytedance/deer-flow' },
       { label: 'Architecture', value: 'Planner + sub-agents + sandbox', source: 'DeerFlow docs' },
     ],
     decisionAid: {
@@ -305,8 +297,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'Crawl4AI rendered all 60 pages in 41 seconds, removed nav and footer boilerplate, and produced 60 Markdown documents averaging 2,100 tokens each with a heading index. Total input to the embedding step dropped by roughly 38% versus raw HTML.',
     benchmarks: [
-      { label: 'GitHub stars', value: '86,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/unclecode/crawl4ai' },
       { label: 'Primary output', value: 'Clean Markdown / structured JSON', source: 'Crawl4AI docs' },
     ],
     decisionAid: {
@@ -366,8 +356,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'The fundamentals and sentiment analysts leaned bullish, the technicals agent flagged an overbought signal, and the bear researcher challenged margin assumptions. The risk desk capped position size; final output was a conditional HOLD with a logged rationale for every agent and no execution.',
     benchmarks: [
-      { label: 'GitHub stars', value: '120,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/TauricResearch/TradingAgents' },
       { label: 'Companion paper', value: 'arXiv:2412.20138', source: 'arXiv' },
     ],
     decisionAid: {
@@ -431,8 +419,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'Skyvern authenticated including a TOTP prompt, applied the date filter, identified 23 invoice rows visually, downloaded each PDF, and renamed them from the on-screen order numbers. One ambiguous row was flagged for review rather than guessed.',
     benchmarks: [
-      { label: 'GitHub stars', value: '23,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'AGPL-3.0', source: 'github.com/Skyvern-AI/skyvern' },
       { label: 'Approach', value: 'Vision + LLM instead of selectors', source: 'Skyvern docs' },
     ],
     decisionAid: {
@@ -492,8 +478,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'The agent received a 4KB accessibility snapshot, filled the two labelled inputs, submitted, and read back the widget list from the resulting tree. It reported three widgets and attached a screenshot as evidence in 6 tool calls.',
     benchmarks: [
-      { label: 'GitHub stars', value: '39,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/microsoft/playwright-mcp' },
       { label: 'Page representation', value: 'Accessibility tree snapshot', source: 'Playwright MCP docs' },
     ],
     decisionAid: {
@@ -553,8 +537,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'The agent located the CRM window from a screenshot, used search to surface Acme, read the renewal date on screen, switched to the calendar app, and created the event. It paused for confirmation before saving because the task was marked as an external side effect.',
     benchmarks: [
-      { label: 'GitHub stars', value: '39,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/bytedance/UI-TARS-desktop' },
       { label: 'Control modality', value: 'Screenshot in, mouse/keyboard out', source: 'Agent TARS docs' },
     ],
     decisionAid: {
@@ -615,8 +597,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'The flow fired on 12 new rows; the agent classified 7 as sales, 4 as support, 1 as spam, created 11 CRM records, and posted 2 summarised Slack messages. The spam row was logged and skipped with its reasoning attached.',
     benchmarks: [
-      { label: 'GitHub stars', value: '25,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT (open-core)', source: 'github.com/activepieces/activepieces' },
       { label: 'Integration pieces', value: '~400 incl. MCP', source: 'Activepieces docs' },
     ],
     decisionAid: {
@@ -677,8 +657,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'The pipeline ran 3 rounds with 12 messages; Studio showed each prompt, both tool calls, and per-agent token spend. Final brief plus a 7-item change log was produced, with the critic objections that were rejected preserved in the trace.',
     benchmarks: [
-      { label: 'GitHub stars', value: '35,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/agentscope-ai/agentscope' },
       { label: 'Companion tooling', value: 'AgentScope Studio (tracing)', source: 'AgentScope docs' },
     ],
     decisionAid: {
@@ -738,8 +716,6 @@ export const extraAgents2026c: Agent[] = [
     sampleOutput:
       'Cognee linked 214 entities and 480 relationships from the notes, surfaced two reversed decisions, and traced the first objection to a March design review, citing the source note for each hop. A plain vector search on the same corpus returned only the most recent summary.',
     benchmarks: [
-      { label: 'GitHub stars', value: '33,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/topoteretes/cognee' },
       { label: 'Storage model', value: 'Knowledge graph + vector index', source: 'Cognee docs' },
     ],
     decisionAid: {

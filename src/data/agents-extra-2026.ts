@@ -58,8 +58,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'OpenHands opened a shell, ran the test suite to reproduce the 500, edited src/routes/charge.ts to add validation, added tests/test_charge_validation.py (3 cases: 0, -1, valid), and re-ran tests (all green). Proposed PR #218 with a 1-line summary and a link to the failing run.',
     benchmarks: [
-      { label: 'GitHub stars', value: '91,600+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT (self-hostable)', source: 'github.com/All-Hands-AI/OpenHands' },
       { label: 'SWE-bench style evals', value: 'Competitive with closed coding agents', source: 'OpenHands docs' },
     ],
     decisionAid: {
@@ -120,8 +118,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'Agent used a web tool to fetch recent news, summarized 3 bullets, then wrote the structured record into the knowledge store. Subsequent queries about that company hit the knowledge base first (no re-search).',
     benchmarks: [
-      { label: 'GitHub stars', value: '42,800+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/agno-agi/agno' },
       { label: 'Agent startup latency', value: 'Sub-millisecond instantiation claim', source: 'Agno benchmarks' },
     ],
     decisionAid: {
@@ -180,8 +176,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'The code agent wrote: `import requests; r = requests.get("https://api.github.com/repos/huggingface/smolagents").json(); open("stars.txt","w").write(str(r["stargazers_count"]))`. Executed successfully; stars.txt written.',
     benchmarks: [
-      { label: 'GitHub stars', value: '30,000+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/huggingface/smolagents' },
       { label: 'Code size', value: '~1,000 lines', source: 'smolagents README' },
     ],
     decisionAid: {
@@ -240,8 +234,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'LlamaIndex parsed the PDFs, embedded chunks, retrieved the 5 most relevant passages, and answered with citations to 3 specific contracts, quoting the notice clauses.',
     benchmarks: [
-      { label: 'GitHub stars', value: '52,600+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/run-llama/llama_index' },
       { label: 'Connectors', value: 'Hundreds of data sources', source: 'LlamaIndex docs' },
     ],
     decisionAid: {
@@ -300,8 +292,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'LangChain bound a web-search tool and a SQL tool to the LLM; the agent decided to query the DB for recent orders, searched the web for shipping delays, and returned a combined summary with both sources cited.',
     benchmarks: [
-      { label: 'GitHub stars', value: '148,300+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/langchain-ai/langchain' },
       { label: 'Integrations', value: 'Hundreds of model/tool connectors', source: 'LangChain docs' },
     ],
     decisionAid: {
@@ -360,8 +350,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'Returns a validated `EmailExtract(sender="x@y.com", intent="invoice", due_date=date(2026,11,1))` object — rejected automatically if a field fails validation.',
     benchmarks: [
-      { label: 'GitHub stars', value: '20,800+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/pydantic/pydantic-ai' },
       { label: 'Providers', value: 'OpenAI/Anthropic/Gemini/Groq/Ollama/Bedrock', source: 'Pydantic AI docs' },
     ],
     decisionAid: {
@@ -420,8 +408,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'MetaGPT emitted a PRD, an API design, a data-schema doc, and a Python project (cli.py + tests) implementing the converter with validation — each artifact authored by a different role agent.',
     benchmarks: [
-      { label: 'GitHub stars', value: '70,900+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/geekan/MetaGPT' },
       { label: 'Roles', value: 'PM / Architect / Engineer / QA', source: 'MetaGPT docs' },
     ],
     decisionAid: {
@@ -481,8 +467,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'BabyAGI created sub-tasks (Day 1-5 basics, projects, etc.), executed each via the LLM, stored results, and reprioritized the list — producing a rolling 30-day learning plan.',
     benchmarks: [
-      { label: 'GitHub stars', value: '22,300+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'None declared', source: 'github.com/yoheinakajima/babyagi' },
       { label: 'Code size', value: '~100 lines', source: 'babyagi.py' },
     ],
     decisionAid: {
@@ -543,8 +527,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'Composio registered a GitHub trigger, captured the PR event, the agent summarized the diff via an LLM, and Composio executed the Slack message action to #reviews — auth handled entirely by Composio.',
     benchmarks: [
-      { label: 'GitHub stars', value: '30,600+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/ComposioHQ/composio' },
       { label: 'Integrations', value: '1000+ toolkits', source: 'Composio docs' },
     ],
     decisionAid: {
@@ -605,8 +587,6 @@ export const extraAgents2026: Agent[] = [
     sampleOutput:
       'GPT Researcher planned 5 sub-queries, fetched and filtered ~40 sources, and produced a report with an outline, a comparison table (scalability + license per DB), and 18 citations, plus 3 follow-up questions.',
     benchmarks: [
-      { label: 'GitHub stars', value: '30,200+', source: 'GitHub (Oct 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/assafelovic/gpt-researcher' },
       { label: 'Feature', value: 'Autonomous outline + cited report', source: 'GPT Researcher docs' },
     ],
     decisionAid: {

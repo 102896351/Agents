@@ -57,8 +57,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'Crush located the argument parser and the import writer, proposed a diff with the new flag and an early-return guard, and ran the test command in its shell tool. The TUI showed the diff and the failing/passing test output side by side, so the change could be accepted or reverted without leaving the terminal.',
     benchmarks: [
-      { label: 'GitHub stars', value: '28,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'FSL-1.1-MIT, future MIT grant', source: 'github.com/charmbracelet/crush LICENSE' },
       { label: 'Implementation', value: 'Single Go binary, terminal UI', source: 'Project README' },
     ],
     decisionAid: {
@@ -118,8 +116,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The agent created a Vite/React project, wrote the component tree and a localStorage hook, installed Tailwind, and started the preview. The app rendered with searchable sample recipes; a follow-up prompt added delete confirmation without discarding the earlier files.',
     benchmarks: [
-      { label: 'GitHub stars', value: '20,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/stackblitz-labs/bolt.diy' },
       { label: 'Deployment', value: 'Self-hosted Node app or Docker', source: 'Project README' },
     ],
     decisionAid: {
@@ -180,8 +176,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'Global search aggregated the community summaries into three dominant themes, each with supporting report references; a follow-up local search on the top theme returned the named entities and the relationships linking two teams to repeated deployment-related incidents. Every claim pointed back to source document ids.',
     benchmarks: [
-      { label: 'GitHub stars', value: '36,500+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/microsoft/graphrag' },
       { label: 'Query modes', value: 'Global / local / DRIFT / basic search', source: 'GraphRAG documentation' },
     ],
     decisionAid: {
@@ -241,8 +235,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The agent called the fundamentals endpoint once per ticker, received a normalised quarterly schema, computed growth and margin consistently, and returned a comparison table with a source column listing the provider behind each figure instead of mixing incompatible vendor definitions.',
     benchmarks: [
-      { label: 'GitHub stars', value: '75,100+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/openbq-org/OpenBB LICENSE' },
       { label: 'Access surfaces', value: 'Python SDK, REST API, CLI / workspace', source: 'OpenBB documentation' },
     ],
     decisionAid: {
@@ -303,8 +295,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The agent received a screenshot of the desktop, issued pointer and keyboard actions through the driver, and completed the file operations inside the sandbox. The run produced a timestamped action/screenshot trajectory that could be replayed and scored against the benchmark definition.',
     benchmarks: [
-      { label: 'GitHub stars', value: '31,800+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/trycua/cua' },
       { label: 'Platform coverage', value: 'macOS / Linux / Windows sandboxes', source: 'Project README' },
     ],
     decisionAid: {
@@ -364,8 +354,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The agent proposed a five-step plan covering navigation, extraction, summarisation, and file writing. After the plan was approved, it executed the browser steps, showed the drafted summaries for review, and wrote the approved markdown file to the local folder. The run was saved as a reusable workflow.',
     benchmarks: [
-      { label: 'GitHub stars', value: '10,100+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/microsoft/magentic-ui' },
       { label: 'Status', value: 'Experimental research preview', source: 'Microsoft Research / project README' },
     ],
     decisionAid: {
@@ -426,8 +414,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'Kestra ran the flow on schedule, stored each task output in the execution context, retried one transient LLM timeout, and surfaced the full run in the UI with per-task logs. The warehouse table was updated and a single critical ticket triggered the notification branch.',
     benchmarks: [
-      { label: 'GitHub stars', value: '30,100+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/kestra-io/kestra' },
       { label: 'Authoring model', value: 'Declarative YAML flows, plugin tasks', source: 'Kestra documentation' },
     ],
     decisionAid: {
@@ -487,8 +473,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'In the studio the agent was given the PDF as a knowledge source and two tools: policy lookup and escalation. Playground traces showed retrieval before answering, and a chargeback message correctly took the escalation branch, producing a handoff record instead of a generated answer.',
     benchmarks: [
-      { label: 'GitHub stars', value: '21,800+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/coze-dev/coze-studio LICENSE' },
       { label: 'Deployment', value: 'Docker Compose, self-hosted', source: 'Project README' },
     ],
     decisionAid: {
@@ -549,8 +533,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The indexing pipeline produced embedded chunks with document metadata; the query pipeline retrieved and reranked candidates, then generated an answer with section-level citations. Because each component exposed its own outputs, the team could confirm a wrong answer came from retrieval rather than generation.',
     benchmarks: [
-      { label: 'GitHub stars', value: '26,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/deepset-ai/haystack' },
       { label: 'Architecture', value: 'Typed component pipeline graph (Haystack 2.x)', source: 'Haystack documentation' },
     ],
     decisionAid: {
@@ -610,8 +592,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The character file defined tone and boundaries, a knowledge plugin loaded the FAQ, and the runtime routed incoming messages through memory and action selection. Setup questions were answered from the FAQ while balance requests were declined, with both interactions stored as memory for consistent follow-ups.',
     benchmarks: [
-      { label: 'GitHub stars', value: '19,700+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/elizaOS/eliza LICENSE' },
       { label: 'Core abstractions', value: 'Character, plugin, action, provider, memory', source: 'ElizaOS documentation' },
     ],
     decisionAid: {
@@ -672,8 +652,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The agent joined the room, streamed audio through STT, and responded with low-latency synthesised speech. When the caller interrupted with a different question, the current TTS playback stopped, context was retained, and the booking tool was only invoked after the required details were confirmed verbally.',
     benchmarks: [
-      { label: 'GitHub stars', value: '15,100+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/livekit/agents' },
       { label: 'Transport', value: 'WebRTC rooms, SIP/telephony support', source: 'LiveKit Agents documentation' },
     ],
     decisionAid: {
@@ -733,8 +711,6 @@ export const extraAgents2026e: Agent[] = [
     sampleOutput:
       'The pipeline streamed audio through VAD and STT, passed the transcript through the custom redaction processor, and then into the LLM and TTS stages. Timing frames from each processor produced a per-stage latency breakdown, and the LLM context contained a masked phone number rather than the original digits.',
     benchmarks: [
-      { label: 'GitHub stars', value: '17,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'BSD-2-Clause', source: 'github.com/pipecat-ai/pipecat' },
       { label: 'Architecture', value: 'Frame-based processor pipeline', source: 'Pipecat documentation' },
     ],
     decisionAid: {

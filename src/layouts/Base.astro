@@ -11,10 +11,22 @@ const { title, description, noAds = false, noIndex = false, preloadImage } = Ast
 };
 
 const siteName = 'AI Agents Hub';
-const finalTitle = title ? `${title} · ${siteName}` : `${siteName} — A curated directory of AI agents`;
-const finalDesc =
+// Search results truncate long titles/descriptions. Clip at a word boundary so
+// the visible snippet stays readable instead of ending mid-word. Only strings
+// longer than the limit are touched; short ones are passed through untouched.
+function clip(s: string, limit: number): string {
+  if (s.length <= limit) return s;
+  const head = s.slice(0, limit - 1);
+  const cut = head.lastIndexOf(' ');
+  return (cut > limit * 0.6 ? head.slice(0, cut) : head).trimEnd() + '…';
+}
+const rawTitle = title ? `${title} · ${siteName}` : `${siteName} — A curated directory of AI agents`;
+const finalTitle = clip(rawTitle, 65);
+const finalDesc = clip(
   description ||
-  'Discover, compare, and choose AI agents for coding, research, browsing, automation, and more. Structured profiles built from public sources, with pick-if / skip-if verdicts.';
+  'Discover, compare, and choose AI agents for coding, research, browsing, automation, and more. Structured profiles built from public sources, with pick-if / skip-if verdicts.',
+  160
+);
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString();
 // 动态读取 base 路径，避免硬编码（适配自定义域名 vs github.io/仓库名）
 const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'

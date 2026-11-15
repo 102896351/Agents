@@ -2018,7 +2018,7 @@ export const extraAgents2026h: Agent[] = [
     tagline: 'Open-source DSL that lets coding agents clone any video into a full, re-runnable workflow.',
     category: 'creative',
     license: 'open-source',
-    licenseName: 'Custom (NOASSERTION)',
+    licenseName: 'Not declared in the repository metadata',
     selfHost: true,
     difficulty: 3,
     website: 'https://hypit.ai',

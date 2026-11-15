@@ -17,7 +17,10 @@ export const newPosts2026: BlogPost[] = [
     readingTime: 10,
     tags: ['coding', 'open-source', 'autonomous', 'github', 'devin', 'ai-agents'],
     relatedAgents: ['devin', 'replit-agent', 'claude-code', 'aider', 'cursor', 'cline', 'codex', 'opencode'],
-    coverThumb: '/blog/openhands-2026-thumb.jpg',
+    coverThumb: '/blog/openhands-2026-official.jpg',
+    coverThumbAlt: 'Official OpenHands product screenshot from the project documentation',
+    coverThumbCredit: 'Official screenshot from the OpenHands repository',
+    coverThumbSource: 'https://github.com/All-Hands-AI/OpenHands',
     content: `
 <p>In early 2024 a screenshot of a startup demo went viral: an AI agent that could take a GitHub issue and open a pull request that actually closed it. The startup was <a href="/agent/devin/">Devin</a>, the price was enterprise-only, and the open-source community's reaction was predictable — they built their own. That project became <strong>OpenHands</strong> (it started life as OpenDevin), and two years later it is one of the most-starred AI coding projects on GitHub with <strong>91,000+ stars</strong> and a contributor base that dwarfs most commercial tools.</p>
 
@@ -90,6 +93,9 @@ export const newPosts2026: BlogPost[] = [
 
 <h3>Is the version number on the profile current?</h3>
 <p>It is a GitHub REST API snapshot with an explicit checked date. Check the upstream releases before installing.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://devin.ai" target="_blank" rel="noopener">devin.ai</a>, <a href="https://replit.com" target="_blank" rel="noopener">replit.com</a>, <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">anthropic.com</a>, <a href="https://aider.chat" target="_blank" rel="noopener">aider.chat</a>, <a href="https://github.com/Aider-AI/aider" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -102,7 +108,10 @@ export const newPosts2026: BlogPost[] = [
     readingTime: 9,
     tags: ['framework', 'python', 'agents', 'agno', 'langgraph', 'crewai'],
     relatedAgents: ['langgraph', 'crewai', 'autogen', 'openai-agents-sdk', 'mastra', 'dify'],
-    coverThumb: '/blog/agno-2026-thumb.jpg',
+    coverThumb: '/blog/agno-2026-official.jpg',
+    coverThumbAlt: 'Official Agno product image',
+    coverThumbCredit: 'Official product image from Agno',
+    coverThumbSource: 'https://github.com/agno-agi/agno',
     content: `
 <p>If you browsed GitHub for an "AI agent framework" in 2024, you met Phidata. By 2026 the same repo had rebranded to <strong>Agno</strong> and the tagline had shifted from "build agents" to "build, run, and manage agent platforms." That is not marketing drift — it reflects a real architectural bet. Agno now powers <strong>43,000+ stars</strong> and positions itself less as a rival to <a href="/agent/langgraph/">LangGraph</a> and more as the runtime underneath production agent fleets.</p>
 
@@ -173,6 +182,18 @@ agent.print_response("Summarise this repo's README in three bullets")</code></pr
 
 <h3>Do you benchmark its throughput or latency?</h3>
 <p>No. This is an editorial profile based on public sources, not a performance test.</p>
+
+<h2>When Agno is the right tool — and when it isn't</h2>
+<p>Agno is a framework for building agents with memory, knowledge and teams of specialised agents. Its value shows up when a task genuinely benefits from several roles working together — a researcher, a reviewer, a writer — rather than one long prompt doing everything.</p>
+<ul>
+  <li><strong>Pick it if</strong> you are building a repeatable multi-step workflow, you need shared memory or persistent sessions, or you want to compare agent designs without rewriting the surrounding application each time.</li>
+  <li><strong>Skip it if</strong> a single well-written prompt plus a tool call already solves the problem. Multi-agent setups cost more in tokens, latency and debugging time, and that cost is only justified when the decomposition actually improves the result.</li>
+  <li><strong>Before you commit</strong>, write down what each agent owns and how the handoff is judged. Teams of agents fail most often at the seams — two roles each assuming the other checked something — and a clear contract between roles prevents more bugs than any framework feature.</li>
+</ul>
+<p>Keep a single-agent baseline while you build. If the multi-agent version is not measurably better on your own tasks, the simpler version is the one to ship: it is cheaper, faster and far easier for the next person to understand. Frameworks make sophisticated designs possible; they do not make them necessary.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">langchain-ai.github.io</a>, <a href="https://crewai.com" target="_blank" rel="noopener">crewai.com</a>, <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">microsoft.github.io</a>, <a href="https://openai.github.io/openai-agents-python/" target="_blank" rel="noopener">openai.github.io</a>, <a href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -185,7 +206,10 @@ agent.print_response("Summarise this repo's README in three bullets")</code></pr
     readingTime: 8,
     tags: ['framework', 'huggingface', 'python', 'code-agent', 'open-source'],
     relatedAgents: ['langgraph', 'crewai', 'autogen', 'agno', 'openai-agents-sdk'],
-    coverThumb: '/blog/smolagents-2026-thumb.jpg',
+    coverThumb: '/blog/smolagents-2026-official.jpg',
+    coverThumbAlt: 'Official smolagents brand image',
+    coverThumbCredit: 'Official brand image from smolagents',
+    coverThumbSource: 'https://github.com/huggingface/smolagents',
     content: `
 <p>The AI agent ecosystem has a bloat problem: most "minimal" frameworks still pull in a graph engine, a memory layer, a vector store, and a telemetry stack. <strong>smolagents</strong>, released by Hugging Face in late 2024, is the rebuttal. The entire library is a few hundred lines, it has <strong>30,000+ stars</strong>, and its central thesis is almost confrontational: agents should express their actions as <strong>Python code</strong>, not as JSON tool-call dictionaries.</p>
 
@@ -247,6 +271,18 @@ agent.run("What is the latest stable version of PyTorch?")</code></pre>
 
 <h3>Is it maintained by Hugging Face?</h3>
 <p>Yes, it is released by Hugging Face; the linked repository is the authoritative source for its status.</p>
+
+<h2>When smolagents is the right tool — and when it isn't</h2>
+<p>smolagents is deliberately small: agents write and run short pieces of code to call tools, instead of routing every action through a large JSON tool schema. That makes it unusually easy to read and to teach, and it keeps the moving parts visible when you are learning how agent loops actually work.</p>
+<ul>
+  <li><strong>Pick it if</strong> you want a minimal library you can read end to end, you are prototyping a code-acting agent, or you are teaching a workshop where the whole stack has to fit into one session.</li>
+  <li><strong>Skip it if</strong> you need production-grade observability, multi-team governance, long-running state, or a large ecosystem of prebuilt integrations. Those are the problems bigger frameworks were built to solve.</li>
+  <li><strong>Before you commit</strong>, decide where generated code is allowed to run. A code-first agent is only as safe as its sandbox: a local prototype is fine, but anything handling untrusted input or production credentials needs an isolated runtime and explicit limits before it leaves your laptop.</li>
+</ul>
+<p>It is worth separating "small library" from "small system" as well. The library stays small, but the model, the tools, the sandbox and the logs remain your responsibility. Teams that expect the framework to supply those pieces usually end up rebuilding them — a reasonable choice, as long as it is deliberate.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">langchain-ai.github.io</a>, <a href="https://crewai.com" target="_blank" rel="noopener">crewai.com</a>, <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">microsoft.github.io</a>, <a href="https://www.agno.com" target="_blank" rel="noopener">agno.com</a>, <a href="https://github.com/agno-agi/agno" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -259,7 +295,10 @@ agent.run("What is the latest stable version of PyTorch?")</code></pre>
     readingTime: 9,
     tags: ['rag', 'data', 'framework', 'llamaindex', 'python', 'agents'],
     relatedAgents: ['langgraph', 'crewai', 'autogen', 'notebooklm', 'dify', 'perplexity'],
-    coverThumb: '/blog/llama-index-2026-thumb.jpg',
+    coverThumb: '/blog/llama-index-2026-official.jpg',
+    coverThumbAlt: 'Official LlamaIndex product image',
+    coverThumbCredit: 'Official product image from LlamaIndex',
+    coverThumbSource: 'https://github.com/run-llama/llama_index',
     content: `
 <p>For a while LlamaIndex was shorthand for "the RAG library" — the thing you reached for when you wanted a model to answer questions over your PDFs. In 2026 that description undersells it. Now <strong>52,000+ stars</strong> deep and rebranded around being the "document processing platform for AI," LlamaIndex has grown into the data layer that most agent stacks quietly stand on. If an agent in our <a href="/">directory</a> needs to read, index, or reason over private data, LlamaIndex is probably somewhere in the plumbing.</p>
 
@@ -323,6 +362,18 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
 
 <h3>Where do version numbers on the profile come from?</h3>
 <p>From a GitHub REST API snapshot with an explicit checked date; they are not a live feed.</p>
+
+<h2>When LlamaIndex is the right tool — and when it isn't</h2>
+<p>LlamaIndex earns its place when the hard part of your project is connecting models to your own data: ingesting documents, choosing a chunking and indexing strategy, and retrieving the right context at query time. If your agent is mostly a prompt plus a few tool calls, a general agent framework — or no framework at all — will be simpler to operate.</p>
+<ul>
+  <li><strong>Pick it if</strong> your sources are messy and heterogeneous, you expect to change embedding models or vector stores, or you need retrieval quality to be observable and tunable rather than a single hardcoded query.</li>
+  <li><strong>Skip it if</strong> you are building a small demo over one clean PDF, or your bottleneck is orchestration and tool use rather than retrieval. The abstraction layers pay off at scale, not on a toy dataset.</li>
+  <li><strong>Before you commit</strong>, build the smallest possible evaluation set — a dozen questions with known answers drawn from your own documents — and measure retrieval before you tune prompts. Most disappointing RAG results come from ingestion and chunking, not from the model.</li>
+</ul>
+<p>The other practical question is operational ownership. Indexes need rebuilding when documents change, connectors need credentials, and retrieval behaviour shifts when you upgrade a dependency. If nobody on the team owns that maintenance, a simpler setup with fewer moving parts will serve readers better than a sophisticated pipeline nobody can debug.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">langchain-ai.github.io</a>, <a href="https://crewai.com" target="_blank" rel="noopener">crewai.com</a>, <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">microsoft.github.io</a>, <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a>, <a href="https://dify.ai" target="_blank" rel="noopener">dify.ai</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -335,7 +386,10 @@ print(query_engine.query("What did we decide about pricing in Q3?"))</code></pre
     readingTime: 9,
     tags: ['tooling', 'integrations', 'infrastructure', 'mcp', 'agents', 'auth'],
     relatedAgents: ['langgraph', 'openai-agents-sdk', 'n8n', 'zapier-agents', 'make', 'manus'],
-    coverThumb: '/blog/composio-2026-thumb.jpg',
+    coverThumb: '/blog/composio-2026-official.jpg',
+    coverThumbAlt: 'Official Composio product screenshot from the project documentation',
+    coverThumbCredit: 'Official screenshot from the Composio repository',
+    coverThumbSource: 'https://github.com/ComposioHQ/composio',
     content: `
 <p>Most agent demos die at the same wall: the model can plan, but it cannot actually <em>do</em> anything. It cannot send the Slack message, create the Notion page, or query the production database, because each of those needs credentials, an API, and a hundred lines of glue. <strong>Composio</strong> is the company (and 30,000-star open-source project) that decided this glue should be a category. It is the "tool layer" sitting under frameworks in our <a href="/">directory</a> like <a href="/agent/langgraph/">LangGraph</a> and the <a href="/agent/openai-agents-sdk/">OpenAI Agents SDK</a>.</p>
 
@@ -398,6 +452,18 @@ tools = toolset.get_tools(apps=["github", "slack"])</code></pre>
 
 <h3>Are connector counts quoted as verified figures?</h3>
 <p>No. We do not publish a measured connector count; treat any such number as a claim from the provider.</p>
+
+<h2>When Composio is the right tool — and when it isn't</h2>
+<p>Composio addresses a specific, unglamorous problem: an agent that can reason is not useful until it can actually act in Gmail, Slack, GitHub or a CRM, with credentials and permissions handled correctly. It supplies those connectors and the authentication plumbing around them, so you do not maintain one OAuth integration per tool.</p>
+<ul>
+  <li><strong>Pick it if</strong> your agent needs to call many third-party SaaS APIs, you want managed authentication instead of storing user tokens yourself, or you are shipping to users who will connect their own accounts.</li>
+  <li><strong>Skip it if</strong> your agent only calls one or two internal endpoints you control, or your deployment policy forbids routing credentials through an external service.</li>
+  <li><strong>Before you commit</strong>, map the exact scopes each connector requests and decide what your agent is allowed to do with write access. Tool integration shifts the risk from "the model said something wrong" to "the model did something wrong", and the second is much harder to undo.</li>
+</ul>
+<p>For an evaluation, start with read-only actions and a single user account. Once the agent's behaviour is predictable, add write actions one at a time with explicit confirmation. That sequence catches most permission surprises before they reach a real workspace, and it gives you a clear audit trail when something does go wrong.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">langchain-ai.github.io</a>, <a href="https://openai.github.io/openai-agents-python/" target="_blank" rel="noopener">openai.github.io</a>, <a href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener">github.com</a>, <a href="https://n8n.io" target="_blank" rel="noopener">n8n.io</a>, <a href="https://zapier.com/agents" target="_blank" rel="noopener">zapier.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -410,7 +476,10 @@ tools = toolset.get_tools(apps=["github", "slack"])</code></pre>
     readingTime: 9,
     tags: ['research', 'agents', 'deep-research', 'open-source', 'rag'],
     relatedAgents: ['perplexity', 'notebooklm', 'elicit', 'consensus', 'langgraph'],
-    coverThumb: '/blog/gpt-researcher-2026-thumb.jpg',
+    coverThumb: '/blog/gpt-researcher-2026-official.jpg',
+    coverThumbAlt: 'Official GPT Researcher brand image',
+    coverThumbCredit: 'Official brand image from GPT Researcher',
+    coverThumbSource: 'https://github.com/assafelovic/gpt-researcher',
     content: `
 <p>"Deep research" went from buzzword to product line in 2025, and every model vendor shipped one. But the open-source original is still one of the most-used: <strong>GPT Researcher</strong>, a 30,000-star project that runs the same loop — plan, search, read, synthesise, cite — entirely on infrastructure you control. If you use <a href="/agent/perplexity/">Perplexity</a> for quick answers or <a href="/agent/notebooklm/">NotebookLM</a> for document Q&amp;A, GPT Researcher is the self-hosted, source-crawling cousin in our <a href="/">directory</a> family.</p>
 
@@ -475,6 +544,18 @@ async def research(query):
 
 <h3>Does this guide reproduce its research outputs?</h3>
 <p>No. It links to official sources and describes the published workflow; there are no reproduced reports here.</p>
+
+<h2>When GPT Researcher is the right tool — and when it isn't</h2>
+<p>The decision is less about model quality and more about the shape of the deliverable. GPT Researcher is built around a research plan: it decomposes a question, searches, reads, and writes a cited report. If what you need is a one-line answer, a chat assistant or a search engine with citations will get you there faster and cheaper.</p>
+<ul>
+  <li><strong>Pick it if</strong> you need a reusable written artefact — a landscape brief, a competitor summary, a literature scan — where every claim should carry a source and the whole report should be reproducible later.</li>
+  <li><strong>Skip it if</strong> you need sub-second answers inside another product, you work from a fixed private corpus that never touches the open web, or you cannot supply search and model API keys.</li>
+  <li><strong>Before you commit</strong>, run one question whose answer you already know, and read the citations rather than just the summary. Research agents can produce a confident, well-formatted report whose sources do not actually support the sentence they are attached to; that failure is much easier to spot on a familiar topic.</li>
+</ul>
+<p>Be clear about who owns the result, too. A generated report is a first draft for a person to check, not a finished assessment — the same review step you would apply to a junior analyst's work. If your workflow already has that review step, the tool saves real time. If it does not, adding the tool without adding the review just makes unverified text arrive faster.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.perplexity.ai" target="_blank" rel="noopener">perplexity.ai</a>, <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a>, <a href="https://elicit.com" target="_blank" rel="noopener">elicit.com</a>, <a href="https://consensus.app" target="_blank" rel="noopener">consensus.app</a>, <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">langchain-ai.github.io</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 ];

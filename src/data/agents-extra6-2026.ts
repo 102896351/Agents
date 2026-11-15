@@ -67,8 +67,6 @@ export const extraAgents2026f: Agent[] = [
     sampleOutput:
       'Vane ran several SearxNG queries, kept six results (two official EU publications, a law firm summary, a standards body note and two news pieces), and produced a short synthesis with numbered citations after each claim. The UI showed the source cards beside the answer, plus an academic-papers tab with two working papers. Switching to Quality Mode added a second retrieval round but roughly tripled the response time.',
     benchmarks: [
-      { label: 'GitHub stars', value: '38,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/ItzCrazyKns/Vane LICENSE' },
       { label: 'Search backend', value: 'Self-hosted SearxNG meta-search', source: 'Project README' },
       { label: 'Search modes', value: 'Speed / Balanced / Quality', source: 'Project README' },
     ],
@@ -137,8 +135,6 @@ export const extraAgents2026f: Agent[] = [
     sampleOutput:
       'Onyx retrieved a Slack thread from the payments channel, the incident review in Confluence and the v3.8 release notes, then produced a dated summary with a citation for each claim. The Deep Research mode expanded it into a longer report with a timeline and an open-questions section. A user without access to the incident review saw only the two public sources referenced.',
     benchmarks: [
-      { label: 'GitHub stars', value: '33,200+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT core / enterprise licence for ee/', source: 'github.com/onyx-dot-app/onyx LICENSE' },
       { label: 'Connectors', value: '50+ workplace applications', source: 'Project README' },
       { label: 'Retrieval', value: 'Hybrid index + agentic RAG harness', source: 'Project README' },
     ],
@@ -208,8 +204,6 @@ export const extraAgents2026f: Agent[] = [
     sampleOutput:
       'Windmill generated a parameter form for customer_id and since, ran the script in an isolated worker, and exposed both an HTTP endpoint and a downloadable CSV. A second script consuming that output was connected into a flow, with the run duration, logs and inputs visible per step. Deploying the same definition to the production workspace required a review approval.',
     benchmarks: [
-      { label: 'GitHub stars', value: '18,400+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'AGPL-3.0 core / Apache-2.0 / Enterprise', source: 'github.com/windmill-labs/windmill LICENSE' },
       { label: 'Languages', value: '20+ supported runtimes', source: 'Project README' },
       { label: 'Positioning', value: 'Benchmarked vs Airflow, Prefect, Temporal', source: 'Project README' },
     ],
@@ -279,8 +273,6 @@ export const extraAgents2026f: Agent[] = [
     sampleOutput:
       'Agent Zero opened a browser, collected star counts and release dates from several sources, wrote a Python snippet to normalise the numbers, and saved the markdown table to the workspace. The Web UI showed the shell commands and browser steps as they happened, and the run paused for confirmation before the file write. The final table carried a note where two sources disagreed on a release date.',
     benchmarks: [
-      { label: 'GitHub stars', value: '19,700+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'github.com/agent0ai/agent-zero LICENSE' },
       { label: 'Runtime', value: 'Dockerised Linux workspace with terminal and browser', source: 'Project README' },
       { label: 'Install paths', value: 'Desktop launcher or server/shell install', source: 'Project README' },
     ],
@@ -350,8 +342,6 @@ export const extraAgents2026f: Agent[] = [
     sampleOutput:
       'Steel returned a session id and a CDP endpoint; the client navigated and clicked through, then called the content endpoint to get clean markdown with the navigation chrome stripped. The session viewer showed the two page loads and the set cookies, and the browser process was reclaimed automatically when the session expired.',
     benchmarks: [
-      { label: 'GitHub stars', value: '7,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'github.com/steel-dev/steel-browser LICENSE' },
       { label: 'Control protocol', value: 'Puppeteer / CDP (Playwright, Selenium compatible)', source: 'Project README' },
       { label: 'Session features', value: 'Cookies, local storage, proxy chain, extensions, session UI', source: 'Project README' },
     ],

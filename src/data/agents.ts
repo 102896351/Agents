@@ -94,6 +94,9 @@ export interface Agent {
   verdict: string;
   // 扩展字段（全部可选，向后兼容）
   description?: string;
+  // Sentences moved out of the opening blocks during the 2026-11-15 readability
+  // pass. Verbatim, not rewritten; rendered under "Implementation notes".
+  detailNotes?: string[];
   useCases?: string[];
   pros?: string[];
   cons?: string[];
@@ -281,7 +284,7 @@ const allAgents: Agent[] = [
       'Quality varies a lot with model choice',
     ],
     models: ['Claude 3.5/3.7 Sonnet', 'GPT-4o/4.1', 'Gemini 2.0/2.5', 'DeepSeek', 'Local LLMs via Ollama'],
-    alternatives: ['continue', 'aider', 'claude-code', 'roo-cline'],
+    alternatives: ['continue', 'aider', 'claude-code'],
     quickStart: [
       'Open VS Code → Extensions (Cmd/Ctrl+Shift+X) → search "Cline" → install.',
       'Click the Cline robot icon in the sidebar → choose API Provider (OpenRouter, Anthropic, OpenAI, Bedrock, etc.) and paste your key.',
@@ -294,7 +297,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Modified 5 files:\n  src/routes/users.ts (async/await conversion, +Zod schema, +18 lines)\n  src/middleware/validate.ts (new)\n  src/server.ts (apply middleware)\n  src/routes/__tests__/users.test.ts (new — 4 test cases)\n  package.json (added zod, vitest)\n12/12 tests pass. Linter clean. Cline produced 1 commit per file with sensible messages.',
     benchmarks: [
-      { label: 'GitHub stars', value: '35,000+', source: 'github.com/cline/cline, 2026' },
       { label: 'Supported API providers', value: '12+ (OpenRouter, Anthropic, OpenAI, Bedrock, Azure, Vertex, Cerebras, Groq, ...)' },
       { label: 'First-party MCP client', value: 'Native, can create + install new MCP servers on the fly' },
     ],
@@ -351,7 +353,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'hello.js (new):\n  /**\n   * Sums an array of numbers.\n   * @param {number[]} nums\n   * @returns {number} sum\n   */\n  export function sumArray(nums) { return nums.reduce((a, b) => a + b, 0); }\n\nhello.test.js (new): 3 tests, all passing.\n2 new commits:\n  a1b2c3d feat(hello): add sumArray with JSDoc\n  d4e5f6a test(hello): vitest suite for sumArray',
     benchmarks: [
-      { label: 'GitHub stars', value: '19,000+', source: 'github.com/Aider-AI/aider' },
       { label: 'Supported model families', value: 'Claude / GPT / Gemini / DeepSeek / local Ollama' },
       { label: 'Auto-commit behavior', value: 'One commit per logical change, with descriptive message' },
     ],
@@ -580,7 +581,7 @@ const allAgents: Agent[] = [
       { label: 'BrowseComp', value: '68.9% (SOTA; +17.4 vs Deep Research)', source: 'OpenAI July 2026' },
       { label: 'FrontierMath', value: '27.4% accuracy', source: 'OpenAI July 2026' },
       { label: 'Investment-banking analyst tasks', value: 'Matches / beats junior IB associates (1–3 yrs experience)', source: 'OpenAI demo, July 2026' },
-      { label: 'Underlying model (May 2025)', value: 'CUA, built on o3', source: '至顶网' },
+      { label: 'Underlying model (May 2025)', value: 'CUA, built on o3', source: 'Chinese tech media report' },
     ],
     decisionAid: {
       pickIf:
@@ -622,7 +623,7 @@ const allAgents: Agent[] = [
       'You manage browsers, sessions, and errors yourself',
     ],
     models: ['Any LLM (Claude, GPT-4o, Gemini, local models via Ollama)'],
-    alternatives: ['firecrawl', 'playwright', 'operator'],
+    alternatives: ['firecrawl', 'operator'],
     quickStart: [
       'Python ≥ 3.11. `pip install browser-use` then `playwright install` (downloads Chromium).',
       'Set one LLM key in `.env` (e.g. `OPENAI_API_KEY=...`).',
@@ -635,7 +636,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Returns a dict like:\n  {"headings": ["Getting Started", "API Reference", "Pricing"],\n   "links": [{"text": "Docs", "href": "/docs"}, {"text": "Sign up", "href": "/signup"}]}\n~30 sec runtime. Browser screenshots + DOM dumps cached in the run log for replay.',
     benchmarks: [
-      { label: 'GitHub stars', value: '55,000+', source: 'github.com/browser-use/browser-use' },
       { label: 'Underlying engine', value: 'Playwright + LangChain' },
       { label: 'Vision', value: 'Optional screenshot capture for vision-capable LLMs' },
       { label: 'Modes', value: 'Sync + async; can attach persistent browser context for logged-in flows' },
@@ -695,9 +695,7 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Workflow runs ~6 sec per inbound payload. Real-time visual execution logs. 0 manual touches. Easy to inspect what the AI decided; if a node mis-categorizes, you can add a "Reviewer" agent before the Switch and gate it on a confidence threshold.',
     benchmarks: [
-      { label: 'GitHub stars', value: '186,000+', source: 'github.com/n8n-io/n8n' },
       { label: 'Integrations', value: '400+ pre-built nodes' },
-      { label: 'License', value: 'Sustainable Use License (free self-host; restrictions on SaaS resale)' },
       { label: 'Templates', value: '900+ ready-made workflow templates' },
       { label: 'Origin', value: 'Founded 2019 in Berlin by Jan Oberhauser; name = "nodemation"' },
     ],
@@ -868,7 +866,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       ' 1. router → "vector" (factual / static knowledge)\n 2. vector_node → 4 docs from internal policy repository\n 3. grader → 3/4 docs graded "relevant"\n 4. generator → answers from those 3 docs only\n 5. hallucination_check → "grounded: yes" → END\nFinal answer with inline citations to each supporting document. ~6 LLM calls, no infinite loop.',
     benchmarks: [
-      { label: 'GitHub stars', value: '12,000+', source: 'github.com/langchain-ai/langgraph' },
       { label: 'SDKs', value: 'Python and TypeScript' },
       { label: 'Key advantage', value: 'Cycles + persistent state — full DAG control' },
       { label: 'Origin', value: 'LangChain team; spun out as production-grade layer in 2025' },
@@ -926,8 +923,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Crew execution (~3 min, 3 agents):\n  1. Researcher → 5 candidate papers pulled + 1-sentence summaries [3 min]\n  2. Writer → 600-word Markdown draft with citations, intro / 3 sections / conclusion [2 min]\n  3. Editor → fact-check pass, source links pinned to each claim [1 min]\nFinal post saved to ./draft.md. 18 LLM calls, ~9,000 tokens.',
     benchmarks: [
-      { label: 'GitHub stars', value: '44,700+', source: 'github.com/joaomdmoura/crewAI, April 2026' },
-      { label: 'License', value: 'MIT' },
       { label: 'Certified developers', value: '~100,000 community', source: 'Tencent Cloud article' },
       { label: 'Process modes', value: 'Sequential / Hierarchical / Custom' },
     ],
@@ -984,8 +979,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Assistant generates the script (60+ lines, uses requests + pandas), explains the logic, then runs it via UserProxyAgent:\n  Verified: 10 repos saved to top_repos.csv. Passes a quick AST lint. AutoGen\'s enable_docker was left off so the script ran inside a sandboxed work_dir.',
     benchmarks: [
-      { label: 'GitHub stars', value: '38,000+', source: 'github.com/microsoft/autogen' },
-      { label: 'License', value: 'MIT + Creative Commons for code-execution docs' },
       { label: 'Successor', value: 'AutoGen functionality merged into Microsoft Agent Framework (Oct 2026)', source: 'Microsoft Devblogs' },
       { label: 'Patterns', value: 'AssistantAgent / UserProxyAgent / GroupChat / Nested chat / Docker-isolated execution' },
     ],
@@ -1211,7 +1204,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'src/utils/parseDate.ts (rewritten, +12 / -8):\n  - Accepts string | number input via overload\n  - Returns parseDate().toISOString()\n  - Throws TypeError with a clear message on bad input\nsrc/utils/__tests__/parseDate.test.ts (new): 6 cases — ISO string, epoch number, missing tz, invalid string, undefined, NaN. 6/6 pass.',
     benchmarks: [
-      { label: 'GitHub stars', value: '23,000+', source: 'github.com/continuedev/continue' },
       { label: 'Discord community', value: '11,000+ members' },
       { label: 'Built by', value: 'Y Combinator alumni, $3M seed, founded 2023' },
     ],
@@ -1252,7 +1244,7 @@ const allAgents: Agent[] = [
       'Output still needs a designer for final polish',
     ],
     models: ['Proprietary diffusion models + GPT-class for planning'],
-    alternatives: ['midjourney', 'flux', 'ideogram'],
+    alternatives: ['midjourney', 'flux'],
     quickStart: [
       'Sign up at lovart.ai with Google/email — free tier gives 30 image credits + 3 campaign experiments.',
       'Pro $10/mo or Studio $40/mo unlock higher resolutions, brand-kit uploads, and batch exports.',
@@ -1437,8 +1429,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Gemini CLI:\n  - Reads src/db/connection.ts\n  - Proposes pgbouncer-friendly pool + exponential backoff helper\n  - Writes the patch in-place\n  - Runs `pnpm test` to verify (uses Gemini Pro if the patch is non-trivial)\nPatch diff + test output. Free-tier request counter ticks.',
     benchmarks: [
-      { label: 'GitHub stars', value: '35,000+', source: 'github.com/google-gemini/gemini-cli, May 2026' },
-      { label: 'License', value: 'Apache-2.0' },
       { label: 'Default model', value: 'Gemini 2.5 Pro / 2.0 Flash' },
       { label: 'Free tier', value: '60 req/min, 1,000 req/day on Gemini 2.5 Flash (no credit card)' },
       { label: 'Context window', value: 'Up to 1M tokens on Gemini 2.5 Pro — biggest in the open-source CLI space' },
@@ -1485,7 +1475,7 @@ const allAgents: Agent[] = [
       'Cloud pricing can climb for heavy crawls',
     ],
     models: ['N/A — uses scraping + LLM extraction'],
-    alternatives: ['browser-use', 'playwright', 'scrapegraph'],
+    alternatives: ['browser-use'],
     quickStart: [
       'Cloud: sign up at firecrawl.dev → grab the API key from the dashboard.',
       'Self-host: clone https://github.com/firecrawl/firecrawl, copy .env.example to .env, fill in OPENAI_API_KEY, then `docker compose up -d`.',
@@ -1498,11 +1488,9 @@ const allAgents: Agent[] = [
     sampleOutput:
       '```json\n[\n  { "name": "Wireless Earbuds Pro", "price": 89.99, "in_stock": true },\n  { "name": "USB-C Hub 7-in-1",  "price": 39.50, "in_stock": true },\n  { "name": "Mechanical Keyboard", "price": 149.00, "in_stock": false }\n]\n```\nOne LLM call to a structured Pydantic schema, returns typed JSON — perfect for RAG pipelines.',
     benchmarks: [
-      { label: 'GitHub stars', value: '95.5k', source: 'github.com/firecrawl/firecrawl, March 2026' },
       { label: 'Output formats', value: 'Markdown, HTML, JSON, PDF, screenshots' },
       { label: 'JS rendering', value: 'Built-in Playwright fallback for SPA / dynamic sites' },
-      { label: 'License', value: 'AGPL-3.0 (self-host OK; SaaS resellers restricted)' },
-    ],
+      ],
     decisionAid: {
       pickIf:
         'You\'re building a RAG pipeline or research agent that needs to ingest web pages reliably — Firecrawl is the de facto choice and the SDK is genuinely one-line.',
@@ -1731,7 +1719,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Saved 3 clips in /tmp/auto-videos/\n  - 2026-07-05_sunset_microwave.mp4 (caption: "POV: your microwave becomes sentient at golden hour")\n  - 2026-07-05_parking_lot_dance.mp4 (caption: "Why is this lot full at 3am")\n  - 2026-07-05_cat_holds_door.mp4 (caption: "Citizen of the year nominee")\nRun completed in 4m12s, webhook delivered.',
     benchmarks: [
-      { label: 'GitHub stars', value: '170,000+', source: 'github.com/Significant-Gravitas/AutoGPT' },
       { label: 'agbenchmark categories', value: '12+ (reasoning, web, code, etc.)', source: 'repo docs' },
       { label: 'Min self-host hardware', value: '4 cores / 8 GB RAM / 10 GB disk', source: 'install docs' },
     ],
@@ -1796,7 +1783,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Agent response with citation: "To reset your password, open Settings → Security → Password → Reset. Reference: docs.example.com/security#reset [Source 1]."\nTool calls visible in Playground. Execution time logged via OpenTelemetry. Easily swapped to evals.csv for regression tracking.',
     benchmarks: [
-      { label: 'GitHub stars', value: '19,000+', source: 'github.com/mastra-ai/mastra' },
       { label: 'Backed by', value: 'YC W25; founded by the Gatsby team', source: 'Toutiao article' },
       { label: 'Codebase', value: '99.8% TypeScript' },
       { label: 'Primitives', value: 'Agents / Tools / Workflows (durable graphs) / RAG / Evals / Integrations (auto-generated type-safe clients)' },
@@ -1855,8 +1841,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Trace: support → (handoff:reason=invoice) → billing → (tool_call: process_refund) → final.\nFinal message: "I\'m processing your $39 refund now. Reply with the invoice number to confirm." Full trace visible at platform.openai.com/traces.',
     benchmarks: [
-      { label: 'GitHub stars', value: '18,000+', source: 'github.com/openai/openai-agents-python' },
-      { label: 'License', value: 'MIT' },
       { label: 'Primitives', value: 'Agents + Handoffs + Guardrails + Sessions + Tracing' },
       { label: 'Produced by', value: 'OpenAI; successor to the experimental Swarm framework' },
       { label: 'April 2026 update', value: 'Native sandbox + harness separation (compute ↔ control); supports multi-container parallel execution', source: 'OpenAI / TechCrunch' },
@@ -2036,7 +2020,6 @@ const allAgents: Agent[] = [
       { label: 'Frontier-tier reasoning (R1)', value: 'Matches o1 on math/coding benchmarks', source: 'DeepSeek-R1 paper, Jan 2025' },
       { label: 'V3 license', value: 'DeepSeek License (open weights, free for commercial, no warranty)', source: 'Hugging Face model card' },
       { label: 'API pricing', value: '$0.27/M input, $1.10/M output (cache hit $0.07/M)', source: 'platform.deepseek.com' },
-      { label: 'GitHub stars (org)', value: '140k+', source: 'GitHub June 2026' },
       { label: 'Self-host memory (V3)', value: '670B MoE → multi-node GPUs / ~1.3 TB total', source: 'DeepSeek-V3 inference guide' },
       { label: 'R1 Xbench pass rate', value: '93% (vs o1 91%)', source: 'DeepSeek-R1 paper' },
     ],
@@ -2515,8 +2498,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Recon phase completed in ~28 minutes (automated):\n  7 live hosts; 12 open services detected.\nPentestGPT suggested next steps:\n  1. Inspect open services on 10.10.14.18 (Apache 2.4.49 — known CVE-2021-41773 candidate).\n  2. Check SMB null-session on 10.10.14.22 (Windows 10 22H2).\n  3. Run nuclei templates against the discovered services.\n\nTime savings: PentestGPT sequence-coverage reduced manual recon-script writing by ~70%.\nNotes (manual review):\n  - 1 false positive on SSH banner (showed OpenSSH 8.2 → real is 7.9).\n  - All AI-suggested commands verified safe in lab sandbox.\nFinal report (PentestGPT-assisted, markdown): 14 pages, fully cited, hand-reviewed.',
     benchmarks: [
-      { label: 'License', value: 'MIT (open source)', source: 'GitHub repository' },
-      { label: 'GitHub stars', value: '8k', source: 'GitHub 2026' },
       { label: 'Reasoning backends', value: 'GPT-4o, Claude, Gemini, local Ollama', source: 'PentestGPT docs' },
       { label: 'Suggested commands origin', value: 'Trained on HackTricks, OWASP WSTG, PayloadsAllTheThings', source: 'PentestGPT paper 2023' },
       { label: 'Operational guard', value: 'Operator review required before execution; no auto-execute', source: 'PentestGPT docs' },
@@ -2582,9 +2563,9 @@ const allAgents: Agent[] = [
     benchmarks: [
       { label: 'Free completions', value: 'Unlimited, recent models included', source: 'codeium.com/windsurf' },
       { label: 'Pro price', value: '$15/mo (annual) / $20 month-to-month', source: '2026 pricing' },
-      { label: 'Users (March 2026)', value: '1,000,000+', source: '新浪科技 article' },
-      { label: 'Enterprise customers', value: '4,000+', source: '新浪科技 article' },
-      { label: 'Company valuation', value: '$1.25B', source: '腾讯云 article' },
+      { label: 'Users (March 2026)', value: '1,000,000+', source: 'Sina Tech report' },
+      { label: 'Enterprise customers', value: '4,000+', source: 'Sina Tech report' },
+      { label: 'Company valuation', value: '$1.25B', source: 'Tencent Cloud report' },
     ],
     decisionAid: {
       pickIf:
@@ -2755,8 +2736,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Question → SQL (auto):\nSELECT c.country,\n       SUM(o.amount) AS revenue,\n       COUNT(DISTINCT c.id) AS customer_count\nFROM   customers c\nJOIN   orders o ON o.customer_id = c.id\nWHERE  o.created_at >= \'2026-01-01\'\n  AND  o.created_at <  \'2026-07-01\'\nGROUP  BY c.country\nORDER  BY revenue DESC\nLIMIT  5;\n\nReturned as DataFrame (5 rows, 0.4s) and a Plotly bar chart (12 KB).\nRAG context used: 3 DDL chunks + 2 doc chunks. Token cost: $0.0024 (GPT-4o).',
     benchmarks: [
-      { label: 'License', value: 'MIT (library); proprietary Vanna Cloud', source: 'vanna.ai github' },
-      { label: 'GitHub stars', value: '12k (main repo)', source: 'GitHub 2026' },
       { label: 'Supported databases', value: 'Snowflake, BigQuery, Postgres, MySQL, Redshift, DuckDB, +40', source: 'Vanna docs' },
       { label: 'Backing model flexibility', value: 'Any OpenAI-compatible API incl. local Ollama models', source: 'Vanna pluggable LLM' },
       { label: 'Free tier', value: '100 questions/day (Vanna Cloud)', source: 'Vanna pricing' },
@@ -2921,7 +2900,7 @@ const allAgents: Agent[] = [
       'Focused on copy — not full creative production',
     ],
     models: ['GPT', 'Claude', 'Anthropic (multi-provider)'],
-    alternatives: ['hubspot-breeze', 'copy-ai'],
+    alternatives: ['hubspot-breeze'],
     quickStart: [
       'Sign up at jasper.ai with SSO/email — 7-day free trial, no credit card required.',
       'Creator $39/mo: 1 user seat, 1 Brand Voice, 50k words/mo; Pro $69/user/mo: 3 Brand Voices + workflows.',
@@ -3603,8 +3582,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'Production behavior (90 days):\n  - Total queries: 14,820\n  - Resolved from KB without hallucination: 12,610 (85%)\n  - "I don\'t know, let me search" returns: 1,420 (9.6%)\n  - Hard escalation to human: 790 (5.3%)\n  - Slack engagements increased 28%; internal wiki hits dropped 22%\nLatency: P50 1.2s, P95 3.8s with Claude Sonnet 4 + hybrid RAG.\nCost: $240/mo Sonnet 4 + $0 self-host on existing 8-core VM.\nOperational note: 2% of answers hallucinated outside the KB — added a "post-hoc KB guardrail agent" that re-checks each response and flags suspicious answers for review.',
     benchmarks: [
-      { label: 'GitHub stars', value: '80k+ on github.com/langgenius/dify', source: 'GitHub 2026' },
-      { label: 'License', value: 'BSL 1.1 (open-core, full Apache after 2027)', source: 'Dify LICENSE' },
       { label: 'Plans', value: 'Cloud: Sandbox free / Starter $59/mo / Pro $159/mo; self-host free', source: 'Dify pricing 2026' },
       { label: 'Model providers', value: 'OpenAI, Anthropic, Azure, AWS Bedrock, Cohere, HF, Ollama, LM Studio, Replicate', source: 'Dify models' },
       { label: 'Knowledge retrieval', value: 'Hybrid (BM25 + vector) + re-rank; supports 20+ formats', source: 'Dify docs' },
@@ -3734,8 +3711,6 @@ const allAgents: Agent[] = [
     sampleOutput:
       'OpenCode TUI session log (16m elapsed):\n\nStep 1: Created branch fix/metrics-leak.\nStep 2: Ran `go test -bench=. ./internal/metrics` to reproduce baseline. RSS climbs at +0.93 MB per 10k req.\nStep 3: Traced allocation: found that *http.Request bodies were kept by the global exporter in a sync.Map without eviction.\nStep 4: Generated patch (4 file edits, 32 lines net):\n  - Replaced sync.Map with bounded LRU (size 4096).\n  - Added per-request context.WithTimeout(15s) for spillover cleanup.\n  - Added test case testing/replay_test.go.\nStep 5: Re-ran benchmarks: RSS growth -94.3% (-88 MB → -5 MB over an hour under the same load).\nStep 6: All tests green (12,488 of 12,488 pass). No public API changes.\nStep 7: /share generated share URL with full transcript + diff.\n\nWrote commit: "fix(metrics): bound exporter in-memory map to address RSS leak".',
     benchmarks: [
-      { label: 'GitHub stars', value: '158k+ (anomalyco/opencode)', source: 'GitHub 2026' },
-      { label: 'License', value: 'MIT (fully open source)', source: 'opencode GitHub' },
       { label: 'Provider integrations', value: '75+ LLM providers via unified API', source: 'OpenCode docs' },
       { label: 'TUI / Editor', value: 'Native terminal UI + plugins (Neovim, Helix, Emacs); VS Code fork in beta', source: 'OpenCode docs' },
       { label: 'LSP support', value: 'TypeScript / Go / Python / Rust (built-in)', source: 'OpenCode product' },

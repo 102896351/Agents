@@ -45,7 +45,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 9,
     tags: ['coding', 'comparison', 'claude-code', 'cursor', 'cline', 'vscode'],
     relatedAgents: ['claude-code', 'cursor', 'cline'],
-    coverThumb: '/blog/claude-code-vs-cursor-vs-cline-2026-thumb.jpg',
+    coverThumb: '/blog/claude-code-vs-cursor-vs-cline-2026-official.jpg',
+    coverThumbAlt: 'Official Claude Code interface screenshot',
+    coverThumbCredit: 'Official Claude Code interface screenshot',
+    coverThumbSource: 'https://assets.claude.com/',
     content: `
 <p>Three years into the "AI coding agent" era, three tools have separated themselves from the long tail. <strong><a href="/agent/claude-code/">Claude Code</a></strong> is Anthropic's terminal-native agent built for engineers who live in the shell. <strong><a href="/agent/cursor/">Cursor</a></strong> is the AI-first fork of VS Code, beloved by developers who want AI woven into a familiar editor. <strong><a href="/agent/cline/">Cline</a></strong> is the open-source, bring-your-own-key alternative that 35,000+ developers have starred on GitHub.</p>
 
@@ -141,6 +144,9 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>Do I need to be comfortable in a terminal?</h3>
 <p>Claude Code is terminal-only, while Cursor and Cline work inside an editor. That workflow difference is usually the deciding factor.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">anthropic.com</a>, <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a>, <a href="https://cline.bot" target="_blank" rel="noopener">cline.bot</a>, <a href="https://github.com/cline/cline" target="_blank" rel="noopener">github.com</a>, <a href="https://assets.claude.com/" target="_blank" rel="noopener">assets.claude.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -153,7 +159,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 8,
     tags: ['research', 'comparison', 'perplexity', 'consensus', 'elicit'],
     relatedAgents: ['perplexity', 'consensus', 'elicit'],
-    coverThumb: '/blog/perplexity-vs-consensus-vs-elicit-2026-thumb.jpg',
+    coverThumb: '/blog/perplexity-vs-consensus-vs-elicit-2026-official.jpg',
+    coverThumbAlt: 'Official Consensus brand image',
+    coverThumbCredit: 'Official brand image from Consensus',
+    coverThumbSource: 'https://consensus.app',
     content: `
 <p>If you search the web, summarize scientific papers, or read academic research, three AI tools have become the default starting points in 2026. <strong><a href="/agent/perplexity/">Perplexity</a></strong> is the cited answer engine — ask a question, get a written answer with numbered citations to live web sources. <strong><a href="/agent/consensus/">Consensus</a></strong> is the science meta-search — ask a yes/no question, get a count of how many peer-reviewed studies say yes, no, or are undecided. <strong><a href="/agent/elicit/">Elicit</a></strong> is the academic research assistant — load a paper, extract the findings, build a citation graph.</p>
 
@@ -249,6 +258,9 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>Are the citations in this guide independently verified?</h3>
 <p>Links point to official product and documentation pages. We do not reproduce paywalled results or claim to have replicated published findings.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.perplexity.ai" target="_blank" rel="noopener">perplexity.ai</a>, <a href="https://consensus.app" target="_blank" rel="noopener">consensus.app</a>, <a href="https://elicit.com" target="_blank" rel="noopener">elicit.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -261,7 +273,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 10,
     tags: ['mcp', 'protocol', 'claude-code', 'cline', 'cursor', 'continue', 'cody', 'mastra'],
     relatedAgents: ['claude-code', 'cline', 'cursor', 'continue', 'cody', 'mastra'],
-    coverThumb: '/blog/mcp-explained-2026-thumb.jpg',
+    coverThumb: '/blog/mcp-explained-2026-official.jpg',
+    coverThumbAlt: 'Official Claude Code interface screenshot',
+    coverThumbCredit: 'Official Claude Code interface screenshot',
+    coverThumbSource: 'https://assets.claude.com/',
     content: `
 <p>For two years, every AI tool that needed to "do something" in the real world — read a file, query a database, hit an API — built the integration itself. The result was a thousand bespoke connectors, each slightly different, each maintained by a different team, each breaking when the underlying tool changed. The <strong>Model Context Protocol</strong> (MCP) is the closest thing the AI agent ecosystem has to a standard plug: a single protocol that any model can use to talk to any tool, with the tool author and the model author both writing to the same spec.</p>
 
@@ -374,6 +389,9 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>Are the six tools ranked by benchmark?</h3>
 <p>No. They are grouped by how they expose MCP support, not by a measured performance score.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">anthropic.com</a>, <a href="https://cline.bot" target="_blank" rel="noopener">cline.bot</a>, <a href="https://github.com/cline/cline" target="_blank" rel="noopener">github.com</a>, <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a>, <a href="https://www.continue.dev" target="_blank" rel="noopener">continue.dev</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -386,7 +404,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 8,
     tags: ['browsing', 'comparison', 'operator', 'browser-use', 'automation'],
     relatedAgents: ['operator', 'browser-use'],
-    coverThumb: '/blog/operator-vs-browser-use-2026-thumb.jpg',
+    coverThumb: '/blog/operator-vs-browser-use-2026-official.jpg',
+    coverThumbAlt: 'Official Browser Use product image',
+    coverThumbCredit: 'Official product image from Browser Use',
+    coverThumbSource: 'https://github.com/browser-use/browser-use',
     content: `
 <p>For two years, "AI that uses a browser" was a demo. In 2026, it is a real product category with two very different answers. <strong><a href="/agent/operator/">Operator</a></strong> (now folded into ChatGPT Agent) is OpenAI's hosted service: a managed virtual browser that clicks, types, and fills forms on your behalf, accessed through your ChatGPT Pro subscription. <strong><a href="/agent/browser-use/">Browser-Use</a></strong> is the open-source Python library that lets any LLM drive a real Chromium browser via Playwright, popular with developers who want to build their own web agents.</p>
 
@@ -477,6 +498,9 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>Should I point a browser agent at accounts holding real data?</h3>
 <p>Start with a throwaway session and review what it can access. The guide discusses the safety trade-off; we do not assume any tool is safe by default.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://openai.com/index/introducing-operator/" target="_blank" rel="noopener">openai.com</a>, <a href="https://browser-use.com" target="_blank" rel="noopener">browser-use.com</a>, <a href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
   {
@@ -489,7 +513,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 9,
     tags: ['automation', 'comparison', 'n8n', 'make', 'zapier-agents', 'workflows'],
     relatedAgents: ['n8n', 'make', 'zapier-agents', 'lindy', 'agentforce'],
-    coverThumb: '/blog/n8n-vs-make-vs-zapier-agents-2026-thumb.jpg',
+    coverThumb: '/blog/n8n-vs-make-vs-zapier-agents-2026-official.jpg',
+    coverThumbAlt: 'Official n8n product screenshot from the project documentation',
+    coverThumbCredit: 'Official screenshot from the n8n repository',
+    coverThumbSource: 'https://github.com/n8n-io/n8n',
     content: `
 <p>"I need to connect 5 SaaS tools and have an AI make a decision and route the result somewhere" used to be a custom engineering project. In 2026, it is a one-day setup with one of three tools. <strong><a href="/agent/n8n/">n8n</a></strong> is the open-source, self-hostable node editor (186K+ GitHub stars). <strong><a href="/agent/make/">Make</a></strong> is the visual cloud platform with the most powerful branching UI. <strong><a href="/agent/zapier-agents/">Zapier Agents</a></strong> is the easiest on-ramp, with the largest integration ecosystem (7,000+ apps) and per-task pricing.</p>
 
@@ -591,6 +618,9 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>Are these the same thing as autonomous agents?</h3>
 <p>No. They are workflow automation platforms that can include agent steps; they are not general-purpose autonomous agents.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://n8n.io" target="_blank" rel="noopener">n8n.io</a>, <a href="https://www.make.com" target="_blank" rel="noopener">make.com</a>, <a href="https://zapier.com/agents" target="_blank" rel="noopener">zapier.com</a>, <a href="https://www.lindy.ai" target="_blank" rel="noopener">lindy.ai</a>, <a href="https://www.salesforce.com/agentforce/" target="_blank" rel="noopener">salesforce.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 ,
@@ -604,7 +634,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 9,
     tags: ['coding', 'news', 'claude-code', 'anthropic', 'agents'],
     relatedAgents: ['claude-code'],
-    coverThumb: '/blog/claude-code-2026-updates-thumb.jpg',
+    coverThumb: '/blog/claude-code-2026-updates-official.jpg',
+    coverThumbAlt: 'Official Claude Code interface screenshot',
+    coverThumbCredit: 'Official Claude Code interface screenshot',
+    coverThumbSource: 'https://assets.claude.com/',
     content: `
 <p>Claude Code shipped its most significant update in years at the <strong>Code w/ Claude 2026</strong> conference on May 6 — and the headline is that the tool is no longer just a smart CLI. It is becoming a full development operating system. Here's what actually matters for working developers in 2026, drawn from our profiles in <a href="/">the {{AGENT_COUNT}}-agent directory</a>.</p>
 
@@ -624,7 +657,7 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>3. Advisor Tool: Sonnet as executor, Opus as reviewer</h3>
 
-<p>The Advisor Tool introduces a two-model workflow: <strong>Sonnet 4.6 as the executor</strong> (does the work), with <strong>Opus 4.7 as the advisor</strong> (reviews the hard decisions). When Sonnet hits a tricky architectural question, it escalates to Opus for a评审. Anthropic's test data shows this combination matches Opus-solo performance on parts of the SWE-bench multilingual benchmark — while cutting inference cost by roughly 5x.</p>
+<p>The Advisor Tool introduces a two-model workflow: <strong>Sonnet 4.6 as the executor</strong> (does the work), with <strong>Opus 4.7 as the advisor</strong> (reviews the hard decisions). When Sonnet hits a tricky architectural question, it escalates to Opus for a review. Anthropic's test data shows this combination matches Opus-solo performance on parts of the SWE-bench multilingual benchmark — while cutting inference cost by roughly 5x.</p>
 
 <p>For developers who found Opus too expensive for daily use but Sonnet not powerful enough for complex tasks, this is the practical answer. You get Opus-level quality at Sonnet-level cost for the parts that matter.</p>
 
@@ -694,6 +727,9 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>Does this replace the three-way coding agent comparison?</h3>
 <p>No. That guide compares three products; this one follows a single product release announcements in depth.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">anthropic.com</a>, <a href="https://assets.claude.com/" target="_blank" rel="noopener">assets.claude.com</a>, <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener">Claude Code docs</a>, <a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">Claude Code repository</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -706,7 +742,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 8,
     tags: ['creative', 'image', 'comparison', 'midjourney', 'flux', 'lovart'],
     relatedAgents: ['midjourney', 'flux', 'lovart'],
-    coverThumb: '/blog/midjourney-vs-flux-vs-lovart-2026-thumb.jpg',
+    coverThumb: '/blog/midjourney-vs-flux-vs-lovart-2026-official.jpg',
+    coverThumbAlt: 'Official FLUX product image',
+    coverThumbCredit: 'Official product image from FLUX',
+    coverThumbSource: 'https://github.com/black-forest-labs/flux',
     content: `
 <p>Three AI image tools have taken different paths through the 2026 creative landscape. <strong><a href="/agent/midjourney/">Midjourney</a></strong> is the photorealistic powerhouse that became the default for editorial and commercial imagery. <strong><a href="/agent/flux/">Flux</a></strong> is the open-source challenger that turned the community into a development partner. <strong><a href="/agent/lovart/">Lovart</a></strong> is the design-agent that converts a brief into a finished brand asset — no prompt engineering required. Same goal (great images), three very different answers.</p>
 
@@ -801,6 +840,9 @@ const rawBlogPosts: BlogPost[] = [
 
 <h3>Do you rank image quality?</h3>
 <p>No. The comparison covers workflow, access and licensing; there are no measured quality scores in this guide.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.midjourney.com" target="_blank" rel="noopener">midjourney.com</a>, <a href="https://blackforestlabs.ai" target="_blank" rel="noopener">blackforestlabs.ai</a>, <a href="https://github.com/black-forest-labs/flux" target="_blank" rel="noopener">github.com</a>, <a href="https://www.lovart.ai" target="_blank" rel="noopener">lovart.ai</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -813,7 +855,10 @@ const rawBlogPosts: BlogPost[] = [
     readingTime: 8,
     tags: ['coding', 'how-to', 'cline', 'claude-code', 'langgraph', 'agents'],
     relatedAgents: ['cline', 'claude-code', 'langgraph', 'cursor'],
-    coverThumb: '/blog/build-first-ai-coding-agent-2026-thumb.jpg',
+    coverThumb: '/blog/build-first-ai-coding-agent-2026-official.jpg',
+    coverThumbAlt: 'Official Cline product screenshot from the project documentation',
+    coverThumbCredit: 'Official screenshot from the Cline repository',
+    coverThumbSource: 'https://github.com/cline/cline',
     content: `
 <p>Building your first AI coding agent sounds intimidating. It is not. In 30 minutes and with three tools from <a href="/">our {{AGENT_COUNT}}-agent directory</a>, you can have a working autonomous coding assistant running in VS Code — one that reads your project, edits files, runs tests, and plans its own next steps. This guide skips the theory and gets you to a working result.</p>
 
@@ -979,6 +1024,9 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <h3>Which tools does the walkthrough use?</h3>
 <p>They are named in the guide and linked to their directory profiles, so you can check license, pricing and current version before starting.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://cline.bot" target="_blank" rel="noopener">cline.bot</a>, <a href="https://github.com/cline/cline" target="_blank" rel="noopener">github.com</a>, <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">anthropic.com</a>, <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">langchain-ai.github.io</a>, <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   }
 ,
@@ -992,7 +1040,10 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
     readingTime: 9,
     tags: ['voice', 'ai', 'comparison', 'vapi', 'retell', 'elevenlabs'],
     relatedAgents: ['vapi', 'retell', 'elevenlabs'],
-    coverThumb: '/blog/voice-ai-2026-thumb.jpg',
+    coverThumb: '/blog/voice-ai-vapi-vs-retell-vs-elevenlabs-2026-official.jpg',
+    coverThumbAlt: 'Official Vapi brand image',
+    coverThumbCredit: 'Official brand image from Vapi',
+    coverThumbSource: 'https://vapi.ai',
     content: `
 <p>If you want to add a voice interface to an AI agent, a phone answering service, or a customer support workflow, three infrastructure providers have separated from the pack in 2026. <strong><a href="/agent/vapi/">VAPI</a></strong> is the developer-first voice AI platform that gives you full control over the LLM, voice model, and call flow. <strong><a href="/agent/retell/">Retell</a></strong> is the hosted voice AI optimized for phone calls — natural, latency-minimized, and purpose-built for inbound/outbound call centers. <strong><a href="/agent/elevenlabs/">ElevenLabs</a></strong> is the AI voice synthesis powerhouse — the best text-to-speech quality in the industry, now adding real-time voice-to-voice conversation to its lineup.</p>
 
@@ -1108,6 +1159,9 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <h3>Are latency or call-quality numbers compared?</h3>
 <p>No. There are no measured latency figures in this guide; it compares positioning, developer experience and integration approach.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://vapi.ai" target="_blank" rel="noopener">vapi.ai</a>, <a href="https://github.com/VapiAI" target="_blank" rel="noopener">github.com</a>, <a href="https://www.retellai.com" target="_blank" rel="noopener">retellai.com</a>, <a href="https://github.com/RetellAI" target="_blank" rel="noopener">github.com</a>, <a href="https://elevenlabs.io" target="_blank" rel="noopener">elevenlabs.io</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -1120,7 +1174,10 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
     readingTime: 8,
     tags: ['coding', 'comparison', 'windsurf', 'cursor', 'cline', 'vscode'],
     relatedAgents: ['windsurf', 'cursor', 'cline'],
-    coverThumb: '/blog/windsurf-vs-cursor-vs-cline-2026-thumb.jpg',
+    coverThumb: '/blog/windsurf-vs-cursor-vs-cline-2026-official.jpg',
+    coverThumbAlt: 'Official Windsurf brand image',
+    coverThumbCredit: 'Official brand image from Windsurf',
+    coverThumbSource: 'https://windsurf.com',
     content: `
 <p>Three AI coding tools live inside VS Code: <strong><a href="/agent/windsurf/">Windsurf</a></strong> from Codeium, <strong><a href="/agent/cursor/">Cursor</a></strong> (already covered in our <a href="/blog/claude-code-vs-cursor-vs-cline-2026/">Claude Code vs Cursor vs Cline</a> comparison), and <strong><a href="/agent/cline/">Cline</a></strong>. This post zooms into the VS Code-native category — what each tool does, where they diverge, and which one to pick for which kind of developer.</p>
 
@@ -1234,6 +1291,9 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <h3>Which of these is open source?</h3>
 <p>Cline is the open-source option in this set. Check the license field on each profile before relying on it.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://windsurf.com" target="_blank" rel="noopener">windsurf.com</a>, <a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a>, <a href="https://cline.bot" target="_blank" rel="noopener">cline.bot</a>, <a href="https://github.com/cline/cline" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -1246,7 +1306,10 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
     readingTime: 8,
     tags: ['productivity', 'ai', 'meetings', 'notion', 'grammarly', 'comparison'],
     relatedAgents: ['notion-ai', 'grammarly'],
-    coverThumb: '/blog/ai-productivity-tools-2026-thumb.jpg',
+    coverThumb: '/blog/ai-productivity-tools-2026-official.jpg',
+    coverThumbAlt: 'Official Notion AI brand image',
+    coverThumbCredit: 'Official brand image from Notion AI',
+    coverThumbSource: 'https://www.notion.com/product/ai',
     content: `
 <p>AI has moved into every corner of the modern knowledge worker's day — from the meeting you attend to the document you write to the Slack message you send. This post covers three categories of AI productivity tools that are earning permanent spots in workflows in 2026: <strong>AI meeting assistants</strong> (automating the capture, transcription, and summary of meetings), <strong>AI document tools</strong> (integrated into the documents you already write), and <strong>AI communication tools</strong> (catching grammar, tone, and clarity issues before they are sent). We pull from profiles in <a href="/">our {{AGENT_COUNT}}-agent directory</a> to give you the honest comparison.</p>
 
@@ -1358,6 +1421,9 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <h3>Are the pricing tiers stated here current?</h3>
 <p>Treat them as a snapshot from public pages at writing time and verify on the official site before subscribing.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.notion.com/product/ai" target="_blank" rel="noopener">notion.com</a>, <a href="https://www.grammarly.com" target="_blank" rel="noopener">grammarly.com</a>, <a href="https://support.grammarly.com/hc/en-us" target="_blank" rel="noopener">Grammarly support</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -1370,7 +1436,10 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
     readingTime: 9,
     tags: ['video', 'creative', 'comparison', 'runway', 'sora', 'pika'],
     relatedAgents: ['runway', 'sora', 'pika'],
-    coverThumb: '/blog/ai-video-2026-thumb.jpg',
+    coverThumb: '/blog/ai-video-runway-vs-sora-vs-pika-2026-official.jpg',
+    coverThumbAlt: 'Official Runway brand image',
+    coverThumbCredit: 'Official brand image from Runway',
+    coverThumbSource: 'https://runwayml.com',
     content: `
 <p>AI video generation moved from research demo to production product in 2025-2026, and three platforms have separated from the pack. <strong><a href="/agent/runway/">Runway</a></strong> is the tool the film and advertising industry adopted first — the most mature, with the strongest editing and camera control features. <strong><a href="/agent/sora/">Sora</a></strong> is OpenAI's text-to-video model that set the new quality bar for physical realism and long-form coherence. <strong><a href="/agent/pika/">Pika</a></strong> is the creator-friendly platform that prioritizes speed, iteration, and ease of use over maximum fidelity. Same goal (AI-generated video), three very different answers.</p>
 
@@ -1487,6 +1556,9 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <h3>Which one exposes an API?</h3>
 <p>API availability changes; check each linked profile or the official documentation instead of assuming parity.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://runwayml.com" target="_blank" rel="noopener">runwayml.com</a>, <a href="https://openai.com/sora" target="_blank" rel="noopener">openai.com</a>, <a href="https://pika.art" target="_blank" rel="noopener">pika.art</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -1499,7 +1571,10 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
     readingTime: 10,
     tags: ['coding', 'agents', 'comparison', 'devin', 'manus', 'replit'],
     relatedAgents: ['devin', 'manus', 'replit-agent'],
-    coverThumb: '/blog/autonomous-coding-2026-thumb.jpg',
+    coverThumb: '/blog/autonomous-coding-devin-vs-manus-vs-replit-2026-official.jpg',
+    coverThumbAlt: 'Official Devin product image',
+    coverThumbCredit: 'Official product image from Devin',
+    coverThumbSource: 'https://devin.ai',
     content: `
 <p>Three AI products claim to do "autonomous software engineering" in 2026. <strong><a href="/agent/devin/">Devin</a></strong> from Cognition is the first major product to market and the most benchmarked. <strong><a href="/agent/manus/">Manus</a></strong> is the general-purpose AI agent that handles coding as one of many tasks. <strong><a href="/agent/replit-agent/">Replit Agent</a></strong> is the in-IDE autonomous agent that builds and deploys full-stack apps in a browser sandbox. Same goal (an AI that builds software on its own), three very different products.</p>
 
@@ -1617,6 +1692,9 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
 
 <h3>Should an agent be allowed to merge code unsupervised?</h3>
 <p>The guide recommends human review of generated changes. Nothing here is a claim that autonomous merging is safe for your repository.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://devin.ai" target="_blank" rel="noopener">devin.ai</a>, <a href="https://manus.im" target="_blank" rel="noopener">manus.im</a>, <a href="https://replit.com" target="_blank" rel="noopener">replit.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -1629,7 +1707,10 @@ for event in app.stream({"messages": ["refactor all var to const in src/"]}):
     readingTime: 11,
     tags: ['agents', 'frameworks', 'comparison', 'langgraph', 'crewai', 'autogen'],
     relatedAgents: ['langgraph', 'autogen'],
-    coverThumb: '/blog/agent-frameworks-2026-thumb.jpg',
+    coverThumb: '/blog/agent-frameworks-langgraph-vs-crewai-vs-autogen-2026-official.jpg',
+    coverThumbAlt: 'Official LangGraph interface screenshot',
+    coverThumbCredit: 'Official LangGraph Studio screenshot from the repository',
+    coverThumbSource: 'https://github.com/langchain-ai/langgraph/blob/main/libs/cli/js-examples/static/studio.png',
     content: `
 <p>Three open-source Python frameworks have become the default way to build production AI agent systems in 2026. <strong><a href="/agent/langgraph/">LangGraph</a></strong> from the LangChain team is the graph-based framework for stateful, multi-step agentic workflows. <strong>CrewAI</strong> is the role-based framework for multi-agent collaboration. <strong><a href="/agent/autogen/">AutoGen</a></strong> from Microsoft is the conversation-based framework for building agents that talk to each other. Same goal (production-grade agent systems), three very different architectures.</p>
 
@@ -1788,6 +1869,9 @@ result = crew.kickoff()
 
 <h3>Do you include version numbers?</h3>
 <p>The linked profiles show version numbers from a GitHub REST API snapshot with a checked date, not a live feed.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">langchain-ai.github.io</a>, <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">microsoft.github.io</a>, <a href="https://github.com/langchain-ai/langgraph/blob/main/libs/cli/js-examples/static/studio.png" target="_blank" rel="noopener">LangGraph Studio screenshot</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -1800,7 +1884,10 @@ result = crew.kickoff()
     readingTime: 9,
     tags: ['music', 'creative', 'comparison', 'suno', 'udio'],
     relatedAgents: ['suno', 'udio'],
-    coverThumb: '/blog/ai-music-2026-thumb.jpg',
+    coverThumb: '/blog/ai-music-suno-vs-udio-2026-official.jpg',
+    coverThumbAlt: 'Official Suno brand image',
+    coverThumbCredit: 'Official brand image from Suno',
+    coverThumbSource: 'https://suno.com',
     content: `
 <p>Two AI music platforms have separated from the long tail in 2026. <strong><a href="/agent/suno/">Suno</a></strong> is the platform that made text-to-music accessible to anyone with a credit card — the leader in user growth and the most-used AI music tool globally. <strong><a href="/agent/udio/">Udio</a></strong> is the platform that prioritizes audio fidelity and creative control — the choice of professional musicians and serious producers who want studio-quality output. Same goal (AI-generated music), two very different design philosophies.</p>
 
@@ -1905,6 +1992,9 @@ result = crew.kickoff()
 
 <h3>Is there a quality ranking between the two?</h3>
 <p>No measured ranking. The guide compares accessibility, workflow and licensing.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://suno.com" target="_blank" rel="noopener">suno.com</a>, <a href="https://www.udio.com" target="_blank" rel="noopener">udio.com</a>, <a href="https://help.udio.com/" target="_blank" rel="noopener">Udio help centre</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -1917,7 +2007,10 @@ result = crew.kickoff()
     readingTime: 9,
     tags: ['video', 'avatar', 'enterprise', 'comparison', 'heygen', 'synthesia'],
     relatedAgents: ['heygen', 'synthesia'],
-    coverThumb: '/blog/ai-avatar-2026-thumb.jpg',
+    coverThumb: '/blog/ai-avatar-heygen-vs-synthesia-2026-official.jpg',
+    coverThumbAlt: 'Official HeyGen brand image',
+    coverThumbCredit: 'Official brand image from HeyGen',
+    coverThumbSource: 'https://www.heygen.com',
     content: `
 <p>Two AI avatar video platforms dominate the enterprise market in 2026. <strong><a href="/agent/heygen/">Heygen</a></strong> is the platform that built the modern avatar video category — the most-used tool for sales, marketing, and training videos at scale. <strong><a href="/agent/synthesia/">Synthesia</a></strong> is the platform that prioritizes enterprise compliance and security — the default choice for regulated industries and large corporate training programs. Same goal (AI-generated avatar videos), two different positions in the market.</p>
 
@@ -2025,6 +2118,9 @@ result = crew.kickoff()
 
 <h3>Did you test lip-sync or rendering quality?</h3>
 <p>No. This is a comparison of public information, not a hands-on rendering test.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.heygen.com" target="_blank" rel="noopener">heygen.com</a>, <a href="https://www.synthesia.io" target="_blank" rel="noopener">synthesia.io</a>, <a href="https://docs.heygen.com/" target="_blank" rel="noopener">HeyGen docs</a>, <a href="https://help.synthesia.io/" target="_blank" rel="noopener">Synthesia help centre</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -2037,7 +2133,10 @@ result = crew.kickoff()
     readingTime: 9,
     tags: ['customer-service', 'enterprise', 'comparison', 'sierra', 'decagon'],
     relatedAgents: ['sierra', 'decagon'],
-    coverThumb: '/blog/ai-customer-service-2026-thumb.jpg',
+    coverThumb: '/blog/ai-customer-service-sierra-vs-decagon-2026-official.jpg',
+    coverThumbAlt: 'Official Decagon product image',
+    coverThumbCredit: 'Official product image from Decagon',
+    coverThumbSource: 'https://decagon.ai',
     content: `
 <p>Two AI customer service platforms have become the default for serious enterprise deployments in 2026. <strong><a href="/agent/sierra/">Sierra</a></strong> is the conversational AI platform that prioritizes brand voice and customer experience — the choice of consumer brands that need to maintain a specific tone across every interaction. <strong><a href="/agent/decagon/">Decagon</a></strong> is the AI customer service platform that prioritizes resolution speed and operational efficiency — the default for high-volume support operations. Same goal (AI that handles customer service), two very different design philosophies.</p>
 
@@ -2138,6 +2237,9 @@ result = crew.kickoff()
 
 <h3>Are ROI or resolution-rate figures quoted as measured results?</h3>
 <p>No. Any such claims are attributed to public sources and are not independently verified by this site.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://sierra.ai" target="_blank" rel="noopener">sierra.ai</a>, <a href="https://decagon.ai" target="_blank" rel="noopener">decagon.ai</a>, <a href="https://docs.decagon.ai/" target="_blank" rel="noopener">Decagon docs</a>, <a href="https://sierra.ai/blog" target="_blank" rel="noopener">Sierra blog</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -2150,7 +2252,10 @@ result = crew.kickoff()
     readingTime: 10,
     tags: ['chat', 'llm', 'comparison', 'claude', 'chatgpt', 'deepseek'],
     relatedAgents: ['claude', 'chatgpt', 'deepseek'],
-    coverThumb: '/blog/ai-chat-2026-thumb.jpg',
+    coverThumb: '/blog/ai-chat-claude-vs-chatgpt-vs-deepseek-2026-official.jpg',
+    coverThumbAlt: 'Official ChatGPT brand image',
+    coverThumbCredit: 'Official brand image from ChatGPT',
+    coverThumbSource: 'https://chat.openai.com',
     content: `
 <p>Three AI chat products dominate the consumer and prosumer market in 2026. <strong><a href="/agent/claude/">Claude</a></strong> (Anthropic) is the model that set the bar for long-context reasoning and safety-conscious deployment. <strong><a href="/agent/chatgpt/">ChatGPT</a></strong> (OpenAI) is the product that brought AI chat to the mainstream — still the most-used AI assistant globally. <strong><a href="/agent/deepseek/">DeepSeek</a></strong> is the Chinese open-weight model that has closed the quality gap with US frontier labs at a fraction of the inference cost. Same goal (frontier-quality AI chat), three very different bets on model architecture, pricing, and ecosystem.</p>
 
@@ -2273,6 +2378,9 @@ result = crew.kickoff()
 
 <h3>Do you list current free tiers?</h3>
 <p>Only where publicly documented at writing time. Verify on the official page before signing up.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>, <a href="https://chat.openai.com" target="_blank" rel="noopener">chat.openai.com</a>, <a href="https://www.deepseek.com" target="_blank" rel="noopener">deepseek.com</a>, <a href="https://github.com/deepseek-ai/DeepSeek-V3" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -2285,7 +2393,10 @@ result = crew.kickoff()
     readingTime: 9,
     tags: ['data', 'analysis', 'sql', 'research', 'comparison', 'vanna', 'notebooklm'],
     relatedAgents: ['notebooklm', 'vanna'],
-    coverThumb: '/blog/ai-data-2026-thumb.jpg',
+    coverThumb: '/blog/ai-data-vanna-vs-notebooklm-2026-official.jpg',
+    coverThumbAlt: 'Official NotebookLM product image',
+    coverThumbCredit: 'Official product image from NotebookLM',
+    coverThumbSource: 'https://notebooklm.google.com',
     content: `
 <p>Two AI tools have become the default for working with data in 2026. <strong>Vanna</strong> is the AI SQL agent that turns natural language questions into database queries — the fastest way to get answers from a SQL database without writing SQL. <strong><a href="/agent/notebooklm/">NotebookLM</a></strong> is Google's AI research notebook that ingests documents and lets you query them in natural language — the fastest way to extract insights from a pile of PDFs, notes, and research papers. Same goal (AI for working with data), two very different shapes.</p>
 
@@ -2394,6 +2505,9 @@ result = crew.kickoff()
 
 <h3>Are query-accuracy numbers measured here?</h3>
 <p>No. The guide contains no measured accuracy or latency results.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a>, <a href="https://vanna.ai" target="_blank" rel="noopener">vanna.ai</a>, <a href="https://github.com/vanna-ai/vanna" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 
@@ -2406,7 +2520,10 @@ result = crew.kickoff()
     readingTime: 10,
     tags: ['coding', 'open-source', 'comparison', 'aider', 'cody', 'continue'],
     relatedAgents: ['cody', 'continue'],
-    coverThumb: '/blog/open-source-coding-2026-thumb.jpg',
+    coverThumb: '/blog/open-source-coding-aider-vs-cody-vs-continue-2026-official.jpg',
+    coverThumbAlt: 'Official Aider interface screenshot',
+    coverThumbCredit: 'Official Aider terminal screenshot from the project repository',
+    coverThumbSource: 'https://github.com/Aider-AI/aider/blob/main/aider/website/assets/screenshot.png',
     content: `
 <p>Three open-source AI coding tools have carved out distinct positions in 2026. <strong>Aider</strong> is the terminal-native AI pair programmer that lives in your git workflow. <strong><a href="/agent/cody/">Cody</a></strong> is Sourcegraph's enterprise code AI that knows your entire codebase. <strong><a href="/agent/continue/">Continue</a></strong> is the open-source VS Code extension that lets you assemble your own AI coding stack. Same goal (open-source AI coding assistance), three different design philosophies.</p>
 
@@ -2530,6 +2647,9 @@ result = crew.kickoff()
 
 <h3>Do I need my own model key?</h3>
 <p>It varies by tool and plan. The profiles list pricing and setup notes; verify against current official docs.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://sourcegraph.com/cody" target="_blank" rel="noopener">sourcegraph.com</a>, <a href="https://github.com/sourcegraph/cody" target="_blank" rel="noopener">github.com</a>, <a href="https://www.continue.dev" target="_blank" rel="noopener">continue.dev</a>, <a href="https://github.com/continuedev/continue" target="_blank" rel="noopener">github.com</a>, <a href="https://github.com/Aider-AI/aider/blob/main/aider/website/assets/screenshot.png" target="_blank" rel="noopener">github.com</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   }
 ];

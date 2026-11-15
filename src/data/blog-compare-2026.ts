@@ -17,7 +17,10 @@ export const comparePosts2026: BlogPost[] = [
     readingTime: 11,
     tags: ['framework', 'comparison', 'langchain', 'agno', 'smolagents', 'llama-index', 'pydantic-ai', 'crewai'],
     relatedAgents: ['langchain', 'agno', 'smolagents', 'llama-index', 'pydantic-ai', 'crewai'],
-    coverThumb: '/blog/best-ai-agent-frameworks-2026-thumb.jpg',
+    coverThumb: '/blog/best-ai-agent-frameworks-2026-official.jpg',
+    coverThumbAlt: 'Official LangChain brand image',
+    coverThumbCredit: 'Official brand image from LangChain',
+    coverThumbSource: 'https://github.com/langchain-ai/langchain',
     content: `
 <p>In 2026, "which agent framework should I use?" is the question every AI team asks before writing a line of code. The space has consolidated around a handful of serious projects, and six of the most important ones now all live in <a href="/">our {{AGENT_COUNT}}-agent directory</a>: <a href="/agent/langchain/">LangChain</a>, <a href="/agent/agno/">Agno</a>, <a href="/agent/smolagents/">smolagents</a>, <a href="/agent/llama-index/">LlamaIndex</a>, <a href="/agent/pydantic-ai/">Pydantic AI</a>, and <a href="/agent/crewai/">CrewAI</a>. This post puts them head-to-head — what each is good at, where it gets in your way, and which you should reach for first.</p>
 
@@ -106,6 +109,9 @@ export const comparePosts2026: BlogPost[] = [
 
 <h3>Are version numbers on those profiles verified?</h3>
 <p>They come from a GitHub REST API snapshot with a checked date shown on each profile, not from a live feed.</p>
+
+<h2>Official sources</h2>
+<p>Product names, features and plan details above can be checked against the projects' own sites and documentation. Primary sources: <a href="https://www.langchain.com" target="_blank" rel="noopener">langchain.com</a>, <a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener">github.com</a>, <a href="https://www.agno.com" target="_blank" rel="noopener">agno.com</a>, <a href="https://github.com/agno-agi/agno" target="_blank" rel="noopener">github.com</a>, <a href="https://huggingface.co/docs/smolagents" target="_blank" rel="noopener">huggingface.co</a>. Figures quoted in this guide are published by the projects, not measured by this site.</p>
 `,
   },
 ];

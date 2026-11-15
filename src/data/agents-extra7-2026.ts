@@ -79,9 +79,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent reads the script and its argument parser, proposes the flag and help-text change in Plan Mode, then applies the edit once approved. The README documents SubAgents, Plan Mode and MCP; it does not publish measured results for this kind of task.',
     benchmarks: [
-      { label: 'GitHub stars', value: '29,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Provider protocols', value: 'OpenAI / Anthropic / Gemini / Qwen plus local models', source: 'Project README' },
     ],
     decisionAid: {
@@ -164,8 +161,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: Plan mode returns a file-by-file implementation outline using the agent\'s codebase reads and Ask-style tools; no files are changed until you switch to Code mode. The README lists Code, Plan, Ask and Debug as distinct built-in agents.',
     benchmarks: [
-      { label: 'GitHub stars', value: '27,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
       { label: 'Built-in agent modes', value: 'Code / Plan / Ask / Debug', source: 'Project README' },
       { label: 'Interfaces', value: 'VS Code / JetBrains / CLI / Cloud Agent', source: 'Project README' },
     ],
@@ -244,8 +239,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent calls Serena\'s symbol and reference tools to locate the definition and every call site, then applies one atomic refactoring step rather than a series of text replacements. The README describes exactly this class of IDE-backed operation; it does not report a measured timing for it.',
     benchmarks: [
-      { label: 'GitHub stars', value: '31,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Integration protocol', value: 'Model Context Protocol (MCP)', source: 'Project README' },
       { label: 'Tool level', value: 'Symbol-level retrieval, editing, refactoring and debugging', source: 'Project README' },
     ],
@@ -320,9 +313,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: Orca creates isolated workspaces, starts a worker agent in each, then presents the diffs side by side with line-level review notes. The README documents parallel worktrees, worker agents and diff review; it does not publish timing figures for a task like this.',
     benchmarks: [
-      { label: 'GitHub stars', value: '120,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Isolation model', value: 'One git worktree per agent', source: 'Project README' },
     ],
     decisionAid: {
@@ -402,9 +392,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the deterministic stage selects and bundles changed files, each bundle is reviewed by an isolated sub-agent, then separate positioning and reflection modules attach comments to the matching lines. The README describes this pipeline; it does not report a per-run result for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '49,700+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Go', source: 'GitHub repository metadata' },
       { label: 'Review architecture', value: 'Deterministic pipeline + LLM agent', source: 'Project README' },
     ],
     decisionAid: {
@@ -486,8 +473,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent emits a sequence of independent shell commands to inspect files, reproduce the failure, apply a patch and run tests, appending each step to a linear message history. The README documents this bash-only, subprocess-based loop; it does not publish a per-task transcript for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '9,400+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
       { label: 'Agent class size', value: '~100 lines of Python', source: 'Project README' },
       { label: 'SWE-bench Verified score', value: '>74% (reported by the project)', source: 'Project README' },
     ],
@@ -559,9 +544,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent resolves the library ID, asks for docs pinned to the requested version, and answers with examples drawn from that version rather than from training data. The README documents `ctx7 library`, `ctx7 docs`, `resolve-library-id` and `query-docs`; it does not publish a measured accuracy figure for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '64,400+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT (MCP server source)', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Integration modes', value: 'CLI + Skills, or MCP server', source: 'Project README' },
     ],
     decisionAid: {
@@ -638,9 +620,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the model reasons down the tree index to the relevant section and notes, then answers with references to explicit nodes instead of nearest-neighbour chunks. The README describes tree search, traceable references and citation support; it does not publish a measured accuracy figure for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '40,300+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Index type', value: 'Hierarchical tree, no vector DB and no chunking', source: 'Project README' },
     ],
     decisionAid: {
@@ -713,9 +692,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the graph returns the current relationship plus the earlier one with its validity window, and both trace back to the source episodes. The README documents temporal validity windows, episodes and hybrid retrieval; it does not publish a measured latency for this kind of query.',
     benchmarks: [
-      { label: 'GitHub stars', value: '32,700+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Retrieval', value: 'Semantic + keyword + graph traversal', source: 'Project README' },
     ],
     decisionAid: {
@@ -790,8 +766,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: RAG retrieves the relevant chunks, the agent composes a multi-step summary, and the wiki mode stores it as an organised page attached to the same knowledge base. The README documents the three modes sharing knowledge bases; it does not publish a measured result for this task.',
     benchmarks: [
-      { label: 'GitHub stars', value: '37,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'Primary language', value: 'Go', source: 'GitHub repository metadata' },
       { label: 'Built-in model vendors', value: '29', source: 'Project README' },
       { label: 'Deployment', value: 'Docker Compose / Kubernetes / cloud template', source: 'Project README' },
     ],
@@ -870,9 +844,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent retrieves the matching handbook chunk and returns the answer with a citation to the source document. The README states that every answer cites the documents it came from; it does not publish an accuracy figure for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '18,300+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Publish targets', value: 'Web widget / OpenAI-compatible API / MCP server / bots', source: 'Project README' },
     ],
     decisionAid: {
@@ -952,9 +923,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: `snapshot` returns a compact tree with a ref for the button, the agent clicks that ref, and `read` or `get` reports the new URL. The README documents snapshots, refs and click failure behaviour; it does not publish a measured success rate for this flow.',
     benchmarks: [
-      { label: 'GitHub stars', value: '48,800+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Rust', source: 'GitHub repository metadata' },
       { label: 'Browser control', value: 'Background daemon over Chrome DevTools Protocol', source: 'Project README' },
     ],
     decisionAid: {
@@ -1027,9 +995,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent reads the page\'s text-based DOM representation, fills the fields and triggers the navigation by acting on elements rather than pixels. The README documents text-based DOM manipulation and no-screenshot operation; it does not publish a measured success rate for this task.',
     benchmarks: [
-      { label: 'GitHub stars', value: '29,600+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Agent input', value: 'Text-based DOM, no screenshots or multimodal model', source: 'Project README' },
     ],
     decisionAid: {
@@ -1103,9 +1068,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent reads the page, extracts the fields, and writes a CSV to the Downloads folder after Chrome asks for permission the first time. The README documents file saving and tab-based tasks; it does not publish a measured accuracy figure for this task.',
     benchmarks: [
-      { label: 'GitHub stars', value: '14,200+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Tested browsers', value: 'Chrome and Edge', source: 'Project README' },
     ],
     decisionAid: {
@@ -1177,8 +1139,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent observes the screen, plans the steps, and performs clicks, keystrokes and scrolling until the file is exported. The README describes this screen-based loop and publishes benchmark results; it does not publish a per-task transcript for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '12,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
       { label: 'OSWorld (Agent S3)', value: '72.60% (reported by the project)', source: 'Project README' },
       { label: 'OSWorld 2.0 (Sai)', value: '73% (reported by the project)', source: 'Project README' },
     ],
@@ -1254,9 +1214,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent opens the logged-in tab, reads the messages and returns a summary, while BrowserOS records the steps for replay. The README documents logged-in sessions, the live dashboard and local replay; it does not publish a measured result for this task.',
     benchmarks: [
-      { label: 'GitHub stars', value: '14,300+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'AGPL-3.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Session storage', value: 'Local only, under ~/.browserclaw/', source: 'Project README' },
     ],
     decisionAid: {
@@ -1341,9 +1298,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: CCR matches the request to the configured default route, and on a rate-limit response retries with the next ordered fallback provider, recording both attempts in the log. The README documents ordered fallbacks, retries and request logging; it does not publish a measured failover time.',
     benchmarks: [
-      { label: 'GitHub stars', value: '38,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Gateway ports', value: '3456 gateway / 3458 management UI', source: 'Project README' },
     ],
     decisionAid: {
@@ -1424,9 +1378,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the graph persists the draft step, pauses at the approval task, resumes after a decision, and retries the publish task according to its policy. The README documents human approval, checkpointing, retries and execution recovery; it does not publish a measured runtime for this graph.',
     benchmarks: [
-      { label: 'GitHub stars', value: '32,400+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Java', source: 'GitHub repository metadata' },
       { label: 'Worker languages', value: 'Java / Python / Go / JavaScript / C# / Ruby / Rust', source: 'Project README' },
     ],
     decisionAid: {
@@ -1504,9 +1455,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the visual flow retrieves from the handbook knowledge base, attaches the source reference, and branches to a handoff node when the answer is ungrounded. The README documents knowledge-base search testing, editable chunks and dialogue workflows; it does not publish a measured accuracy figure for this flow.',
     benchmarks: [
-      { label: 'GitHub stars', value: '30,000+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'FastGPT Open Source License', source: 'Project README' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Deployment', value: 'Docker Compose / cloud / commercial edition', source: 'Project README' },
     ],
     decisionAid: {
@@ -1588,9 +1536,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent plans the steps, writes SQL for the date grouping, executes it in the sandbox, then produces a chart and a short narrative of the largest month-over-month change. The README documents autonomous SQL, code execution and report generation; it does not publish a measured accuracy figure for this query.',
     benchmarks: [
-      { label: 'GitHub stars', value: '20,200+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Execution', value: 'Sandboxed code and tool execution', source: 'Project README' },
     ],
     decisionAid: {
@@ -1676,9 +1621,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the RAG pipeline retrieves matching chunks, the model answers from them, and the agent reports when no supporting passage was found. The README documents document upload, automatic splitting, vectorisation and hallucination reduction; it does not publish a measured accuracy figure for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '23,100+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'GPL-3.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Stack', value: 'Vue.js / Django / LangChain / PostgreSQL + pgvector', source: 'Project README' },
     ],
     decisionAid: {
@@ -1754,9 +1696,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent plans the work, delegates research to sub-agents, writes the comparison through its filesystem tools, and pauses at the approval step before executing a command. The README documents sub-agents, filesystem, context management and human-in-the-loop; it does not publish a measured result for this task.',
     benchmarks: [
-      { label: 'GitHub stars', value: '31,100+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python (plus a TypeScript port)', source: 'GitHub repository metadata' },
       { label: 'Runtime foundation', value: 'LangGraph with streaming, persistence and checkpointing', source: 'Project README' },
     ],
     decisionAid: {
@@ -1829,8 +1768,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the framework runs the two agents as a graph with a handoff, checkpoints the state, and pauses at the human-in-the-loop approval step. The README documents graph workflows, checkpointing and human-in-the-loop control; it does not publish a measured runtime for this graph.',
     benchmarks: [
-      { label: 'GitHub stars', value: '14,600+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT', source: 'Project repository' },
       { label: 'SDK languages', value: 'Python / .NET / Go (separate repo)', source: 'Project README' },
       { label: 'Observability', value: 'Built-in OpenTelemetry integration', source: 'Project README' },
     ],
@@ -1910,9 +1847,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the declarative workflow chain suspends at the approval step, persists state, then resumes with the manager\'s decision. The README documents suspend / resume workflows and ships this example in the scaffold; it does not publish a measured runtime for it.',
     benchmarks: [
-      { label: 'GitHub stars', value: '10,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'MIT (core framework)', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Scaffold', value: 'npm create voltagent-app@latest', source: 'Project README' },
     ],
     decisionAid: {
@@ -1997,9 +1931,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the behaviour is expressed as a policy plus a customer plan variable, then tested with two simulated personas in the Dashboard before deployment. The README walks through exactly this scenario; it does not publish a measured compliance rate for it.',
     benchmarks: [
-      { label: 'GitHub stars', value: '18,300+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Scaffolds', value: 'retail-store / lead-gen / basic', source: 'Project README' },
     ],
     decisionAid: {
@@ -2073,9 +2004,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the notebook collects agent trajectories, applies GRPO training, and compares the trained checkpoint with the untrained baseline. The README links an ART•E email-search notebook with a comparison; it does not include a per-run result for this prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '10,800+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Training method', value: 'GRPO reinforcement learning with optional SFT warmup', source: 'Project README' },
     ],
     decisionAid: {
@@ -2148,9 +2076,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the skills guide the agent through planning, writing valid HTML with seekable animations, adding media, linting, previewing and rendering to MP4. This exact prompt appears in the README as an example; no measured render time is published for it.',
     benchmarks: [
-      { label: 'GitHub stars', value: '81,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Output', value: 'Deterministic MP4 from HTML / CSS / seekable animations', source: 'Project README' },
     ],
     decisionAid: {
@@ -2222,9 +2147,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the agent analyses the reference transcript, scenes and keyframes, then returns differentiated concepts, a tool path, cost estimates and a sample before full production. The README documents this reference-video flow; it does not publish a measured cost for this specific prompt.',
     benchmarks: [
-      { label: 'GitHub stars', value: '79,200+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'AGPL-3.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'Python', source: 'GitHub repository metadata' },
       { label: 'Documented pipelines', value: '12 production pipelines', source: 'Project README' },
     ],
     decisionAid: {
@@ -2311,9 +2233,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the generator reads the brief, lays out six slides with the selected template, and exports a PPTX whose shapes remain editable in PowerPoint. The README documents prompt/document input, built-in templates and fully editable PPTX export; it does not publish a measured quality score.',
     benchmarks: [
-      { label: 'GitHub stars', value: '11,800+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Export', value: 'Fully editable PPTX', source: 'Project README' },
     ],
     decisionAid: {
@@ -2389,9 +2308,6 @@ export const extraAgents2026g: Agent[] = [
     sampleOutput:
       'An illustrative workflow: the connected agent reads the design system assets, generates the prototype in Studio, and the team reviews it with feedback in the same workspace. The README documents brief-to-prototype workflows, design systems and Studio; it does not publish a measured quality score for this task.',
     benchmarks: [
-      { label: 'GitHub stars', value: '106,900+', source: 'GitHub (Nov 2026)' },
-      { label: 'License', value: 'Apache-2.0 (core)', source: 'Project repository' },
-      { label: 'Primary language', value: 'TypeScript', source: 'GitHub repository metadata' },
       { label: 'Agent integration', value: 'Skills / CLI / MCP plus native runtime adapters', source: 'Project README' },
     ],
     decisionAid: {

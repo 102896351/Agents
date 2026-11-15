@@ -26,7 +26,7 @@ const canonical = `${site}/agent/${agent.slug}/`;
 
 // Official screenshots that sit INSIDE the body copy, next to the section
 // they illustrate. Profiles without a Sample section fall back to the
-// Benchmarks or Pricing slot so no image is silently dropped.
+// Published-figures or Pricing slot so no image is silently dropped.
 // Real version snapshots from the GitHub API. Nothing here is invented:
 // projects without a public release are labelled rolling / not published.
 const ver: AgentVersion = agentVersions[agent.slug] ?? { kind: 'closed' };
@@ -325,6 +325,20 @@ faqItems.push({
           </>
         )}
 
+        {agent.detailNotes && agent.detailNotes.length > 0 && (
+          <section class="implementation-notes">
+            <h2>Implementation notes</h2>
+            <p class="data-note">
+              Architecture, capabilities and setup prerequisites quoted from the project's
+              own README and documentation. These are published details, not measurements
+              run by this site.
+            </p>
+            <ul class="detail-notes">
+              {agent.detailNotes.map((n) => <li>{n}</li>)}
+            </ul>
+          </section>
+        )}
+
         {compareTargets.length > 0 && (
           <>
             <h2>How {agent.name} compares</h2>
@@ -403,8 +417,8 @@ faqItems.push({
 
         {agent.benchmarks && agent.benchmarks.length > 0 && (
           <>
-            <h2>Benchmarks</h2>
-            <p class="data-note">Figures quoted from public sources; test conditions and dates vary. Verify against the original source before relying on a number.</p>
+            <h2>Published figures</h2>
+            <p class="data-note">These are figures published by the project or quoted from public sources, not measurements run by this site. Test conditions and dates vary, and some numbers describe an earlier release. Verify against the linked source before relying on a number; the sidebar above shows the current version snapshot.</p>
             <div class="bench-table">
               {agent.benchmarks.map((b) => (
                 <div class="bench-row">
@@ -659,6 +673,14 @@ faqItems.push({
       font-size: 13px;
       line-height: 1.55;
       color: var(--text-muted);
+    }
+    .detail-notes {
+      margin: 0 0 20px;
+      padding-left: 22px;
+    }
+    .detail-notes li {
+      margin-bottom: 10px;
+      line-height: 1.7;
     }
     .agent-figure {
       margin: 24px 0 8px;
