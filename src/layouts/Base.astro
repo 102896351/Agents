@@ -341,6 +341,20 @@ const B = import.meta.env.BASE_URL; // 末尾带 /，如 '/' 或 '/Agents/'
           push(name, extra || null);
           flush();
         };
+
+        // Pre-filled email links are restored at runtime: no plain mailto or
+        // address in the static HTML, so CDN email obfuscation cannot rewrite
+        // the subject / body. Without JS the links simply stay inert.
+        (function () {
+          var links = document.querySelectorAll('a[data-mail]');
+          for (var i = 0; i < links.length; i++) {
+            try { links[i].setAttribute('href', decodeURIComponent(links[i].getAttribute('data-mail') || '')); } catch (e) {}
+          }
+          var texts = document.querySelectorAll('[data-email-text]');
+          for (var j = 0; j < texts.length; j++) {
+            try { texts[j].textContent = decodeURIComponent(texts[j].getAttribute('data-email-text') || ''); } catch (e) {}
+          }
+        })();
       })();
     </script>
   </body>

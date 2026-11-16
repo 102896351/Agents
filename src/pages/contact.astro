@@ -36,6 +36,12 @@ const generalUrl = mailto('[Feedback] AI Agents Hub', [
   '---',
   'Sent from the feedback link on https://gonglue.xyz/contact/.',
 ].join('\r\n'));
+const enc = (s: string) => encodeURIComponent(s);
+const mainMailData = enc('mailto:' + EMAIL);
+const emailTextData = enc(EMAIL);
+const correctionData = enc(correctionUrl);
+const suggestionData = enc(suggestionUrl);
+const generalData = enc(generalUrl);
 ---
 
 <Base title="Contact" description="Report an error, suggest an agent, or send a pull request. AI Agents Hub is a one-developer open-source project.">
@@ -56,12 +62,12 @@ const generalUrl = mailto('[Feedback] AI Agents Hub', [
 
       <div class="contact-simple" style="margin-top: 24px;">
         <div class="contact-label">Email — the main channel</div>
-        <a class="contact-mail" href={'mailto:' + EMAIL}>{EMAIL}</a>
+        <a class="contact-mail" href="#" data-mail={mainMailData}><span data-email-text={emailTextData}>Email the site owner</span></a>
         <p class="contact-hint">Every correction, suggestion and general message goes to this one inbox. The links below open your own mail app with the subject and a short checklist already filled in — nothing is stored on this site.</p>
         <div class="contact-actions">
-          <a href={correctionUrl}>Report a correction</a>
-          <a href={suggestionUrl}>Suggest an agent</a>
-          <a href={generalUrl}>Send feedback</a>
+          <a href="#" data-mail={correctionData}>Report a correction</a>
+          <a href="#" data-mail={suggestionData}>Suggest an agent</a>
+          <a href="#" data-mail={generalData}>Send feedback</a>
         </div>
       </div>
 

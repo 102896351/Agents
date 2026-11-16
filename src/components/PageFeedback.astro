@@ -43,6 +43,13 @@ const feedbackUrl = mailto(
     `Sent from the feedback link on ${pageUrl}.`,
   ].join('\r\n')
 );
+
+// Keep the complete mailto (address + subject + body) out of the static HTML.
+// Base.astro restores the href at runtime, so CDN email obfuscation cannot
+// rewrite or double-decode the pre-filled body.
+const enc = (s: string) => encodeURIComponent(s);
+const correctionData = enc(correctionUrl);
+const feedbackData = enc(feedbackUrl);
 ---
 
 <section class="page-feedback" aria-label="Page feedback">
@@ -55,8 +62,8 @@ const feedbackUrl = mailto(
     </div>
     <p class="pf-note">
       One tap, and only the yes or no is recorded — no text, no account, nothing public.
-      Spotted something out of date? <a href={correctionUrl}>Email a correction</a>
-      · Have a suggestion? <a href={feedbackUrl}>Send feedback</a>.
+      Spotted something out of date? <a href="#" data-mail={correctionData}>Email a correction</a>
+      · Have a suggestion? <a href="#" data-mail={feedbackData}>Send feedback</a>.
       Both open your own mail app and go to the site owner's inbox.
     </p>
   </div>
