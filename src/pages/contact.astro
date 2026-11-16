@@ -2,28 +2,67 @@
 import Base from '../layouts/Base.astro';
 
 const REPO = 'https://github.com/102896351/Agents';
+const EMAIL = 'yangkunming2026@gmail.com';
+const mailto = (subject: string, body: string) =>
+  `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+const correctionUrl = mailto('[Correction] AI Agents Hub', [
+  'Page or agent name:',
+  '',
+  'What looks wrong? (one line)',
+  '',
+  'What should it say instead?',
+  '',
+  'Official source link (if you have one):',
+  '',
+  '---',
+  'Sent from the correction link on https://gonglue.xyz/contact/.',
+].join('\r\n'));
+const suggestionUrl = mailto('[Suggestion] new agent', [
+  'Agent name + one-line positioning:',
+  '',
+  'Homepage / GitHub link:',
+  '',
+  'License type (open source / commercial / freemium):',
+  '',
+  'One sentence on why it deserves a spot:',
+  '',
+  '---',
+  'Sent from the suggestion link on https://gonglue.xyz/contact/.',
+].join('\r\n'));
+const generalUrl = mailto('[Feedback] AI Agents Hub', [
+  'Your suggestion or comment:',
+  '',
+  '',
+  '---',
+  'Sent from the feedback link on https://gonglue.xyz/contact/.',
+].join('\r\n'));
 ---
 
 <Base title="Contact" description="Report an error, suggest an agent, or send a pull request. AI Agents Hub is a one-developer open-source project.">
   <section class="hero" style="padding-top: 80px; padding-bottom: 24px;">
     <div class="container">
       <h1>Contact</h1>
-      <p>Want to add an agent, report a bug, or fix a stale number? The quickest route is a GitHub issue or pull request — email works too.</p>
+      <p>Want to add an agent, report a bug, or fix a stale number? Email is the quickest route — every correction and suggestion goes straight to the site owner's inbox. Pull requests on GitHub are welcome too.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container" style="max-width: 640px;">
       <div class="contact-simple">
-        <div class="contact-label">Contribute directly</div>
+        <div class="contact-label">Contribute code or data</div>
         <a class="contact-mail" href={REPO} target="_blank" rel="noopener">github.com/102896351/Agents</a>
-        <p class="contact-hint">Every agent profile lives in <code>src/data/agents.ts</code> and the related data files. Fix a price, add a source link, or add a missing agent via an issue or pull request — the change history is public.</p>
+        <p class="contact-hint">Every agent profile lives in <code>src/data/agents.ts</code> and the related data files. A pull request is optional — the change history is public. For a quick correction, use the email links below instead.</p>
       </div>
 
       <div class="contact-simple" style="margin-top: 24px;">
-        <div class="contact-label">Email</div>
-        <a class="contact-mail" href="mailto:andynaonao@gmail.com">andynaonao@gmail.com</a>
-        <p class="contact-hint">This is a one-person project, so there is no guaranteed reply time. For anything data-related, a public issue or pull request is faster and stays visible.</p>
+        <div class="contact-label">Email — the main channel</div>
+        <a class="contact-mail" href={'mailto:' + EMAIL}>{EMAIL}</a>
+        <p class="contact-hint">Every correction, suggestion and general message goes to this one inbox. The links below open your own mail app with the subject and a short checklist already filled in — nothing is stored on this site.</p>
+        <div class="contact-actions">
+          <a href={correctionUrl}>Report a correction</a>
+          <a href={suggestionUrl}>Suggest an agent</a>
+          <a href={generalUrl}>Send feedback</a>
+        </div>
       </div>
 
       <div class="prose" style="margin-top: 48px;">
@@ -69,12 +108,32 @@ const REPO = 'https://github.com/102896351/Agents';
         <div class="verdict-box" style="margin-top: 24px;">
           <div class="label">About response times</div>
           <p style="margin: 0; color: var(--text);">
-            This is a one-person side project. No response time is promised; public
-            issues and pull requests on GitHub are the most reliable way to get a
-            data correction merged.
+            This is a one-person side project. No response time is promised. Email
+            is the main channel; a public pull request on GitHub is optional and
+            makes the change history visible.
           </p>
         </div>
       </div>
     </div>
   </section>
 </Base>
+
+<style is:global>
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .contact-actions a {
+    padding: 8px 16px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .contact-actions a:hover { border-color: #818cf8; color: #818cf8; }
+</style>

@@ -1,0 +1,167 @@
+---
+// One-tap anonymous vote + two pre-filled email links.
+// The vote records only a yes / no event through the owner's private stats
+// endpoint. Corrections and feedback leave as an ordinary email written in
+// the visitor's own mail app: no text is stored or displayed on this site.
+interface Props {
+  kind: 'agent' | 'blog';
+  slug: string;
+}
+
+const { kind, slug } = Astro.props;
+const EMAIL = 'yangkunming2026@gmail.com';
+const pageUrl = `https://gonglue.xyz/${kind}/${slug}/`;
+const mailto = (subject: string, body: string) =>
+  `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+const correctionUrl = mailto(
+  `[Correction] ${kind}/${slug}`,
+  [
+    `Page: ${pageUrl}`,
+    `Slug: ${slug}`,
+    '',
+    'What looks wrong? (one line)',
+    '',
+    'What should it say instead?',
+    '',
+    'Official source link (if you have one):',
+    '',
+    '---',
+    `Sent from the correction link on ${pageUrl}.`,
+  ].join('\r\n')
+);
+
+const feedbackUrl = mailto(
+  `[Feedback] ${kind}/${slug}`,
+  [
+    `Page: ${pageUrl}`,
+    '',
+    'Your suggestion or comment:',
+    '',
+    '',
+    '---',
+    `Sent from the feedback link on ${pageUrl}.`,
+  ].join('\r\n')
+);
+---
+
+<section class="page-feedback" aria-label="Page feedback">
+  <div class="pf-inner">
+    <div class="pf-vote" data-feedback>
+      <span class="pf-q">Was this page useful?</span>
+      <button type="button" class="pf-btn" data-vote="helpful_yes">Yes</button>
+      <button type="button" class="pf-btn" data-vote="helpful_no">No</button>
+      <span class="pf-thanks" role="status" aria-live="polite"></span>
+    </div>
+    <p class="pf-note">
+      One tap, and only the yes or no is recorded — no text, no account, nothing public.
+      Spotted something out of date? <a href={correctionUrl}>Email a correction</a>
+      · Have a suggestion? <a href={feedbackUrl}>Send feedback</a>.
+      Both open your own mail app and go to the site owner's inbox.
+    </p>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var EP = 'https://toolbox168.com/gsm/e';
+    var root = document.querySelector('[data-feedback]');
+    if (!root) return;
+    var thanks = root.querySelector('.pf-thanks');
+    var btns = Array.prototype.slice.call(root.querySelectorAll('[data-vote]'));
+    var done = false;
+
+    // Fallback for the rare case where the global metrics hook is unavailable
+    // (e.g. the inline script was blocked). Still a single anonymous event.
+    function standalone(name) {
+      var p = location.pathname.replace(/\/+$/, '') || '/';
+      var g = p.indexOf('/agent/') === 0 ? 'agent'
+            : p.indexOf('/blog/') === 0 ? 'blog' : 'other';
+      var m = p.match(/^\/(?:agent|blog)\/([^/]+)\/?$/);
+      var v = '';
+      try {
+        var b = new Uint8Array(8);
+        window.crypto.getRandomValues(b);
+        for (var i = 0; i < b.length; i++) v += ('0' + b[i].toString(16)).slice(-2);
+      } catch (e) {
+        v = Math.random().toString(16).slice(2, 10) + Math.random().toString(16).slice(2, 10);
+      }
+      var payload = JSON.stringify({ v: v, p: p, g: g, c: m ? m[1] : '', events: [{ n: name }] });
+      var blob = new Blob([payload], { type: 'text/plain' });
+      try {
+        if (navigator.sendBeacon && navigator.sendBeacon(EP, blob)) return;
+        fetch(EP, { method: 'POST', body: blob, keepalive: true, mode: 'cors' });
+      } catch (e) {}
+    }
+
+    function send(name) {
+      try {
+        if (window.__gsmPush) { window.__gsmPush(name); return; }
+      } catch (e) {}
+      standalone(name);
+    }
+
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (done) return;
+        done = true;
+        send(b.getAttribute('data-vote') === 'helpful_no' ? 'helpful_no' : 'helpful_yes');
+        btns.forEach(function (x) { x.disabled = true; });
+        b.classList.add('pf-picked');
+        if (thanks) thanks.textContent = 'Thanks — that is all we record.';
+      });
+    });
+  })();
+</script>
+
+<style>
+  .page-feedback {
+    padding: 26px 0 8px;
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  .pf-inner { max-width: 760px; }
+  .pf-vote {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pf-q {
+    font-size: 14px;
+    color: var(--text);
+    margin-right: 2px;
+  }
+  .pf-btn {
+    padding: 7px 18px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .pf-btn:hover:not(:disabled) {
+    border-color: var(--accent, #6366f1);
+    color: var(--accent, #6366f1);
+  }
+  .pf-btn:disabled { cursor: default; opacity: 0.65; }
+  .pf-btn.pf-picked {
+    border-color: var(--accent, #6366f1);
+    color: var(--accent, #6366f1);
+  }
+  .pf-thanks {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .pf-note {
+    margin: 12px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+  .pf-note a { color: #818cf8; text-decoration: none; }
+  .pf-note a:hover { text-decoration: underline; }
+</style>

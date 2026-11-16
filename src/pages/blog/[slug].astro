@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
+import PageFeedback from '../../components/PageFeedback.astro';
 import { getBlogSorted, getRelatedPosts, type BlogPost } from '../../data/blog';
 import { agents, categories } from '../../data/agents';
 import { topicTagsFor } from '../../data/taxonomy';
@@ -189,6 +190,8 @@ const primaryCat =
       </div>
     </section>
   )}
+
+  <PageFeedback kind="blog" slug={post.slug} />
 </Base>
 
 <style is:global>
