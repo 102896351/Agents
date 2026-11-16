@@ -37,6 +37,14 @@ import { extraAgents2026h } from './agents-extra8-2026';
 import { extraAgents2026i } from './agents-extra9-2026';
 import { extraAgents2026j } from './agents-extra10-2026';
 import { extraAgents2026k } from './agents-extra11-2026';
+import { extraAgents2026l } from './agents-extra12-2026';
+import { extraAgents2026m } from './agents-extra13-2026';
+import { extraAgents2026n } from './agents-extra14-2026';
+import { extraAgents2026o } from './agents-extra15-2026';
+import { extraAgents2026p } from './agents-extra16-2026';
+import { extraAgents2026q } from './agents-extra17-2026';
+import { extraAgents2026r } from './agents-extra18-2026';
+import { extraAgents2026s } from './agents-extra19-2026';
 import { agentImages } from './agent-images';
 
 export type License = 'open-source' | 'commercial' | 'freemium';
@@ -3799,6 +3807,14 @@ const allAgents: Agent[] = [
   ...extraAgents2026i,
   ...extraAgents2026j,
   ...extraAgents2026k,
+  ...extraAgents2026l,
+  ...extraAgents2026m,
+  ...extraAgents2026n,
+  ...extraAgents2026o,
+  ...extraAgents2026p,
+  ...extraAgents2026q,
+  ...extraAgents2026r,
+  ...extraAgents2026s,
 ];
 
 // Backfilled official visuals live in a separate map so the legacy entries
