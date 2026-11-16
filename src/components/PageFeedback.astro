@@ -1,55 +1,11 @@
 ---
-// One-tap anonymous vote + two pre-filled email links.
-// The vote records only a yes / no event through the owner's private stats
-// endpoint. Corrections and feedback leave as an ordinary email written in
-// the visitor's own mail app: no text is stored or displayed on this site.
+// One-tap anonymous "was this page useful?" vote. Only the yes / no event is
+// recorded through the owner's private stats endpoint: no text, no account,
+// nothing public. Results appear only in the owner's local dashboard.
 interface Props {
   kind: 'agent' | 'blog';
   slug: string;
 }
-
-const { kind, slug } = Astro.props;
-const EMAIL = 'yangkunming2026@gmail.com';
-const pageUrl = `https://gonglue.xyz/${kind}/${slug}/`;
-const mailto = (subject: string, body: string) =>
-  `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-const correctionUrl = mailto(
-  `[Correction] ${kind}/${slug}`,
-  [
-    `Page: ${pageUrl}`,
-    `Slug: ${slug}`,
-    '',
-    'What looks wrong? (one line)',
-    '',
-    'What should it say instead?',
-    '',
-    'Official source link (if you have one):',
-    '',
-    '---',
-    `Sent from the correction link on ${pageUrl}.`,
-  ].join('\r\n')
-);
-
-const feedbackUrl = mailto(
-  `[Feedback] ${kind}/${slug}`,
-  [
-    `Page: ${pageUrl}`,
-    '',
-    'Your suggestion or comment:',
-    '',
-    '',
-    '---',
-    `Sent from the feedback link on ${pageUrl}.`,
-  ].join('\r\n')
-);
-
-// Keep the complete mailto (address + subject + body) out of the static HTML.
-// Base.astro restores the href at runtime, so CDN email obfuscation cannot
-// rewrite or double-decode the pre-filled body.
-const enc = (s: string) => encodeURIComponent(s);
-const correctionData = enc(correctionUrl);
-const feedbackData = enc(feedbackUrl);
 ---
 
 <section class="page-feedback" aria-label="Page feedback">
@@ -60,12 +16,6 @@ const feedbackData = enc(feedbackUrl);
       <button type="button" class="pf-btn" data-vote="helpful_no">No</button>
       <span class="pf-thanks" role="status" aria-live="polite"></span>
     </div>
-    <p class="pf-note">
-      One tap, and only the yes or no is recorded — no text, no account, nothing public.
-      Spotted something out of date? <a href="#" data-mail={correctionData}>Email a correction</a>
-      · Have a suggestion? <a href="#" data-mail={feedbackData}>Send feedback</a>.
-      Both open your own mail app and go to the site owner's inbox.
-    </p>
   </div>
 </section>
 
@@ -126,11 +76,13 @@ const feedbackData = enc(feedbackUrl);
     padding: 26px 0 8px;
     margin-top: 8px;
     border-top: 1px solid var(--border);
+    text-align: center;
   }
-  .pf-inner { max-width: 760px; }
+  .pf-inner { max-width: 760px; margin: 0 auto; }
   .pf-vote {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
   }
@@ -163,12 +115,4 @@ const feedbackData = enc(feedbackUrl);
     font-size: 13px;
     color: var(--text-muted);
   }
-  .pf-note {
-    margin: 12px 0 0;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text-muted);
-  }
-  .pf-note a { color: #818cf8; text-decoration: none; }
-  .pf-note a:hover { text-decoration: underline; }
 </style>

@@ -5,18 +5,6 @@ const REPO = 'https://github.com/102896351/Agents';
 const EMAIL = 'yangkunming2026@gmail.com';
 const mailto = (subject: string, body: string) =>
   `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-const correctionUrl = mailto('[Correction] AI Agents Hub', [
-  'Page or agent name:',
-  '',
-  'What looks wrong? (one line)',
-  '',
-  'What should it say instead?',
-  '',
-  'Official source link (if you have one):',
-  '',
-  '---',
-  'Sent from the correction link on https://gonglue.xyz/contact/.',
-].join('\r\n'));
 const suggestionUrl = mailto('[Suggestion] new agent', [
   'Agent name + one-line positioning:',
   '',
@@ -29,26 +17,17 @@ const suggestionUrl = mailto('[Suggestion] new agent', [
   '---',
   'Sent from the suggestion link on https://gonglue.xyz/contact/.',
 ].join('\r\n'));
-const generalUrl = mailto('[Feedback] AI Agents Hub', [
-  'Your suggestion or comment:',
-  '',
-  '',
-  '---',
-  'Sent from the feedback link on https://gonglue.xyz/contact/.',
-].join('\r\n'));
 const enc = (s: string) => encodeURIComponent(s);
 const mainMailData = enc('mailto:' + EMAIL);
 const emailTextData = enc(EMAIL);
-const correctionData = enc(correctionUrl);
 const suggestionData = enc(suggestionUrl);
-const generalData = enc(generalUrl);
 ---
 
-<Base title="Contact" description="Report an error, suggest an agent, or send a pull request. AI Agents Hub is a one-developer open-source project.">
+<Base title="Contact" description="Suggest an agent or send a pull request. AI Agents Hub is a one-developer open-source project.">
   <section class="hero" style="padding-top: 80px; padding-bottom: 24px;">
     <div class="container">
       <h1>Contact</h1>
-      <p>Want to add an agent, report a bug, or fix a stale number? Email is the quickest route — every correction and suggestion goes straight to the site owner's inbox. Pull requests on GitHub are welcome too.</p>
+      <p>Want to suggest an agent or fix a stale number? Email is the quickest route, and pull requests on GitHub are welcome too.</p>
     </div>
   </section>
 
@@ -57,17 +36,15 @@ const generalData = enc(generalUrl);
       <div class="contact-simple">
         <div class="contact-label">Contribute code or data</div>
         <a class="contact-mail" href={REPO} target="_blank" rel="noopener">github.com/102896351/Agents</a>
-        <p class="contact-hint">Every agent profile lives in <code>src/data/agents.ts</code> and the related data files. A pull request is optional — the change history is public. For a quick correction, use the email links below instead.</p>
+        <p class="contact-hint">Every agent profile lives in <code>src/data/agents.ts</code> and the related data files. A pull request is optional — the change history is public. For anything else, use the email link below.</p>
       </div>
 
       <div class="contact-simple" style="margin-top: 24px;">
         <div class="contact-label">Email — the main channel</div>
         <a class="contact-mail" href="#" data-mail={mainMailData}><span data-email-text={emailTextData}>Email the site owner</span></a>
-        <p class="contact-hint">Every correction, suggestion and general message goes to this one inbox. The links below open your own mail app with the subject and a short checklist already filled in — nothing is stored on this site.</p>
+        <p class="contact-hint">General messages go to this one inbox. The link below opens your own mail app with a short checklist already filled in — nothing is stored on this site.</p>
         <div class="contact-actions">
-          <a href="#" data-mail={correctionData}>Report a correction</a>
           <a href="#" data-mail={suggestionData}>Suggest an agent</a>
-          <a href="#" data-mail={generalData}>Send feedback</a>
         </div>
       </div>
 
