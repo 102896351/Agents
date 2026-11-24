@@ -2,9 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import { getBlogSorted, type BlogPost } from '../../data/blog';
 import { AGENT_COUNT } from '../../data/site-stats';
+import { TOPIC_TAGS, topicTagsFor } from '../../data/taxonomy';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const posts = getBlogSorted();
+// Same grouping as the topic pages, so the count shown here always matches
+// the number of guides a visitor actually finds after clicking through.
+const topicCount = (slug: string) =>
+  posts.filter((p: BlogPost) => topicTagsFor(p.tags, 4).includes(slug)).length;
 ---
 
 <Base
@@ -18,6 +23,26 @@ const posts = getBlogSorted();
         Long-form analysis of AI agents — comparison guides, decision frameworks, and how-to walkthroughs.
         Every post is drawn from the {AGENT_COUNT} detailed profiles in our <a href={base + '/'}>directory</a>.
       </p>
+    </div>
+  </section>
+
+  <section class="section topic-nav" aria-label="Browse guides by topic">
+    <div class="container">
+      <div class="section-head">
+        <h2>Browse by topic</h2>
+        <span class="count">{TOPIC_TAGS.length} collections</span>
+      </div>
+      <p class="topic-nav-hint">
+        Not sure where to start? Every guide is grouped below by the decision it helps with.
+      </p>
+      <div class="topic-nav-links">
+        {TOPIC_TAGS.map((topic) => (
+          <a href={`${base}/blog/tags/${topic.slug}/`} class="topic-pill">
+            <span>{topic.label}</span>
+            <span class="topic-pill-count">{topicCount(topic.slug)}</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -79,6 +104,49 @@ const posts = getBlogSorted();
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  .topic-nav {
+    padding-top: 8px;
+    padding-bottom: 0;
+  }
+  .topic-nav-hint {
+    margin: 0 0 20px;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 680px;
+  }
+  .topic-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .topic-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .topic-pill:hover {
+    border-color: var(--accent, #6366f1);
+    background: var(--surface-2);
+  }
+  .topic-pill-count {
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    border-radius: 999px;
+    padding: 2px 6px;
   }
   .blog-grid {
     display: grid;
